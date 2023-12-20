@@ -49,25 +49,24 @@ class _HomePageState extends State<HomePage> {
           const SettingPage(),
         ],
       ),
-      bottomNavigationBar: NavigationBar(
-        backgroundColor: const Color.fromRGBO(140, 157, 173, 1),
-        indicatorColor: const Color.fromRGBO(162, 185, 194, 1),
-        selectedIndex: selectedNavigationIndex,
-        onDestinationSelected: (index) {
+      bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: Colors.purple,
+        currentIndex: selectedNavigationIndex,
+        onTap: (index) {
           setState(() {
             selectedNavigationIndex = index;
           });
         },
-        destinations: [
-          const NavigationDestination(
+        items: [
+          const BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
           ),
-          NavigationDestination(
+          BottomNavigationBarItem(
             icon: Icon(Icons.store),
             label: S.of(context).store,
           ),
-          NavigationDestination(
+          BottomNavigationBarItem(
             icon: Icon(Icons.settings),
             label: S.of(context).setting,
           ),
@@ -92,6 +91,7 @@ class _HomePageState extends State<HomePage> {
           AppSpacing.verticalSpacing16,
           ElevatedButton(
             child: Text(S.of(context).create_a_store),
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.purple),
             onPressed: () {
               setState(() {
                 isStoreCreated = true;

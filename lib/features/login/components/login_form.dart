@@ -1,7 +1,9 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:mitraku_seller/core/spacings/app_spacing.dart';
+import 'package:mitraku_seller/features/app/bloc/app_bloc.dart';
 import 'package:mitraku_seller/router/app_router.dart';
 
 class LoginForm extends StatelessWidget {
@@ -74,7 +76,9 @@ class LoginForm extends StatelessWidget {
                   child: MaterialButton(
                     color: Colors.purple,
                     onPressed: () {
-                      context.push(AppRouter.homePath);
+                      context
+                          .read<AppBloc>()
+                          .add(const AppEvent.disableFirstUse());
                     },
                     child: const Text(
                       "Login",

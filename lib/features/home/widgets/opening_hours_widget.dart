@@ -30,7 +30,7 @@ class OpeningHoursWidget extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15),
             ),
-            color: Color.fromARGB(255, 214, 214, 214),
+            color: const Color.fromRGBO(246, 207, 252, 1),
             child: Padding(
               padding: EdgeInsets.all(AppDimens.basePaddingDouble),
               child: Row(

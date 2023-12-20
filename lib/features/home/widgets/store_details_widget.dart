@@ -41,7 +41,9 @@ class StoreDetailsWidget extends StatelessWidget {
         ),
         AppSpacing.verticalSpacing8,
         Text('Name: John Smith'),
+        AppSpacing.verticalSpacing4,
         Text('Email: JohnSmith@SuperEliteAgent.com'),
+        AppSpacing.verticalSpacing4,
         Text('Phone: 080989999'),
       ],
     );

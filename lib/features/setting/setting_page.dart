@@ -10,7 +10,7 @@ class SettingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
+    return Padding(
       padding: EdgeInsets.all(0),
       child: Column(
         children: [
@@ -48,6 +48,7 @@ class _LangRow extends StatelessWidget {
         RadioListTile<String>(
           value: 'en',
           groupValue: locale,
+          activeColor: Colors.purple,
           onChanged: (value) {
             context
                 .read<AppBloc>()
@@ -58,6 +59,7 @@ class _LangRow extends StatelessWidget {
         RadioListTile<String>(
           value: 'id',
           groupValue: locale,
+          activeColor: Colors.purple,
           onChanged: (value) {
             context
                 .read<AppBloc>()
@@ -77,17 +79,20 @@ class _DarkModeRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final bool darkMode =
         context.select((AppBloc bloc) => bloc.state.isDarkMode);
-    return SwitchListTile(
-      value: darkMode,
-      onChanged: (value) {
-        context.read<AppBloc>().add(const AppEvent.darkModeChanged());
-      },
-      title: Text(
-        S.of(context).dark_mode,
-        style: Theme.of(context)
-            .textTheme
-            .titleLarge!
-            .copyWith(fontWeight: FontWeight.bold),
+    return Expanded(
+      child: SwitchListTile(
+        value: darkMode,
+        onChanged: (value) {
+          context.read<AppBloc>().add(const AppEvent.darkModeChanged());
+        },
+        activeColor: Colors.purple,
+        title: Text(
+          S.of(context).dark_mode,
+          style: Theme.of(context)
+              .textTheme
+              .titleLarge!
+              .copyWith(fontWeight: FontWeight.bold),
+        ),
       ),
     );
   }

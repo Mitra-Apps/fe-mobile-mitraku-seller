@@ -112,7 +112,7 @@ class _$UIInitialImpl implements UIInitial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$UIInitialImpl);
   }
@@ -226,7 +226,7 @@ class _$UILoadingImpl implements UILoading {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$UILoadingImpl);
   }
@@ -358,7 +358,7 @@ class _$UILoadFailedImpl implements UILoadFailed {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UILoadFailedImpl &&
@@ -504,7 +504,7 @@ class _$UILoadSuccessImpl implements UILoadSuccess {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$UILoadSuccessImpl &&

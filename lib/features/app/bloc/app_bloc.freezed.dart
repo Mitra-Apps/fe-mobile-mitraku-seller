@@ -112,7 +112,7 @@ class _$LoadedImpl implements _Loaded {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$LoadedImpl);
   }
@@ -244,7 +244,7 @@ class _$LocaleChangedImpl implements _LocaleChanged {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LocaleChangedImpl &&
@@ -372,7 +372,7 @@ class _$DisableFirstUseImpl implements _DisableFirstUse {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$DisableFirstUseImpl);
   }
@@ -486,7 +486,7 @@ class _$DarkModeChangedImpl implements _DarkModeChanged {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$DarkModeChangedImpl);
   }
@@ -721,7 +721,7 @@ class _$AppStateImpl implements _AppState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AppStateImpl &&

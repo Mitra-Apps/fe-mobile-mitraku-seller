@@ -100,7 +100,7 @@ class _$LoadImageFromDBImpl implements _LoadImageFromDB {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType && other is _$LoadImageFromDBImpl);
   }
@@ -230,7 +230,7 @@ class _$DeleteImageFromDBImpl implements _DeleteImageFromDB {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeleteImageFromDBImpl &&
@@ -498,7 +498,7 @@ class _$DemoStateImpl implements _DemoState {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DemoStateImpl &&

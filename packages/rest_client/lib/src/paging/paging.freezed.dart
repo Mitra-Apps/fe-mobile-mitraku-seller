@@ -159,7 +159,7 @@ class _$PagingImpl<T> implements _Paging<T> {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PagingImpl<T> &&

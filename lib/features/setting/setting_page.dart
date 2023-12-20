@@ -10,19 +10,14 @@ class SettingPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(S.of(context).setting),
-      ),
-      body: const Padding(
-        padding: EdgeInsets.all(AppDimens.basePadding),
-        child: Column(
-          children: [
-            _LangRow(),
-            AppSpacing.verticalSpacing24,
-            _DarkModeRow(),
-          ],
-        ),
+    return const Padding(
+      padding: EdgeInsets.all(0),
+      child: Column(
+        children: [
+          _LangRow(),
+          AppSpacing.verticalSpacing24,
+          _DarkModeRow(),
+        ],
       ),
     );
   }
@@ -35,7 +30,21 @@ class _LangRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final String locale = context.select((AppBloc bloc) => bloc.state.locale);
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        Padding(
+          padding: const EdgeInsets.only(
+              left: AppDimens.basePaddingDouble,
+              top: AppDimens.basePaddingDouble,
+              right: AppDimens.basePaddingDouble),
+          child: Text(
+            'Language',
+            style: Theme.of(context)
+                .textTheme
+                .titleLarge!
+                .copyWith(fontWeight: FontWeight.bold),
+          ),
+        ),
         RadioListTile<String>(
           value: 'en',
           groupValue: locale,
@@ -73,7 +82,13 @@ class _DarkModeRow extends StatelessWidget {
       onChanged: (value) {
         context.read<AppBloc>().add(const AppEvent.darkModeChanged());
       },
-      title: Text(S.of(context).dark_mode),
+      title: Text(
+        S.of(context).dark_mode,
+        style: Theme.of(context)
+            .textTheme
+            .titleLarge!
+            .copyWith(fontWeight: FontWeight.bold),
+      ),
     );
   }
 }

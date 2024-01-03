@@ -24,6 +24,7 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     on<_DarkModeChanged>(_onDarkModeChanged);
     on<_LocaleChanged>(_onLocaleChanged);
     on<_DisableFirstUse>(_onDisableFirstUse);
+    on<_EnableFirstUse>(_onEnableFirstUse);
   }
 
   late final AppService _appService;
@@ -101,6 +102,20 @@ class AppBloc extends Bloc<AppEvent, AppState> {
       emit(
         state.copyWith(
           isFirstUse: false,
+        ),
+      );
+    }
+  }
+
+  FutureOr<void> _onEnableFirstUse(
+    _EnableFirstUse event,
+    Emitter<AppState> emit,
+  ) async {
+    if (!state.isFirstUse) {
+      await _appService.setIsFirstUse(isFirstUse: true);
+      emit(
+        state.copyWith(
+          isFirstUse: true,
         ),
       );
     }

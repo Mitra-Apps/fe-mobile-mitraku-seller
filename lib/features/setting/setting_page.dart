@@ -17,6 +17,23 @@ class SettingPage extends StatelessWidget {
           _LangRow(),
           AppSpacing.verticalSpacing24,
           _DarkModeRow(),
+          AppSpacing.verticalSpacing48,
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: 0, horizontal: 15),
+            child: MaterialButton(
+              color: Colors.purple,
+              onPressed: () {
+                context.read<AppBloc>().add(const AppEvent.enableFirstUse());
+              },
+              child: const Text(
+                "Logout",
+                style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.white),
+              ),
+            ),
+          ),
         ],
       ),
     );
@@ -79,20 +96,18 @@ class _DarkModeRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final bool darkMode =
         context.select((AppBloc bloc) => bloc.state.isDarkMode);
-    return Expanded(
-      child: SwitchListTile(
-        value: darkMode,
-        onChanged: (value) {
-          context.read<AppBloc>().add(const AppEvent.darkModeChanged());
-        },
-        activeColor: Colors.purple,
-        title: Text(
-          S.of(context).dark_mode,
-          style: Theme.of(context)
-              .textTheme
-              .titleLarge!
-              .copyWith(fontWeight: FontWeight.bold),
-        ),
+    return SwitchListTile(
+      value: darkMode,
+      onChanged: (value) {
+        context.read<AppBloc>().add(const AppEvent.darkModeChanged());
+      },
+      activeColor: Colors.purple,
+      title: Text(
+        S.of(context).dark_mode,
+        style: Theme.of(context)
+            .textTheme
+            .titleLarge!
+            .copyWith(fontWeight: FontWeight.bold),
       ),
     );
   }

@@ -21,12 +21,18 @@ class StoreDetailsWidget extends StatelessWidget {
         AppSpacing.verticalSpacing8,
         Text('Waiting for Approval'),
         AppSpacing.verticalSpacing32,
-        Text(
-          S.of(context).description,
-          style: Theme.of(context)
-              .textTheme
-              .titleLarge!
-              .copyWith(fontWeight: FontWeight.bold),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              S.of(context).description,
+              style: Theme.of(context)
+                  .textTheme
+                  .titleLarge!
+                  .copyWith(fontWeight: FontWeight.bold),
+            ),
+            Icon(Icons.edit),
+          ],
         ),
         AppSpacing.verticalSpacing8,
         Text(

@@ -59,6 +59,7 @@ class LoginForm extends StatelessWidget {
                           keyboardType: TextInputType.visiblePassword,
                           textInputAction: TextInputAction.next,
                           onSubmitted: (password) {},
+                          obscureText: true,
                           decoration: InputDecoration(
                               hintText: "Password",
                               hintStyle: TextStyle(color: Colors.grey),

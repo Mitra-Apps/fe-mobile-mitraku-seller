@@ -5,15 +5,14 @@ class AppConfig {
   static const String defaultLocale = 'en';
 
   static void configDev() {
-    baseUrl = 'https://dog.ceo/api';
-    newBaseUrl = 'https://themealdb.com/api';
+    baseUrl = 'http://172.19.14.120:7000';
   }
 
-  static void configTest() {
-    // TODO(boilerplate): flavoring
+  static void configStaging() {
+    baseUrl = 'http://172.19.14.120:7000';
   }
 
   static void configProduction() {
-    // TODO(boilerplate): flavoring
+    baseUrl = 'http://172.19.14.120:9000';
   }
 }

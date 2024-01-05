@@ -8,10 +8,16 @@ class RestClientModule {
   static void init() {
     final injector = Injector.instance;
 
-    injector.registerFactory<DogApiClient>(
-      () => DogApiClient(
-        injector(instanceName: DioModule.dioInstanceName),
-      ),
-    );
+    injector
+      ..registerFactory<DogApiClient>(
+        () => DogApiClient(
+          injector(instanceName: DioModule.dioInstanceName),
+        ),
+      )
+      ..registerFactory<RegisterApiClient>(
+        () => RegisterApiClient(
+          injector(instanceName: DioModule.dioInstanceName),
+        ),
+      );
   }
 }

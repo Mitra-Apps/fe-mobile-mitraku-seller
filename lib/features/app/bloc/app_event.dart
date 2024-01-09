@@ -10,5 +10,7 @@ class AppEvent with _$AppEvent {
 
   const factory AppEvent.disableFirstUse() = _DisableFirstUse;
 
+  const factory AppEvent.enableFirstUse() = _EnableFirstUse;
+
   const factory AppEvent.darkModeChanged() = _DarkModeChanged;
 }

@@ -5,7 +5,7 @@ Future<void> main() async {
   await bootstrap(
     firebaseInitialization: () async {},
     flavorConfiguration: () async {
-      AppConfig.configDev();
+      AppConfig.configStaging();
     },
   );
 }

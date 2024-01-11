@@ -10,6 +10,7 @@ class AppThemes {
   //Background
   static const Color _lightBackgroundColor = Color(0xffffffff);
   static const Color _darkBackgroundColor = Color(0xFF1a222d);
+  static const Color _MainBackgroundColor = Color(0xff000068);
 
   //Text
   static const Color _lightTextColor = Color(0xff000000);
@@ -80,9 +81,9 @@ class AppThemes {
   static final ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
     primaryColor: _lightPrimaryColor,
-    scaffoldBackgroundColor: _lightBackgroundColor,
+    scaffoldBackgroundColor: AppThemes._MainBackgroundColor,
     appBarTheme: AppBarTheme(
-      color: _lightBackgroundColor,
+      color: AppThemes._lightBackgroundColor,
       iconTheme: const IconThemeData(color: _lightIconColor),
       toolbarTextStyle: _lightTextTheme.bodyMedium,
       titleTextStyle: _lightTextTheme.titleLarge,

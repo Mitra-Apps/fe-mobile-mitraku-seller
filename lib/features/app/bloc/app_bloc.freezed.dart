@@ -21,6 +21,7 @@ mixin _$AppEvent {
     required TResult Function() loaded,
     required TResult Function(String locale) localeChanged,
     required TResult Function() disableFirstUse,
+    required TResult Function() enableFirstUse,
     required TResult Function() darkModeChanged,
   }) =>
       throw _privateConstructorUsedError;
@@ -29,6 +30,7 @@ mixin _$AppEvent {
     TResult? Function()? loaded,
     TResult? Function(String locale)? localeChanged,
     TResult? Function()? disableFirstUse,
+    TResult? Function()? enableFirstUse,
     TResult? Function()? darkModeChanged,
   }) =>
       throw _privateConstructorUsedError;
@@ -37,6 +39,7 @@ mixin _$AppEvent {
     TResult Function()? loaded,
     TResult Function(String locale)? localeChanged,
     TResult Function()? disableFirstUse,
+    TResult Function()? enableFirstUse,
     TResult Function()? darkModeChanged,
     required TResult orElse(),
   }) =>
@@ -46,6 +49,7 @@ mixin _$AppEvent {
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_LocaleChanged value) localeChanged,
     required TResult Function(_DisableFirstUse value) disableFirstUse,
+    required TResult Function(_EnableFirstUse value) enableFirstUse,
     required TResult Function(_DarkModeChanged value) darkModeChanged,
   }) =>
       throw _privateConstructorUsedError;
@@ -54,6 +58,7 @@ mixin _$AppEvent {
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_LocaleChanged value)? localeChanged,
     TResult? Function(_DisableFirstUse value)? disableFirstUse,
+    TResult? Function(_EnableFirstUse value)? enableFirstUse,
     TResult? Function(_DarkModeChanged value)? darkModeChanged,
   }) =>
       throw _privateConstructorUsedError;
@@ -62,6 +67,7 @@ mixin _$AppEvent {
     TResult Function(_Loaded value)? loaded,
     TResult Function(_LocaleChanged value)? localeChanged,
     TResult Function(_DisableFirstUse value)? disableFirstUse,
+    TResult Function(_EnableFirstUse value)? enableFirstUse,
     TResult Function(_DarkModeChanged value)? darkModeChanged,
     required TResult orElse(),
   }) =>
@@ -126,6 +132,7 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function() loaded,
     required TResult Function(String locale) localeChanged,
     required TResult Function() disableFirstUse,
+    required TResult Function() enableFirstUse,
     required TResult Function() darkModeChanged,
   }) {
     return loaded();
@@ -137,6 +144,7 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function()? loaded,
     TResult? Function(String locale)? localeChanged,
     TResult? Function()? disableFirstUse,
+    TResult? Function()? enableFirstUse,
     TResult? Function()? darkModeChanged,
   }) {
     return loaded?.call();
@@ -148,6 +156,7 @@ class _$LoadedImpl implements _Loaded {
     TResult Function()? loaded,
     TResult Function(String locale)? localeChanged,
     TResult Function()? disableFirstUse,
+    TResult Function()? enableFirstUse,
     TResult Function()? darkModeChanged,
     required TResult orElse(),
   }) {
@@ -163,6 +172,7 @@ class _$LoadedImpl implements _Loaded {
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_LocaleChanged value) localeChanged,
     required TResult Function(_DisableFirstUse value) disableFirstUse,
+    required TResult Function(_EnableFirstUse value) enableFirstUse,
     required TResult Function(_DarkModeChanged value) darkModeChanged,
   }) {
     return loaded(this);
@@ -174,6 +184,7 @@ class _$LoadedImpl implements _Loaded {
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_LocaleChanged value)? localeChanged,
     TResult? Function(_DisableFirstUse value)? disableFirstUse,
+    TResult? Function(_EnableFirstUse value)? enableFirstUse,
     TResult? Function(_DarkModeChanged value)? darkModeChanged,
   }) {
     return loaded?.call(this);
@@ -185,6 +196,7 @@ class _$LoadedImpl implements _Loaded {
     TResult Function(_Loaded value)? loaded,
     TResult Function(_LocaleChanged value)? localeChanged,
     TResult Function(_DisableFirstUse value)? disableFirstUse,
+    TResult Function(_EnableFirstUse value)? enableFirstUse,
     TResult Function(_DarkModeChanged value)? darkModeChanged,
     required TResult orElse(),
   }) {
@@ -266,6 +278,7 @@ class _$LocaleChangedImpl implements _LocaleChanged {
     required TResult Function() loaded,
     required TResult Function(String locale) localeChanged,
     required TResult Function() disableFirstUse,
+    required TResult Function() enableFirstUse,
     required TResult Function() darkModeChanged,
   }) {
     return localeChanged(locale);
@@ -277,6 +290,7 @@ class _$LocaleChangedImpl implements _LocaleChanged {
     TResult? Function()? loaded,
     TResult? Function(String locale)? localeChanged,
     TResult? Function()? disableFirstUse,
+    TResult? Function()? enableFirstUse,
     TResult? Function()? darkModeChanged,
   }) {
     return localeChanged?.call(locale);
@@ -288,6 +302,7 @@ class _$LocaleChangedImpl implements _LocaleChanged {
     TResult Function()? loaded,
     TResult Function(String locale)? localeChanged,
     TResult Function()? disableFirstUse,
+    TResult Function()? enableFirstUse,
     TResult Function()? darkModeChanged,
     required TResult orElse(),
   }) {
@@ -303,6 +318,7 @@ class _$LocaleChangedImpl implements _LocaleChanged {
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_LocaleChanged value) localeChanged,
     required TResult Function(_DisableFirstUse value) disableFirstUse,
+    required TResult Function(_EnableFirstUse value) enableFirstUse,
     required TResult Function(_DarkModeChanged value) darkModeChanged,
   }) {
     return localeChanged(this);
@@ -314,6 +330,7 @@ class _$LocaleChangedImpl implements _LocaleChanged {
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_LocaleChanged value)? localeChanged,
     TResult? Function(_DisableFirstUse value)? disableFirstUse,
+    TResult? Function(_EnableFirstUse value)? enableFirstUse,
     TResult? Function(_DarkModeChanged value)? darkModeChanged,
   }) {
     return localeChanged?.call(this);
@@ -325,6 +342,7 @@ class _$LocaleChangedImpl implements _LocaleChanged {
     TResult Function(_Loaded value)? loaded,
     TResult Function(_LocaleChanged value)? localeChanged,
     TResult Function(_DisableFirstUse value)? disableFirstUse,
+    TResult Function(_EnableFirstUse value)? enableFirstUse,
     TResult Function(_DarkModeChanged value)? darkModeChanged,
     required TResult orElse(),
   }) {
@@ -386,6 +404,7 @@ class _$DisableFirstUseImpl implements _DisableFirstUse {
     required TResult Function() loaded,
     required TResult Function(String locale) localeChanged,
     required TResult Function() disableFirstUse,
+    required TResult Function() enableFirstUse,
     required TResult Function() darkModeChanged,
   }) {
     return disableFirstUse();
@@ -397,6 +416,7 @@ class _$DisableFirstUseImpl implements _DisableFirstUse {
     TResult? Function()? loaded,
     TResult? Function(String locale)? localeChanged,
     TResult? Function()? disableFirstUse,
+    TResult? Function()? enableFirstUse,
     TResult? Function()? darkModeChanged,
   }) {
     return disableFirstUse?.call();
@@ -408,6 +428,7 @@ class _$DisableFirstUseImpl implements _DisableFirstUse {
     TResult Function()? loaded,
     TResult Function(String locale)? localeChanged,
     TResult Function()? disableFirstUse,
+    TResult Function()? enableFirstUse,
     TResult Function()? darkModeChanged,
     required TResult orElse(),
   }) {
@@ -423,6 +444,7 @@ class _$DisableFirstUseImpl implements _DisableFirstUse {
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_LocaleChanged value) localeChanged,
     required TResult Function(_DisableFirstUse value) disableFirstUse,
+    required TResult Function(_EnableFirstUse value) enableFirstUse,
     required TResult Function(_DarkModeChanged value) darkModeChanged,
   }) {
     return disableFirstUse(this);
@@ -434,6 +456,7 @@ class _$DisableFirstUseImpl implements _DisableFirstUse {
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_LocaleChanged value)? localeChanged,
     TResult? Function(_DisableFirstUse value)? disableFirstUse,
+    TResult? Function(_EnableFirstUse value)? enableFirstUse,
     TResult? Function(_DarkModeChanged value)? darkModeChanged,
   }) {
     return disableFirstUse?.call(this);
@@ -445,6 +468,7 @@ class _$DisableFirstUseImpl implements _DisableFirstUse {
     TResult Function(_Loaded value)? loaded,
     TResult Function(_LocaleChanged value)? localeChanged,
     TResult Function(_DisableFirstUse value)? disableFirstUse,
+    TResult Function(_EnableFirstUse value)? enableFirstUse,
     TResult Function(_DarkModeChanged value)? darkModeChanged,
     required TResult orElse(),
   }) {
@@ -457,6 +481,126 @@ class _$DisableFirstUseImpl implements _DisableFirstUse {
 
 abstract class _DisableFirstUse implements AppEvent {
   const factory _DisableFirstUse() = _$DisableFirstUseImpl;
+}
+
+/// @nodoc
+abstract class _$$EnableFirstUseImplCopyWith<$Res> {
+  factory _$$EnableFirstUseImplCopyWith(_$EnableFirstUseImpl value,
+          $Res Function(_$EnableFirstUseImpl) then) =
+      __$$EnableFirstUseImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$EnableFirstUseImplCopyWithImpl<$Res>
+    extends _$AppEventCopyWithImpl<$Res, _$EnableFirstUseImpl>
+    implements _$$EnableFirstUseImplCopyWith<$Res> {
+  __$$EnableFirstUseImplCopyWithImpl(
+      _$EnableFirstUseImpl _value, $Res Function(_$EnableFirstUseImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$EnableFirstUseImpl implements _EnableFirstUse {
+  const _$EnableFirstUseImpl();
+
+  @override
+  String toString() {
+    return 'AppEvent.enableFirstUse()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$EnableFirstUseImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loaded,
+    required TResult Function(String locale) localeChanged,
+    required TResult Function() disableFirstUse,
+    required TResult Function() enableFirstUse,
+    required TResult Function() darkModeChanged,
+  }) {
+    return enableFirstUse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loaded,
+    TResult? Function(String locale)? localeChanged,
+    TResult? Function()? disableFirstUse,
+    TResult? Function()? enableFirstUse,
+    TResult? Function()? darkModeChanged,
+  }) {
+    return enableFirstUse?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loaded,
+    TResult Function(String locale)? localeChanged,
+    TResult Function()? disableFirstUse,
+    TResult Function()? enableFirstUse,
+    TResult Function()? darkModeChanged,
+    required TResult orElse(),
+  }) {
+    if (enableFirstUse != null) {
+      return enableFirstUse();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_LocaleChanged value) localeChanged,
+    required TResult Function(_DisableFirstUse value) disableFirstUse,
+    required TResult Function(_EnableFirstUse value) enableFirstUse,
+    required TResult Function(_DarkModeChanged value) darkModeChanged,
+  }) {
+    return enableFirstUse(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_LocaleChanged value)? localeChanged,
+    TResult? Function(_DisableFirstUse value)? disableFirstUse,
+    TResult? Function(_EnableFirstUse value)? enableFirstUse,
+    TResult? Function(_DarkModeChanged value)? darkModeChanged,
+  }) {
+    return enableFirstUse?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_LocaleChanged value)? localeChanged,
+    TResult Function(_DisableFirstUse value)? disableFirstUse,
+    TResult Function(_EnableFirstUse value)? enableFirstUse,
+    TResult Function(_DarkModeChanged value)? darkModeChanged,
+    required TResult orElse(),
+  }) {
+    if (enableFirstUse != null) {
+      return enableFirstUse(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _EnableFirstUse implements AppEvent {
+  const factory _EnableFirstUse() = _$EnableFirstUseImpl;
 }
 
 /// @nodoc
@@ -500,6 +644,7 @@ class _$DarkModeChangedImpl implements _DarkModeChanged {
     required TResult Function() loaded,
     required TResult Function(String locale) localeChanged,
     required TResult Function() disableFirstUse,
+    required TResult Function() enableFirstUse,
     required TResult Function() darkModeChanged,
   }) {
     return darkModeChanged();
@@ -511,6 +656,7 @@ class _$DarkModeChangedImpl implements _DarkModeChanged {
     TResult? Function()? loaded,
     TResult? Function(String locale)? localeChanged,
     TResult? Function()? disableFirstUse,
+    TResult? Function()? enableFirstUse,
     TResult? Function()? darkModeChanged,
   }) {
     return darkModeChanged?.call();
@@ -522,6 +668,7 @@ class _$DarkModeChangedImpl implements _DarkModeChanged {
     TResult Function()? loaded,
     TResult Function(String locale)? localeChanged,
     TResult Function()? disableFirstUse,
+    TResult Function()? enableFirstUse,
     TResult Function()? darkModeChanged,
     required TResult orElse(),
   }) {
@@ -537,6 +684,7 @@ class _$DarkModeChangedImpl implements _DarkModeChanged {
     required TResult Function(_Loaded value) loaded,
     required TResult Function(_LocaleChanged value) localeChanged,
     required TResult Function(_DisableFirstUse value) disableFirstUse,
+    required TResult Function(_EnableFirstUse value) enableFirstUse,
     required TResult Function(_DarkModeChanged value) darkModeChanged,
   }) {
     return darkModeChanged(this);
@@ -548,6 +696,7 @@ class _$DarkModeChangedImpl implements _DarkModeChanged {
     TResult? Function(_Loaded value)? loaded,
     TResult? Function(_LocaleChanged value)? localeChanged,
     TResult? Function(_DisableFirstUse value)? disableFirstUse,
+    TResult? Function(_EnableFirstUse value)? enableFirstUse,
     TResult? Function(_DarkModeChanged value)? darkModeChanged,
   }) {
     return darkModeChanged?.call(this);
@@ -559,6 +708,7 @@ class _$DarkModeChangedImpl implements _DarkModeChanged {
     TResult Function(_Loaded value)? loaded,
     TResult Function(_LocaleChanged value)? localeChanged,
     TResult Function(_DisableFirstUse value)? disableFirstUse,
+    TResult Function(_EnableFirstUse value)? enableFirstUse,
     TResult Function(_DarkModeChanged value)? darkModeChanged,
     required TResult orElse(),
   }) {

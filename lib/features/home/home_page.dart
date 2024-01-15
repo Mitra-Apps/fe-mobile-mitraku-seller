@@ -1,6 +1,11 @@
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mitraku_seller/core/dimens/app_dimens.dart';
 import 'package:mitraku_seller/core/keys/app_keys.dart';
 import 'package:mitraku_seller/core/spacings/app_spacing.dart';
+import 'package:mitraku_seller/core/themes/app_themes.dart';
+import 'package:mitraku_seller/features/home/view/dashboard_page.dart';
+import 'package:mitraku_seller/features/home/view/lainnya_page.dart';
+import 'package:mitraku_seller/features/home/view/toko_anda_page.dart';
 import 'package:mitraku_seller/features/home/widgets/opening_hours_widget.dart';
 import 'package:mitraku_seller/features/home/widgets/store_details_widget.dart';
 import 'package:mitraku_seller/features/home/widgets/store_identity_widget.dart';
@@ -30,27 +35,19 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: const Key(WidgetKeys.homeScaffoldKey),
-      appBar: AppBar(
-        title: Text(
-          S.of(context).home,
-          style: Theme.of(context)
-              .textTheme
-              .headlineSmall!
-              .copyWith(fontWeight: FontWeight.bold),
-        ),
-        centerTitle: true,
-      ),
       body: IndexedStack(
         index: selectedNavigationIndex,
         children: [
-          _buildHomeStore(),
+          const DashboardPage(),
+          const TokoAndaPage(),
           Container(),
-          const SettingPage(),
+          const LainnyaPage(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.purple,
+        selectedItemColor: AppColors.mainColor,
+        unselectedItemColor: AppColors.disabledColor,
+        type: BottomNavigationBarType.fixed,
         currentIndex: selectedNavigationIndex,
         onTap: (index) {
           setState(() {
@@ -58,17 +55,45 @@ class _HomePageState extends State<HomePage> {
           });
         },
         items: [
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              'assets/icons/icon_dashboard.svg',
+            ),
+            activeIcon: SvgPicture.asset(
+              'assets/icons/icon_dashboard.svg',
+              color: AppColors.mainColor,
+            ),
+            label: 'Dashboard',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.store),
-            label: S.of(context).store,
+            icon: SvgPicture.asset(
+              'assets/icons/icon_toko_anda.svg',
+            ),
+            activeIcon: SvgPicture.asset(
+              'assets/icons/icon_toko_anda.svg',
+              color: AppColors.mainColor,
+            ),
+            label: 'Toko Anda',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: S.of(context).setting,
+            icon: SvgPicture.asset(
+              'assets/icons/icon_transaksi.svg',
+            ),
+            activeIcon: SvgPicture.asset(
+              'assets/icons/icon_transaksi.svg',
+              color: AppColors.mainColor,
+            ),
+            label: 'Transaksi',
+          ),
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              'assets/icons/icon_lainnya.svg',
+            ),
+            activeIcon: SvgPicture.asset(
+              'assets/icons/icon_lainnya.svg',
+              color: AppColors.mainColor,
+            ),
+            label: 'Lainnya',
           ),
         ],
       ),

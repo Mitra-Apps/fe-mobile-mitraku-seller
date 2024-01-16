@@ -3,9 +3,9 @@ import 'package:mitraku_seller/core/keys/app_keys.dart';
 import 'package:mitraku_seller/core/spacings/app_spacing.dart';
 import 'package:mitraku_seller/core/themes/app_themes.dart';
 import 'package:mitraku_seller/features/app/bloc/app_bloc.dart';
-import 'package:mitraku_seller/features/home/widgets/opening_hours_widget.dart';
-import 'package:mitraku_seller/features/home/widgets/store_details_widget.dart';
-import 'package:mitraku_seller/features/home/widgets/store_identity_widget.dart';
+import 'package:mitraku_seller/features/home/widgets/deskripsi_toko_widget.dart';
+import 'package:mitraku_seller/features/home/widgets/profil_toko_widget.dart';
+import 'package:mitraku_seller/features/home/widgets/waktu_operasional_widget.dart';
 import 'package:mitraku_seller/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -55,10 +55,13 @@ class _TokoAndaPage extends State<TokoAndaPage> {
                   AppSpacing.verticalSpacing16,
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.warningColor),
+                      backgroundColor: AppColors.warningColor,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8)),
+                    ),
                     onPressed: () {
                       setState(() {
-                        // isStoreCreated = true;
+                        isStoreCreated = true;
                       });
                       // context.push(AppRouter.imagesFromDbPath);
                     },
@@ -73,19 +76,49 @@ class _TokoAndaPage extends State<TokoAndaPage> {
                 ],
               ),
             )
-          : const SingleChildScrollView(
-              child: Padding(
-              padding: EdgeInsets.all(AppDimens.basePaddingDouble),
+          : SingleChildScrollView(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  StoreIdentityWidget(),
-                  AppSpacing.verticalSpacing32,
-                  OpeningHoursWidget(),
-                  AppSpacing.verticalSpacing32,
-                  StoreDetailsWidget(),
-                ],
-              ),
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const ProfilTokoWidget(),
+                Divider(
+                  color: AppColors.disabledColor,
+                  thickness: 1,
+                ),
+                const DeskripsiTokoWidget(),
+                Divider(
+                  color: AppColors.disabledColor,
+                  thickness: 1,
+                ),
+                const WaktuOperasionalWidget(),
+                Padding(
+                  padding: const EdgeInsets.all(AppDimens.basePaddingDouble),
+                  child: Container(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.mainColor,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8)),
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          isStoreCreated = true;
+                        });
+                        // context.push(AppRouter.imagesFromDbPath);
+                      },
+                      child: Text(
+                        'Ubah Toko',
+                        style:
+                            Theme.of(context).textTheme.titleMedium!.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                  color: AppColors.mainWhiteColor,
+                                ),
+                      ),
+                    ),
+                  ),
+                )
+              ],
             )),
     );
   }

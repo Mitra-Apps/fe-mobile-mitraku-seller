@@ -7,6 +7,7 @@ import 'package:mitraku_seller/core/colors/colors.dart';
 import 'package:mitraku_seller/core/spacings/app_spacing.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mitraku_seller/features/otp/view/otp_page.dart';
 import 'package:mitraku_seller/features/register/bloc/register_bloc.dart';
 import 'package:mitraku_seller/injector/injector.dart';
 import 'package:mitraku_seller/router/app_router.dart';

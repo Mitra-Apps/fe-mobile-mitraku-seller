@@ -14,6 +14,7 @@ class LainnyaPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.mainWhiteColor,
       key: const Key(WidgetKeys.dashboardScaffoldKey),
       appBar: AppBar(
         title: Row(

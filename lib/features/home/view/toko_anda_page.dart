@@ -23,6 +23,7 @@ class _TokoAndaPage extends State<TokoAndaPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.mainWhiteColor,
       key: const Key(WidgetKeys.tokoAndaScaffoldKey),
       appBar: AppBar(
         title: Text(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AppThemes {
   AppThemes._();
@@ -13,7 +14,7 @@ class AppThemes {
   static const Color _MainBackgroundColor = Color(0xff000068);
 
   //Text
-  static const Color _lightTextColor = Color(0xff000000);
+  static const Color _lightTextColor = Color(0xff343434);
   static const Color _darkTextColor = Color(0xffffffff);
 
   //Icon
@@ -91,6 +92,7 @@ class AppThemes {
     iconTheme: const IconThemeData(
       color: _lightIconColor,
     ),
+    fontFamily: GoogleFonts.poppins().fontFamily,
     textTheme: _lightTextTheme,
     dividerTheme: const DividerThemeData(
       color: Colors.grey,
@@ -111,9 +113,20 @@ class AppThemes {
     iconTheme: const IconThemeData(
       color: _darkIconColor,
     ),
+    fontFamily: GoogleFonts.poppins().fontFamily,
     textTheme: _darkTextTheme,
     dividerTheme: const DividerThemeData(
       color: Colors.grey,
     ),
   );
+}
+
+class AppColors {
+  static final Color mainColor = Color(0xff000068);
+  static final Color mainBlackColor = Color(0xff343434);
+  static final Color mainWhiteColor = Color(0xffffffff);
+  static final Color disabledColor = Color(0xffb4b4b4);
+  static final Color disabledLightColor = Color(0xfff0f0f0);
+  static final Color warningColor = Color(0xffc0c31f);
+  static final Color dangerColor = Color(0xffe23f3f);
 }

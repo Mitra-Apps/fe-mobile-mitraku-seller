@@ -18,5 +18,7 @@ class AppKeys {
 class WidgetKeys {
   /// Widget keys
   static const String homeScaffoldKey = 'home.scaffold';
+  static const String dashboardScaffoldKey = 'dashboard.scaffold';
+  static const String tokoAndaScaffoldKey = 'tokoAnda.scaffold';
   static const String introStartedButtonKey = 'intro.startedButton';
 }

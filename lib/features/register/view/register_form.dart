@@ -1,199 +1,375 @@
 part of 'register_page.dart';
 
-class RegisterForm extends StatefulWidget {
-  const RegisterForm({Key? key}) : super(key: key);
+class RegisterForm extends StatefulWidget with Validator {
+  const RegisterForm({super.key});
 
   @override
   _RegisterFormState createState() => _RegisterFormState();
 }
 
 class _RegisterFormState extends State<RegisterForm> {
-  final TextEditingController merchantName = TextEditingController();
-  final TextEditingController merchantPassword = TextEditingController();
-  final TextEditingController merchantAddress = TextEditingController();
-  final TextEditingController merchantEmail = TextEditingController();
-  final TextEditingController merchantPhone = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+
+  final _emailController = TextEditingController();
+  final _phoneController = TextEditingController();
+
+  String? strMerchantEmail;
+  String? strMerchantPassword;
+  String? strMerchantRePassword;
+  String? strMerchantName;
+  String? strMerchantPhone;
+
+  bool merchantEmailInteracts() => strMerchantEmail != null;
+
+  bool merchantPasswordInteracts() => strMerchantPassword != null;
+
+  bool merchantRePasswordInteracts() => strMerchantRePassword != null;
+
+  bool merchantNameInteracts() => strMerchantName != null;
+
+  bool merchantPhoneInteracts() => strMerchantPhone != null;
 
   @override
   Widget build(BuildContext context) {
     return Form(
-        child: BlocConsumer<RegisterBloc, RegisterState>(
-          listenWhen: (prev, next) => prev.notification != next.notification,
-          listener: (context, state) {
-            state.notification?.when(
-              notifySuccess: (message) {
-                Flushbar(
-                  message: message,
-                  duration: const Duration(seconds: 1),
-                  backgroundColor: Colors.green,
-                ).show(context);
-              },
-              notifyFailed: (message) {
-                Flushbar(
-                  message: message,
-                  duration: const Duration(seconds: 1),
-                  backgroundColor: Colors.red,
-                ).show(context);
-              },
-            );
-          },
-          buildWhen: (prev, next) =>
-          prev.status != next.status || prev.isBusy != next.isBusy,
-          builder: (context, state) {
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                FadeInUp(
-                    duration: Duration(milliseconds: 1400),
+      key: _formKey,
+      child: BlocListener<RegisterBloc, RegisterState>(
+        listenWhen: (prev, next) => prev.notification != next.notification,
+        listener: (context, state) {
+          state.notification?.when(
+            notifySuccess: (message) {
+              Flushbar(
+                message: message,
+                duration: const Duration(seconds: 3),
+                backgroundColor: CustomColors.successColor,
+              ).show(context);
+            },
+            notifyFailed: (message) {
+              Flushbar(
+                message: message,
+                duration: const Duration(seconds: 3),
+                backgroundColor: CustomColors.dangerColor,
+              ).show(context);
+
+              _emailController.text = message;
+              _phoneController.text = message;
+              _formKey.currentState?.validate();
+            },
+          );
+        },
+        child: Column(
+          children: [
+            FadeInUp(
+              duration: const Duration(milliseconds: 1400),
+              child: Column(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: const [
+                        BoxShadow(
+                          color: Colors.grey,
+                          blurRadius: 10,
+                          offset: Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Column(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(10),
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Colors.grey,
-                                    blurRadius: 10,
-                                    offset: Offset(0, 5))
-                              ]),
-                          child: Column(
-                            children: <Widget>[
-                              Container(
-                                padding: EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                    border: Border(
-                                        bottom: BorderSide(color: Colors.grey.shade200))),
-                                child: TextField(
-                                  keyboardType: TextInputType.name,
-                                  textInputAction: TextInputAction.next,
-                                  cursorColor: Colors.purple,
-                                  controller: merchantName,
-                                  decoration: InputDecoration(
-                                      hintText: "Merchant Name *",
-                                      hintStyle: TextStyle(color: Colors.grey),
-                                      border: InputBorder.none,
-                                      icon: Icon(Icons.person),
-                                      iconColor: Colors.purple),
-                                ),
-                              ),
-                              Container(
-                                padding: EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                    border: Border(
-                                        bottom: BorderSide(color: Colors.grey.shade200))),
-                                child: TextField(
-                                  keyboardType: TextInputType.visiblePassword,
-                                  textInputAction: TextInputAction.next,
-                                  controller: merchantPassword,
-                                  obscureText: true,
-                                  decoration: InputDecoration(
-                                      hintText: "Password *",
-                                      hintStyle: TextStyle(color: Colors.grey),
-                                      border: InputBorder.none,
-                                      icon: Icon(Icons.lock),
-                                      iconColor: Colors.purple),
-                                ),
-                              ),
-                              Container(
-                                padding: EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                    border: Border(
-                                        bottom: BorderSide(color: Colors.grey.shade200))),
-                                child: TextField(
-                                  keyboardType: TextInputType.streetAddress,
-                                  textInputAction: TextInputAction.next,
-                                  controller: merchantAddress,
-                                  decoration: InputDecoration(
-                                      hintText: "Address *",
-                                      hintStyle: TextStyle(color: Colors.grey),
-                                      border: InputBorder.none,
-                                      icon: Icon(Icons.location_city),
-                                      iconColor: Colors.purple),
-                                ),
-                              ),
-                              Container(
-                                padding: EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                    border: Border(
-                                        bottom: BorderSide(color: Colors.grey.shade200))),
-                                child: TextField(
-                                  keyboardType: TextInputType.emailAddress,
-                                  textInputAction: TextInputAction.next,
-                                  controller: merchantEmail,
-                                  decoration: InputDecoration(
-                                      hintText: "Email Adress *",
-                                      hintStyle: TextStyle(color: Colors.grey),
-                                      border: InputBorder.none,
-                                      icon: Icon(Icons.email),
-                                      iconColor: Colors.purple),
-                                ),
-                              ),
-                              Container(
-                                padding: EdgeInsets.all(10),
-                                decoration: BoxDecoration(
-                                    border: Border(
-                                        bottom: BorderSide(color: Colors.grey.shade200))),
-                                child: TextField(
-                                  keyboardType: TextInputType.phone,
-                                  textInputAction: TextInputAction.next,
-                                  controller: merchantPhone,
-                                  decoration: InputDecoration(
-                                      hintText: "Phone Number *",
-                                      hintStyle: TextStyle(color: Colors.grey),
-                                      border: InputBorder.none,
-                                      icon: Icon(Icons.phone),
-                                      iconColor: Colors.purple),
-                                ),
-                              ),
-                            ],
+                      children: <Widget>[
+                        AppSpacing.verticalSpacing32,
+                        const Text(
+                          'Daftar Akun',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Poppins',
                           ),
                         ),
                         AppSpacing.verticalSpacing20,
-                        Padding(padding: EdgeInsets.symmetric(vertical: 0, horizontal: 15), child: MaterialButton(
-                          color: Colors.purple,
-                          onPressed: () {
-                            BlocProvider.of<RegisterBloc>(context)
-                                .add(RegisterEvent.registerRequested(RegisterPost(
-                                email: merchantEmail.text,
-                                password: merchantPassword.text,
-                                name: merchantName.text,
-                                phone_number: merchantPhone.text,
-                                address: merchantAddress.text,
-                                role_id: '10')));
-                          },
-                          child: const Text(
-                            "Register", style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700, color: Colors.white),
+                        Row(
+                          children: [
+                            const Icon(
+                              Icons.email,
+                              color: Colors.black,
+                              size: 24,
+                            ),
+                            AppSpacing.horizontalSpacing10,
+                            Flexible(
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 10,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: CustomColors.disabledLightColor,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: TextFormField(
+                                  keyboardType: TextInputType.emailAddress,
+                                  textInputAction: TextInputAction.next,
+                                  controller: _emailController,
+                                  validator: widget.validateEmail,
+                                  onChanged: (value) => setState(() {
+                                    strMerchantEmail = value;
+                                  }),
+                                  decoration: const InputDecoration(
+                                    hintText: 'cth: admin@gmail.com',
+                                    hintStyle: TextStyle(
+                                      color: CustomColors.disabledBoldColor,
+                                      fontSize: 13,
+                                      fontFamily: 'Poppins',
+                                    ),
+                                    border: InputBorder.none,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        AppSpacing.verticalSpacing16,
+                        Row(
+                          children: [
+                            const Icon(
+                              Icons.lock,
+                              color: Colors.black,
+                              size: 24,
+                            ),
+                            AppSpacing.horizontalSpacing10,
+                            Flexible(
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 10,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: CustomColors.disabledLightColor,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: TextFormField(
+                                  keyboardType: TextInputType.visiblePassword,
+                                  textInputAction: TextInputAction.next,
+                                  obscureText: true,
+                                  validator: widget.validatePassword,
+                                  onChanged: (value) => setState(() {
+                                    strMerchantPassword = value;
+                                  }),
+                                  decoration: const InputDecoration(
+                                    hintText: 'cth: secR123**',
+                                    hintStyle: TextStyle(
+                                      color: CustomColors.disabledBoldColor,
+                                      fontSize: 13,
+                                      fontFamily: 'Poppins',
+                                    ),
+                                    border: InputBorder.none,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        AppSpacing.verticalSpacing16,
+                        Row(
+                          children: [
+                            const Icon(
+                              Icons.lock,
+                              color: Colors.black,
+                              size: 24,
+                            ),
+                            AppSpacing.horizontalSpacing10,
+                            Flexible(
+                              child: Container(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 10),
+                                decoration: BoxDecoration(
+                                  color: CustomColors.disabledLightColor,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: TextFormField(
+                                  keyboardType: TextInputType.visiblePassword,
+                                  textInputAction: TextInputAction.next,
+                                  obscureText: true,
+                                  validator: (value) =>
+                                      widget.validateConfirmPassword(
+                                    value,
+                                    strMerchantPassword!,
+                                  ),
+                                  onChanged: (value) => setState(() {
+                                    strMerchantRePassword = value;
+                                  }),
+                                  decoration: const InputDecoration(
+                                    hintText: 'Konfirmasi Password',
+                                    hintStyle: TextStyle(
+                                      color: CustomColors.disabledBoldColor,
+                                      fontSize: 13,
+                                      fontFamily: 'Poppins',
+                                    ),
+                                    border: InputBorder.none,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        AppSpacing.verticalSpacing16,
+                        Row(
+                          children: [
+                            const Icon(
+                              Icons.person,
+                              color: Colors.black,
+                              size: 24,
+                            ),
+                            AppSpacing.horizontalSpacing10,
+                            Flexible(
+                              child: Container(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 10),
+                                decoration: BoxDecoration(
+                                  color: CustomColors.disabledLightColor,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: TextFormField(
+                                  keyboardType: TextInputType.name,
+                                  textInputAction: TextInputAction.next,
+                                  cursorColor: Colors.purple,
+                                  validator: widget.validateName,
+                                  onChanged: (value) => setState(() {
+                                    strMerchantName = value;
+                                  }),
+                                  decoration: const InputDecoration(
+                                    hintText: 'cth: admin kita *',
+                                    hintStyle: TextStyle(
+                                      color: CustomColors.disabledBoldColor,
+                                      fontSize: 13,
+                                      fontFamily: 'Poppins',
+                                    ),
+                                    border: InputBorder.none,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        AppSpacing.verticalSpacing16,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Icon(
+                              Icons.phone,
+                              color: Colors.black,
+                              size: 24,
+                            ),
+                            AppSpacing.horizontalSpacing10,
+                            Flexible(
+                              child: Container(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 10),
+                                decoration: BoxDecoration(
+                                  color: CustomColors.disabledLightColor,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: TextFormField(
+                                  keyboardType: TextInputType.phone,
+                                  textInputAction: TextInputAction.next,
+                                  controller: _phoneController,
+                                  validator: widget.validatePhone,
+                                  onChanged: (value) => setState(() {
+                                    strMerchantPhone = value;
+                                  }),
+                                  decoration: const InputDecoration(
+                                    hintText: 'cth: +62-8000000',
+                                    hintStyle: TextStyle(
+                                      color: CustomColors.disabledBoldColor,
+                                      fontSize: 13,
+                                      fontFamily: 'Poppins',
+                                    ),
+                                    border: InputBorder.none,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        AppSpacing.verticalSpacing20,
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 15),
+                          child: MaterialButton(
+                            color: !merchantEmailInteracts() ||
+                                    !merchantPasswordInteracts() ||
+                                    !merchantRePasswordInteracts() ||
+                                    !merchantNameInteracts() ||
+                                    !merchantPhoneInteracts() ||
+                                    _formKey.currentState == null ||
+                                    !_formKey.currentState!.validate()
+                                ? CustomColors.disabledBoldColor
+                                : CustomColors.mainColor,
+                            onPressed: () {
+                              !merchantEmailInteracts() ||
+                                      !merchantPasswordInteracts() ||
+                                      !merchantRePasswordInteracts() ||
+                                      !merchantNameInteracts() ||
+                                      !merchantPhoneInteracts() ||
+                                      _formKey.currentState == null ||
+                                      !_formKey.currentState!.validate()
+                                  ? null
+                                  : context.read<RegisterBloc>().add(RegisterEvent.registerRequested(
+                                        RegisterPost(
+                                          email: strMerchantEmail!,
+                                          password: strMerchantPassword!,
+                                          name: strMerchantName!,
+                                          phone_number: strMerchantPhone!,
+                                          role_id: ['1', '2'],
+                                        ),
+                                    ));
+                            },
+                            child: const Text(
+                              'Daftarkan',
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.white,
+                                fontFamily: 'Poppins',
+                              ),
+                            ),
                           ),
-                        ),),
-                        AppSpacing.verticalSpacing6,
-                        Text(
-                          'Or',
-                          style: TextStyle(fontSize: 10, color: Colors.grey, fontWeight: FontWeight.w700),
                         ),
                         AppSpacing.verticalSpacing6,
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text('Have an account?', style: TextStyle(fontSize: 12, color: Colors.grey),),
+                            const Text(
+                              'Sudah Punya Akun?',
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: Colors.grey,
+                                fontFamily: 'Poppins',
+                              ),
+                            ),
                             GestureDetector(
                               onTap: () {
                                 context.push(AppRouter.loginPath);
                               },
-                              child: Text(
-                                ' Login',
-                                style: TextStyle(fontSize: 12.0, color: Colors.purple, fontWeight: FontWeight.bold),
+                              child: const Text(
+                                ' Masuk',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: CustomColors.mainColor,
+                                  fontWeight: FontWeight.w500,
+                                  fontFamily: 'Poppins',
+                                ),
                               ),
                             ),
                           ],
-                        )
+                        ),
+                        AppSpacing.verticalSpacing32,
                       ],
-                    )
-                ),
-              ],
-            );
-          },
-        )
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

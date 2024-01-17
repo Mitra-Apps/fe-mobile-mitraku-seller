@@ -12,8 +12,7 @@ class RegisterPost with _$RegisterPost {
     required String password,
     required String name,
     required String phone_number,
-    required String address,
-    required String role_id
+    required List<String> role_id
   }) = _RegisterPost;
 
   ///

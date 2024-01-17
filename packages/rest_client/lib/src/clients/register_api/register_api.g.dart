@@ -32,7 +32,7 @@ class _RegisterApiClient implements RegisterApiClient {
     )
             .compose(
               _dio.options,
-              '/api/v1/user/register',
+              '/api/v1/users/register',
               queryParameters: queryParameters,
               data: _data,
             )

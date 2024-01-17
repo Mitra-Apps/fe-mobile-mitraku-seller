@@ -24,8 +24,7 @@ mixin _$RegisterPost {
   String get password => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get phone_number => throw _privateConstructorUsedError;
-  String get address => throw _privateConstructorUsedError;
-  String get role_id => throw _privateConstructorUsedError;
+  List<String> get role_id => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,8 +43,7 @@ abstract class $RegisterPostCopyWith<$Res> {
       String password,
       String name,
       String phone_number,
-      String address,
-      String role_id});
+      List<String> role_id});
 }
 
 /// @nodoc
@@ -65,7 +63,6 @@ class _$RegisterPostCopyWithImpl<$Res, $Val extends RegisterPost>
     Object? password = null,
     Object? name = null,
     Object? phone_number = null,
-    Object? address = null,
     Object? role_id = null,
   }) {
     return _then(_value.copyWith(
@@ -85,14 +82,10 @@ class _$RegisterPostCopyWithImpl<$Res, $Val extends RegisterPost>
           ? _value.phone_number
           : phone_number // ignore: cast_nullable_to_non_nullable
               as String,
-      address: null == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as String,
       role_id: null == role_id
           ? _value.role_id
           : role_id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as List<String>,
     ) as $Val);
   }
 }
@@ -110,8 +103,7 @@ abstract class _$$RegisterPostImplCopyWith<$Res>
       String password,
       String name,
       String phone_number,
-      String address,
-      String role_id});
+      List<String> role_id});
 }
 
 /// @nodoc
@@ -129,7 +121,6 @@ class __$$RegisterPostImplCopyWithImpl<$Res>
     Object? password = null,
     Object? name = null,
     Object? phone_number = null,
-    Object? address = null,
     Object? role_id = null,
   }) {
     return _then(_$RegisterPostImpl(
@@ -149,14 +140,10 @@ class __$$RegisterPostImplCopyWithImpl<$Res>
           ? _value.phone_number
           : phone_number // ignore: cast_nullable_to_non_nullable
               as String,
-      address: null == address
-          ? _value.address
-          : address // ignore: cast_nullable_to_non_nullable
-              as String,
       role_id: null == role_id
-          ? _value.role_id
+          ? _value._role_id
           : role_id // ignore: cast_nullable_to_non_nullable
-              as String,
+              as List<String>,
     ));
   }
 }
@@ -169,8 +156,8 @@ class _$RegisterPostImpl implements _RegisterPost {
       required this.password,
       required this.name,
       required this.phone_number,
-      required this.address,
-      required this.role_id});
+      required final List<String> role_id})
+      : _role_id = role_id;
 
   factory _$RegisterPostImpl.fromJson(Map<String, dynamic> json) =>
       _$$RegisterPostImplFromJson(json);
@@ -183,14 +170,17 @@ class _$RegisterPostImpl implements _RegisterPost {
   final String name;
   @override
   final String phone_number;
+  final List<String> _role_id;
   @override
-  final String address;
-  @override
-  final String role_id;
+  List<String> get role_id {
+    if (_role_id is EqualUnmodifiableListView) return _role_id;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_role_id);
+  }
 
   @override
   String toString() {
-    return 'RegisterPost(email: $email, password: $password, name: $name, phone_number: $phone_number, address: $address, role_id: $role_id)';
+    return 'RegisterPost(email: $email, password: $password, name: $name, phone_number: $phone_number, role_id: $role_id)';
   }
 
   @override
@@ -204,14 +194,13 @@ class _$RegisterPostImpl implements _RegisterPost {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.phone_number, phone_number) ||
                 other.phone_number == phone_number) &&
-            (identical(other.address, address) || other.address == address) &&
-            (identical(other.role_id, role_id) || other.role_id == role_id));
+            const DeepCollectionEquality().equals(other._role_id, _role_id));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, email, password, name, phone_number, address, role_id);
+  int get hashCode => Object.hash(runtimeType, email, password, name,
+      phone_number, const DeepCollectionEquality().hash(_role_id));
 
   @JsonKey(ignore: true)
   @override
@@ -233,8 +222,7 @@ abstract class _RegisterPost implements RegisterPost {
       required final String password,
       required final String name,
       required final String phone_number,
-      required final String address,
-      required final String role_id}) = _$RegisterPostImpl;
+      required final List<String> role_id}) = _$RegisterPostImpl;
 
   factory _RegisterPost.fromJson(Map<String, dynamic> json) =
       _$RegisterPostImpl.fromJson;
@@ -248,9 +236,7 @@ abstract class _RegisterPost implements RegisterPost {
   @override
   String get phone_number;
   @override
-  String get address;
-  @override
-  String get role_id;
+  List<String> get role_id;
   @override
   @JsonKey(ignore: true)
   _$$RegisterPostImplCopyWith<_$RegisterPostImpl> get copyWith =>

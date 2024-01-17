@@ -12,8 +12,8 @@ _$RegisterPostImpl _$$RegisterPostImplFromJson(Map<String, dynamic> json) =>
       password: json['password'] as String,
       name: json['name'] as String,
       phone_number: json['phone_number'] as String,
-      address: json['address'] as String,
-      role_id: json['role_id'] as String,
+      role_id:
+          (json['role_id'] as List<dynamic>).map((e) => e as String).toList(),
     );
 
 Map<String, dynamic> _$$RegisterPostImplToJson(_$RegisterPostImpl instance) =>
@@ -22,6 +22,5 @@ Map<String, dynamic> _$$RegisterPostImplToJson(_$RegisterPostImpl instance) =>
       'password': instance.password,
       'name': instance.name,
       'phone_number': instance.phone_number,
-      'address': instance.address,
       'role_id': instance.role_id,
     };

@@ -11,7 +11,6 @@ abstract class RegisterApiClient {
   /// Constructor
   factory RegisterApiClient(Dio dio, {String baseUrl}) = _RegisterApiClient;
 
-  /// Get random dog image
-  @POST('/api/v1/user/register')
+  @POST('/api/v1/users/register')
   Future<RegisterResponse> register(@Body() RegisterPost registerPost);
 }

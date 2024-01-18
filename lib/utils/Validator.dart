@@ -46,7 +46,7 @@ mixin Validator {
   String? validatePhone(String? value) {
     if (value == null || value.isEmpty) {
       return 'Nomor Telp tidak boleh kosong';
-    } else if (value.length < 11) {
+    } else if (value.length <= 9) {
       return 'Nomor Telp minimal 10 digit';
     } else if (value.length > 14) {
       return 'Nomor Telp tidak boleh lebih dari 14 digit';

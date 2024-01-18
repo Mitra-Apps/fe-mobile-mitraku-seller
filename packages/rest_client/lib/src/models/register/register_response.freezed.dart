@@ -20,8 +20,7 @@ RegisterResponse _$RegisterResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$RegisterResponse {
-  bool get success => throw _privateConstructorUsedError;
-  String get message => throw _privateConstructorUsedError;
+  String get otp => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +34,7 @@ abstract class $RegisterResponseCopyWith<$Res> {
           RegisterResponse value, $Res Function(RegisterResponse) then) =
       _$RegisterResponseCopyWithImpl<$Res, RegisterResponse>;
   @useResult
-  $Res call({bool success, String message});
+  $Res call({String otp});
 }
 
 /// @nodoc
@@ -51,17 +50,12 @@ class _$RegisterResponseCopyWithImpl<$Res, $Val extends RegisterResponse>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? success = null,
-    Object? message = null,
+    Object? otp = null,
   }) {
     return _then(_value.copyWith(
-      success: null == success
-          ? _value.success
-          : success // ignore: cast_nullable_to_non_nullable
-              as bool,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
+      otp: null == otp
+          ? _value.otp
+          : otp // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -75,7 +69,7 @@ abstract class _$$RegisterResponseImplCopyWith<$Res>
       __$$RegisterResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool success, String message});
+  $Res call({String otp});
 }
 
 /// @nodoc
@@ -89,17 +83,12 @@ class __$$RegisterResponseImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? success = null,
-    Object? message = null,
+    Object? otp = null,
   }) {
     return _then(_$RegisterResponseImpl(
-      success: null == success
-          ? _value.success
-          : success // ignore: cast_nullable_to_non_nullable
-              as bool,
-      message: null == message
-          ? _value.message
-          : message // ignore: cast_nullable_to_non_nullable
+      otp: null == otp
+          ? _value.otp
+          : otp // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -108,19 +97,17 @@ class __$$RegisterResponseImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$RegisterResponseImpl implements _RegisterResponse {
-  const _$RegisterResponseImpl({required this.success, required this.message});
+  const _$RegisterResponseImpl({required this.otp});
 
   factory _$RegisterResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$RegisterResponseImplFromJson(json);
 
   @override
-  final bool success;
-  @override
-  final String message;
+  final String otp;
 
   @override
   String toString() {
-    return 'RegisterResponse(success: $success, message: $message)';
+    return 'RegisterResponse(otp: $otp)';
   }
 
   @override
@@ -128,13 +115,12 @@ class _$RegisterResponseImpl implements _RegisterResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RegisterResponseImpl &&
-            (identical(other.success, success) || other.success == success) &&
-            (identical(other.message, message) || other.message == message));
+            (identical(other.otp, otp) || other.otp == otp));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, success, message);
+  int get hashCode => Object.hash(runtimeType, otp);
 
   @JsonKey(ignore: true)
   @override
@@ -152,17 +138,14 @@ class _$RegisterResponseImpl implements _RegisterResponse {
 }
 
 abstract class _RegisterResponse implements RegisterResponse {
-  const factory _RegisterResponse(
-      {required final bool success,
-      required final String message}) = _$RegisterResponseImpl;
+  const factory _RegisterResponse({required final String otp}) =
+      _$RegisterResponseImpl;
 
   factory _RegisterResponse.fromJson(Map<String, dynamic> json) =
       _$RegisterResponseImpl.fromJson;
 
   @override
-  bool get success;
-  @override
-  String get message;
+  String get otp;
   @override
   @JsonKey(ignore: true)
   _$$RegisterResponseImplCopyWith<_$RegisterResponseImpl> get copyWith =>

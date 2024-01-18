@@ -9,13 +9,11 @@ part of 'register_response.dart';
 _$RegisterResponseImpl _$$RegisterResponseImplFromJson(
         Map<String, dynamic> json) =>
     _$RegisterResponseImpl(
-      success: json['success'] as bool,
-      message: json['message'] as String,
+      otp: json['otp'] as String,
     );
 
 Map<String, dynamic> _$$RegisterResponseImplToJson(
         _$RegisterResponseImpl instance) =>
     <String, dynamic>{
-      'success': instance.success,
-      'message': instance.message,
+      'otp': instance.otp,
     };

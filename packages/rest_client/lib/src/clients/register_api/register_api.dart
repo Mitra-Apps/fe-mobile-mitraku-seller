@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:rest_client/src/models/register/register_post.dart';
 import 'package:rest_client/src/models/register/register_response.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -12,5 +11,5 @@ abstract class RegisterApiClient {
   factory RegisterApiClient(Dio dio, {String baseUrl}) = _RegisterApiClient;
 
   @POST('/api/v1/users/register')
-  Future<RegisterResponse> register(@Body() RegisterPost registerPost);
+  Future<RegisterResponse> register(@Body() Map<String, dynamic> json);
 }

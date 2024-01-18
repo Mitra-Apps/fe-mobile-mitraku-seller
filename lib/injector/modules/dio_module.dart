@@ -31,7 +31,7 @@ class DioModule {
               requestHeader: true,
               requestBody: true,
               responseHeader: true,
-              request: false,
+              request: true,
             ),
           );
         }

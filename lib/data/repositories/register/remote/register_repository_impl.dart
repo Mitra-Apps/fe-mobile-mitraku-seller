@@ -9,7 +9,7 @@ class RegisterRepositoryImpl implements RegisterRepository {
 
   @override
   Future<RegisterResponse> register(RegisterPost registerPost) async {
-    final response = _registerApiClient.register(registerPost);
+    final response = await _registerApiClient.register(registerPost.toJson());
     return response;
   }
 }

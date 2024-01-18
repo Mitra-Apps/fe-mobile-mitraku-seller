@@ -175,8 +175,7 @@ class _$RegisterStateImpl implements _RegisterState {
   const _$RegisterStateImpl(
       {this.status = const UIInitial(),
       this.notification,
-      this.registerResponse =
-          const RegisterResponse(message: '', success: false),
+      this.registerResponse = const RegisterResponse(otp: ''),
       this.isBusy = false});
 
   @override

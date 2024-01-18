@@ -8,8 +8,7 @@ part 'register_response.g.dart';
 class RegisterResponse with _$RegisterResponse {
   ///
   const factory RegisterResponse({
-    required bool success,
-    required String message,
+    required String otp,
   }) = _RegisterResponse;
 
   ///

@@ -19,11 +19,12 @@ class _RegisterApiClient implements RegisterApiClient {
   String? baseUrl;
 
   @override
-  Future<RegisterResponse> register(RegisterPost registerPost) async {
+  Future<RegisterResponse> register(Map<String, dynamic> json) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = registerPost;
+    final _data = <String, dynamic>{};
+    _data.addAll(json);
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<RegisterResponse>(Options(
       method: 'POST',

@@ -4,7 +4,7 @@ part 'register_post.freezed.dart';
 part 'register_post.g.dart';
 
 /// Image dog data
-@Freezed(fromJson: true)
+@freezed
 class RegisterPost with _$RegisterPost {
   ///
   const factory RegisterPost({

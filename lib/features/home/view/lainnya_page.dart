@@ -17,27 +17,13 @@ class LainnyaPage extends StatelessWidget {
       backgroundColor: AppColors.mainWhiteColor,
       key: const Key(WidgetKeys.dashboardScaffoldKey),
       appBar: AppBar(
-        title: Row(
-          children: [
-            SizedBox(
-              width: 18,
-              height: 18,
-              child: SvgPicture.asset(
-                'assets/icons/icon_arrow_left.svg',
-                color: AppColors.mainBlackColor,
-              ),
-            ),
-            AppSpacing.horizontalSpacing10,
-            Text(
-              'Lainnya',
-              style: Theme.of(context)
-                  .textTheme
-                  .titleLarge!
-                  .copyWith(fontWeight: FontWeight.bold),
-            ),
-          ],
-        ),
-      ),
+          title: Text(
+        'Lainnya',
+        style: Theme.of(context)
+            .textTheme
+            .titleLarge!
+            .copyWith(fontWeight: FontWeight.bold),
+      )),
       body: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),

@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:mitraku_seller/core/dimens/app_dimens.dart';
 import 'package:mitraku_seller/core/spacings/app_spacing.dart';
-import 'package:mitraku_seller/generated/l10n.dart';
 
 class DeskripsiTokoWidget extends StatelessWidget {
   const DeskripsiTokoWidget({super.key});

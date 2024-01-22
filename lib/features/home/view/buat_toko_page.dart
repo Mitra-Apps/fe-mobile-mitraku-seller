@@ -1,15 +1,11 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:mitraku_seller/core/dimens/app_dimens.dart';
 import 'package:mitraku_seller/core/keys/app_keys.dart';
 import 'package:mitraku_seller/core/spacings/app_spacing.dart';
 import 'package:mitraku_seller/core/themes/app_themes.dart';
-import 'package:mitraku_seller/features/app/bloc/app_bloc.dart';
-import 'package:mitraku_seller/features/home/widgets/deskripsi_toko_widget.dart';
-import 'package:mitraku_seller/features/home/widgets/profil_toko_widget.dart';
-import 'package:mitraku_seller/features/home/widgets/waktu_operasional_widget.dart';
-import 'package:mitraku_seller/generated/l10n.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mitraku_seller/features/home/widgets/buat_toko_field_widget.dart';
+import 'package:mitraku_seller/features/home/widgets/buat_toko_step_widget.dart';
+import 'package:mitraku_seller/features/home/widgets/buat_toko_unggah_foto_widget.dart';
 
 class BuatTokoPage extends StatefulWidget {
   const BuatTokoPage({super.key});
@@ -39,7 +35,7 @@ class _BuatTokoPage extends State<BuatTokoPage> {
             ),
             AppSpacing.horizontalSpacing10,
             Text(
-              'Lainnya',
+              'Toko Anda',
               style: Theme.of(context)
                   .textTheme
                   .titleLarge!
@@ -48,93 +44,67 @@ class _BuatTokoPage extends State<BuatTokoPage> {
           ],
         ),
       ),
-      body: !isStoreCreated
-          ? Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: 140,
-                    height: 180,
-                    child: Image.asset(
-                      'assets/images/toko_anda_silahkan_buat.png',
-                      fit: BoxFit.contain,
-                    ),
-                  ),
-                  Text(
-                    'Silakan Buat Toko Anda',
-                    style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.disabledColor),
-                  ),
-                  AppSpacing.verticalSpacing16,
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: AppColors.warningColor,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8)),
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        isStoreCreated = true;
-                      });
-                      // context.push(AppRouter.imagesFromDbPath);
-                    },
-                    child: Text(
-                      'Buat Toko',
-                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                            fontWeight: FontWeight.bold,
-                            color: AppColors.mainWhiteColor,
-                          ),
-                    ),
-                  )
-                ],
-              ),
-            )
-          : SingleChildScrollView(
-              child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            AppSpacing.verticalSpacing20,
+            BuatTokoStepWidget(),
+            AppSpacing.verticalSpacing20,
+            BuatTokoFieldWidget(
+              widgetType: 'NAMA_TOKO',
+            ),
+            BuatTokoFieldWidget(
+              widgetType: 'NO_TELP',
+            ),
+            BuatTokoFieldWidget(
+              widgetType: 'ALAMAT_TOKO',
+            ),
+            BuatTokoFieldWidget(
+              widgetType: 'DESKRIPSI_TOKO',
+            ),
+            BuatTokoUnggahFotoWidget(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const ProfilTokoWidget(),
-                Divider(
-                  color: AppColors.disabledColor,
-                  thickness: 1,
-                ),
-                const DeskripsiTokoWidget(),
-                Divider(
-                  color: AppColors.disabledColor,
-                  thickness: 1,
-                ),
-                const WaktuOperasionalWidget(),
-                Padding(
-                  padding: const EdgeInsets.all(AppDimens.basePaddingDouble),
-                  child: Container(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: AppColors.mainColor,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8)),
-                      ),
-                      onPressed: () {
-                        setState(() {
-                          isStoreCreated = true;
-                        });
-                        // context.push(AppRouter.imagesFromDbPath);
-                      },
-                      child: Text(
-                        'Ubah Toko',
-                        style:
-                            Theme.of(context).textTheme.titleMedium!.copyWith(
-                                  fontWeight: FontWeight.bold,
-                                  color: AppColors.mainWhiteColor,
-                                ),
-                      ),
-                    ),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    elevation: 0,
+                    backgroundColor: AppColors.mainWhiteColor,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
                   ),
-                )
+                  onPressed: () {},
+                  child: Text(
+                    'Kembali',
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.dangerColor,
+                        ),
+                  ),
+                ),
+                AppSpacing.horizontalSpacing20,
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.disabledLightColor,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                  ),
+                  onPressed: () {},
+                  child: Text(
+                    'Berikutnya',
+                    style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: AppColors.disabledColor,
+                        ),
+                  ),
+                ),
               ],
-            )),
+            ),
+            AppSpacing.verticalSpacing20,
+          ],
+        ),
+      ),
     );
   }
 }

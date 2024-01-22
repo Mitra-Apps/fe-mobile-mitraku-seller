@@ -1,16 +1,13 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mitraku_seller/core/dimens/app_dimens.dart';
 import 'package:mitraku_seller/core/keys/app_keys.dart';
 import 'package:mitraku_seller/core/spacings/app_spacing.dart';
 import 'package:mitraku_seller/core/themes/app_themes.dart';
-import 'package:mitraku_seller/features/app/bloc/app_bloc.dart';
 import 'package:mitraku_seller/features/home/view/buat_toko_page.dart';
 import 'package:mitraku_seller/features/home/widgets/deskripsi_toko_widget.dart';
 import 'package:mitraku_seller/features/home/widgets/profil_toko_widget.dart';
 import 'package:mitraku_seller/features/home/widgets/waktu_operasional_widget.dart';
-import 'package:mitraku_seller/generated/l10n.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class TokoAndaPage extends StatefulWidget {
   const TokoAndaPage({super.key});
@@ -64,11 +61,11 @@ class _TokoAndaPage extends State<TokoAndaPage> {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.warningColor,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8)),
+                            borderRadius: BorderRadius.circular(10)),
                       ),
                       onPressed: () {
                         setState(() {
-                          isStoreCreated = true;
+                          isCreateEditStore = true;
                         });
                         // context.push(AppRouter.imagesFromDbPath);
                       },
@@ -107,7 +104,7 @@ class _TokoAndaPage extends State<TokoAndaPage> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: AppColors.mainColor,
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8)),
+                              borderRadius: BorderRadius.circular(10)),
                         ),
                         onPressed: () {
                           setState(() {

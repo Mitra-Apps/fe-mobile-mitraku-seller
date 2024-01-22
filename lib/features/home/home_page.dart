@@ -1,17 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:mitraku_seller/core/dimens/app_dimens.dart';
-import 'package:mitraku_seller/core/keys/app_keys.dart';
-import 'package:mitraku_seller/core/spacings/app_spacing.dart';
 import 'package:mitraku_seller/core/themes/app_themes.dart';
 import 'package:mitraku_seller/features/home/view/dashboard_page.dart';
 import 'package:mitraku_seller/features/home/view/lainnya_page.dart';
 import 'package:mitraku_seller/features/home/view/toko_anda_page.dart';
-import 'package:mitraku_seller/features/home/widgets/profil_toko_widget.dart';
-import 'package:mitraku_seller/features/setting/setting_page.dart';
-import 'package:mitraku_seller/generated/l10n.dart';
-import 'package:mitraku_seller/router/app_router.dart';
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

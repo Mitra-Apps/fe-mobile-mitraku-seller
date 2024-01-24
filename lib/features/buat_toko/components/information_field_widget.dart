@@ -5,8 +5,13 @@ import 'package:mitraku_seller/core/spacings/app_spacing.dart';
 import 'package:mitraku_seller/core/themes/app_themes.dart';
 
 class BuatTokoFieldWidget extends StatelessWidget {
-  const BuatTokoFieldWidget({required this.widgetType, super.key});
+  const BuatTokoFieldWidget({
+    required this.widgetType,
+    required this.updateInputValueCallback,
+    super.key,
+  });
   final String widgetType;
+  final Function(String, String) updateInputValueCallback;
 
   @override
   Widget build(BuildContext context) {
@@ -91,9 +96,8 @@ class BuatTokoFieldWidget extends StatelessWidget {
                       child: Center(
                         child: TextFormField(
                           // validator: widget.validateEmail,
-                          // onChanged: (value) => setState(() {
-                          //   strMerchantEmail = value;
-                          // }),
+                          onChanged: (value) =>
+                              updateInputValueCallback(widgetType, value),
                           keyboardType: fieldInputType,
                           textAlignVertical: TextAlignVertical.center,
                           textInputAction: TextInputAction.next,

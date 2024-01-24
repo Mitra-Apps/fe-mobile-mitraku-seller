@@ -21,4 +21,5 @@ class WidgetKeys {
   static const String dashboardScaffoldKey = 'dashboard.scaffold';
   static const String tokoAndaScaffoldKey = 'tokoAnda.scaffold';
   static const String introStartedButtonKey = 'intro.startedButton';
+  static const String productScaffoldKey = 'product.scaffold';
 }

@@ -5,6 +5,7 @@ import 'package:mitraku_seller/core/spacings/app_spacing.dart';
 import 'package:mitraku_seller/core/themes/app_themes.dart';
 import 'package:mitraku_seller/features/home/view/dashboard_page.dart';
 import 'package:mitraku_seller/features/home/view/lainnya_page.dart';
+import 'package:mitraku_seller/features/home/view/product/product_page.dart';
 import 'package:mitraku_seller/features/home/view/toko_anda_page.dart';
 import 'package:mitraku_seller/features/home/widgets/profil_toko_widget.dart';
 import 'package:mitraku_seller/features/setting/setting_page.dart';
@@ -39,6 +40,7 @@ class _HomePageState extends State<HomePage> {
         children: [
           const DashboardPage(),
           const TokoAndaPage(),
+          const ProductPage(),
           Container(),
           const LainnyaPage(),
         ],
@@ -54,6 +56,7 @@ class _HomePageState extends State<HomePage> {
           });
         },
         items: [
+          //Dashboard
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
               'assets/icons/icon_dashboard.svg',
@@ -64,6 +67,7 @@ class _HomePageState extends State<HomePage> {
             ),
             label: 'Dashboard',
           ),
+          //Toko Anda
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
               'assets/icons/icon_toko_anda.svg',
@@ -74,6 +78,21 @@ class _HomePageState extends State<HomePage> {
             ),
             label: 'Toko Anda',
           ),
+          // Produk
+          BottomNavigationBarItem(
+            icon: SvgPicture.asset(
+              'assets/icons/icon_list.svg',
+            ),
+            activeIcon: SvgPicture.asset(
+              'assets/icons/icon_list.svg',
+              colorFilter: ColorFilter.mode(
+                AppColors.mainColor,
+                BlendMode.srcIn,
+              ),
+            ),
+            label: 'Produk',
+          ),
+          // Transaksi
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
               'assets/icons/icon_transaksi.svg',
@@ -84,6 +103,7 @@ class _HomePageState extends State<HomePage> {
             ),
             label: 'Transaksi',
           ),
+          //Lainnya
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
               'assets/icons/icon_lainnya.svg',

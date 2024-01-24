@@ -4,7 +4,8 @@ import 'package:mitraku_seller/core/spacings/app_spacing.dart';
 import 'package:mitraku_seller/core/themes/app_themes.dart';
 
 class BuatTokoStepWidget extends StatelessWidget {
-  const BuatTokoStepWidget({super.key});
+  const BuatTokoStepWidget({required this.stepNumber, super.key});
+  final int stepNumber;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +40,12 @@ class BuatTokoStepWidget extends StatelessWidget {
           ],
         ),
         AppSpacing.horizontalSpacing8,
-        Container(height: 1, width: 32, color: AppColors.successColor),
+        Container(
+            height: 1,
+            width: 32,
+            color: stepNumber >= 2
+                ? AppColors.successColor
+                : AppColors.disabledColor),
         AppSpacing.horizontalSpacing8,
         Column(
           children: [
@@ -48,7 +54,10 @@ class BuatTokoStepWidget extends StatelessWidget {
               width: 20,
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                  shape: BoxShape.circle, color: AppColors.disabledColor),
+                  shape: BoxShape.circle,
+                  color: stepNumber >= 2
+                      ? AppColors.successColor
+                      : AppColors.disabledColor),
               child: Text(
                 '2',
                 style: Theme.of(context).textTheme.bodySmall!.copyWith(
@@ -63,13 +72,20 @@ class BuatTokoStepWidget extends StatelessWidget {
               style: Theme.of(context).textTheme.bodySmall!.copyWith(
                     fontFamily: GoogleFonts.inter().fontFamily,
                     fontWeight: FontWeight.bold,
-                    color: AppColors.disabledColor,
+                    color: stepNumber >= 2
+                        ? AppColors.successColor
+                        : AppColors.disabledColor,
                   ),
             ),
           ],
         ),
         AppSpacing.horizontalSpacing8,
-        Container(height: 1, width: 32, color: AppColors.disabledColor),
+        Container(
+            height: 1,
+            width: 32,
+            color: stepNumber >= 3
+                ? AppColors.successColor
+                : AppColors.disabledColor),
         AppSpacing.horizontalSpacing8,
         Column(
           children: [
@@ -78,7 +94,10 @@ class BuatTokoStepWidget extends StatelessWidget {
               width: 20,
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                  shape: BoxShape.circle, color: AppColors.disabledColor),
+                  shape: BoxShape.circle,
+                  color: stepNumber >= 3
+                      ? AppColors.successColor
+                      : AppColors.disabledColor),
               child: Text(
                 '3',
                 style: Theme.of(context).textTheme.bodySmall!.copyWith(
@@ -93,7 +112,9 @@ class BuatTokoStepWidget extends StatelessWidget {
               style: Theme.of(context).textTheme.bodySmall!.copyWith(
                     fontFamily: GoogleFonts.inter().fontFamily,
                     fontWeight: FontWeight.bold,
-                    color: AppColors.disabledColor,
+                    color: stepNumber >= 3
+                        ? AppColors.successColor
+                        : AppColors.disabledColor,
                   ),
             ),
           ],

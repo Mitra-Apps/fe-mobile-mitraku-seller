@@ -125,7 +125,7 @@ class AppColors {
   static final Color mainColor = Color(0xff000068);
   static final Color mainBlackColor = Color(0xff343434);
   static final Color mainWhiteColor = Color(0xffffffff);
-  static final Color disabledColor = Color(0xffb4b4b4);
+  static final Color disabledColor = Color(0xff828282);
   static final Color disabledLightColor = Color(0xfff0f0f0);
   static final Color successColor = Color(0xff2fa83b);
   static final Color warningColor = Color(0xffc0c31f);

@@ -41,7 +41,7 @@ class _RegisterFormState extends State<RegisterForm> {
                   return RegisterFormUI();
                 },
                 loading: () {
-                  return const LoadingPage();
+                  return Container();
                 },
                 loadFailed: (message) {
                   return ErrorPage(
@@ -52,7 +52,7 @@ class _RegisterFormState extends State<RegisterForm> {
                   return LoadedWidget(state.registerResponse.otp);
                 },
               ),
-              if (state.isBusy) const LoadingPage(),
+              if (state.isBusy) Container(),
             ],
           );
         }

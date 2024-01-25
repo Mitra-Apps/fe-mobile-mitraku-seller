@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:mitraku_seller/core/dimens/app_dimens.dart';
 import 'package:mitraku_seller/core/spacings/app_spacing.dart';
 import 'package:mitraku_seller/core/themes/app_themes.dart';
-import 'package:mitraku_seller/generated/l10n.dart';
 
 class WaktuOperasionalWidget extends StatelessWidget {
   const WaktuOperasionalWidget({super.key});

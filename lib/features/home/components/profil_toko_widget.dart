@@ -30,7 +30,7 @@ class ProfilTokoWidget extends StatelessWidget {
                 height: 120,
                 child: Card(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15),
+                    borderRadius: BorderRadius.circular(10),
                   ),
                   clipBehavior: Clip.hardEdge,
                   color: AppColors.disabledLightColor,

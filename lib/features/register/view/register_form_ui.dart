@@ -7,6 +7,23 @@ class RegisterFormUI extends StatefulWidget {
   RegisterFormUIState createState() => RegisterFormUIState();
 }
 
+class TextFormMask {
+
+  final TextEditingController textController = TextEditingController();
+  final MaskTextInputFormatter formatter;
+  final FormFieldValidator<String>? validator;
+  final String hint;
+  final TextInputType textInputType;
+
+  TextFormMask({
+    required this.formatter,
+    this.validator,
+    required this.hint,
+    required this.textInputType
+  });
+
+}
+
 class RegisterFormUIState extends State<RegisterFormUI> {
   final _formKey = GlobalKey<FormState>();
 
@@ -47,6 +64,14 @@ class RegisterFormUIState extends State<RegisterFormUI> {
       ),
     ));
   }
+
+  final List<TextFormMask> phoneMask = [
+    TextFormMask(
+        formatter: MaskTextInputFormatter(mask: "62############"),
+        hint: "cth: +62-8000000",
+        textInputType: TextInputType.phone
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -333,8 +358,9 @@ class RegisterFormUIState extends State<RegisterFormUI> {
                                     isShowPhoneError =
                                         isShowValidatePhone(strMerchantPhone);
                                   }),
+                                  inputFormatters: [phoneMask[0].formatter],
                                   decoration: const InputDecoration(
-                                    hintText: 'cth: +62-8000000',
+                                    hintText: "cth: +62-8000000",
                                     hintStyle: TextStyle(
                                       color: CustomColors.disabledBoldColor,
                                       fontSize: 13,

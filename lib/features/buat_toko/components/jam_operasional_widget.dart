@@ -21,7 +21,7 @@ class _BuatTokoJamWidgetState extends State<BuatTokoJamWidget> {
   TimeOfDay selectedOpenTime = TimeOfDay.now();
   TimeOfDay selectedClosedTime = TimeOfDay.now();
 
-  Widget open24HoursWidgets() {
+  Widget open24HoursOrClosedWidgets({required bool isOpen24Hours}) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -30,36 +30,18 @@ class _BuatTokoJamWidgetState extends State<BuatTokoJamWidget> {
           height: 18,
           child: SvgPicture.asset(
             'assets/icons/icon_toko_anda.svg',
-            color: AppColors.successColor,
+            color:
+                isOpen24Hours ? AppColors.successColor : AppColors.dangerColor,
           ),
         ),
         AppSpacing.horizontalSpacing10,
         Text(
-          'Buka 24 Jam',
+          isOpen24Hours ? 'Buka 24 Jam' : 'Toko Tutup',
           style: Theme.of(context).textTheme.titleMedium!.copyWith(
-              fontWeight: FontWeight.bold, color: AppColors.successColor),
-        ),
-      ],
-    );
-  }
-
-  Widget storeClosedWidgets() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        SizedBox(
-          width: 18,
-          height: 18,
-          child: SvgPicture.asset(
-            'assets/icons/icon_toko_anda.svg',
-            color: AppColors.successColor,
-          ),
-        ),
-        AppSpacing.horizontalSpacing10,
-        Text(
-          'Buka 24 Jam',
-          style: Theme.of(context).textTheme.titleMedium!.copyWith(
-              fontWeight: FontWeight.bold, color: AppColors.successColor),
+              fontWeight: FontWeight.bold,
+              color: isOpen24Hours
+                  ? AppColors.successColor
+                  : AppColors.dangerColor),
         ),
       ],
     );
@@ -195,9 +177,9 @@ class _BuatTokoJamWidgetState extends State<BuatTokoJamWidget> {
           padding: const EdgeInsets.symmetric(
               horizontal: AppDimens.basePaddingDouble),
           child: isStoreClosed
-              ? storeClosedWidgets()
+              ? open24HoursOrClosedWidgets(isOpen24Hours: false)
               : is24JamChecked
-                  ? open24HoursWidgets()
+                  ? open24HoursOrClosedWidgets(isOpen24Hours: true)
                   : Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [

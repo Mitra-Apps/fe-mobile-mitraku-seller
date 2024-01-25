@@ -65,10 +65,23 @@ class _BuatTokoJamWidgetState extends State<BuatTokoJamWidget> {
     );
   }
 
+  String _formatTimeOfDay(TimeOfDay timeOfDay) {
+    // Use hour and minute properties to create a formatted string
+    // in 24-hour format
+    return '${timeOfDay.hour.toString().padLeft(2, '0')}'
+        ':${timeOfDay.minute.toString().padLeft(2, '0')}';
+  }
+
   Future<void> _selectOpenTime(BuildContext context) async {
     final TimeOfDay? picked = await showTimePicker(
       context: context,
       initialTime: selectedOpenTime,
+      builder: (BuildContext context, Widget? child) {
+        return MediaQuery(
+          data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: true),
+          child: child!,
+        );
+      },
     );
 
     if (picked != null && picked != selectedOpenTime) {
@@ -82,6 +95,12 @@ class _BuatTokoJamWidgetState extends State<BuatTokoJamWidget> {
     final TimeOfDay? picked = await showTimePicker(
       context: context,
       initialTime: selectedClosedTime,
+      builder: (BuildContext context, Widget? child) {
+        return MediaQuery(
+          data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: true),
+          child: child!,
+        );
+      },
     );
 
     if (picked != null && picked != selectedClosedTime) {
@@ -211,7 +230,7 @@ class _BuatTokoJamWidgetState extends State<BuatTokoJamWidget> {
                                     padding: const EdgeInsets.all(
                                         AppDimens.basePadding),
                                     child: Text(
-                                      selectedOpenTime.format(context),
+                                      _formatTimeOfDay(selectedOpenTime),
                                       style: Theme.of(context)
                                           .textTheme
                                           .bodyMedium!
@@ -255,7 +274,7 @@ class _BuatTokoJamWidgetState extends State<BuatTokoJamWidget> {
                                     padding: const EdgeInsets.all(
                                         AppDimens.basePadding),
                                     child: Text(
-                                      selectedClosedTime.format(context),
+                                      _formatTimeOfDay(selectedClosedTime),
                                       style: Theme.of(context)
                                           .textTheme
                                           .bodyMedium!

@@ -1,6 +1,6 @@
 part of 'register_page.dart';
 
-class RegisterFormUI extends StatefulWidget with Validator {
+class RegisterFormUI extends StatefulWidget {
   RegisterFormUI({super.key});
 
   @override
@@ -21,6 +21,11 @@ class RegisterFormUIState extends State<RegisterFormUI> {
   bool merchantRePasswordInteracts() => strMerchantRePassword != null;
   bool merchantNameInteracts() => strMerchantName != null;
   bool merchantPhoneInteracts() => strMerchantPhone != null;
+  bool isShowEmailError = false;
+  bool isShowPasswordError = false;
+  bool isShowRePasswordError = false;
+  bool isShowNameError = false;
+  bool isShowPhoneError = false;
 
   @override
   Widget build(BuildContext context) {
@@ -78,9 +83,10 @@ class RegisterFormUIState extends State<RegisterFormUI> {
                                 child: TextFormField(
                                   keyboardType: TextInputType.emailAddress,
                                   textInputAction: TextInputAction.next,
-                                  validator: widget.validateEmail,
                                   onChanged: (value) => setState(() {
                                     strMerchantEmail = value;
+                                    isShowEmailError =
+                                        isShowValidateEmail(strMerchantEmail);
                                   }),
                                   decoration: const InputDecoration(
                                     hintText: 'cth: admin@gmail.com',
@@ -93,6 +99,21 @@ class RegisterFormUIState extends State<RegisterFormUI> {
                                   ),
                                 ),
                               ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            AppSpacing.horizontalSpacing32,
+                            Visibility(
+                                visible: isShowEmailError,
+                                child: Text(
+                                  validateEmail(strMerchantEmail),
+                                  style: const TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.normal,
+                                      color: CustomColors.dangerColor),
+                                )
                             ),
                           ],
                         ),
@@ -118,9 +139,10 @@ class RegisterFormUIState extends State<RegisterFormUI> {
                                   keyboardType: TextInputType.visiblePassword,
                                   textInputAction: TextInputAction.next,
                                   obscureText: true,
-                                  validator: widget.validatePassword,
                                   onChanged: (value) => setState(() {
                                     strMerchantPassword = value;
+                                    isShowPasswordError =
+                                        isShowValidatePassword(strMerchantPassword);
                                   }),
                                   decoration: const InputDecoration(
                                     hintText: 'cth: secR123**',
@@ -136,6 +158,21 @@ class RegisterFormUIState extends State<RegisterFormUI> {
                             ),
                           ],
                         ),
+                        Row(
+                          children: [
+                            AppSpacing.horizontalSpacing32,
+                            Visibility(
+                                visible: isShowPasswordError,
+                                child: Text(
+                                  validatePassword(strMerchantPassword),
+                                  style: const TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.normal,
+                                      color: CustomColors.dangerColor),
+                                )
+                            ),
+                          ],
+                        ),
                         AppSpacing.verticalSpacing16,
                         Row(
                           children: [
@@ -148,7 +185,7 @@ class RegisterFormUIState extends State<RegisterFormUI> {
                             Flexible(
                               child: Container(
                                 padding:
-                                const EdgeInsets.symmetric(horizontal: 10),
+                                    const EdgeInsets.symmetric(horizontal: 10),
                                 decoration: BoxDecoration(
                                   color: CustomColors.disabledLightColor,
                                   borderRadius: BorderRadius.circular(10),
@@ -157,13 +194,12 @@ class RegisterFormUIState extends State<RegisterFormUI> {
                                   keyboardType: TextInputType.visiblePassword,
                                   textInputAction: TextInputAction.next,
                                   obscureText: true,
-                                  validator: (value) =>
-                                      widget.validateConfirmPassword(
-                                        value,
-                                        strMerchantPassword!,
-                                      ),
                                   onChanged: (value) => setState(() {
                                     strMerchantRePassword = value;
+                                    isShowRePasswordError =
+                                        isShowValidateConfirmPassword(
+                                            strMerchantRePassword,
+                                            strMerchantPassword);
                                   }),
                                   decoration: const InputDecoration(
                                     hintText: 'Konfirmasi Password',
@@ -179,6 +215,23 @@ class RegisterFormUIState extends State<RegisterFormUI> {
                             ),
                           ],
                         ),
+                        Row(
+                          children: [
+                            AppSpacing.horizontalSpacing32,
+                            Visibility(
+                                visible: isShowRePasswordError,
+                                child: Text(
+                                  validateConfirmPassword(
+                                      strMerchantRePassword,
+                                      strMerchantPassword),
+                                  style: const TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.normal,
+                                      color: CustomColors.dangerColor),
+                                )
+                            ),
+                          ],
+                        ),
                         AppSpacing.verticalSpacing16,
                         Row(
                           children: [
@@ -191,7 +244,7 @@ class RegisterFormUIState extends State<RegisterFormUI> {
                             Flexible(
                               child: Container(
                                 padding:
-                                const EdgeInsets.symmetric(horizontal: 10),
+                                    const EdgeInsets.symmetric(horizontal: 10),
                                 decoration: BoxDecoration(
                                   color: CustomColors.disabledLightColor,
                                   borderRadius: BorderRadius.circular(10),
@@ -200,9 +253,9 @@ class RegisterFormUIState extends State<RegisterFormUI> {
                                   keyboardType: TextInputType.name,
                                   textInputAction: TextInputAction.next,
                                   cursorColor: Colors.purple,
-                                  validator: widget.validateName,
                                   onChanged: (value) => setState(() {
                                     strMerchantName = value;
+                                    isShowNameError = isShowValidateName(strMerchantName);
                                   }),
                                   decoration: const InputDecoration(
                                     hintText: 'cth: admin kita *',
@@ -215,6 +268,22 @@ class RegisterFormUIState extends State<RegisterFormUI> {
                                   ),
                                 ),
                               ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            AppSpacing.horizontalSpacing32,
+                            Visibility(
+                                visible: isShowNameError,
+                                child: Text(
+                                  validateName(
+                                      strMerchantName),
+                                  style: const TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.normal,
+                                      color: CustomColors.dangerColor),
+                                )
                             ),
                           ],
                         ),
@@ -231,7 +300,7 @@ class RegisterFormUIState extends State<RegisterFormUI> {
                             Flexible(
                               child: Container(
                                 padding:
-                                const EdgeInsets.symmetric(horizontal: 10),
+                                    const EdgeInsets.symmetric(horizontal: 10),
                                 decoration: BoxDecoration(
                                   color: CustomColors.disabledLightColor,
                                   borderRadius: BorderRadius.circular(10),
@@ -239,9 +308,9 @@ class RegisterFormUIState extends State<RegisterFormUI> {
                                 child: TextFormField(
                                   keyboardType: TextInputType.phone,
                                   textInputAction: TextInputAction.next,
-                                  validator: widget.validatePhone,
                                   onChanged: (value) => setState(() {
                                     strMerchantPhone = value;
+                                    isShowPhoneError = isShowValidatePhone(strMerchantPhone);
                                   }),
                                   decoration: const InputDecoration(
                                     hintText: 'cth: +62-8000000',
@@ -257,6 +326,22 @@ class RegisterFormUIState extends State<RegisterFormUI> {
                             ),
                           ],
                         ),
+                        Row(
+                          children: [
+                            AppSpacing.horizontalSpacing32,
+                            Visibility(
+                                visible: isShowPhoneError,
+                                child: Text(
+                                  validatePhone(
+                                      strMerchantPhone),
+                                  style: const TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.normal,
+                                      color: CustomColors.dangerColor),
+                                )
+                            ),
+                          ],
+                        ),
                         AppSpacing.verticalSpacing20,
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -266,36 +351,42 @@ class RegisterFormUIState extends State<RegisterFormUI> {
                                 !merchantRePasswordInteracts() ||
                                 !merchantNameInteracts() ||
                                 !merchantPhoneInteracts() ||
-                                _formKey.currentState == null ||
-                                !_formKey.currentState!.validate()
+                                isShowEmailError ||
+                                isShowPasswordError ||
+                                isShowRePasswordError ||
+                                isShowNameError ||
+                                isShowPhoneError
                                 ? CustomColors.disabledBoldColor
                                 : CustomColors.mainColor,
                             onPressed: () {
                               !merchantEmailInteracts() ||
-                                  !merchantPasswordInteracts() ||
-                                  !merchantRePasswordInteracts() ||
-                                  !merchantNameInteracts() ||
-                                  !merchantPhoneInteracts() ||
-                                  _formKey.currentState == null ||
-                                  !_formKey.currentState!.validate()
-                                  ? null
-                                  : context
+                              !merchantPasswordInteracts() ||
+                              !merchantRePasswordInteracts() ||
+                              !merchantNameInteracts() ||
+                              !merchantPhoneInteracts() ||
+                              isShowEmailError ||
+                              isShowPasswordError ||
+                              isShowRePasswordError ||
+                              isShowNameError ||
+                              isShowPhoneError
+                              ? null
+                              : context
                                   .read<RegisterBloc>()
                                   .add(RegisterEvent.registerRequested(
-                                RegisterPost(
-                                  email: strMerchantEmail!,
-                                  password: strMerchantPassword!,
-                                  name: strMerchantName!,
-                                  phone_number: strMerchantPhone!,
-                                  role_id: ['1', '2'],
-                                ),
-                              ));
+                                    RegisterPost(
+                                      email: strMerchantEmail!,
+                                      password: strMerchantPassword!,
+                                      name: strMerchantName!,
+                                      phone_number: strMerchantPhone!,
+                                      role_id: ['1', '2'],
+                                    ),
+                                  ));
                             },
                             child: const Text(
                               'Daftarkan',
                               style: TextStyle(
                                 fontSize: 12,
-                                color: Colors.white,
+                                color: CustomColors.whiteColor,
                                 fontFamily: 'Poppins',
                               ),
                             ),
@@ -337,7 +428,6 @@ class RegisterFormUIState extends State<RegisterFormUI> {
               ),
             ),
           ],
-        )
-    );
+        ));
   }
 }

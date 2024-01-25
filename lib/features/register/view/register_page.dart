@@ -1,6 +1,7 @@
 import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:mitraku_seller/core/colors/colors.dart';
 import 'package:mitraku_seller/core/spacings/app_spacing.dart';
 import 'package:animate_do/animate_do.dart';
@@ -10,8 +11,8 @@ import 'package:mitraku_seller/injector/injector.dart';
 import 'package:mitraku_seller/router/app_router.dart';
 import 'package:mitraku_seller/utils/newvalidator.dart';
 import 'package:mitraku_seller/widgets/error_page.dart';
-import 'package:mitraku_seller/widgets/loading_page.dart';
 import 'package:rest_client/rest_client.dart';
+
 
 part 'register_form.dart';
 part 'register_form_ui.dart';

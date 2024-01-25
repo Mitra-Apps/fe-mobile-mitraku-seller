@@ -1,3 +1,7 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:mitraku_seller/core/bloc_core/ui_status.dart';
 import 'package:mitraku_seller/core/themes/app_themes.dart';
 import 'package:mitraku_seller/features/app/bloc/app_bloc.dart';
@@ -5,10 +9,6 @@ import 'package:mitraku_seller/generated/l10n.dart';
 import 'package:mitraku_seller/injector/injector.dart';
 import 'package:mitraku_seller/router/app_router.dart';
 import 'package:mitraku_seller/widgets/splash_page.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 
 class App extends StatefulWidget {
   const App({super.key});

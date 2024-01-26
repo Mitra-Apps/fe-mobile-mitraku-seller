@@ -68,7 +68,7 @@ class _BuatTokoPage extends State<BuatTokoInformasiPage> {
             widgetType: 'DESKRIPSI_TOKO',
             updateInputValueCallback: _updateInputValueCallback,
           ),
-          BuatTokoUnggahFotoWidget(),
+          const BuatTokoUnggahFotoWidget(),
           AppSpacing.verticalSpacing20,
           Row(
             mainAxisAlignment: MainAxisAlignment.center,

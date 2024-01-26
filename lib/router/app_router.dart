@@ -1,4 +1,5 @@
 import 'package:mitraku_seller/features/app/view/app_director.dart';
+import 'package:mitraku_seller/features/buat_toko/buat_toko_page.dart';
 import 'package:mitraku_seller/features/demo/view/assets_page.dart';
 import 'package:mitraku_seller/features/demo/view/images_from_db_page.dart';
 import 'package:mitraku_seller/features/dog_image_random/view/dog_image_random_page.dart';

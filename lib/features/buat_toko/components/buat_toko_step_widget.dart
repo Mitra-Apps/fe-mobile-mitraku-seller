@@ -29,6 +29,7 @@ class BuatTokoStepWidget extends StatelessWidget {
                     ),
               ),
             ),
+            AppSpacing.verticalSpacing8,
             Text(
               'Informasi Toko',
               style: Theme.of(context).textTheme.bodySmall!.copyWith(
@@ -42,7 +43,7 @@ class BuatTokoStepWidget extends StatelessWidget {
         AppSpacing.horizontalSpacing8,
         Container(
             height: 1,
-            width: 32,
+            width: 40,
             color: stepNumber >= 2
                 ? AppColors.successColor
                 : AppColors.disabledColor),
@@ -67,6 +68,7 @@ class BuatTokoStepWidget extends StatelessWidget {
                     ),
               ),
             ),
+            AppSpacing.verticalSpacing8,
             Text(
               'Jam Operasional',
               style: Theme.of(context).textTheme.bodySmall!.copyWith(
@@ -82,7 +84,7 @@ class BuatTokoStepWidget extends StatelessWidget {
         AppSpacing.horizontalSpacing8,
         Container(
             height: 1,
-            width: 32,
+            width: 40,
             color: stepNumber >= 3
                 ? AppColors.successColor
                 : AppColors.disabledColor),
@@ -107,6 +109,7 @@ class BuatTokoStepWidget extends StatelessWidget {
                     ),
               ),
             ),
+            AppSpacing.verticalSpacing8,
             Text(
               'Detail Toko',
               style: Theme.of(context).textTheme.bodySmall!.copyWith(

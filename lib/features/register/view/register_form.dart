@@ -30,7 +30,7 @@ class _RegisterFormState extends State<RegisterForm> {
         mainAxisSize: MainAxisSize.min,
         children: [
           SvgPicture.asset("assets/icons/icon_white_close.svg"),
-          SizedBox(
+          const SizedBox(
             width: 12.0,
           ),
           Text(message, style: const TextStyle(fontSize: 12,
@@ -59,7 +59,7 @@ class _RegisterFormState extends State<RegisterForm> {
         mainAxisSize: MainAxisSize.min,
         children: [
           SvgPicture.asset("assets/icons/icon_white_close.svg"),
-          SizedBox(
+          const SizedBox(
             width: 12.0,
           ),
           Text(message, style: const TextStyle(fontSize: 12,
@@ -96,7 +96,7 @@ class _RegisterFormState extends State<RegisterForm> {
           return Stack(
             alignment: Alignment.center,
             children: [
-              state.status.when<Widget>(
+              state.status.when(
                 initial: () {
                   return RegisterFormUI();
                 },
@@ -109,7 +109,7 @@ class _RegisterFormState extends State<RegisterForm> {
                   );
                 },
                 loadSuccess: (message) {
-                  return LoadedWidget(state.registerResponse.otp);
+                  return OTPPage();
                 },
               ),
               if (state.isBusy) Container(),
@@ -117,28 +117,6 @@ class _RegisterFormState extends State<RegisterForm> {
           );
         }
       ),
-    );
-  }
-}
-
-// it would be replace with OTP page in another ticket
-class LoadedWidget extends StatelessWidget {
-  final String data;
-
-  LoadedWidget(this.data);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        const Text('Loaded Data:'),
-        const SizedBox(height: 8),
-        Text('Name: ${data}'),
-        Text('Age: ${data}'),
-        // Add more widgets to display other properties of the data
-      ],
     );
   }
 }

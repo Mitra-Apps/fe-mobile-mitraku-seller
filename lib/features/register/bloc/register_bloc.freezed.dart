@@ -15,228 +15,310 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$RegisterState {
-  UIStatus get status => throw _privateConstructorUsedError;
-  RegisterNotification? get notification => throw _privateConstructorUsedError;
-  RegisterResponse get registerResponse => throw _privateConstructorUsedError;
-  bool get isBusy => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $RegisterStateCopyWith<RegisterState> get copyWith =>
+mixin _$RegisterEvent {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loaded,
+    required TResult Function(RegisterPost registerPost) registerRequested,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loaded,
+    TResult? Function(RegisterPost registerPost)? registerRequested,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loaded,
+    TResult Function(RegisterPost registerPost)? registerRequested,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_RegisterRequested value) registerRequested,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_RegisterRequested value)? registerRequested,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_RegisterRequested value)? registerRequested,
+    required TResult orElse(),
+  }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $RegisterStateCopyWith<$Res> {
-  factory $RegisterStateCopyWith(
-          RegisterState value, $Res Function(RegisterState) then) =
-      _$RegisterStateCopyWithImpl<$Res, RegisterState>;
-  @useResult
-  $Res call(
-      {UIStatus status,
-      RegisterNotification? notification,
-      RegisterResponse registerResponse,
-      bool isBusy});
-
-  $UIStatusCopyWith<$Res> get status;
-  $RegisterNotificationCopyWith<$Res>? get notification;
-  $RegisterResponseCopyWith<$Res> get registerResponse;
+abstract class $RegisterEventCopyWith<$Res> {
+  factory $RegisterEventCopyWith(
+          RegisterEvent value, $Res Function(RegisterEvent) then) =
+      _$RegisterEventCopyWithImpl<$Res, RegisterEvent>;
 }
 
 /// @nodoc
-class _$RegisterStateCopyWithImpl<$Res, $Val extends RegisterState>
-    implements $RegisterStateCopyWith<$Res> {
-  _$RegisterStateCopyWithImpl(this._value, this._then);
+class _$RegisterEventCopyWithImpl<$Res, $Val extends RegisterEvent>
+    implements $RegisterEventCopyWith<$Res> {
+  _$RegisterEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+}
 
-  @pragma('vm:prefer-inline')
+/// @nodoc
+abstract class _$$LoadedImplCopyWith<$Res> {
+  factory _$$LoadedImplCopyWith(
+          _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
+      __$$LoadedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$LoadedImplCopyWithImpl<$Res>
+    extends _$RegisterEventCopyWithImpl<$Res, _$LoadedImpl>
+    implements _$$LoadedImplCopyWith<$Res> {
+  __$$LoadedImplCopyWithImpl(
+      _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$LoadedImpl implements _Loaded {
+  const _$LoadedImpl();
+
   @override
-  $Res call({
-    Object? status = null,
-    Object? notification = freezed,
-    Object? registerResponse = null,
-    Object? isBusy = null,
+  String toString() {
+    return 'RegisterEvent.loaded()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$LoadedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loaded,
+    required TResult Function(RegisterPost registerPost) registerRequested,
   }) {
-    return _then(_value.copyWith(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as UIStatus,
-      notification: freezed == notification
-          ? _value.notification
-          : notification // ignore: cast_nullable_to_non_nullable
-              as RegisterNotification?,
-      registerResponse: null == registerResponse
-          ? _value.registerResponse
-          : registerResponse // ignore: cast_nullable_to_non_nullable
-              as RegisterResponse,
-      isBusy: null == isBusy
-          ? _value.isBusy
-          : isBusy // ignore: cast_nullable_to_non_nullable
-              as bool,
-    ) as $Val);
+    return loaded();
   }
 
   @override
-  @pragma('vm:prefer-inline')
-  $UIStatusCopyWith<$Res> get status {
-    return $UIStatusCopyWith<$Res>(_value.status, (value) {
-      return _then(_value.copyWith(status: value) as $Val);
-    });
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loaded,
+    TResult? Function(RegisterPost registerPost)? registerRequested,
+  }) {
+    return loaded?.call();
   }
 
   @override
-  @pragma('vm:prefer-inline')
-  $RegisterNotificationCopyWith<$Res>? get notification {
-    if (_value.notification == null) {
-      return null;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loaded,
+    TResult Function(RegisterPost registerPost)? registerRequested,
+    required TResult orElse(),
+  }) {
+    if (loaded != null) {
+      return loaded();
     }
-
-    return $RegisterNotificationCopyWith<$Res>(_value.notification!, (value) {
-      return _then(_value.copyWith(notification: value) as $Val);
-    });
+    return orElse();
   }
 
   @override
-  @pragma('vm:prefer-inline')
-  $RegisterResponseCopyWith<$Res> get registerResponse {
-    return $RegisterResponseCopyWith<$Res>(_value.registerResponse, (value) {
-      return _then(_value.copyWith(registerResponse: value) as $Val);
-    });
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_RegisterRequested value) registerRequested,
+  }) {
+    return loaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_RegisterRequested value)? registerRequested,
+  }) {
+    return loaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_RegisterRequested value)? registerRequested,
+    required TResult orElse(),
+  }) {
+    if (loaded != null) {
+      return loaded(this);
+    }
+    return orElse();
   }
 }
 
+abstract class _Loaded implements RegisterEvent {
+  const factory _Loaded() = _$LoadedImpl;
+}
+
 /// @nodoc
-abstract class _$$RegisterStateImplCopyWith<$Res>
-    implements $RegisterStateCopyWith<$Res> {
-  factory _$$RegisterStateImplCopyWith(
-          _$RegisterStateImpl value, $Res Function(_$RegisterStateImpl) then) =
-      __$$RegisterStateImplCopyWithImpl<$Res>;
-  @override
+abstract class _$$RegisterRequestedImplCopyWith<$Res> {
+  factory _$$RegisterRequestedImplCopyWith(_$RegisterRequestedImpl value,
+          $Res Function(_$RegisterRequestedImpl) then) =
+      __$$RegisterRequestedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call(
-      {UIStatus status,
-      RegisterNotification? notification,
-      RegisterResponse registerResponse,
-      bool isBusy});
+  $Res call({RegisterPost registerPost});
 
-  @override
-  $UIStatusCopyWith<$Res> get status;
-  @override
-  $RegisterNotificationCopyWith<$Res>? get notification;
-  @override
-  $RegisterResponseCopyWith<$Res> get registerResponse;
+  $RegisterPostCopyWith<$Res> get registerPost;
 }
 
 /// @nodoc
-class __$$RegisterStateImplCopyWithImpl<$Res>
-    extends _$RegisterStateCopyWithImpl<$Res, _$RegisterStateImpl>
-    implements _$$RegisterStateImplCopyWith<$Res> {
-  __$$RegisterStateImplCopyWithImpl(
-      _$RegisterStateImpl _value, $Res Function(_$RegisterStateImpl) _then)
+class __$$RegisterRequestedImplCopyWithImpl<$Res>
+    extends _$RegisterEventCopyWithImpl<$Res, _$RegisterRequestedImpl>
+    implements _$$RegisterRequestedImplCopyWith<$Res> {
+  __$$RegisterRequestedImplCopyWithImpl(_$RegisterRequestedImpl _value,
+      $Res Function(_$RegisterRequestedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? status = null,
-    Object? notification = freezed,
-    Object? registerResponse = null,
-    Object? isBusy = null,
+    Object? registerPost = null,
   }) {
-    return _then(_$RegisterStateImpl(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as UIStatus,
-      notification: freezed == notification
-          ? _value.notification
-          : notification // ignore: cast_nullable_to_non_nullable
-              as RegisterNotification?,
-      registerResponse: null == registerResponse
-          ? _value.registerResponse
-          : registerResponse // ignore: cast_nullable_to_non_nullable
-              as RegisterResponse,
-      isBusy: null == isBusy
-          ? _value.isBusy
-          : isBusy // ignore: cast_nullable_to_non_nullable
-              as bool,
+    return _then(_$RegisterRequestedImpl(
+      null == registerPost
+          ? _value.registerPost
+          : registerPost // ignore: cast_nullable_to_non_nullable
+              as RegisterPost,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RegisterPostCopyWith<$Res> get registerPost {
+    return $RegisterPostCopyWith<$Res>(_value.registerPost, (value) {
+      return _then(_value.copyWith(registerPost: value));
+    });
   }
 }
 
 /// @nodoc
 
-class _$RegisterStateImpl implements _RegisterState {
-  const _$RegisterStateImpl(
-      {this.status = const UIInitial(),
-      this.notification,
-      this.registerResponse = const RegisterResponse(otp: ''),
-      this.isBusy = false});
+class _$RegisterRequestedImpl implements _RegisterRequested {
+  const _$RegisterRequestedImpl(this.registerPost);
 
   @override
-  @JsonKey()
-  final UIStatus status;
-  @override
-  final RegisterNotification? notification;
-  @override
-  @JsonKey()
-  final RegisterResponse registerResponse;
-  @override
-  @JsonKey()
-  final bool isBusy;
+  final RegisterPost registerPost;
 
   @override
   String toString() {
-    return 'RegisterState(status: $status, notification: $notification, registerResponse: $registerResponse, isBusy: $isBusy)';
+    return 'RegisterEvent.registerRequested(registerPost: $registerPost)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RegisterStateImpl &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.notification, notification) ||
-                other.notification == notification) &&
-            (identical(other.registerResponse, registerResponse) ||
-                other.registerResponse == registerResponse) &&
-            (identical(other.isBusy, isBusy) || other.isBusy == isBusy));
+            other is _$RegisterRequestedImpl &&
+            (identical(other.registerPost, registerPost) ||
+                other.registerPost == registerPost));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, status, notification, registerResponse, isBusy);
+  int get hashCode => Object.hash(runtimeType, registerPost);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$RegisterStateImplCopyWith<_$RegisterStateImpl> get copyWith =>
-      __$$RegisterStateImplCopyWithImpl<_$RegisterStateImpl>(this, _$identity);
+  _$$RegisterRequestedImplCopyWith<_$RegisterRequestedImpl> get copyWith =>
+      __$$RegisterRequestedImplCopyWithImpl<_$RegisterRequestedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loaded,
+    required TResult Function(RegisterPost registerPost) registerRequested,
+  }) {
+    return registerRequested(registerPost);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loaded,
+    TResult? Function(RegisterPost registerPost)? registerRequested,
+  }) {
+    return registerRequested?.call(registerPost);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loaded,
+    TResult Function(RegisterPost registerPost)? registerRequested,
+    required TResult orElse(),
+  }) {
+    if (registerRequested != null) {
+      return registerRequested(registerPost);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_RegisterRequested value) registerRequested,
+  }) {
+    return registerRequested(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_RegisterRequested value)? registerRequested,
+  }) {
+    return registerRequested?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_RegisterRequested value)? registerRequested,
+    required TResult orElse(),
+  }) {
+    if (registerRequested != null) {
+      return registerRequested(this);
+    }
+    return orElse();
+  }
 }
 
-abstract class _RegisterState implements RegisterState {
-  const factory _RegisterState(
-      {final UIStatus status,
-      final RegisterNotification? notification,
-      final RegisterResponse registerResponse,
-      final bool isBusy}) = _$RegisterStateImpl;
+abstract class _RegisterRequested implements RegisterEvent {
+  const factory _RegisterRequested(final RegisterPost registerPost) =
+      _$RegisterRequestedImpl;
 
-  @override
-  UIStatus get status;
-  @override
-  RegisterNotification? get notification;
-  @override
-  RegisterResponse get registerResponse;
-  @override
-  bool get isBusy;
-  @override
+  RegisterPost get registerPost;
   @JsonKey(ignore: true)
-  _$$RegisterStateImplCopyWith<_$RegisterStateImpl> get copyWith =>
+  _$$RegisterRequestedImplCopyWith<_$RegisterRequestedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -584,309 +666,227 @@ abstract class _NotificationNotifyFailed implements RegisterNotification {
 }
 
 /// @nodoc
-mixin _$RegisterEvent {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loaded,
-    required TResult Function(RegisterPost registerPost) registerRequested,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loaded,
-    TResult? Function(RegisterPost registerPost)? registerRequested,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loaded,
-    TResult Function(RegisterPost registerPost)? registerRequested,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_RegisterRequested value) registerRequested,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_RegisterRequested value)? registerRequested,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_RegisterRequested value)? registerRequested,
-    required TResult orElse(),
-  }) =>
+mixin _$RegisterState {
+  UIStatus get status => throw _privateConstructorUsedError;
+  RegisterNotification? get notification => throw _privateConstructorUsedError;
+  RegisterResponse get registerResponse => throw _privateConstructorUsedError;
+  bool get isBusy => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $RegisterStateCopyWith<RegisterState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $RegisterEventCopyWith<$Res> {
-  factory $RegisterEventCopyWith(
-          RegisterEvent value, $Res Function(RegisterEvent) then) =
-      _$RegisterEventCopyWithImpl<$Res, RegisterEvent>;
+abstract class $RegisterStateCopyWith<$Res> {
+  factory $RegisterStateCopyWith(
+          RegisterState value, $Res Function(RegisterState) then) =
+      _$RegisterStateCopyWithImpl<$Res, RegisterState>;
+  @useResult
+  $Res call(
+      {UIStatus status,
+      RegisterNotification? notification,
+      RegisterResponse registerResponse,
+      bool isBusy});
+
+  $UIStatusCopyWith<$Res> get status;
+  $RegisterNotificationCopyWith<$Res>? get notification;
+  $RegisterResponseCopyWith<$Res> get registerResponse;
 }
 
 /// @nodoc
-class _$RegisterEventCopyWithImpl<$Res, $Val extends RegisterEvent>
-    implements $RegisterEventCopyWith<$Res> {
-  _$RegisterEventCopyWithImpl(this._value, this._then);
+class _$RegisterStateCopyWithImpl<$Res, $Val extends RegisterState>
+    implements $RegisterStateCopyWith<$Res> {
+  _$RegisterStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$LoadedImplCopyWith<$Res> {
-  factory _$$LoadedImplCopyWith(
-          _$LoadedImpl value, $Res Function(_$LoadedImpl) then) =
-      __$$LoadedImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$RegisterEventCopyWithImpl<$Res, _$LoadedImpl>
-    implements _$$LoadedImplCopyWith<$Res> {
-  __$$LoadedImplCopyWithImpl(
-      _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$LoadedImpl implements _Loaded {
-  const _$LoadedImpl();
-
-  @override
-  String toString() {
-    return 'RegisterEvent.loaded()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$LoadedImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loaded,
-    required TResult Function(RegisterPost registerPost) registerRequested,
-  }) {
-    return loaded();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loaded,
-    TResult? Function(RegisterPost registerPost)? registerRequested,
-  }) {
-    return loaded?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loaded,
-    TResult Function(RegisterPost registerPost)? registerRequested,
-    required TResult orElse(),
-  }) {
-    if (loaded != null) {
-      return loaded();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_RegisterRequested value) registerRequested,
-  }) {
-    return loaded(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_RegisterRequested value)? registerRequested,
-  }) {
-    return loaded?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_RegisterRequested value)? registerRequested,
-    required TResult orElse(),
-  }) {
-    if (loaded != null) {
-      return loaded(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Loaded implements RegisterEvent {
-  const factory _Loaded() = _$LoadedImpl;
-}
-
-/// @nodoc
-abstract class _$$RegisterRequestedImplCopyWith<$Res> {
-  factory _$$RegisterRequestedImplCopyWith(_$RegisterRequestedImpl value,
-          $Res Function(_$RegisterRequestedImpl) then) =
-      __$$RegisterRequestedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({RegisterPost registerPost});
-
-  $RegisterPostCopyWith<$Res> get registerPost;
-}
-
-/// @nodoc
-class __$$RegisterRequestedImplCopyWithImpl<$Res>
-    extends _$RegisterEventCopyWithImpl<$Res, _$RegisterRequestedImpl>
-    implements _$$RegisterRequestedImplCopyWith<$Res> {
-  __$$RegisterRequestedImplCopyWithImpl(_$RegisterRequestedImpl _value,
-      $Res Function(_$RegisterRequestedImpl) _then)
-      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? registerPost = null,
+    Object? status = null,
+    Object? notification = freezed,
+    Object? registerResponse = null,
+    Object? isBusy = null,
   }) {
-    return _then(_$RegisterRequestedImpl(
-      null == registerPost
-          ? _value.registerPost
-          : registerPost // ignore: cast_nullable_to_non_nullable
-              as RegisterPost,
-    ));
+    return _then(_value.copyWith(
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as UIStatus,
+      notification: freezed == notification
+          ? _value.notification
+          : notification // ignore: cast_nullable_to_non_nullable
+              as RegisterNotification?,
+      registerResponse: null == registerResponse
+          ? _value.registerResponse
+          : registerResponse // ignore: cast_nullable_to_non_nullable
+              as RegisterResponse,
+      isBusy: null == isBusy
+          ? _value.isBusy
+          : isBusy // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $RegisterPostCopyWith<$Res> get registerPost {
-    return $RegisterPostCopyWith<$Res>(_value.registerPost, (value) {
-      return _then(_value.copyWith(registerPost: value));
+  $UIStatusCopyWith<$Res> get status {
+    return $UIStatusCopyWith<$Res>(_value.status, (value) {
+      return _then(_value.copyWith(status: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RegisterNotificationCopyWith<$Res>? get notification {
+    if (_value.notification == null) {
+      return null;
+    }
+
+    return $RegisterNotificationCopyWith<$Res>(_value.notification!, (value) {
+      return _then(_value.copyWith(notification: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RegisterResponseCopyWith<$Res> get registerResponse {
+    return $RegisterResponseCopyWith<$Res>(_value.registerResponse, (value) {
+      return _then(_value.copyWith(registerResponse: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-
-class _$RegisterRequestedImpl implements _RegisterRequested {
-  const _$RegisterRequestedImpl(this.registerPost);
+abstract class _$$RegisterStateImplCopyWith<$Res>
+    implements $RegisterStateCopyWith<$Res> {
+  factory _$$RegisterStateImplCopyWith(
+          _$RegisterStateImpl value, $Res Function(_$RegisterStateImpl) then) =
+      __$$RegisterStateImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {UIStatus status,
+      RegisterNotification? notification,
+      RegisterResponse registerResponse,
+      bool isBusy});
 
   @override
-  final RegisterPost registerPost;
+  $UIStatusCopyWith<$Res> get status;
+  @override
+  $RegisterNotificationCopyWith<$Res>? get notification;
+  @override
+  $RegisterResponseCopyWith<$Res> get registerResponse;
+}
+
+/// @nodoc
+class __$$RegisterStateImplCopyWithImpl<$Res>
+    extends _$RegisterStateCopyWithImpl<$Res, _$RegisterStateImpl>
+    implements _$$RegisterStateImplCopyWith<$Res> {
+  __$$RegisterStateImplCopyWithImpl(
+      _$RegisterStateImpl _value, $Res Function(_$RegisterStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = null,
+    Object? notification = freezed,
+    Object? registerResponse = null,
+    Object? isBusy = null,
+  }) {
+    return _then(_$RegisterStateImpl(
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as UIStatus,
+      notification: freezed == notification
+          ? _value.notification
+          : notification // ignore: cast_nullable_to_non_nullable
+              as RegisterNotification?,
+      registerResponse: null == registerResponse
+          ? _value.registerResponse
+          : registerResponse // ignore: cast_nullable_to_non_nullable
+              as RegisterResponse,
+      isBusy: null == isBusy
+          ? _value.isBusy
+          : isBusy // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RegisterStateImpl implements _RegisterState {
+  const _$RegisterStateImpl(
+      {this.status = const UIInitial(),
+      this.notification,
+      this.registerResponse = const RegisterResponse(otp: ''),
+      this.isBusy = false});
+
+  @override
+  @JsonKey()
+  final UIStatus status;
+  @override
+  final RegisterNotification? notification;
+  @override
+  @JsonKey()
+  final RegisterResponse registerResponse;
+  @override
+  @JsonKey()
+  final bool isBusy;
 
   @override
   String toString() {
-    return 'RegisterEvent.registerRequested(registerPost: $registerPost)';
+    return 'RegisterState(status: $status, notification: $notification, registerResponse: $registerResponse, isBusy: $isBusy)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$RegisterRequestedImpl &&
-            (identical(other.registerPost, registerPost) ||
-                other.registerPost == registerPost));
+            other is _$RegisterStateImpl &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.notification, notification) ||
+                other.notification == notification) &&
+            (identical(other.registerResponse, registerResponse) ||
+                other.registerResponse == registerResponse) &&
+            (identical(other.isBusy, isBusy) || other.isBusy == isBusy));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, registerPost);
+  int get hashCode =>
+      Object.hash(runtimeType, status, notification, registerResponse, isBusy);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$RegisterRequestedImplCopyWith<_$RegisterRequestedImpl> get copyWith =>
-      __$$RegisterRequestedImplCopyWithImpl<_$RegisterRequestedImpl>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() loaded,
-    required TResult Function(RegisterPost registerPost) registerRequested,
-  }) {
-    return registerRequested(registerPost);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? loaded,
-    TResult? Function(RegisterPost registerPost)? registerRequested,
-  }) {
-    return registerRequested?.call(registerPost);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? loaded,
-    TResult Function(RegisterPost registerPost)? registerRequested,
-    required TResult orElse(),
-  }) {
-    if (registerRequested != null) {
-      return registerRequested(registerPost);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_RegisterRequested value) registerRequested,
-  }) {
-    return registerRequested(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_RegisterRequested value)? registerRequested,
-  }) {
-    return registerRequested?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_RegisterRequested value)? registerRequested,
-    required TResult orElse(),
-  }) {
-    if (registerRequested != null) {
-      return registerRequested(this);
-    }
-    return orElse();
-  }
+  _$$RegisterStateImplCopyWith<_$RegisterStateImpl> get copyWith =>
+      __$$RegisterStateImplCopyWithImpl<_$RegisterStateImpl>(this, _$identity);
 }
 
-abstract class _RegisterRequested implements RegisterEvent {
-  const factory _RegisterRequested(final RegisterPost registerPost) =
-      _$RegisterRequestedImpl;
+abstract class _RegisterState implements RegisterState {
+  const factory _RegisterState(
+      {final UIStatus status,
+      final RegisterNotification? notification,
+      final RegisterResponse registerResponse,
+      final bool isBusy}) = _$RegisterStateImpl;
 
-  RegisterPost get registerPost;
+  @override
+  UIStatus get status;
+  @override
+  RegisterNotification? get notification;
+  @override
+  RegisterResponse get registerResponse;
+  @override
+  bool get isBusy;
+  @override
   @JsonKey(ignore: true)
-  _$$RegisterRequestedImplCopyWith<_$RegisterRequestedImpl> get copyWith =>
+  _$$RegisterStateImplCopyWith<_$RegisterStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

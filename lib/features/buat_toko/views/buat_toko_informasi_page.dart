@@ -15,10 +15,10 @@ class BuatTokoInformasiPage extends StatefulWidget {
 
 class _BuatTokoPage extends State<BuatTokoInformasiPage> {
   bool isMandatoryFieldCompleted = false;
-  String? inputNama;
-  String? inputNoTelp;
-  String? inputAlamatToko;
-  String? inputDeskripsi;
+  String inputNama = '';
+  String inputNoTelp = '';
+  String inputAlamatToko = '';
+  String inputDeskripsi = '';
 
   void _updateInputValueCallback(String type, String value) {
     setState(() {
@@ -32,10 +32,10 @@ class _BuatTokoPage extends State<BuatTokoInformasiPage> {
         case 'DESKRIPSI_TOKO':
           inputDeskripsi = value;
       }
-      if (inputNama!.isNotEmpty &&
-          inputNoTelp!.isNotEmpty &&
-          inputAlamatToko!.isNotEmpty &&
-          inputDeskripsi!.isNotEmpty) {
+      if (inputNama.isNotEmpty &&
+          inputNoTelp.isNotEmpty &&
+          inputAlamatToko.isNotEmpty &&
+          inputDeskripsi.isNotEmpty) {
         isMandatoryFieldCompleted = true;
       } else {
         isMandatoryFieldCompleted = false;
@@ -101,7 +101,9 @@ class _BuatTokoPage extends State<BuatTokoInformasiPage> {
                       borderRadius: BorderRadius.circular(10)),
                 ),
                 onPressed: () {
-                  widget.changeCreateStoreStep(2);
+                  if (isMandatoryFieldCompleted) {
+                    widget.changeCreateStoreStep(2);
+                  }
                 },
                 child: Text(
                   'Berikutnya',

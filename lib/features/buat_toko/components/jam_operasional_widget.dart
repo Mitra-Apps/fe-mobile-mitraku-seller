@@ -6,18 +6,33 @@ import 'package:mitraku_seller/core/themes/app_themes.dart';
 
 class BuatTokoJamWidget extends StatefulWidget {
   const BuatTokoJamWidget({
-    required this.dayTitle,
+    required this.dayIndex,
+    required this.isOpen24Hours,
+    required this.isClosedDay,
+    required this.openTime,
+    required this.closedTime,
+    required this.updateOpen24HoursCallback,
+    required this.updateClosedDayCallback,
+    required this.updateTimeOpenCallback,
+    required this.updateTimeClosedCallback,
     super.key,
   });
-  final String dayTitle;
+  final int dayIndex;
+  final bool isOpen24Hours;
+  final bool isClosedDay;
+  final TimeOfDay? openTime;
+  final TimeOfDay? closedTime;
+  final Function(int, bool) updateOpen24HoursCallback;
+  final Function(int, bool) updateClosedDayCallback;
+  final Function(int, TimeOfDay) updateTimeOpenCallback;
+  final Function(int, TimeOfDay) updateTimeClosedCallback;
 
   @override
   State<BuatTokoJamWidget> createState() => _BuatTokoJamWidgetState();
 }
 
 class _BuatTokoJamWidgetState extends State<BuatTokoJamWidget> {
-  bool is24JamChecked = false;
-  bool isStoreClosed = false;
+  late final String dayTitle;
   TimeOfDay selectedOpenTime = TimeOfDay.now();
   TimeOfDay selectedClosedTime = TimeOfDay.now();
 
@@ -69,6 +84,7 @@ class _BuatTokoJamWidgetState extends State<BuatTokoJamWidget> {
     if (picked != null && picked != selectedOpenTime) {
       setState(() {
         selectedOpenTime = picked;
+        widget.updateTimeOpenCallback(widget.dayIndex, picked);
       });
     }
   }
@@ -88,7 +104,35 @@ class _BuatTokoJamWidgetState extends State<BuatTokoJamWidget> {
     if (picked != null && picked != selectedClosedTime) {
       setState(() {
         selectedClosedTime = picked;
+        widget.updateTimeClosedCallback(widget.dayIndex, picked);
       });
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    switch (widget.dayIndex) {
+      case 0:
+        dayTitle = 'Senin';
+      case 1:
+        dayTitle = 'Selasa';
+      case 2:
+        dayTitle = 'Rabu';
+      case 3:
+        dayTitle = 'Kamis';
+      case 4:
+        dayTitle = 'Jumat';
+      case 5:
+        dayTitle = 'Sabtu';
+      case 6:
+        dayTitle = 'Minggu';
+    }
+    if (widget.openTime != null) {
+      selectedOpenTime = widget.openTime!;
+    }
+    if (widget.closedTime != null) {
+      selectedOpenTime = widget.closedTime!;
     }
   }
 
@@ -104,32 +148,31 @@ class _BuatTokoJamWidgetState extends State<BuatTokoJamWidget> {
             children: [
               Expanded(
                 child: Text(
-                  widget.dayTitle,
+                  dayTitle,
                   style: Theme.of(context)
                       .textTheme
                       .bodyLarge!
                       .copyWith(fontWeight: FontWeight.bold),
                 ),
               ),
-              if (isStoreClosed)
+              if (widget.isClosedDay)
                 Container()
               else
                 InkWell(
                   onTap: () {
-                    setState(() {
-                      is24JamChecked = !is24JamChecked;
-                    });
+                    widget.updateOpen24HoursCallback(
+                        widget.dayIndex, !widget.isOpen24Hours);
                   },
                   child: Container(
                     width: 20,
                     height: 20,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: is24JamChecked
+                      color: widget.isOpen24Hours
                           ? AppColors.mainColor
                           : AppColors.disabledLightColor,
                     ),
-                    child: is24JamChecked
+                    child: widget.isOpen24Hours
                         ? Icon(
                             Icons.check,
                             color: AppColors.mainWhiteColor,
@@ -139,7 +182,7 @@ class _BuatTokoJamWidgetState extends State<BuatTokoJamWidget> {
                   ),
                 ),
               AppSpacing.horizontalSpacing10,
-              if (isStoreClosed)
+              if (widget.isClosedDay)
                 Container()
               else
                 Text(
@@ -152,11 +195,10 @@ class _BuatTokoJamWidgetState extends State<BuatTokoJamWidget> {
               AppSpacing.horizontalSpacing10,
               Container(width: 1, height: 20, color: AppColors.disabledColor),
               Switch(
-                value: isStoreClosed,
+                value: widget.isClosedDay,
                 onChanged: (value) {
-                  setState(() {
-                    isStoreClosed = value;
-                  });
+                  widget.updateClosedDayCallback(
+                      widget.dayIndex, !widget.isClosedDay);
                 },
                 activeTrackColor: AppColors.disabledLightColor,
                 inactiveTrackColor: AppColors.disabledLightColor,
@@ -176,9 +218,9 @@ class _BuatTokoJamWidgetState extends State<BuatTokoJamWidget> {
         Padding(
           padding: const EdgeInsets.symmetric(
               horizontal: AppDimens.basePaddingDouble),
-          child: isStoreClosed
+          child: widget.isClosedDay
               ? open24HoursOrClosedWidgets(isOpen24Hours: false)
-              : is24JamChecked
+              : widget.isOpen24Hours
                   ? open24HoursOrClosedWidgets(isOpen24Hours: true)
                   : Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -212,7 +254,9 @@ class _BuatTokoJamWidgetState extends State<BuatTokoJamWidget> {
                                     padding: const EdgeInsets.all(
                                         AppDimens.basePadding),
                                     child: Text(
-                                      _formatTimeOfDay(selectedOpenTime),
+                                      widget.openTime == null
+                                          ? ''
+                                          : _formatTimeOfDay(selectedOpenTime),
                                       style: Theme.of(context)
                                           .textTheme
                                           .bodyMedium!
@@ -256,7 +300,10 @@ class _BuatTokoJamWidgetState extends State<BuatTokoJamWidget> {
                                     padding: const EdgeInsets.all(
                                         AppDimens.basePadding),
                                     child: Text(
-                                      _formatTimeOfDay(selectedClosedTime),
+                                      widget.closedTime == null
+                                          ? ''
+                                          : _formatTimeOfDay(
+                                              selectedClosedTime),
                                       style: Theme.of(context)
                                           .textTheme
                                           .bodyMedium!

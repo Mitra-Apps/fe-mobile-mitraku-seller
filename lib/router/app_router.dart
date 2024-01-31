@@ -3,6 +3,7 @@ import 'package:mitraku_seller/features/demo/view/assets_page.dart';
 import 'package:mitraku_seller/features/demo/view/images_from_db_page.dart';
 import 'package:mitraku_seller/features/dog_image_random/view/dog_image_random_page.dart';
 import 'package:mitraku_seller/features/home/home_page.dart';
+import 'package:mitraku_seller/features/login/view/login_page.dart';
 import 'package:mitraku_seller/features/login/login_page.dart';
 import 'package:mitraku_seller/features/otp/view/otp_page.dart';
 import 'package:mitraku_seller/features/register/view/register_page.dart';

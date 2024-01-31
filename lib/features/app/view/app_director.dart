@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mitraku_seller/features/app/bloc/app_bloc.dart';
 import 'package:mitraku_seller/features/home/home_page.dart';
-import 'package:mitraku_seller/features/login/login_page.dart';
+import 'package:mitraku_seller/features/login/view/login_page.dart';
 
 class AppDirector extends StatelessWidget {
   const AppDirector({super.key});

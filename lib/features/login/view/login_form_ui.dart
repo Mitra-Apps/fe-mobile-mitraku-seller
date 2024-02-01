@@ -25,6 +25,14 @@ class _LoginFormUIState extends State<LoginFormUI> {
       const Duration(seconds: 3),
           () => setState(() => _isLoading = false),
     );
+
+    context
+        .read<LoginBloc>()
+        .add(LoginEvent.loginRequested(
+      LoginPost(
+          email: strMerchantEmail!,
+          password: strMerchantPassword!),
+    ));
   }
 
   @override

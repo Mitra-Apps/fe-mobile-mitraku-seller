@@ -1,9 +1,10 @@
+import 'package:flutter/foundation.dart';
 import 'package:mitraku_seller/features/app/bloc/app_bloc.dart';
 import 'package:mitraku_seller/features/demo/bloc/demo_bloc.dart';
 import 'package:mitraku_seller/features/dog_image_random/bloc/dog_image_random_bloc.dart';
+import 'package:mitraku_seller/features/login/bloc/login_bloc.dart';
 import 'package:mitraku_seller/features/register/bloc/register_bloc.dart';
 import 'package:mitraku_seller/injector/injector.dart';
-import 'package:flutter/foundation.dart';
 
 class BlocModule {
   BlocModule._();
@@ -33,9 +34,10 @@ class BlocModule {
       )
       ..registerFactory<RegisterBloc>(
         () => RegisterBloc(
-          registerRepository: injector(),
-          logService: injector()
-        ),
+            registerRepository: injector(), logService: injector()),
+      )
+      ..registerFactory<LoginBloc>(
+        () => LoginBloc(loginRepository: injector(), logService: injector()),
       );
   }
 }

@@ -23,7 +23,7 @@ class _RegisterFormState extends State<RegisterForm> {
     Widget toast = Container(
       padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(25.0),
+        borderRadius: BorderRadius.circular(10.0),
         color: CustomColors.successColor,
       ),
       child: Row(
@@ -33,7 +33,7 @@ class _RegisterFormState extends State<RegisterForm> {
           const SizedBox(
             width: 12.0,
           ),
-          Text(message, style: const TextStyle(fontSize: 12,
+          Text(message, style: const TextStyle(fontSize: 8,
               fontWeight: FontWeight.normal,
               color: CustomColors.whiteColor),),
         ],
@@ -52,7 +52,7 @@ class _RegisterFormState extends State<RegisterForm> {
     Widget toast = Container(
       padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(25.0),
+        borderRadius: BorderRadius.circular(10.0),
         color: CustomColors.dangerColor,
       ),
       child: Row(
@@ -62,7 +62,7 @@ class _RegisterFormState extends State<RegisterForm> {
           const SizedBox(
             width: 12.0,
           ),
-          Text(message, style: const TextStyle(fontSize: 12,
+          Text(message, style: const TextStyle(fontSize: 8,
               fontWeight: FontWeight.normal,
               color: CustomColors.whiteColor),),
         ],

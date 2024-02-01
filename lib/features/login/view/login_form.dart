@@ -8,7 +8,6 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
-
   late FToast fToast;
 
   @override
@@ -23,7 +22,7 @@ class _LoginFormState extends State<LoginForm> {
     Widget toast = Container(
       padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(25.0),
+        borderRadius: BorderRadius.circular(10.0),
         color: CustomColors.successColor,
       ),
       child: Row(
@@ -33,13 +32,16 @@ class _LoginFormState extends State<LoginForm> {
           const SizedBox(
             width: 12.0,
           ),
-          Text(message, style: const TextStyle(fontSize: 12,
-              fontWeight: FontWeight.normal,
-              color: CustomColors.whiteColor),),
+          Text(
+            message,
+            style: const TextStyle(
+                fontSize: 8,
+                fontWeight: FontWeight.normal,
+                color: CustomColors.whiteColor),
+          ),
         ],
       ),
     );
-
 
     fToast.showToast(
       child: toast,
@@ -52,7 +54,7 @@ class _LoginFormState extends State<LoginForm> {
     Widget toast = Container(
       padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(25.0),
+        borderRadius: BorderRadius.circular(10.0),
         color: CustomColors.dangerColor,
       ),
       child: Row(
@@ -62,13 +64,16 @@ class _LoginFormState extends State<LoginForm> {
           const SizedBox(
             width: 12.0,
           ),
-          Text(message, style: const TextStyle(fontSize: 12,
-              fontWeight: FontWeight.normal,
-              color: CustomColors.whiteColor),),
+          Text(
+            message,
+            style: const TextStyle(
+                fontSize: 8,
+                fontWeight: FontWeight.normal,
+                color: CustomColors.whiteColor),
+          ),
         ],
       ),
     );
-
 
     fToast.showToast(
       child: toast,
@@ -80,7 +85,42 @@ class _LoginFormState extends State<LoginForm> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: LoginFormUI(),
+      child: BlocConsumer<LoginBloc, LoginState>(
+          listenWhen: (prev, next) => prev.notification != next.notification,
+          listener: (context, state) {
+            state.notification?.when(
+              notifySuccess: (message) {
+                _showToastSuccess(message);
+              },
+              notifyFailed: (message) {
+                _showToastFailed(message);
+              },
+            );
+          },
+          builder: (context, state) {
+            return Stack(
+              alignment: Alignment.center,
+              children: [
+                state.status.when(
+                  initial: () {
+                    return LoginFormUI();
+                  },
+                  loading: () {
+                    return Container();
+                  },
+                  loadFailed: (message) {
+                    return ErrorPage(
+                      content: message,
+                    );
+                  },
+                  loadSuccess: (message) {
+                    return DashboardPage();
+                  },
+                ),
+                if (state.isBusy) Container(),
+              ],
+            );
+          }),
     );
   }
 }

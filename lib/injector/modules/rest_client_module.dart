@@ -18,6 +18,11 @@ class RestClientModule {
         () => RegisterApiClient(
           injector(instanceName: DioModule.dioInstanceName),
         ),
+      )
+      ..registerFactory<StoreApiClient>(
+        () => StoreApiClient(
+          injector(instanceName: DioModule.dioInstanceName),
+        ),
       );
   }
 }

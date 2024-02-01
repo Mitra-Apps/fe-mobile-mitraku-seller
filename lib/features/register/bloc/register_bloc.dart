@@ -13,12 +13,12 @@ part 'register_event.dart';
 part 'register_bloc.freezed.dart';
 
 class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
-  RegisterBloc({
-    required RegisterRepository registerRepository,
-    required LogService logService
-  }) : super (
-    const RegisterState(),
-  ) {
+  RegisterBloc(
+      {required RegisterRepository registerRepository,
+      required LogService logService})
+      : super(
+          const RegisterState(),
+        ) {
     _repository = registerRepository;
     _log = logService;
     on<_Loaded>(_onLoaded);
@@ -30,19 +30,15 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
 
   FutureOr<void> _onLoaded(
     _Loaded event,
-    Emitter<RegisterState> emit
+    Emitter<RegisterState> emit,
   ) {
     try {
-      emit (
-        state.copyWith(
-          status: const UILoading()
-        ),
+      emit(
+        state.copyWith(status: const UILoading()),
       );
 
-      emit (
-        state.copyWith(
-          status: const UILoadSuccess()
-        ),
+      emit(
+        state.copyWith(status: const UILoadSuccess()),
       );
     } catch (e, s) {
       _log.e('Register failed', e, s);
@@ -55,9 +51,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   }
 
   Future<FutureOr<void>> _onRegister(
-    _RegisterRequested event,
-    Emitter<RegisterState> emit
-  ) async {
+      _RegisterRequested event, Emitter<RegisterState> emit) async {
     try {
       emit(
         state.copyWith(
@@ -66,7 +60,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
       );
 
       final RegisterResponse registerResponse =
-        await _repository.register(event.registerPost);
+          await _repository.register(event.registerPost);
 
       emit(
         state.copyWith(

@@ -34,7 +34,7 @@ class BlocModule {
       ..registerFactory<RegisterBloc>(
         () => RegisterBloc(
           registerRepository: injector(),
-          logService: injector()
+          logService: injector(),
         ),
       );
   }

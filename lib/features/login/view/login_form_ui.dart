@@ -19,7 +19,7 @@ class _LoginFormUIState extends State<LoginFormUI> {
   bool isShowPasswordError = false;
   var _isLoading = false;
 
-  void _onSubmit() {
+  Future<void> _onSubmit() async {
     setState(() => _isLoading = true);
     Future.delayed(
       const Duration(seconds: 3),
@@ -33,6 +33,11 @@ class _LoginFormUIState extends State<LoginFormUI> {
           email: strMerchantEmail!,
           password: strMerchantPassword!),
     ));
+
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('email', strMerchantEmail!);
+
+    _formKey.currentState!.reset();
   }
 
   @override
@@ -201,7 +206,8 @@ class _LoginFormUIState extends State<LoginFormUI> {
                                   isShowPasswordError ||
                                   _isLoading
                                   ? null
-                                  : _onSubmit,
+                                  : _onSubmit
+                              ,
                               style: ElevatedButton.styleFrom(padding: const
                               EdgeInsets.symmetric(
                                   vertical: 0, horizontal: 16),

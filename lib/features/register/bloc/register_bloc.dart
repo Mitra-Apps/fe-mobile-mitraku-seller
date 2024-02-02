@@ -68,6 +68,9 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
           isBusy: false,
           status: const UILoadSuccess(),
           registerResponse: registerResponse,
+          notification: _NotificationNotifySuccess(
+              message: 'Silahkan verifikasi email anda'),
+          registerSuccess: 'REGISTERSUCCESS'
         ),
       );
     } on DioException catch (e) {

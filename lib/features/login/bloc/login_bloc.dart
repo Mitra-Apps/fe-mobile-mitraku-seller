@@ -71,6 +71,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           ),
           status: const UILoadSuccess(),
           loginResponse: loginResponse,
+          loginSuccess: 'SUCCESSLOGIN',
         ),
       );
     } on DioException catch (e) {
@@ -82,6 +83,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
             notification: _NotificationNotifyFailed(
               message: errorResponse.message,
             ),
+            loginBadRequest: errorResponse.code_detail
           ),
         );
       }

@@ -87,7 +87,7 @@ class _LoginFormState extends State<LoginForm> {
     return Center(
       child: BlocConsumer<LoginBloc, LoginState>(
           listenWhen: (prev, next) => prev.notification != next.notification,
-          listener: (context, state) {
+          listener: (context, state) async {
             state.notification?.when(
               notifySuccess: (message) {
                 _showToastSuccess(message);
@@ -96,6 +96,13 @@ class _LoginFormState extends State<LoginForm> {
                 _showToastFailed(message);
               },
             );
+
+            if (state.loginBadRequest == 'AUTH_LOGIN_USER_UNVERIFIED') {
+              await context.push(AppRouter.otpPath);
+            }
+            if (state.loginSuccess == 'SUCCESSLOGIN') {
+              await context.push(AppRouter.homePath);
+            }
           },
           builder: (context, state) {
             return Stack(
@@ -114,7 +121,7 @@ class _LoginFormState extends State<LoginForm> {
                     );
                   },
                   loadSuccess: (message) {
-                    return DashboardPage();
+                    return Container();
                   },
                 ),
                 if (state.isBusy) Container(),

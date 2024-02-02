@@ -82,7 +82,7 @@ class _RegisterFormState extends State<RegisterForm> {
     return Center(
       child: BlocConsumer<RegisterBloc, RegisterState>(
         listenWhen: (prev, next) => prev.notification != next.notification,
-        listener: (context, state) {
+        listener: (context, state) async {
           state.notification?.when(
             notifySuccess: (message) {
               _showToastSuccess(message);
@@ -91,6 +91,10 @@ class _RegisterFormState extends State<RegisterForm> {
               _showToastFailed(message);
             },
           );
+
+          if (state.registerSuccess == 'REGISTERSUCCESS') {
+            await context.push(AppRouter.otpPath);
+          }
         },
         builder: (context, state) {
           return Stack(
@@ -109,7 +113,7 @@ class _RegisterFormState extends State<RegisterForm> {
                   );
                 },
                 loadSuccess: (message) {
-                  return OTPPage();
+                  return Container();
                 },
               ),
               if (state.isBusy) Container(),

@@ -5,6 +5,7 @@ import 'package:mitraku_seller/core/colors/colors.dart';
 import 'package:mitraku_seller/core/spacings/app_spacing.dart';
 import 'package:mitraku_seller/router/app_router.dart';
 import 'package:pinput/pinput.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'otp_form.dart';
 
@@ -18,16 +19,18 @@ class OTPPage extends StatefulWidget {
 class OTPPageState extends State<OTPPage> {
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: OTPForm(),
-            ),
-          ],
+    return const Scaffold(
+      body: Center(
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: OTPForm(),
+              ),
+            ],
+          ),
         ),
       ),
     );

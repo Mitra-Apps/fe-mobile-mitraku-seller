@@ -670,6 +670,8 @@ mixin _$LoginState {
   LoginNotification? get notification => throw _privateConstructorUsedError;
   LoginResponse get loginResponse => throw _privateConstructorUsedError;
   bool get isBusy => throw _privateConstructorUsedError;
+  String get loginBadRequest => throw _privateConstructorUsedError;
+  String get loginSuccess => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $LoginStateCopyWith<LoginState> get copyWith =>
@@ -686,7 +688,9 @@ abstract class $LoginStateCopyWith<$Res> {
       {UIStatus status,
       LoginNotification? notification,
       LoginResponse loginResponse,
-      bool isBusy});
+      bool isBusy,
+      String loginBadRequest,
+      String loginSuccess});
 
   $UIStatusCopyWith<$Res> get status;
   $LoginNotificationCopyWith<$Res>? get notification;
@@ -710,6 +714,8 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
     Object? notification = freezed,
     Object? loginResponse = null,
     Object? isBusy = null,
+    Object? loginBadRequest = null,
+    Object? loginSuccess = null,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -728,6 +734,14 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
           ? _value.isBusy
           : isBusy // ignore: cast_nullable_to_non_nullable
               as bool,
+      loginBadRequest: null == loginBadRequest
+          ? _value.loginBadRequest
+          : loginBadRequest // ignore: cast_nullable_to_non_nullable
+              as String,
+      loginSuccess: null == loginSuccess
+          ? _value.loginSuccess
+          : loginSuccess // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 
@@ -772,7 +786,9 @@ abstract class _$$LoginStateImplCopyWith<$Res>
       {UIStatus status,
       LoginNotification? notification,
       LoginResponse loginResponse,
-      bool isBusy});
+      bool isBusy,
+      String loginBadRequest,
+      String loginSuccess});
 
   @override
   $UIStatusCopyWith<$Res> get status;
@@ -797,6 +813,8 @@ class __$$LoginStateImplCopyWithImpl<$Res>
     Object? notification = freezed,
     Object? loginResponse = null,
     Object? isBusy = null,
+    Object? loginBadRequest = null,
+    Object? loginSuccess = null,
   }) {
     return _then(_$LoginStateImpl(
       status: null == status
@@ -815,6 +833,14 @@ class __$$LoginStateImplCopyWithImpl<$Res>
           ? _value.isBusy
           : isBusy // ignore: cast_nullable_to_non_nullable
               as bool,
+      loginBadRequest: null == loginBadRequest
+          ? _value.loginBadRequest
+          : loginBadRequest // ignore: cast_nullable_to_non_nullable
+              as String,
+      loginSuccess: null == loginSuccess
+          ? _value.loginSuccess
+          : loginSuccess // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -827,7 +853,9 @@ class _$LoginStateImpl implements _LoginState {
       this.notification,
       this.loginResponse = const LoginResponse(
           data: DataLoginResponse(access_token: '', refresh_token: '')),
-      this.isBusy = false});
+      this.isBusy = false,
+      this.loginBadRequest = 'AUTH_LOGIN_NOT_FOUND',
+      this.loginSuccess = ''});
 
   @override
   @JsonKey()
@@ -840,10 +868,16 @@ class _$LoginStateImpl implements _LoginState {
   @override
   @JsonKey()
   final bool isBusy;
+  @override
+  @JsonKey()
+  final String loginBadRequest;
+  @override
+  @JsonKey()
+  final String loginSuccess;
 
   @override
   String toString() {
-    return 'LoginState(status: $status, notification: $notification, loginResponse: $loginResponse, isBusy: $isBusy)';
+    return 'LoginState(status: $status, notification: $notification, loginResponse: $loginResponse, isBusy: $isBusy, loginBadRequest: $loginBadRequest, loginSuccess: $loginSuccess)';
   }
 
   @override
@@ -856,12 +890,16 @@ class _$LoginStateImpl implements _LoginState {
                 other.notification == notification) &&
             (identical(other.loginResponse, loginResponse) ||
                 other.loginResponse == loginResponse) &&
-            (identical(other.isBusy, isBusy) || other.isBusy == isBusy));
+            (identical(other.isBusy, isBusy) || other.isBusy == isBusy) &&
+            (identical(other.loginBadRequest, loginBadRequest) ||
+                other.loginBadRequest == loginBadRequest) &&
+            (identical(other.loginSuccess, loginSuccess) ||
+                other.loginSuccess == loginSuccess));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, status, notification, loginResponse, isBusy);
+  int get hashCode => Object.hash(runtimeType, status, notification,
+      loginResponse, isBusy, loginBadRequest, loginSuccess);
 
   @JsonKey(ignore: true)
   @override
@@ -875,7 +913,9 @@ abstract class _LoginState implements LoginState {
       {final UIStatus status,
       final LoginNotification? notification,
       final LoginResponse loginResponse,
-      final bool isBusy}) = _$LoginStateImpl;
+      final bool isBusy,
+      final String loginBadRequest,
+      final String loginSuccess}) = _$LoginStateImpl;
 
   @override
   UIStatus get status;
@@ -885,6 +925,10 @@ abstract class _LoginState implements LoginState {
   LoginResponse get loginResponse;
   @override
   bool get isBusy;
+  @override
+  String get loginBadRequest;
+  @override
+  String get loginSuccess;
   @override
   @JsonKey(ignore: true)
   _$$LoginStateImplCopyWith<_$LoginStateImpl> get copyWith =>

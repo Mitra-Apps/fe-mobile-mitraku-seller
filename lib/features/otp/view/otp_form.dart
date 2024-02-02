@@ -8,7 +8,6 @@ class OTPForm extends StatefulWidget {
 }
 
 class OTPFormState extends State<OTPForm> {
-
   final _formKey = GlobalKey<FormState>();
 
   String? strOTP;
@@ -17,12 +16,15 @@ class OTPFormState extends State<OTPForm> {
   bool isShowOTPError = false;
   var _isLoading = false;
 
-  void _onSubmit() {
+  Future<void> _onSubmit() async {
     setState(() => _isLoading = true);
     Future.delayed(
       const Duration(seconds: 3),
           () => setState(() => _isLoading = false),
     );
+
+    final prefs = await SharedPreferences.getInstance();
+    late String email = prefs.getString('email') ?? '';
   }
 
   @override

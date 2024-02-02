@@ -19,7 +19,7 @@ class AppRouter {
   static const String appDirectorPath = '/';
 
   static const String homeNamed = 'home';
-  static const String homePath = '/';
+  static const String homePath = '/home';
 
   static const String settingNamed = 'setting';
   static const String settingPath = '/setting';

@@ -671,6 +671,8 @@ mixin _$RegisterState {
   RegisterNotification? get notification => throw _privateConstructorUsedError;
   RegisterResponse get registerResponse => throw _privateConstructorUsedError;
   bool get isBusy => throw _privateConstructorUsedError;
+  String get registerBadRequest => throw _privateConstructorUsedError;
+  String get registerSuccess => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $RegisterStateCopyWith<RegisterState> get copyWith =>
@@ -687,7 +689,9 @@ abstract class $RegisterStateCopyWith<$Res> {
       {UIStatus status,
       RegisterNotification? notification,
       RegisterResponse registerResponse,
-      bool isBusy});
+      bool isBusy,
+      String registerBadRequest,
+      String registerSuccess});
 
   $UIStatusCopyWith<$Res> get status;
   $RegisterNotificationCopyWith<$Res>? get notification;
@@ -711,6 +715,8 @@ class _$RegisterStateCopyWithImpl<$Res, $Val extends RegisterState>
     Object? notification = freezed,
     Object? registerResponse = null,
     Object? isBusy = null,
+    Object? registerBadRequest = null,
+    Object? registerSuccess = null,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -729,6 +735,14 @@ class _$RegisterStateCopyWithImpl<$Res, $Val extends RegisterState>
           ? _value.isBusy
           : isBusy // ignore: cast_nullable_to_non_nullable
               as bool,
+      registerBadRequest: null == registerBadRequest
+          ? _value.registerBadRequest
+          : registerBadRequest // ignore: cast_nullable_to_non_nullable
+              as String,
+      registerSuccess: null == registerSuccess
+          ? _value.registerSuccess
+          : registerSuccess // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 
@@ -773,7 +787,9 @@ abstract class _$$RegisterStateImplCopyWith<$Res>
       {UIStatus status,
       RegisterNotification? notification,
       RegisterResponse registerResponse,
-      bool isBusy});
+      bool isBusy,
+      String registerBadRequest,
+      String registerSuccess});
 
   @override
   $UIStatusCopyWith<$Res> get status;
@@ -798,6 +814,8 @@ class __$$RegisterStateImplCopyWithImpl<$Res>
     Object? notification = freezed,
     Object? registerResponse = null,
     Object? isBusy = null,
+    Object? registerBadRequest = null,
+    Object? registerSuccess = null,
   }) {
     return _then(_$RegisterStateImpl(
       status: null == status
@@ -816,6 +834,14 @@ class __$$RegisterStateImplCopyWithImpl<$Res>
           ? _value.isBusy
           : isBusy // ignore: cast_nullable_to_non_nullable
               as bool,
+      registerBadRequest: null == registerBadRequest
+          ? _value.registerBadRequest
+          : registerBadRequest // ignore: cast_nullable_to_non_nullable
+              as String,
+      registerSuccess: null == registerSuccess
+          ? _value.registerSuccess
+          : registerSuccess // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -826,8 +852,11 @@ class _$RegisterStateImpl implements _RegisterState {
   const _$RegisterStateImpl(
       {this.status = const UIInitial(),
       this.notification,
-      this.registerResponse = const RegisterResponse(otp: ''),
-      this.isBusy = false});
+      this.registerResponse =
+          const RegisterResponse(data: RegisterOTPResponse(otp: '')),
+      this.isBusy = false,
+      this.registerBadRequest = '',
+      this.registerSuccess = ''});
 
   @override
   @JsonKey()
@@ -840,10 +869,16 @@ class _$RegisterStateImpl implements _RegisterState {
   @override
   @JsonKey()
   final bool isBusy;
+  @override
+  @JsonKey()
+  final String registerBadRequest;
+  @override
+  @JsonKey()
+  final String registerSuccess;
 
   @override
   String toString() {
-    return 'RegisterState(status: $status, notification: $notification, registerResponse: $registerResponse, isBusy: $isBusy)';
+    return 'RegisterState(status: $status, notification: $notification, registerResponse: $registerResponse, isBusy: $isBusy, registerBadRequest: $registerBadRequest, registerSuccess: $registerSuccess)';
   }
 
   @override
@@ -856,12 +891,16 @@ class _$RegisterStateImpl implements _RegisterState {
                 other.notification == notification) &&
             (identical(other.registerResponse, registerResponse) ||
                 other.registerResponse == registerResponse) &&
-            (identical(other.isBusy, isBusy) || other.isBusy == isBusy));
+            (identical(other.isBusy, isBusy) || other.isBusy == isBusy) &&
+            (identical(other.registerBadRequest, registerBadRequest) ||
+                other.registerBadRequest == registerBadRequest) &&
+            (identical(other.registerSuccess, registerSuccess) ||
+                other.registerSuccess == registerSuccess));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, status, notification, registerResponse, isBusy);
+  int get hashCode => Object.hash(runtimeType, status, notification,
+      registerResponse, isBusy, registerBadRequest, registerSuccess);
 
   @JsonKey(ignore: true)
   @override
@@ -875,7 +914,9 @@ abstract class _RegisterState implements RegisterState {
       {final UIStatus status,
       final RegisterNotification? notification,
       final RegisterResponse registerResponse,
-      final bool isBusy}) = _$RegisterStateImpl;
+      final bool isBusy,
+      final String registerBadRequest,
+      final String registerSuccess}) = _$RegisterStateImpl;
 
   @override
   UIStatus get status;
@@ -885,6 +926,10 @@ abstract class _RegisterState implements RegisterState {
   RegisterResponse get registerResponse;
   @override
   bool get isBusy;
+  @override
+  String get registerBadRequest;
+  @override
+  String get registerSuccess;
   @override
   @JsonKey(ignore: true)
   _$$RegisterStateImplCopyWith<_$RegisterStateImpl> get copyWith =>

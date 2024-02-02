@@ -8,5 +8,7 @@ class LoginState with _$LoginState {
     @Default(LoginResponse(data: DataLoginResponse(access_token: '',
         refresh_token: ''))) LoginResponse loginResponse,
     @Default(false) bool isBusy,
+    @Default('AUTH_LOGIN_NOT_FOUND') String loginBadRequest,
+    @Default('') String loginSuccess,
   }) = _LoginState;
 }

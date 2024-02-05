@@ -10,10 +10,12 @@ import 'package:mitraku_seller/utils/newvalidator.dart';
 class BuatTokoFieldWidget extends StatefulWidget {
   const BuatTokoFieldWidget({
     required this.widgetType,
+    required this.value,
     required this.updateInputValueCallback,
     super.key,
   });
   final String widgetType;
+  final String value;
   final Function(String, String) updateInputValueCallback;
 
   @override
@@ -165,6 +167,7 @@ class _BuatTokoFieldWidgetState extends State<BuatTokoFieldWidget> {
                           onChanged: (value) => {
                             updateValidateInput(value),
                           },
+                          initialValue: widget.value,
                           keyboardType: fieldInputType,
                           textAlignVertical: TextAlignVertical.center,
                           textInputAction: TextInputAction.next,

@@ -48,7 +48,7 @@ class RegisterFormUIState extends State<RegisterFormUI> {
   void _onSubmit() {
     setState(() => _isLoading = true);
     Future.delayed(
-      const Duration(seconds: 20),
+      const Duration(seconds: 3),
           () => setState(() => _isLoading = false),
     );
 

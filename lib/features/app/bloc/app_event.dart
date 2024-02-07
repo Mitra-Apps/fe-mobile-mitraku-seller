@@ -9,8 +9,6 @@ class AppEvent with _$AppEvent {
   }) = _LocaleChanged;
 
   const factory AppEvent.disableFirstUse() = _DisableFirstUse;
-
   const factory AppEvent.enableFirstUse() = _EnableFirstUse;
-
   const factory AppEvent.darkModeChanged() = _DarkModeChanged;
 }

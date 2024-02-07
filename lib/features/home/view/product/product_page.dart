@@ -55,7 +55,7 @@ class _ProductPageState extends State<ProductPage> {
             fit: BoxFit.contain,
           ),
           Text(
-            'Anda belum memiliki kategori',
+            'Anda belum memiliki produk',
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
                   fontWeight: FontWeight.bold,
                   color: AppColors.disabledColor,

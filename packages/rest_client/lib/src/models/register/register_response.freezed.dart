@@ -20,7 +20,7 @@ RegisterResponse _$RegisterResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$RegisterResponse {
-  String get otp => throw _privateConstructorUsedError;
+  RegisterOTPResponse get data => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +34,9 @@ abstract class $RegisterResponseCopyWith<$Res> {
           RegisterResponse value, $Res Function(RegisterResponse) then) =
       _$RegisterResponseCopyWithImpl<$Res, RegisterResponse>;
   @useResult
-  $Res call({String otp});
+  $Res call({RegisterOTPResponse data});
+
+  $RegisterOTPResponseCopyWith<$Res> get data;
 }
 
 /// @nodoc
@@ -50,14 +52,22 @@ class _$RegisterResponseCopyWithImpl<$Res, $Val extends RegisterResponse>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? otp = null,
+    Object? data = null,
   }) {
     return _then(_value.copyWith(
-      otp: null == otp
-          ? _value.otp
-          : otp // ignore: cast_nullable_to_non_nullable
-              as String,
+      data: null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as RegisterOTPResponse,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RegisterOTPResponseCopyWith<$Res> get data {
+    return $RegisterOTPResponseCopyWith<$Res>(_value.data, (value) {
+      return _then(_value.copyWith(data: value) as $Val);
+    });
   }
 }
 
@@ -69,7 +79,10 @@ abstract class _$$RegisterResponseImplCopyWith<$Res>
       __$$RegisterResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String otp});
+  $Res call({RegisterOTPResponse data});
+
+  @override
+  $RegisterOTPResponseCopyWith<$Res> get data;
 }
 
 /// @nodoc
@@ -83,13 +96,13 @@ class __$$RegisterResponseImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? otp = null,
+    Object? data = null,
   }) {
     return _then(_$RegisterResponseImpl(
-      otp: null == otp
-          ? _value.otp
-          : otp // ignore: cast_nullable_to_non_nullable
-              as String,
+      data: null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as RegisterOTPResponse,
     ));
   }
 }
@@ -97,17 +110,17 @@ class __$$RegisterResponseImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$RegisterResponseImpl implements _RegisterResponse {
-  const _$RegisterResponseImpl({required this.otp});
+  const _$RegisterResponseImpl({required this.data});
 
   factory _$RegisterResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$RegisterResponseImplFromJson(json);
 
   @override
-  final String otp;
+  final RegisterOTPResponse data;
 
   @override
   String toString() {
-    return 'RegisterResponse(otp: $otp)';
+    return 'RegisterResponse(data: $data)';
   }
 
   @override
@@ -115,12 +128,12 @@ class _$RegisterResponseImpl implements _RegisterResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RegisterResponseImpl &&
-            (identical(other.otp, otp) || other.otp == otp));
+            (identical(other.data, data) || other.data == data));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, otp);
+  int get hashCode => Object.hash(runtimeType, data);
 
   @JsonKey(ignore: true)
   @override
@@ -138,14 +151,14 @@ class _$RegisterResponseImpl implements _RegisterResponse {
 }
 
 abstract class _RegisterResponse implements RegisterResponse {
-  const factory _RegisterResponse({required final String otp}) =
+  const factory _RegisterResponse({required final RegisterOTPResponse data}) =
       _$RegisterResponseImpl;
 
   factory _RegisterResponse.fromJson(Map<String, dynamic> json) =
       _$RegisterResponseImpl.fromJson;
 
   @override
-  String get otp;
+  RegisterOTPResponse get data;
   @override
   @JsonKey(ignore: true)
   _$$RegisterResponseImplCopyWith<_$RegisterResponseImpl> get copyWith =>

@@ -20,12 +20,14 @@ class StoreModel {
     required this.phone,
     required this.address,
     required this.description,
+    this.imagePath = '',
     this.scheduleModel,
   });
   final String name;
   final String phone;
   final String address;
   final String description;
+  final String imagePath;
   final StoreScheduleModel? scheduleModel;
 
   StoreModel copyWith({
@@ -33,6 +35,7 @@ class StoreModel {
     String? phone,
     String? address,
     String? description,
+    String? imagePath,
     StoreScheduleModel? scheduleModel,
   }) {
     return StoreModel(
@@ -40,6 +43,7 @@ class StoreModel {
       phone: phone ?? this.phone,
       address: address ?? this.address,
       description: description ?? this.description,
+      imagePath: imagePath ?? this.imagePath,
       scheduleModel: scheduleModel ?? this.scheduleModel,
     );
   }
@@ -102,12 +106,14 @@ class BuatTokoCubit extends Cubit<StoreModel> {
     required String phone,
     required String address,
     required String description,
+    String? imagePath,
   }) {
     emit(state.copyWith(
       name: name,
       phone: phone,
       address: address,
       description: description,
+      imagePath: imagePath,
     ));
   }
 

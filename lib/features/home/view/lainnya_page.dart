@@ -15,13 +15,15 @@ class LainnyaPage extends StatelessWidget {
       backgroundColor: AppColors.mainWhiteColor,
       key: const Key(WidgetKeys.dashboardScaffoldKey),
       appBar: AppBar(
-          title: Text(
-        'Lainnya',
-        style: Theme.of(context)
-            .textTheme
-            .titleLarge!
-            .copyWith(fontWeight: FontWeight.bold),
-      )),
+        title: Text(
+          'Lainnya',
+          style: Theme.of(context)
+              .textTheme
+              .titleLarge!
+              .copyWith(fontWeight: FontWeight.bold),
+        ),
+        automaticallyImplyLeading: false,
+      ),
       body: Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),

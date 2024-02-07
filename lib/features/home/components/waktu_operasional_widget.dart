@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mitraku_seller/core/dimens/app_dimens.dart';
-import 'package:mitraku_seller/core/spacings/app_spacing.dart';
-import 'package:mitraku_seller/features/home/components/waktu_24hours_widget.dart';
 import 'package:mitraku_seller/features/home/components/waktu_buka_tutup_widget.dart';
 
 class WaktuOperasionalWidget extends StatelessWidget {
@@ -38,30 +36,20 @@ class WaktuOperasionalWidget extends StatelessWidget {
             itemCount: 7,
             itemBuilder: (context, index) => isOpen24HoursWeekly[index]
                 ? WaktuBukaTutupWidget(
-                    nameOfDay: 'Senin',
+                    dayIndex: index,
                     is24HoursOpen: true,
                   )
                 : isClosedDayWeekly[index]
                     ? WaktuBukaTutupWidget(
-                        nameOfDay: 'Senin',
+                        dayIndex: index,
                         isClosedDay: true,
                       )
-                    : WaktuBukaTutupWidget(nameOfDay: 'Senin'),
+                    : WaktuBukaTutupWidget(
+                        dayIndex: index,
+                        openTime: timeOpenWeekly[index],
+                        closeTime: timeClosedWeekly[index],
+                      ),
           ),
-          // AppSpacing.verticalSpacing10,
-          // const WaktuBukaTutupWidget(nameOfDay: 'Senin', is24HoursOpen: true),
-          // AppSpacing.verticalSpacing10,
-          // const WaktuBukaTutupWidget(nameOfDay: 'Selasa', isClosedDay: true),
-          // AppSpacing.verticalSpacing10,
-          // const WaktuBukaTutupWidget(nameOfDay: 'Rabu'),
-          // AppSpacing.verticalSpacing10,
-          // const WaktuBukaTutupWidget(nameOfDay: 'Kamis'),
-          // AppSpacing.verticalSpacing10,
-          // const WaktuBukaTutupWidget(nameOfDay: 'Jumat'),
-          // AppSpacing.verticalSpacing10,
-          // const WaktuBukaTutupWidget(nameOfDay: 'Sabtu'),
-          // AppSpacing.verticalSpacing10,
-          // const WaktuBukaTutupWidget(nameOfDay: 'Minggu'),
         ],
       ),
     );

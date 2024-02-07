@@ -7,13 +7,13 @@ import 'package:mitraku_seller/core/themes/app_themes.dart';
 class WaktuBukaTutupWidget extends StatelessWidget {
   const WaktuBukaTutupWidget({
     super.key,
-    this.nameOfDay,
+    this.dayIndex,
     this.openTime,
     this.closeTime,
     this.is24HoursOpen = false,
     this.isClosedDay = false,
   });
-  final String? nameOfDay;
+  final int? dayIndex;
   final TimeOfDay? openTime;
   final TimeOfDay? closeTime;
   final bool is24HoursOpen;
@@ -28,6 +28,24 @@ class WaktuBukaTutupWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String nameOfDay = '';
+    switch (dayIndex) {
+      case 0:
+        nameOfDay = 'Senin';
+      case 1:
+        nameOfDay = 'Selasa';
+      case 2:
+        nameOfDay = 'Rabu';
+      case 3:
+        nameOfDay = 'Kamis';
+      case 4:
+        nameOfDay = 'Jumat';
+      case 5:
+        nameOfDay = 'Sabtu';
+      case 6:
+        nameOfDay = 'Minggu';
+    }
+
     if (is24HoursOpen || isClosedDay) {
       return Padding(
         padding: const EdgeInsets.symmetric(
@@ -38,7 +56,7 @@ class WaktuBukaTutupWidget extends StatelessWidget {
             SizedBox(
               width: 60,
               child: Text(
-                nameOfDay ?? 'Senin',
+                nameOfDay,
                 style: Theme.of(context)
                     .textTheme
                     .bodyLarge!
@@ -85,7 +103,7 @@ class WaktuBukaTutupWidget extends StatelessWidget {
             SizedBox(
               width: 60,
               child: Text(
-                nameOfDay ?? 'Senin',
+                nameOfDay,
                 style: Theme.of(context)
                     .textTheme
                     .bodyLarge!
@@ -106,6 +124,7 @@ class WaktuBukaTutupWidget extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: Card(
+                      margin: EdgeInsets.zero,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -113,9 +132,7 @@ class WaktuBukaTutupWidget extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(AppDimens.basePadding),
                         child: Text(
-                          openTime == null
-                              ? '00:00'
-                              : _formatTimeOfDay(openTime!),
+                          openTime == null ? '' : _formatTimeOfDay(openTime!),
                           style: Theme.of(context)
                               .textTheme
                               .bodyMedium!
@@ -143,6 +160,7 @@ class WaktuBukaTutupWidget extends StatelessWidget {
                   SizedBox(
                     width: double.infinity,
                     child: Card(
+                      margin: EdgeInsets.zero,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -150,9 +168,7 @@ class WaktuBukaTutupWidget extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(AppDimens.basePadding),
                         child: Text(
-                          closeTime == null
-                              ? '24:00'
-                              : _formatTimeOfDay(closeTime!),
+                          closeTime == null ? '' : _formatTimeOfDay(closeTime!),
                           style: Theme.of(context)
                               .textTheme
                               .bodyMedium!

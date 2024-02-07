@@ -160,8 +160,7 @@ class _BuatTokoPage extends State<BuatTokoJamPage> {
                 children: [
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      padding:
-                          const EdgeInsets.all(AppDimens.basePaddingDouble),
+                      padding: const EdgeInsets.all(AppDimens.basePaddingHalf),
                       elevation: 0,
                       backgroundColor: AppColors.mainWhiteColor,
                       shape: RoundedRectangleBorder(
@@ -181,8 +180,7 @@ class _BuatTokoPage extends State<BuatTokoJamPage> {
                   AppSpacing.horizontalSpacing20,
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      padding:
-                          const EdgeInsets.all(AppDimens.basePaddingDouble),
+                      padding: const EdgeInsets.all(AppDimens.basePaddingHalf),
                       backgroundColor: isMandatoryFieldCompleted
                           ? AppColors.mainColor
                           : AppColors.disabledLightColor,

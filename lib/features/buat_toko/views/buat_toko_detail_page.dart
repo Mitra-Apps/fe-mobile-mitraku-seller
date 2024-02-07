@@ -29,6 +29,7 @@ class _BuatTokoPage extends State<BuatTokoDetailPage> {
               AppSpacing.verticalSpacing20,
               const BuatTokoStepWidget(stepNumber: 3),
               ProfilTokoWidget(
+                imagePath: state.imagePath,
                 name: state.name,
                 phone: state.phone,
                 address: state.address,
@@ -44,7 +45,12 @@ class _BuatTokoPage extends State<BuatTokoDetailPage> {
                 color: AppColors.disabledColor,
                 thickness: 1,
               ),
-              const WaktuOperasionalWidget(),
+              WaktuOperasionalWidget(
+                isOpen24HoursWeekly: state.scheduleModel!.isOpen24HoursWeekly,
+                isClosedDayWeekly: state.scheduleModel!.isClosedDayWeekly,
+                timeOpenWeekly: state.scheduleModel!.timeOpenWeekly,
+                timeClosedWeekly: state.scheduleModel!.timeClosedWeekly,
+              ),
               Padding(
                 padding: const EdgeInsets.all(AppDimens.basePaddingDouble),
                 child: SizedBox(
@@ -55,7 +61,7 @@ class _BuatTokoPage extends State<BuatTokoDetailPage> {
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           padding:
-                              const EdgeInsets.all(AppDimens.basePaddingDouble),
+                              const EdgeInsets.all(AppDimens.basePaddingHalf),
                           elevation: 0,
                           backgroundColor: AppColors.mainWhiteColor,
                           shape: RoundedRectangleBorder(
@@ -77,7 +83,7 @@ class _BuatTokoPage extends State<BuatTokoDetailPage> {
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           padding:
-                              const EdgeInsets.all(AppDimens.basePaddingDouble),
+                              const EdgeInsets.all(AppDimens.basePaddingHalf),
                           backgroundColor: AppColors.mainColor,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10)),

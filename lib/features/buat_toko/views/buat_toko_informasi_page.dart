@@ -27,6 +27,7 @@ class _BuatTokoPage extends State<BuatTokoInformasiPage> {
     String inputNoTelp = currentState.phone;
     String inputAlamatToko = currentState.address;
     String inputDeskripsi = currentState.description;
+    String inputFoto = currentState.imagePath;
     switch (type) {
       case 'NAMA_TOKO':
         inputNama = value;
@@ -36,12 +37,15 @@ class _BuatTokoPage extends State<BuatTokoInformasiPage> {
         inputAlamatToko = value;
       case 'DESKRIPSI_TOKO':
         inputDeskripsi = value;
+      case 'FOTO':
+        inputFoto = value;
     }
     context.read<BuatTokoCubit>().updateStoreModel(
           name: inputNama,
           phone: inputNoTelp,
           address: inputAlamatToko,
           description: inputDeskripsi,
+          imagePath: inputFoto,
         );
     _checkMandatoryField();
   }
@@ -100,15 +104,16 @@ class _BuatTokoPage extends State<BuatTokoInformasiPage> {
                 value: state.description,
                 updateInputValueCallback: _updateInputValueCallback,
               ),
-              const BuatTokoUnggahFotoWidget(),
+              BuatTokoUnggahFotoWidget(
+                  existingImagePath: state.imagePath,
+                  updateInputValueCallback: _updateInputValueCallback),
               AppSpacing.verticalSpacing20,
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      padding:
-                          const EdgeInsets.all(AppDimens.basePaddingDouble),
+                      padding: const EdgeInsets.all(AppDimens.basePaddingHalf),
                       elevation: 0,
                       backgroundColor: AppColors.mainWhiteColor,
                       shape: RoundedRectangleBorder(
@@ -128,8 +133,7 @@ class _BuatTokoPage extends State<BuatTokoInformasiPage> {
                   AppSpacing.horizontalSpacing20,
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      padding:
-                          const EdgeInsets.all(AppDimens.basePaddingDouble),
+                      padding: const EdgeInsets.all(AppDimens.basePaddingHalf),
                       backgroundColor: isMandatoryFieldCompleted
                           ? AppColors.mainColor
                           : AppColors.disabledLightColor,

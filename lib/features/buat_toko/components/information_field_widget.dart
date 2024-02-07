@@ -159,7 +159,7 @@ class _BuatTokoFieldWidgetState extends State<BuatTokoFieldWidget> {
                     color: AppColors.disabledLightColor,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
-                        vertical: AppDimens.basePaddingDouble,
+                        vertical: AppDimens.basePaddingHalf,
                         horizontal: AppDimens.basePadding,
                       ),
                       child: TextFormField(

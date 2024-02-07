@@ -150,37 +150,37 @@ class _BuatTokoFieldWidgetState extends State<BuatTokoFieldWidget> {
               AppSpacing.horizontalSpacing10,
               Expanded(
                 child: SizedBox(
-                  height: 48,
                   width: double.infinity,
                   child: Card(
+                    margin: EdgeInsets.zero,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
                     color: AppColors.disabledLightColor,
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
+                        vertical: AppDimens.basePaddingDouble,
                         horizontal: AppDimens.basePadding,
                       ),
-                      child: Center(
-                        child: TextFormField(
-                          // validator: widget.validateEmail,
-                          onChanged: (value) => {
-                            updateValidateInput(value),
-                          },
-                          initialValue: widget.value,
-                          keyboardType: fieldInputType,
-                          textAlignVertical: TextAlignVertical.center,
-                          textInputAction: TextInputAction.next,
-                          inputFormatters: fieldInputformatter,
-                          style: Theme.of(context).textTheme.bodyMedium,
-                          decoration: InputDecoration(
-                            hintText: fieldHint,
-                            hintStyle: Theme.of(context)
-                                .textTheme
-                                .bodyMedium!
-                                .copyWith(color: AppColors.disabledColor),
-                            border: InputBorder.none,
-                          ),
+                      child: TextFormField(
+                        // validator: widget.validateEmail,
+                        onChanged: (value) => {
+                          updateValidateInput(value),
+                        },
+                        initialValue: widget.value,
+                        keyboardType: fieldInputType,
+                        textAlignVertical: TextAlignVertical.center,
+                        textInputAction: TextInputAction.next,
+                        inputFormatters: fieldInputformatter,
+                        style: Theme.of(context).textTheme.bodyMedium,
+                        decoration: InputDecoration(
+                          isCollapsed: true,
+                          hintText: fieldHint,
+                          hintStyle: Theme.of(context)
+                              .textTheme
+                              .bodyMedium!
+                              .copyWith(color: AppColors.disabledColor),
+                          border: InputBorder.none,
                         ),
                       ),
                     ),
@@ -194,7 +194,8 @@ class _BuatTokoFieldWidgetState extends State<BuatTokoFieldWidget> {
           visible: isShowFieldValidationError,
           child: Padding(
             padding: const EdgeInsets.symmetric(
-                horizontal: AppDimens.basePaddingDouble),
+              horizontal: AppDimens.basePaddingDouble,
+            ),
             child: Row(
               children: [
                 Text(

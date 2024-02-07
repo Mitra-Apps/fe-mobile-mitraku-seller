@@ -27,6 +27,22 @@ class StoreModel {
   final String address;
   final String description;
   final StoreScheduleModel? scheduleModel;
+
+  StoreModel copyWith({
+    String? name,
+    String? phone,
+    String? address,
+    String? description,
+    StoreScheduleModel? scheduleModel,
+  }) {
+    return StoreModel(
+      name: name ?? this.name,
+      phone: phone ?? this.phone,
+      address: address ?? this.address,
+      description: description ?? this.description,
+      scheduleModel: scheduleModel ?? this.scheduleModel,
+    );
+  }
 }
 
 // Define your cubit
@@ -39,37 +55,66 @@ class BuatTokoCubit extends Cubit<StoreModel> {
             address: '',
             description: '',
             scheduleModel: StoreScheduleModel(
-              isOpen24HoursWeekly: [],
-              isClosedDayWeekly: [],
-              timeOpenWeekly: [],
-              timeClosedWeekly: [],
+              // Weekly schedule start from monday to sunday
+              isOpen24HoursWeekly: [
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+              ],
+              isClosedDayWeekly: [
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+                false,
+              ],
+              timeOpenWeekly: [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+              ],
+              timeClosedWeekly: [
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+              ],
             ),
           ),
         );
 
-  // Update the state with new values
+  // Update the state with new values for basic properties
   void updateStoreModel({
     required String name,
     required String phone,
     required String address,
     required String description,
   }) {
-    emit(
-      StoreModel(
-        name: name,
-        phone: phone,
-        address: address,
-        description: description,
-      ),
-    );
+    emit(state.copyWith(
+      name: name,
+      phone: phone,
+      address: address,
+      description: description,
+    ));
   }
 
-  // Update the state with new values
+  // Update the state with new values for scheduleModel
   void updateStoreScheduleModel({
     required StoreScheduleModel scheduleModel,
   }) {
-    emit(
-      StoreModel(scheduleModel: scheduleModel),
-    );
+    emit(state.copyWith(scheduleModel: scheduleModel));
   }
 }

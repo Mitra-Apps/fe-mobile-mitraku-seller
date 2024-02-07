@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mitraku_seller/core/dimens/app_dimens.dart';
 import 'package:mitraku_seller/core/spacings/app_spacing.dart';
 import 'package:mitraku_seller/core/themes/app_themes.dart';
 import 'package:mitraku_seller/features/buat_toko/bloc/buat_toko_cubit.dart';
@@ -18,44 +19,45 @@ class BuatTokoInformasiPage extends StatefulWidget {
 class _BuatTokoPage extends State<BuatTokoInformasiPage> {
   late BuatTokoCubit buatTokoCubit;
   bool isMandatoryFieldCompleted = false;
-  String inputNama = '';
-  String inputNoTelp = '';
-  String inputAlamatToko = '';
-  String inputDeskripsi = '';
 
   void _updateInputValueCallback(String type, String value) {
-    setState(() {
-      switch (type) {
-        case 'NAMA_TOKO':
-          inputNama = value;
-        case 'NO_TELP':
-          inputNoTelp = value;
-        case 'ALAMAT_TOKO':
-          inputAlamatToko = value;
-        case 'DESKRIPSI_TOKO':
-          inputDeskripsi = value;
-      }
-      _checkMandatoryField();
-      if (isMandatoryFieldCompleted) {
-        context.read<BuatTokoCubit>().updateStoreModel(
-              name: inputNama,
-              phone: inputNoTelp,
-              address: inputAlamatToko,
-              description: inputDeskripsi,
-            );
-      }
-    });
+    // Access the initial state
+    final StoreModel currentState = buatTokoCubit.state;
+    String inputNama = currentState.name;
+    String inputNoTelp = currentState.phone;
+    String inputAlamatToko = currentState.address;
+    String inputDeskripsi = currentState.description;
+    switch (type) {
+      case 'NAMA_TOKO':
+        inputNama = value;
+      case 'NO_TELP':
+        inputNoTelp = value;
+      case 'ALAMAT_TOKO':
+        inputAlamatToko = value;
+      case 'DESKRIPSI_TOKO':
+        inputDeskripsi = value;
+    }
+    context.read<BuatTokoCubit>().updateStoreModel(
+          name: inputNama,
+          phone: inputNoTelp,
+          address: inputAlamatToko,
+          description: inputDeskripsi,
+        );
+    _checkMandatoryField();
   }
 
   void _checkMandatoryField() {
-    if (inputNama.isNotEmpty &&
-        inputNoTelp.isNotEmpty &&
-        inputAlamatToko.isNotEmpty &&
-        inputDeskripsi.isNotEmpty) {
-      isMandatoryFieldCompleted = true;
-    } else {
-      isMandatoryFieldCompleted = false;
-    }
+    setState(() {
+      final StoreModel currentState = buatTokoCubit.state;
+      if (currentState.name.isNotEmpty &&
+          currentState.phone.isNotEmpty &&
+          currentState.address.isNotEmpty &&
+          currentState.description.isNotEmpty) {
+        isMandatoryFieldCompleted = true;
+      } else {
+        isMandatoryFieldCompleted = false;
+      }
+    });
   }
 
   @override
@@ -64,11 +66,6 @@ class _BuatTokoPage extends State<BuatTokoInformasiPage> {
     // Access the UserCubit using context.read in initState
     buatTokoCubit = context.read<BuatTokoCubit>();
     // Access the initial state
-    final StoreModel initialState = buatTokoCubit.state;
-    inputNama = initialState.name;
-    inputNoTelp = initialState.phone;
-    inputAlamatToko = initialState.address;
-    inputDeskripsi = initialState.description;
     _checkMandatoryField();
   }
 
@@ -103,13 +100,15 @@ class _BuatTokoPage extends State<BuatTokoInformasiPage> {
                 value: state.description,
                 updateInputValueCallback: _updateInputValueCallback,
               ),
-              BuatTokoUnggahFotoWidget(),
+              const BuatTokoUnggahFotoWidget(),
               AppSpacing.verticalSpacing20,
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
+                      padding:
+                          const EdgeInsets.all(AppDimens.basePaddingDouble),
                       elevation: 0,
                       backgroundColor: AppColors.mainWhiteColor,
                       shape: RoundedRectangleBorder(
@@ -129,6 +128,8 @@ class _BuatTokoPage extends State<BuatTokoInformasiPage> {
                   AppSpacing.horizontalSpacing20,
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
+                      padding:
+                          const EdgeInsets.all(AppDimens.basePaddingDouble),
                       backgroundColor: isMandatoryFieldCompleted
                           ? AppColors.mainColor
                           : AppColors.disabledLightColor,

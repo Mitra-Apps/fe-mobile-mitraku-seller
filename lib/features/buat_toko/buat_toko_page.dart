@@ -41,57 +41,53 @@ class _BuatTokoPage extends State<BuatTokoPage> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => BuatTokoCubit(),
-      child: BlocBuilder<BuatTokoCubit, StoreModel>(
-        builder: (BuildContext context, StoreModel state) {
-          return Scaffold(
-            backgroundColor: AppColors.mainWhiteColor,
-            key: const Key(WidgetKeys.tokoAndaScaffoldKey),
-            appBar: AppBar(
-              title: Row(
-                children: [
-                  SizedBox(
-                    width: 24,
-                    height: 24,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        elevation: 0,
-                        padding: EdgeInsets.zero,
-                        backgroundColor: AppColors.mainWhiteColor,
-                      ),
-                      onPressed: () {
-                        widget.cancelCreateStoreCallback();
-                      },
-                      child: SvgPicture.asset(
-                        'assets/icons/icon_arrow_left.svg',
-                        color: AppColors.mainBlackColor,
-                      ),
-                    ),
+      child: Scaffold(
+        backgroundColor: AppColors.mainWhiteColor,
+        key: const Key(WidgetKeys.tokoAndaScaffoldKey),
+        appBar: AppBar(
+          title: Row(
+            children: [
+              SizedBox(
+                width: 24,
+                height: 24,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    elevation: 0,
+                    padding: EdgeInsets.zero,
+                    backgroundColor: AppColors.mainWhiteColor,
                   ),
-                  AppSpacing.horizontalSpacing10,
-                  Text(
-                    'Toko Anda',
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleLarge!
-                        .copyWith(fontWeight: FontWeight.bold),
+                  onPressed: () {
+                    widget.cancelCreateStoreCallback();
+                  },
+                  child: SvgPicture.asset(
+                    'assets/icons/icon_arrow_left.svg',
+                    color: AppColors.mainBlackColor,
                   ),
-                ],
+                ),
               ),
+              AppSpacing.horizontalSpacing10,
+              Text(
+                'Toko Anda',
+                style: Theme.of(context)
+                    .textTheme
+                    .titleLarge!
+                    .copyWith(fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
+        ),
+        body: switch (currentBuatTokoStep) {
+          1 => BuatTokoInformasiPage(
+              changeCreateStoreStep: _changeBuatTokoStepCallback,
             ),
-            body: switch (currentBuatTokoStep) {
-              1 => BuatTokoInformasiPage(
-                  changeCreateStoreStep: _changeBuatTokoStepCallback,
-                ),
-              2 => BuatTokoJamPage(
-                  changeCreateStoreStep: _changeBuatTokoStepCallback,
-                ),
-              3 => BuatTokoDetailPage(
-                  changeCreateStoreStep: _changeBuatTokoStepCallback,
-                ),
-              // TODO: Handle this case.
-              int() => null,
-            },
-          );
+          2 => BuatTokoJamPage(
+              changeCreateStoreStep: _changeBuatTokoStepCallback,
+            ),
+          3 => BuatTokoDetailPage(
+              changeCreateStoreStep: _changeBuatTokoStepCallback,
+            ),
+          // TODO: Handle this case.
+          int() => null,
         },
       ),
     );

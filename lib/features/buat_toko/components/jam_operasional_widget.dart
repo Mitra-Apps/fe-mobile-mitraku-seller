@@ -223,7 +223,6 @@ class _BuatTokoJamWidgetState extends State<BuatTokoJamWidget> {
               : widget.isOpen24Hours
                   ? open24HoursOrClosedWidgets(isOpen24Hours: true)
                   : Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Expanded(
                           child: Column(

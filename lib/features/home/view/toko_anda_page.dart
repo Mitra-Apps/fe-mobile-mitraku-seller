@@ -75,6 +75,8 @@ class _TokoAndaPage extends State<TokoAndaPage> {
                     AppSpacing.verticalSpacing16,
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
+                        padding:
+                            const EdgeInsets.all(AppDimens.basePaddingDouble),
                         backgroundColor: AppColors.warningColor,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10)),
@@ -119,6 +121,9 @@ class _TokoAndaPage extends State<TokoAndaPage> {
                         width: double.infinity,
                         child: ElevatedButton(
                           style: ElevatedButton.styleFrom(
+                            padding: const EdgeInsets.all(
+                              AppDimens.basePaddingDouble,
+                            ),
                             backgroundColor: AppColors.mainColor,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10)),

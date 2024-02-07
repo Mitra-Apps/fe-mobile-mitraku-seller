@@ -76,14 +76,25 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     } on DioException catch (e) {
       if (e.response != null) {
         final errorResponse = ErrorResponse.fromJson(e.response!.data);
-        emit(
-          state.copyWith(
-            isBusy: false,
-            notification: _NotificationNotifyFailed(
-              message: errorResponse.message,
+        if (errorResponse.code_detail == 'UNKNOWN') {
+          emit(
+            state.copyWith(
+              isBusy: false,
+              notification: _NotificationNotifyFailed(
+                message: 'Mohon maaf terjadi kesalahan sistem',
+              ),
             ),
-          ),
-        );
+          );
+        } else {
+          emit(
+            state.copyWith(
+              isBusy: false,
+              notification: _NotificationNotifyFailed(
+                message: errorResponse.message,
+              ),
+            ),
+          );
+        }
       }
     }
   }

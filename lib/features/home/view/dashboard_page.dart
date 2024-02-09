@@ -19,6 +19,7 @@ class DashboardPage extends StatelessWidget {
               .titleLarge!
               .copyWith(fontWeight: FontWeight.bold),
         ),
+        automaticallyImplyLeading: false,
       ),
       body: Center(
         child: Padding(

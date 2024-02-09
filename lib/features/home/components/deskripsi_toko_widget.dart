@@ -5,7 +5,8 @@ import 'package:mitraku_seller/core/dimens/app_dimens.dart';
 import 'package:mitraku_seller/core/spacings/app_spacing.dart';
 
 class DeskripsiTokoWidget extends StatelessWidget {
-  const DeskripsiTokoWidget({super.key});
+  const DeskripsiTokoWidget({super.key, this.desciption});
+  final String? desciption;
 
   @override
   Widget build(BuildContext context) {
@@ -23,11 +24,11 @@ class DeskripsiTokoWidget extends StatelessWidget {
           ),
           AppSpacing.verticalSpacing10,
           Text(
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pharetra erat in ullamcorper imperdiet. Phasellus eget velit a justo finibus mattis. Nulla eleifend aliquet neque a vehicula. Praesent scelerisque, sapien eget eleifend lobortis, quam dui tristique lacus, a cursus metus justo eget felis. In viverra fringilla orci quis volutpat. Etiam pulvinar eu tortor sit amet mattis. Donec gravida pellentesque efficitur. Nunc eu turpis sed arcu cursus scelerisque. Integer tempus aliquet mollis. Duis dapibus massa quis tellus luctus, id viverra nisi pharetra. Donec bibendum sollicitudin tellus, quis ornare tellus lacinia finibus.',
+            desciption ?? '',
             style: Theme.of(context)
                 .textTheme
-                .bodySmall!
-                .copyWith(fontWeight: FontWeight.normal),
+                .bodyMedium!
+                .copyWith(fontWeight: FontWeight.w600),
           ),
         ],
       ),

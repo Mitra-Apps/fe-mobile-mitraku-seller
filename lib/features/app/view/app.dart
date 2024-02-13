@@ -68,7 +68,7 @@ class _App extends StatelessWidget {
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
-        DefaultCupertinoLocalizations.delegate
+        DefaultCupertinoLocalizations.delegate,
       ],
       supportedLocales: const AppLocalizationDelegate().supportedLocales,
       locale: Locale(locale),
@@ -76,6 +76,7 @@ class _App extends StatelessWidget {
       theme: AppThemes.lightTheme,
       darkTheme: AppThemes.darkTheme,
       routerConfig: AppRouter.router,
+      debugShowCheckedModeBanner: false,
       title: 'MitraKu Seller',
     );
   }

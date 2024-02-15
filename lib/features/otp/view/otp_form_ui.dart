@@ -248,7 +248,12 @@ class OTPFormUIState extends State<OTPFormUI> {
                             ),
                             Countdown(
                               seconds: 59,
-                              build: (BuildContext context, double time) => Text(time.toString()),
+                              build: (BuildContext context, double time) =>
+                                  Text(time.toString(),
+                                    style: TextStyle(fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Poppins',
+                                    color: CustomColors.disabledBoldColor),),
                               interval: const Duration(milliseconds: 100),
                               onFinished: () {
                                 setState(() {

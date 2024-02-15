@@ -8,159 +8,128 @@ class OTPForm extends StatefulWidget {
 }
 
 class OTPFormState extends State<OTPForm> {
-  final _formKey = GlobalKey<FormState>();
 
-  String? strOTP;
+  late FToast fToast;
+  bool otpInvalid = false;
 
-  bool otpInteracts() => strOTP != null;
-  bool isShowOTPError = false;
-  var _isLoading = false;
+  @override
+  void initState() {
+    super.initState();
+    fToast = FToast();
+    // if you want to use context from globally instead of content we need to pass navigatorKey.currentContext!
+    fToast.init(context);
+  }
 
-  Future<void> _onSubmit() async {
-    setState(() => _isLoading = true);
-    Future.delayed(
-      const Duration(seconds: 3),
-          () => setState(() => _isLoading = false),
+  _showToastSuccess(String message) {
+    Widget toast = Container(
+      padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+        color: CustomColors.successColor,
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SvgPicture.asset("assets/icons/icon_white_close.svg"),
+          const SizedBox(
+            width: 12.0,
+          ),
+          Text(message, style: const TextStyle(fontSize: 8,
+              fontWeight: FontWeight.normal,
+              color: CustomColors.whiteColor),),
+        ],
+      ),
     );
 
-    final prefs = await SharedPreferences.getInstance();
-    late String email = prefs.getString('email') ?? '';
+
+    fToast.showToast(
+      child: toast,
+      gravity: ToastGravity.TOP,
+      toastDuration: const Duration(seconds: 3),
+    );
+  }
+
+  _showToastFailed(String message) {
+    Widget toast = Container(
+      padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+        color: CustomColors.dangerColor,
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SvgPicture.asset("assets/icons/icon_white_close.svg"),
+          const SizedBox(
+            width: 12.0,
+          ),
+          Text(message, style: const TextStyle(fontSize: 8,
+              fontWeight: FontWeight.normal,
+              color: CustomColors.whiteColor),),
+        ],
+      ),
+    );
+
+
+    fToast.showToast(
+      child: toast,
+      gravity: ToastGravity.TOP,
+      toastDuration: const Duration(seconds: 3),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    final defaultPinTheme = PinTheme(
-      width: 56,
-      height: 56,
-      textStyle: const TextStyle(
-          fontSize: 12,
-          color: Colors.black,
-          fontFamily: 'Poppins'),
-      decoration: BoxDecoration(
-        border: Border.all(color: const Color.fromRGBO(234, 239, 243, 1)),
-        borderRadius: BorderRadius.circular(4),
-      ),
-    );
+    return Center(
+      child: BlocConsumer<OtpConfirmationBloc, OtpConfirmationState>(
+          listenWhen: (prev, next) => prev.notification != next.notification,
+          listener: (context, state) async {
+            state.notification?.when(
+              notifySuccess: (message) {
+                _showToastSuccess(message);
+              },
+              notifyFailed: (message) {
+                _showToastFailed(message);
+              },
+            );
 
-    final focusedPinTheme = defaultPinTheme.copyDecorationWith(
-      border: Border.all(color: const Color.fromRGBO(114, 178, 238, 1)),
-      borderRadius: BorderRadius.circular(4),
-    );
+            if (state.otpSuccess == 'OTPSUCCESS') {
+              final prefs = await SharedPreferences.getInstance();
 
-    final submittedPinTheme = defaultPinTheme.copyWith(
-      decoration: defaultPinTheme.decoration?.copyWith(
-        color: const Color.fromRGBO(234, 239, 243, 1),
-      ),
-    );
+              await prefs.remove('otpInvalid');
+              await context.push(AppRouter.homePath);
+            }
 
-    return Form(
-      key: _formKey,
-      child: Column(
-        children: [
-          FadeInUp(
-            duration: const Duration(milliseconds: 1400),
-            child: Column(
+            if (state.otpBadRequest == 'AUTH_OTP_INVALID') {
+              otpInvalid = true;
+              final prefs = await SharedPreferences.getInstance();
+              await prefs.setBool('otpInvalid', otpInvalid);
+            }
+          },
+          builder: (context, state) {
+            return Stack(
+              alignment: Alignment.center,
               children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Colors.grey,
-                        blurRadius: 10,
-                        offset: Offset(0, 2),
-                      ),
-                    ],
-                  ),
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Column(
-                    children: <Widget>[
-                      AppSpacing.verticalSpacing32,
-                      GestureDetector(
-                        onTap: () {
-                          context.push(AppRouter.loginPath);
-                        },
-                        child: const Row(
-                          children: [
-                            Icon(
-                              Icons.arrow_back,
-                              color: Colors.black,
-                              size: 24,
-                            ),
-                            Text(
-                              'Kembali',
-                              style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'Poppins',
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      AppSpacing.verticalSpacing128,
-                      const Text(
-                        'Verifikasi OTP',
-                        style: TextStyle(
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'Poppins',
-                        ),
-                      ),
-                      AppSpacing.verticalSpacing20,
-                      Pinput(
-                        length: 4,
-                        defaultPinTheme: defaultPinTheme,
-                        focusedPinTheme: focusedPinTheme,
-                        submittedPinTheme: submittedPinTheme,
-                        showCursor: true,
-                        onCompleted: (pin) => setState(() {
-                          strOTP = pin;
-                        }),
-                      ),
-                      AppSpacing.verticalSpacing20,
-                      Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 15),
-                          child: ElevatedButton.icon(
-                            onPressed: !otpInteracts() ||
-                                isShowOTPError ||
-                                _isLoading
-                                ? null
-                                : _onSubmit,
-                            style: ElevatedButton.styleFrom(padding: const
-                            EdgeInsets.symmetric(
-                                vertical: 0, horizontal: 16),
-                                backgroundColor: !otpInteracts() ||
-                                    isShowOTPError ||
-                                    _isLoading
-                                    ? CustomColors.disabledBoldColor
-                                    : CustomColors.mainColor),
-                            icon: _isLoading ? Container(
-                              width: 24,
-                              height: 24,
-                              padding: const EdgeInsets.all(2.0),
-                              child: const CircularProgressIndicator(
-                                color: Colors.white,
-                                strokeWidth: 3,
-                              ),
-                            )
-                                : Container(),
-                            label: const Text('Verifikasi', style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w700,
-                              color: Colors.white,
-                            ),),
-                          )
-                      ),
-                      AppSpacing.verticalSpacing128,
-                    ],
-                  ),
+                state.status.when(
+                  initial: () {
+                    return OTPFormUI();
+                  },
+                  loading: () {
+                    return Container();
+                  },
+                  loadFailed: (message) {
+                    return ErrorPage(
+                      content: message,
+                    );
+                  },
+                  loadSuccess: (message) {
+                    return Container();
+                  },
                 ),
+                if (state.isBusy) Container(),
               ],
-            ),
-          ),
-        ],
+            );
+          }
       ),
     );
   }

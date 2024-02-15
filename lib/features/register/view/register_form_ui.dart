@@ -45,7 +45,7 @@ class RegisterFormUIState extends State<RegisterFormUI> {
   bool isShowPhoneError = false;
   var _isLoading = false;
 
-  void _onSubmit() {
+  Future<void> _onSubmit() async {
     setState(() => _isLoading = true);
     Future.delayed(
       const Duration(seconds: 3),
@@ -63,6 +63,9 @@ class RegisterFormUIState extends State<RegisterFormUI> {
         role_id: ['1', '2'],
       ),
     ));
+
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('email', strMerchantEmail!);
   }
 
   final List<TextFormMask> phoneMask = [

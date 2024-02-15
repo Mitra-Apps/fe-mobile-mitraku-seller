@@ -10,21 +10,20 @@ class ProfilTokoWidget extends StatelessWidget {
   const ProfilTokoWidget({
     super.key,
     this.imagePath = '',
-    this.name,
-    this.phone,
-    this.address,
+    this.name = '',
+    this.phone = '',
+    this.address = '',
   });
-  final String? imagePath;
-  final String? name;
-  final String? phone;
-  final String? address;
+  final String imagePath;
+  final String name;
+  final String phone;
+  final String address;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(AppDimens.basePaddingDouble),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
@@ -64,72 +63,80 @@ class ProfilTokoWidget extends StatelessWidget {
                 ),
               ),
               AppSpacing.horizontalSpacing10,
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      SizedBox(
-                        height: 16,
-                        width: 16,
-                        child: SvgPicture.asset(
-                          'assets/icons/icon_toko_profile.svg',
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        SizedBox(
+                          height: 16,
+                          width: 16,
+                          child: SvgPicture.asset(
+                            'assets/icons/icon_toko_profile.svg',
+                          ),
                         ),
-                      ),
-                      AppSpacing.horizontalSpacing4,
-                      Text(
-                        name ?? '',
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyMedium!
-                            .copyWith(fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                  AppSpacing.verticalSpacing10,
-                  Row(
-                    children: [
-                      SizedBox(
-                        height: 16,
-                        width: 16,
-                        child: SvgPicture.asset(
-                          'assets/icons/icon_telephone.svg',
+                        AppSpacing.horizontalSpacing4,
+                        Expanded(
+                          child: Text(
+                            name,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium!
+                                .copyWith(fontWeight: FontWeight.bold),
+                          ),
                         ),
-                      ),
-                      AppSpacing.horizontalSpacing4,
-                      Text(
-                        phone ?? '',
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyMedium!
-                            .copyWith(fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                  AppSpacing.verticalSpacing10,
-                  Row(
-                    children: [
-                      SizedBox(
-                        height: 16,
-                        width: 16,
-                        child: SvgPicture.asset(
-                          'assets/icons/icon_location.svg',
+                      ],
+                    ),
+                    AppSpacing.verticalSpacing10,
+                    Row(
+                      children: [
+                        SizedBox(
+                          height: 16,
+                          width: 16,
+                          child: SvgPicture.asset(
+                            'assets/icons/icon_telephone.svg',
+                          ),
                         ),
-                      ),
-                      AppSpacing.horizontalSpacing4,
-                      Text(
-                        address ?? '',
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodyMedium!
-                            .copyWith(fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ],
-              )
+                        AppSpacing.horizontalSpacing4,
+                        Expanded(
+                          child: Text(
+                            phone.replaceFirst('62', '+62 - '),
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium!
+                                .copyWith(fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ],
+                    ),
+                    AppSpacing.verticalSpacing10,
+                    Row(
+                      children: [
+                        SizedBox(
+                          height: 16,
+                          width: 16,
+                          child: SvgPicture.asset(
+                            'assets/icons/icon_location.svg',
+                          ),
+                        ),
+                        AppSpacing.horizontalSpacing4,
+                        Expanded(
+                          child: Text(
+                            address,
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodyMedium!
+                                .copyWith(fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
             ],
-          )
+          ),
         ],
       ),
     );

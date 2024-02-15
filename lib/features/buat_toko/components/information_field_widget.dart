@@ -22,20 +22,6 @@ class BuatTokoFieldWidget extends StatefulWidget {
   State<BuatTokoFieldWidget> createState() => _BuatTokoFieldWidgetState();
 }
 
-class _TextFormMask {
-  _TextFormMask({
-    required this.formatter,
-    this.validator,
-    required this.hint,
-    required this.textInputType,
-  });
-  final TextEditingController textController = TextEditingController();
-  final MaskTextInputFormatter formatter;
-  final FormFieldValidator<String>? validator;
-  final String hint;
-  final TextInputType textInputType;
-}
-
 class _BuatTokoFieldWidgetState extends State<BuatTokoFieldWidget> {
   String fieldTitle = '';
   String fieldIconName = '';
@@ -46,17 +32,11 @@ class _BuatTokoFieldWidgetState extends State<BuatTokoFieldWidget> {
   TextInputType fieldInputType = TextInputType.text;
   List<TextInputFormatter>? fieldInputformatter = [];
 
-  final List<_TextFormMask> phoneMask = [
-    _TextFormMask(
-        formatter: MaskTextInputFormatter(mask: '62############'),
-        hint: 'cth: +62 - 090202020',
-        textInputType: TextInputType.phone),
-  ];
-
   void updateValidateInput(String value) {
     setState(() {
       fieldInput = value;
       if (widget.widgetType == 'NO_TELP') {
+        fieldInput = '62$value';
         isShowFieldValidationError = isShowValidatePhone(fieldInput);
         fieldValidationError = validatePhone(fieldInput);
       }
@@ -87,12 +67,9 @@ class _BuatTokoFieldWidgetState extends State<BuatTokoFieldWidget> {
       case 'NO_TELP':
         fieldTitle = 'No Telp Toko';
         fieldIconName = 'assets/icons/icon_telephone.svg';
-        fieldHint = '+62 - 090202020';
+        fieldHint = '090202020';
         fieldInputType = TextInputType.phone;
-        fieldInputformatter = [
-          LengthLimitingTextInputFormatter(14),
-          phoneMask[0].formatter,
-        ];
+        fieldInputformatter = [LengthLimitingTextInputFormatter(12)];
       case 'ALAMAT_TOKO':
         fieldTitle = 'Alamat Toko';
         fieldIconName = 'assets/icons/icon_location.svg';
@@ -162,26 +139,39 @@ class _BuatTokoFieldWidgetState extends State<BuatTokoFieldWidget> {
                         vertical: AppDimens.basePaddingHalf,
                         horizontal: AppDimens.basePadding,
                       ),
-                      child: TextFormField(
-                        // validator: widget.validateEmail,
-                        onChanged: (value) => {
-                          updateValidateInput(value),
-                        },
-                        initialValue: widget.value,
-                        keyboardType: fieldInputType,
-                        textAlignVertical: TextAlignVertical.center,
-                        textInputAction: TextInputAction.next,
-                        inputFormatters: fieldInputformatter,
-                        style: Theme.of(context).textTheme.bodyMedium,
-                        decoration: InputDecoration(
-                          isCollapsed: true,
-                          hintText: fieldHint,
-                          hintStyle: Theme.of(context)
-                              .textTheme
-                              .bodyMedium!
-                              .copyWith(color: AppColors.disabledColor),
-                          border: InputBorder.none,
-                        ),
+                      child: Row(
+                        children: [
+                          Visibility(
+                            visible: widget.widgetType == 'NO_TELP',
+                            child: Text(
+                              '+62 - ',
+                              style: Theme.of(context).textTheme.bodyMedium,
+                            ),
+                          ),
+                          Expanded(
+                            child: TextFormField(
+                              // validator: widget.validateEmail,
+                              onChanged: (value) => {
+                                updateValidateInput(value),
+                              },
+                              initialValue: widget.value,
+                              keyboardType: fieldInputType,
+                              textAlignVertical: TextAlignVertical.center,
+                              textInputAction: TextInputAction.next,
+                              inputFormatters: fieldInputformatter,
+                              style: Theme.of(context).textTheme.bodyMedium,
+                              decoration: InputDecoration(
+                                isCollapsed: true,
+                                hintText: fieldHint,
+                                hintStyle: Theme.of(context)
+                                    .textTheme
+                                    .bodyMedium!
+                                    .copyWith(color: AppColors.disabledColor),
+                                border: InputBorder.none,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),

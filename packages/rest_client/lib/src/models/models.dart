@@ -6,3 +6,6 @@ export 'login/data_login_response.dart';
 export 'login/login_post.dart';
 export 'error_response/error_response.dart';
 export 'register/register_otp_response.dart';
+export 'otpconfirmation/otp_confirmation_post.dart';
+export 'otpconfirmation/resend_otp_response.dart';
+export 'otpconfirmation/resend_otp_post.dart';

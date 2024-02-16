@@ -5,11 +5,11 @@ class AppConfig {
   static const String defaultLocale = 'en';
 
   static void configDev() {
-    baseUrl = 'http://172.19.14.120:7000';
+    baseUrl = 'http://172.19.14.96:7000';
   }
 
   static void configStaging() {
-    baseUrl = 'http://172.19.14.120:7000';
+    baseUrl = 'http://172.19.14.96:7000';
   }
 
   static void configProduction() {

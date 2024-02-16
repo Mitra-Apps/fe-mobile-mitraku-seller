@@ -91,7 +91,7 @@ class _BuatTokoPage extends State<BuatTokoInformasiPage> {
               ),
               BuatTokoFieldWidget(
                 widgetType: 'NO_TELP',
-                value: state.phone,
+                value: state.phone.replaceFirst('62', ''),
                 updateInputValueCallback: _updateInputValueCallback,
               ),
               BuatTokoFieldWidget(

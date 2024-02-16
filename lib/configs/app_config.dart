@@ -13,6 +13,6 @@ class AppConfig {
   }
 
   static void configProduction() {
-    baseUrl = 'http://172.19.14.120:9000';
+    baseUrl = 'http://172.19.14.96:9000';
   }
 }

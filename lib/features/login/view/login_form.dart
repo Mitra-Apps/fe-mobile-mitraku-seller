@@ -9,6 +9,7 @@ class LoginForm extends StatefulWidget {
 
 class _LoginFormState extends State<LoginForm> {
   late FToast fToast;
+  var _countError = 0;
 
   @override
   void initState() {
@@ -93,13 +94,22 @@ class _LoginFormState extends State<LoginForm> {
                 _showToastSuccess(message);
               },
               notifyFailed: (message) {
-                _showToastFailed(message);
+                if (state.loginBadRequest == 'AUTH_LOGIN_PASSWORD_INCORRECT') {
+                  _countError += 1;
+                }
+
+                if (_countError % 3 == 0) {
+                  _showToastFailed('Silahkan klik Lupa Sandi untuk mengubah Sandi Anda');
+                } else {
+                  _showToastFailed(message);
+                }
               },
             );
 
             if (state.loginBadRequest == 'AUTH_LOGIN_USER_UNVERIFIED') {
               await context.push(AppRouter.otpPath);
             }
+
             if (state.loginSuccess == 'SUCCESSLOGIN') {
               await context.push(AppRouter.homePath);
             }

@@ -197,6 +197,22 @@ class _LoginFormUIState extends State<LoginFormUI> {
                           ],
                         ),
                         AppSpacing.verticalSpacing20,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                context.push(AppRouter.forgotPassPath);
+                              },
+                              child: const Text('Lupa Sandi?', style: TextStyle(
+                                fontSize: 12, fontWeight: FontWeight.w700,
+                                fontFamily: 'Poppins',
+                                color: CustomColors.dangerColor),
+                              ),
+                            ),
+                          ],
+                        ),
+                        AppSpacing.verticalSpacing20,
                         Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 15),
                             child: ElevatedButton.icon(

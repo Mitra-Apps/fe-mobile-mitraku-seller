@@ -1,5 +1,7 @@
 import 'package:mitraku_seller/data/repositories/dog_image_random/remote/dog_image_random_repository.dart';
 import 'package:mitraku_seller/data/repositories/dog_image_random/remote/dog_image_random_repository_impl.dart';
+import 'package:mitraku_seller/data/repositories/forgot_password/remote/forgot_password_repository.dart';
+import 'package:mitraku_seller/data/repositories/forgot_password/remote/forgot_password_repository_impl.dart';
 import 'package:mitraku_seller/data/repositories/login/remote/login_repository.dart';
 import 'package:mitraku_seller/data/repositories/login/remote/login_repository_impl.dart';
 import 'package:mitraku_seller/data/repositories/otp/otp_confirmation_repository.dart';
@@ -29,6 +31,10 @@ class RepositoryModule {
         () => LoginRepositoryImpl(loginApiClient: injector()),
       )
       ..registerFactory<OtpConfirmationRepository>(
-          () => OtpConfirmationRepositoryImpl(otpApiClient: injector()));
+    () => OtpConfirmationRepositoryImpl(
+        otpApiClient: injector(),),)
+      ..registerFactory<ForgotPasswordRepository>(
+        () => ForgotPasswordRepositoryImpl(
+        forgotPasswordApiClient: injector(),),);
   }
 }

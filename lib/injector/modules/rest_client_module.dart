@@ -21,8 +21,11 @@ class RestClientModule {
       )
       ..registerFactory<LoginApiClient>(() => LoginApiClient(
             injector(instanceName: DioModule.dioInstanceName),
-          ))
+          ),)
       ..registerFactory<OtpApiClient>(() =>
-          OtpApiClient(injector(instanceName: DioModule.dioInstanceName)));
+          OtpApiClient(injector(instanceName: DioModule.dioInstanceName)),)
+      ..registerFactory<ForgotPasswordApiClient>(() =>
+          ForgotPasswordApiClient(injector(
+              instanceName: DioModule.dioInstanceName,),),);
   }
 }

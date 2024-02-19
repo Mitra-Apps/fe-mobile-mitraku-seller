@@ -2,6 +2,7 @@ import 'package:mitraku_seller/features/app/view/app_director.dart';
 import 'package:mitraku_seller/features/demo/view/assets_page.dart';
 import 'package:mitraku_seller/features/demo/view/images_from_db_page.dart';
 import 'package:mitraku_seller/features/dog_image_random/view/dog_image_random_page.dart';
+import 'package:mitraku_seller/features/forgotpassword/view/forgot_password_page.dart';
 import 'package:mitraku_seller/features/home/home_page.dart';
 import 'package:mitraku_seller/features/login/view/login_page.dart';
 import 'package:mitraku_seller/features/otp/view/otp_page.dart';
@@ -41,6 +42,9 @@ class AppRouter {
 
   static const String otpName = "otp";
   static const String otpPath = "/otp";
+
+  static const String forgotPassName = "forgotPass";
+  static const String forgotPassPath = "/forgotPass";
 
   static GoRouter get router => _router;
   static final _router = GoRouter(
@@ -99,6 +103,11 @@ class AppRouter {
         name: otpName,
         path: otpPath,
         builder: (context, state) => const OTPPage(),
+      ),
+      GoRoute(
+        name: forgotPassName,
+        path: forgotPassPath,
+        builder: (context, state) => const ForgotPasswordPage(),
       ),
     ],
   );

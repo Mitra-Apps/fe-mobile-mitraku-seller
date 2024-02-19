@@ -37,7 +37,7 @@ class _LoginFormState extends State<LoginForm> {
             style: const TextStyle(
                 fontSize: 8,
                 fontWeight: FontWeight.normal,
-                color: CustomColors.whiteColor),
+                color: CustomColors.whiteColor,),
           ),
         ],
       ),
@@ -69,7 +69,7 @@ class _LoginFormState extends State<LoginForm> {
             style: const TextStyle(
                 fontSize: 8,
                 fontWeight: FontWeight.normal,
-                color: CustomColors.whiteColor),
+                color: CustomColors.whiteColor,),
           ),
         ],
       ),
@@ -79,6 +79,51 @@ class _LoginFormState extends State<LoginForm> {
       child: toast,
       gravity: ToastGravity.TOP,
       toastDuration: const Duration(seconds: 3),
+    );
+  }
+
+  _alertForgotPassword() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          margin: const EdgeInsets.symmetric(vertical: 200, horizontal: 40),
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.all(
+              Radius.circular(10.0),
+            ),
+            color: Colors.white,
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SvgPicture.asset("assets/icons/icon_forgot_pass_login.svg"),
+              const Text('Sandi Salah', style: TextStyle(fontSize: 14,
+                fontWeight: FontWeight.w700, fontFamily: 'Poppins',
+                color: CustomColors.dangerColor),
+              ),
+              const Text('sandi gagal 3x, mohon untuk ganti\nsandi',
+                style: TextStyle(fontSize: 12, fontWeight: FontWeight.normal,
+                  fontFamily: 'Poppins',
+                  color: CustomColors.disabledBoldColor,),
+                textAlign: TextAlign.center,
+              ),
+              AppSpacing.verticalSpacing10,
+              ElevatedButton(onPressed: () => {
+                context.push(AppRouter.forgotPassPath),
+              }, style:  ElevatedButton.styleFrom(
+                  backgroundColor: CustomColors.mainColor,),
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 5, horizontal: 30),
+                    child: Text('Lupa Sandi', style:
+                    TextStyle(fontSize: 12, fontWeight: FontWeight.w600,
+                        fontFamily: 'Poppins', color: Colors.white,),),
+                  ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 
@@ -93,21 +138,28 @@ class _LoginFormState extends State<LoginForm> {
                 _showToastSuccess(message);
               },
               notifyFailed: (message) {
-                _showToastFailed(message);
+                if (state.loginBadRequest == 'AUTH_LOGIN_PASSWORD_INCORRECT') {
+                  _showToastFailed(message);
+                }
+
+                if (state.loginBadRequest == 'AUTH_LOGIN_PASSWORD_INCORRECT_3X') {
+                  _alertForgotPassword();
+                }
               },
             );
 
             if (state.loginBadRequest == 'AUTH_LOGIN_USER_UNVERIFIED') {
               await context.push(AppRouter.otpPath);
             }
+
             if (state.loginSuccess == 'SUCCESSLOGIN') {
               await context.push(AppRouter.homePath);
 
               final prefs = await SharedPreferences.getInstance();
               await prefs.setString('access_token',
-                  state.loginResponse.data.access_token);
+                  state.loginResponse.data.access_token,);
               await prefs.setString('refresh_token',
-                  state.loginResponse.data.refresh_token);
+                  state.loginResponse.data.refresh_token,);
             }
           },
           builder: (context, state) {
@@ -133,7 +185,7 @@ class _LoginFormState extends State<LoginForm> {
                 if (state.isBusy) Container(),
               ],
             );
-          }),
+          },),
     );
   }
 }

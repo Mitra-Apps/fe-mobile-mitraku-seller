@@ -263,8 +263,8 @@ class OTPFormUIState extends State<OTPFormUI> {
                             interval: const Duration(seconds: 1),
                             onFinished: () {
                               setState(() {
-                                showResendOtpButton = true;
                                 showCountDownTimer = false;
+                                disableResendOtpButton = false;
                               });
                             },
                           ),

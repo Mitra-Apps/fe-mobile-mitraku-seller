@@ -17,6 +17,7 @@ class OTPFormUIState extends State<OTPFormUI> {
   bool hideVerifikasiButton = true;
   bool showResendOtpButton = false;
   bool showCountDownTimer = false;
+  bool disableResendOtpButton = false;
   var _isLoading = false;
   final pinController = TextEditingController();
   var _countError = 0;
@@ -25,7 +26,7 @@ class OTPFormUIState extends State<OTPFormUI> {
     setState(() => _isLoading = true);
     Future.delayed(
       const Duration(seconds: 3),
-      () => setState(() => _isLoading = false),
+          () => setState(() => _isLoading = false),
     );
 
     final prefs = await SharedPreferences.getInstance();
@@ -51,6 +52,10 @@ class OTPFormUIState extends State<OTPFormUI> {
       strOTP != null;
       await prefs.remove('otpInvalid');
     }
+
+    if (showCountDownTimer) {
+      disableResendOtpButton = true;
+    }
   }
 
   Future<void> _onResend() async {
@@ -67,7 +72,7 @@ class OTPFormUIState extends State<OTPFormUI> {
     if (!context.mounted) return;
 
     context.read<OtpConfirmationBloc>().add(OtpConfirmationEvent.resendOtpRequested(
-      ResendOTPPost(email: email)
+        ResendOTPPost(email: email)
     ));
   }
 
@@ -216,54 +221,54 @@ class OTPFormUIState extends State<OTPFormUI> {
                           )
                       ),),
                       Visibility(visible: showResendOtpButton, child: GestureDetector(
-                        onTap: _onResend,
-                        child: const Row(
+                        onTap: disableResendOtpButton ? null : _onResend,
+                        child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
                               'Kirim Ulang OTP',
                               style: TextStyle(
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'Poppins',
-                                color: CustomColors.mainColor
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Poppins',
+                                  color: disableResendOtpButton ?
+                                  CustomColors.disabledBoldColor :
+                                  CustomColors.mainColor
                               ),
                             ),
                           ],
                         ),
                       ),),
-                      Visibility(visible: showCountDownTimer, child: GestureDetector(
-                        onTap: _onResend,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Text(
-                              'Kirim Ulang OTP :',
-                              style: TextStyle(
+                      AppSpacing.verticalSpacing20,
+                      Visibility(visible: showCountDownTimer, child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            'Kirim Ulang OTP : ',
+                            style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,
                                 fontFamily: 'Poppins',
                                 color: CustomColors.disabledBoldColor
-                              ),
                             ),
-                            Countdown(
-                              seconds: 59,
-                              build: (BuildContext context, double time) =>
-                                  Text(time.toString(),
-                                    style: TextStyle(fontSize: 14,
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: 'Poppins',
-                                    color: CustomColors.disabledBoldColor),),
-                              interval: const Duration(milliseconds: 100),
-                              onFinished: () {
-                                setState(() {
-                                  showResendOtpButton = true;
-                                  showCountDownTimer = false;
-                                });
-                              },
-                            ),
-                          ],
-                        ),
+                          ),
+                          Countdown(
+                            seconds: 59,
+                            build: (BuildContext context, double time) =>
+                                Text('00:${time.toInt()}',
+                                  style: const TextStyle(fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'Poppins',
+                                      color: CustomColors.disabledBoldColor),),
+                            interval: const Duration(seconds: 1),
+                            onFinished: () {
+                              setState(() {
+                                showCountDownTimer = false;
+                                disableResendOtpButton = false;
+                              });
+                            },
+                          ),
+                        ],
                       ),),
                       AppSpacing.verticalSpacing128,
                     ],

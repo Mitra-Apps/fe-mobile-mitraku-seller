@@ -126,6 +126,7 @@ class OTPFormUIState extends State<OTPFormUI> {
                       AppSpacing.verticalSpacing32,
                       GestureDetector(
                         onTap: () {
+                          _countError = 0;
                           context.push(AppRouter.loginPath);
                         },
                         child: const Row(

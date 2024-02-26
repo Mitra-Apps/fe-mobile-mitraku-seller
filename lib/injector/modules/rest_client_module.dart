@@ -19,10 +19,20 @@ class RestClientModule {
           injector(instanceName: DioModule.dioInstanceName),
         ),
       )
-      ..registerFactory<LoginApiClient>(() => LoginApiClient(
-            injector(instanceName: DioModule.dioInstanceName),
-          ))
-      ..registerFactory<OtpApiClient>(() =>
-          OtpApiClient(injector(instanceName: DioModule.dioInstanceName)));
+      ..registerFactory<LoginApiClient>(
+        () => LoginApiClient(
+          injector(instanceName: DioModule.dioInstanceName),
+        ),
+      )
+      ..registerFactory<OtpApiClient>(
+        () => OtpApiClient(
+          injector(instanceName: DioModule.dioInstanceName),
+        ),
+      )
+      ..registerFactory<TokoAndaApiClient>(
+        () => TokoAndaApiClient(
+          injector(instanceName: DioModule.dioInstanceName),
+        ),
+      );
   }
 }

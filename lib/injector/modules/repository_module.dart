@@ -6,6 +6,8 @@ import 'package:mitraku_seller/data/repositories/otp/otp_confirmation_repository
 import 'package:mitraku_seller/data/repositories/otp/otp_confirmation_repository_impl.dart';
 import 'package:mitraku_seller/data/repositories/register/remote/register_repository.dart';
 import 'package:mitraku_seller/data/repositories/register/remote/register_repository_impl.dart';
+import 'package:mitraku_seller/data/repositories/toko_anda/remote/toko_anda_repository.dart';
+import 'package:mitraku_seller/data/repositories/toko_anda/remote/toko_anda_repository_impl.dart';
 import 'package:mitraku_seller/injector/injector.dart';
 
 class RepositoryModule {
@@ -29,6 +31,10 @@ class RepositoryModule {
         () => LoginRepositoryImpl(loginApiClient: injector()),
       )
       ..registerFactory<OtpConfirmationRepository>(
-          () => OtpConfirmationRepositoryImpl(otpApiClient: injector()));
+        () => OtpConfirmationRepositoryImpl(otpApiClient: injector()),
+      )
+      ..registerFactory<TokoAndaRepository>(
+        () => TokoAndaRepositoryImpl(tokoAndaApi: injector()),
+      );
   }
 }

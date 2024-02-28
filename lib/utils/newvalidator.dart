@@ -23,41 +23,7 @@ bool isShowValidateEmail(String? value) {
 }
 
 // Password validation
-String validatePassword(String? value, String? confirmPass) {
-  if (value == null || value.isEmpty) {
-    return 'Sandi tidak boleh kosong';
-  } else if (value != confirmPass) {
-    return 'Sandi dan Konfirmasi Sandi tidak cocok';
-  } else if (value.length < 6) {
-    return 'Sandi harus minimal 6 karakter';
-  } else if (value.length > 8) {
-    return 'Sandi tidak boleh lebih dari 8 karakter';
-  } else if (!RegExp(r'^(?=.*[A-Z])(?=.*\d)(?=.*[\W_])').hasMatch(value)) {
-    return 'Sandi harus mengandung setidaknya 1 huruf kapital, 1 angka, dan 1 karakter khusus';
-  } else if (RegExp(r'^\s').hasMatch(value)) {
-    return 'Sandi tidak boleh kosong';
-  }
-  return '';
-}
-
-bool isShowValidatePassword(String? value, String? confirmPass) {
-  if (value == null || value.isEmpty) {
-    return true;
-  } else if (value != confirmPass) {
-    return true;
-  } else if (value.length < 6) {
-    return true;
-  } else if (value.length > 8) {
-    return true;
-  } else if (!RegExp(r'^(?=.*[A-Z])(?=.*\d)(?=.*[\W_])').hasMatch(value)) {
-    return true;
-  } else if (RegExp(r'^\s').hasMatch(value)) {
-    return true;
-  }
-  return false;
-}
-
-String validatePasswordLogin(String? value) {
+String validatePassword(String? value) {
   if (value == null || value.isEmpty) {
     return 'Sandi tidak boleh kosong';
   } else if (value.length < 6) {
@@ -72,7 +38,7 @@ String validatePasswordLogin(String? value) {
   return '';
 }
 
-bool isShowValidatePasswordLogin(String? value) {
+bool isShowValidatePassword(String? value) {
   if (value == null || value.isEmpty) {
     return true;
   } else if (value.length < 6) {

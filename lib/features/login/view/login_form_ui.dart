@@ -163,7 +163,7 @@ class _LoginFormUIState extends State<LoginFormUI> {
                                   onChanged: (value) => setState(() {
                                     strMerchantPassword = value;
                                     isShowPasswordError =
-                                        isShowValidatePasswordLogin(
+                                        isShowValidatePassword(
                                             strMerchantPassword);
                                   }),
                                   decoration: const InputDecoration(
@@ -186,7 +186,7 @@ class _LoginFormUIState extends State<LoginFormUI> {
                               child: Visibility(
                                   visible: isShowPasswordError,
                                   child: Text(
-                                    validatePasswordLogin(strMerchantPassword),
+                                    validatePassword(strMerchantPassword),
                                     softWrap: true,
                                     style: const TextStyle(
                                         fontSize: 12,

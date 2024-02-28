@@ -7,7 +7,7 @@ import 'package:rest_client/rest_client.dart';
 void main() {
   final Dio dio = Dio(
     BaseOptions(
-      baseUrl: 'http://172.19.14.96:7000',
+      baseUrl: 'http://172.19.14.120:7000',
     ),
   );
 

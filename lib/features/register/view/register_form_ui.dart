@@ -190,7 +190,7 @@ class RegisterFormUIState extends State<RegisterFormUI> {
                                     strMerchantPassword = value;
                                     isShowPasswordError =
                                         isShowValidatePassword(
-                                            strMerchantPassword);
+                                            strMerchantPassword, strMerchantRePassword);
                                   }),
                                   decoration: const InputDecoration(
                                     hintText: 'cth: secR123**',
@@ -212,7 +212,7 @@ class RegisterFormUIState extends State<RegisterFormUI> {
                               child: Visibility(
                                   visible: isShowPasswordError,
                                   child: Text(
-                                    validatePassword(strMerchantPassword),
+                                    validatePassword(strMerchantPassword, strMerchantRePassword),
                                     softWrap: true,
                                     style: const TextStyle(
                                         fontSize: 12,

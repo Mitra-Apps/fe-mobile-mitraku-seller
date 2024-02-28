@@ -17,10 +17,10 @@ part 'register_notification.dart';
 part 'register_state.dart';
 
 class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
-  RegisterBloc(
-      {required RegisterRepository registerRepository,
-      required LogService logService,})
-      : super(
+  RegisterBloc({
+    required RegisterRepository registerRepository,
+    required LogService logService,
+  }) : super(
           const RegisterState(),
         ) {
     _repository = registerRepository;
@@ -52,7 +52,9 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   }
 
   Future<FutureOr<void>> _onRegister(
-      _RegisterRequested event, Emitter<RegisterState> emit,) async {
+    _RegisterRequested event,
+    Emitter<RegisterState> emit,
+  ) async {
     try {
       emit(
         state.copyWith(
@@ -60,18 +62,10 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
         ),
       );
 
-      final RegisterResponse registerResponse =
-          await _repository.register(event.registerPost);
+      final RegisterResponse registerResponse = await _repository.register(event.registerPost);
 
       emit(
-        state.copyWith(
-          isBusy: false,
-          status: const UILoadSuccess(),
-          registerResponse: registerResponse,
-          notification: _NotificationNotifySuccess(
-              message: 'Silahkan verifikasi email anda'),
-          registerSuccess: 'REGISTERSUCCESS'
-        ),
+        state.copyWith(isBusy: false, status: const UILoadSuccess(), registerResponse: registerResponse, notification: _NotificationNotifySuccess(message: 'Silahkan verifikasi email anda'), registerSuccess: 'REGISTERSUCCESS'),
       );
     } on DioException catch (e) {
       if (e.response != null) {

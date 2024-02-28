@@ -10,6 +10,7 @@ abstract class LoginApiClient {
   /// Constructor
   factory LoginApiClient(Dio dio, {String baseUrl}) = _LoginApiClient;
 
+  ///
   @POST('/api/v1/users/login')
   Future<LoginResponse> login(@Body() Map<String, dynamic> json);
 }

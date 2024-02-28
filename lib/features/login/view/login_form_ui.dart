@@ -23,16 +23,12 @@ class _LoginFormUIState extends State<LoginFormUI> {
     setState(() => _isLoading = true);
     Future.delayed(
       const Duration(seconds: 3),
-          () => setState(() => _isLoading = false),
+      () => setState(() => _isLoading = false),
     );
 
-    context
-        .read<LoginBloc>()
-        .add(LoginEvent.loginRequested(
-      LoginPost(
-          email: strMerchantEmail!,
-          password: strMerchantPassword!),
-    ));
+    context.read<LoginBloc>().add(LoginEvent.loginRequested(
+          LoginPost(email: strMerchantEmail!, password: strMerchantPassword!),
+        ));
 
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('email', strMerchantEmail!);
@@ -108,8 +104,7 @@ class _LoginFormUIState extends State<LoginFormUI> {
                                   textInputAction: TextInputAction.next,
                                   onChanged: (value) => setState(() {
                                     strMerchantEmail = value;
-                                    isShowEmailError =
-                                        isShowValidateEmail(strMerchantEmail);
+                                    isShowEmailError = isShowValidateEmail(strMerchantEmail);
                                   }),
                                   decoration: const InputDecoration(
                                     hintText: 'Masukkan Email',
@@ -131,10 +126,7 @@ class _LoginFormUIState extends State<LoginFormUI> {
                                 visible: isShowEmailError,
                                 child: Text(
                                   validateEmail(strMerchantEmail),
-                                  style: const TextStyle(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.normal,
-                                      color: CustomColors.dangerColor),
+                                  style: const TextStyle(fontSize: 12, fontWeight: FontWeight.normal, color: CustomColors.dangerColor),
                                 )),
                           ],
                         ),
@@ -162,9 +154,7 @@ class _LoginFormUIState extends State<LoginFormUI> {
                                   obscureText: true,
                                   onChanged: (value) => setState(() {
                                     strMerchantPassword = value;
-                                    isShowPasswordError =
-                                        isShowValidatePassword(
-                                            strMerchantPassword);
+                                    isShowPasswordError = isShowValidatePassword(strMerchantPassword);
                                   }),
                                   decoration: const InputDecoration(
                                     hintText: 'Masukkan Sandi',
@@ -188,10 +178,7 @@ class _LoginFormUIState extends State<LoginFormUI> {
                                   child: Text(
                                     validatePassword(strMerchantPassword),
                                     softWrap: true,
-                                    style: const TextStyle(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.normal,
-                                        color: CustomColors.dangerColor),
+                                    style: const TextStyle(fontSize: 12, fontWeight: FontWeight.normal, color: CustomColors.dangerColor),
                                   )),
                             )
                           ],
@@ -200,40 +187,39 @@ class _LoginFormUIState extends State<LoginFormUI> {
                         Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 15),
                             child: ElevatedButton.icon(
-                              onPressed: !merchantEmailInteracts() ||
-                                  !merchantPasswordInteracts() ||
-                                  isShowEmailError ||
-                                  isShowPasswordError ||
-                                  _isLoading
-                                  ? null
-                                  : _onSubmit
-                              ,
-                              style: ElevatedButton.styleFrom(padding: const
-                              EdgeInsets.symmetric(
-                                  vertical: 0, horizontal: 16),
-                                  backgroundColor: !merchantEmailInteracts() ||
-                                      !merchantPasswordInteracts() ||
-                                      isShowEmailError ||
-                                      isShowPasswordError
-                                      ? CustomColors.disabledBoldColor
-                                      : CustomColors.mainColor),
-                              icon: _isLoading ? Container(
-                                width: 24,
-                                height: 24,
-                                padding: const EdgeInsets.all(2.0),
-                                child: const CircularProgressIndicator(
-                                  color: Colors.white,
-                                  strokeWidth: 3,
-                                ),
-                              )
+                              // onPressed: !merchantEmailInteracts() ||
+                              //     !merchantPasswordInteracts() ||
+                              //     isShowEmailError ||
+                              //     isShowPasswordError ||
+                              //     _isLoading
+                              //     ? null
+                              //     : _onSubmit
+                              // ,
+                              onPressed: () => context.push(AppRouter.homePath),
+                              style: ElevatedButton.styleFrom(
+                                padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 16),
+                                backgroundColor: !merchantEmailInteracts() || !merchantPasswordInteracts() || isShowEmailError || isShowPasswordError ? CustomColors.disabledBoldColor : CustomColors.mainColor,
+                              ),
+                              icon: _isLoading
+                                  ? Container(
+                                      width: 24,
+                                      height: 24,
+                                      padding: const EdgeInsets.all(2.0),
+                                      child: const CircularProgressIndicator(
+                                        color: Colors.white,
+                                        strokeWidth: 3,
+                                      ),
+                                    )
                                   : Container(),
-                              label: const Text('Masuk', style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w700,
-                                color: Colors.white,
-                              ),),
-                            )
-                        ),
+                              label: const Text(
+                                'Masuk',
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            )),
                         AppSpacing.verticalSpacing6,
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -270,7 +256,6 @@ class _LoginFormUIState extends State<LoginFormUI> {
               ),
             ),
           ],
-        )
-    );
+        ));
   }
 }

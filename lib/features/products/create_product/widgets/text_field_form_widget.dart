@@ -5,15 +5,15 @@ import 'package:mitraku_seller/generated/fonts.gen.dart';
 
 class TextFieldFormWidget extends StatelessWidget {
   const TextFieldFormWidget({
-    required this.textController,
     required this.title,
     required this.hint,
+    required this.onChanged,
     super.key,
   });
 
-  final TextEditingController textController;
   final String title;
   final String hint;
+  final ValueChanged<String?> onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class TextFieldFormWidget extends StatelessWidget {
           SizedBox(
             height: 40,
             child: TextField(
-              controller: textController,
+              onChanged: onChanged,
               style: Theme.of(context).textTheme.bodySmall,
               decoration: InputDecoration(
                 contentPadding: const EdgeInsets.symmetric(

@@ -4,6 +4,8 @@ analyzer:
     - 'lib/**/*.freezed.dart'
     - 'lib/**/*.g.dart'
     - 'lib/generated/'
+  errors:
+    invalid_annotation_target: ignore
 linter:
   rules:
     - always_declare_return_types

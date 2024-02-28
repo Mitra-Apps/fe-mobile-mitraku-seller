@@ -4,33 +4,21 @@ import 'package:mitraku_seller/core/spacings/app_spacing.dart';
 import 'package:mitraku_seller/core/themes/app_themes.dart';
 import 'package:mitraku_seller/generated/fonts.gen.dart';
 
-class DropDownWidget extends StatefulWidget {
+class DropDownWidget extends StatelessWidget {
   const DropDownWidget({
     required this.fieldTitle,
     required this.fieldHint,
     required this.labels,
-    required this.callback,
+    required this.onChanged,
+    this.selected,
     super.key,
   });
 
   final String fieldTitle;
   final String fieldHint;
   final List<Label> labels;
-  final Function(String) callback;
-
-  @override
-  State<DropDownWidget> createState() => _DropDownWidgetState();
-}
-
-class _DropDownWidgetState extends State<DropDownWidget> {
-  String? selected;
-
-  void onChangedState(String? value) {
-    setState(() {
-      selected = value;
-      widget.callback(value ?? '');
-    });
-  }
+  final ValueChanged<String?> onChanged;
+  final String? selected;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +28,7 @@ class _DropDownWidgetState extends State<DropDownWidget> {
         Row(
           children: [
             Text(
-              widget.fieldTitle,
+              fieldTitle,
               style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                     fontWeight: FontWeight.w700,
                     fontFamily: FontFamily.poppins,
@@ -70,25 +58,29 @@ class _DropDownWidgetState extends State<DropDownWidget> {
             isExpanded: true,
             value: selected,
             style: Theme.of(context).textTheme.bodySmall,
-            onChanged: onChangedState,
+            onChanged: onChanged,
             underline: const SizedBox(),
-            hint: Text(widget.fieldHint),
-            items: widget.labels
-                .map(
-                  (value) => DropdownMenuItem(
-                    value: value.label,
-                    child: Text(
-                      value.label,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context).textTheme.bodySmall,
-                    ),
-                  ),
-                )
-                .toList(),
+            hint: Text(fieldHint),
+            items: buildItemList(context),
           ),
         ),
       ],
     );
+  }
+
+  List<DropdownMenuItem<String>> buildItemList(BuildContext context) {
+    return labels
+        .map(
+          (value) => DropdownMenuItem(
+            value: value.value,
+            child: Text(
+              value.label,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
+          ),
+        )
+        .toList();
   }
 }

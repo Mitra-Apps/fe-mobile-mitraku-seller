@@ -17,12 +17,10 @@ part 'login_notification.dart';
 part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  LoginBloc(
-      {required LoginRepository loginRepository,
-        required LogService logService,})
-      : super(
-    const LoginState(),
-  ) {
+  LoginBloc({
+    required LoginRepository loginRepository,
+    required LogService logService,
+  }) : super(const LoginState()) {
     _repository = loginRepository;
     _log = logService;
     on<_Loaded>(_onLoaded);
@@ -52,7 +50,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   }
 
   Future<FutureOr<void>> _onLogin(
-      _LoginRequested event, Emitter<LoginState> emit,) async {
+    _LoginRequested event,
+    Emitter<LoginState> emit,
+  ) async {
     try {
       emit(
         state.copyWith(
@@ -60,8 +60,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         ),
       );
 
-      final LoginResponse loginResponse =
-      await _repository.login(event.loginPost);
+      final LoginResponse loginResponse = await _repository.login(event.loginPost);
 
       emit(
         state.copyWith(
@@ -79,12 +78,11 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         final errorResponse = ErrorResponse.fromJson(e.response!.data);
         emit(
           state.copyWith(
-            isBusy: false,
-            notification: _NotificationNotifyFailed(
-              message: errorResponse.message,
-            ),
-            loginBadRequest: errorResponse.code_detail
-          ),
+              isBusy: false,
+              notification: _NotificationNotifyFailed(
+                message: errorResponse.message,
+              ),
+              loginBadRequest: errorResponse.code_detail),
         );
       }
     }

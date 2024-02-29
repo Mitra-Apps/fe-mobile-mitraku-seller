@@ -6,6 +6,8 @@ import 'package:mitraku_seller/data/repositories/product/remote/product_reposito
 import 'package:mitraku_seller/data/repositories/product/remote/product_repository_impl.dart';
 import 'package:mitraku_seller/data/repositories/register/remote/register_repository.dart';
 import 'package:mitraku_seller/data/repositories/register/remote/register_repository_impl.dart';
+import 'package:mitraku_seller/data/repositories/store/remote/store_repository.dart';
+import 'package:mitraku_seller/data/repositories/store/remote/store_repository_impl.dart';
 import 'package:mitraku_seller/injector/injector.dart';
 
 class RepositoryModule {
@@ -33,6 +35,11 @@ class RepositoryModule {
       ..registerFactory<ProductRepository>(
         () => ProductRepositoryImpl(
           productApiClient: injector(),
+        ),
+      )
+      ..registerFactory<StoreRepository>(
+        () => StoreRepositoryImpl(
+          storeApiClient: injector(),
         ),
       );
   }

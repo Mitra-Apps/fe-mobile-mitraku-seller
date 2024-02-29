@@ -13,8 +13,6 @@ _$ProductPostRequestImpl _$$ProductPostRequestImplFromJson(
       productList: (json['productList'] as List<dynamic>?)
           ?.map((e) => ProductList.fromJson(e as Map<String, dynamic>))
           .toList(),
-      productTypeId: json['productTypeId'] as String?,
-      productCategoryId: json['productCategoryId'] as String?,
     );
 
 Map<String, dynamic> _$$ProductPostRequestImplToJson(
@@ -22,6 +20,4 @@ Map<String, dynamic> _$$ProductPostRequestImplToJson(
     <String, dynamic>{
       'storeId': instance.storeId,
       'productList': instance.productList,
-      'productTypeId': instance.productTypeId,
-      'productCategoryId': instance.productCategoryId,
     };

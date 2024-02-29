@@ -10,6 +10,7 @@ import 'package:mitraku_seller/core/spacings/app_spacing.dart';
 import 'package:mitraku_seller/core/themes/app_themes.dart';
 import 'package:mitraku_seller/features/products/create_product/bloc/create_product_bloc.dart';
 import 'package:mitraku_seller/features/products/create_product/widgets/button_small.dart';
+import 'package:mitraku_seller/features/products/create_product/widgets/button_text.dart';
 import 'package:mitraku_seller/features/products/create_product/widgets/dropdown_widget.dart';
 import 'package:mitraku_seller/features/products/create_product/widgets/text_field_form_widget.dart';
 import 'package:mitraku_seller/generated/fonts.gen.dart';
@@ -25,14 +26,6 @@ class CreateProductForm extends StatefulWidget {
 }
 
 class _CreateProductFormState extends State<CreateProductForm> {
-  List<Label> labels = [
-    Label(label: 'Coba 1', value: 'Coba 1'),
-    Label(label: 'Coba 2', value: 'Coba 2'),
-    Label(label: 'Coba 3', value: 'Coba 3'),
-  ];
-  TextEditingController itemNameController = TextEditingController();
-  TextEditingController itemPriceController = TextEditingController();
-  TextEditingController itemStockController = TextEditingController();
   late FToast fToast;
 
   @override
@@ -40,9 +33,7 @@ class _CreateProductFormState extends State<CreateProductForm> {
     super.initState();
     fToast = FToast();
     fToast.init(context);
-    context.read<CreateProductBloc>().add(const CreateProductEvent.initListProduct());
-    context.read<CreateProductBloc>().add(const CreateProductEvent.getProductCategory());
-    context.read<CreateProductBloc>().add(const CreateProductEvent.getUom());
+    context.read<CreateProductBloc>().add(const CreateProductEvent.init());
   }
 
   void showToastSuccess(String message) {
@@ -159,7 +150,7 @@ class _CreateProductFormState extends State<CreateProductForm> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Info Produk ${state.productPostRequest.productList?.length}',
+          'Info Produk',
           style: Theme.of(context).textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.w700,
                 color: AppColors.primaryColor,
@@ -181,7 +172,7 @@ class _CreateProductFormState extends State<CreateProductForm> {
           onChanged: (value) => context.read<CreateProductBloc>().add(
                 CreateProductEvent.onChangedProductCategory(value: value),
               ),
-          selected: state.productPostRequest.productCategoryId,
+          selected: state.productCategoryId,
         ),
         AppSpacing.verticalSpacing20,
         DropDownWidget(
@@ -198,7 +189,7 @@ class _CreateProductFormState extends State<CreateProductForm> {
           onChanged: (value) => context.read<CreateProductBloc>().add(
                 CreateProductEvent.onChangedProductType(value: value),
               ),
-          selected: state.productPostRequest.productTypeId,
+          selected: state.productTypeId,
         ),
         AppSpacing.verticalSpacing20,
         const Divider(color: AppColors.disabledColor),
@@ -224,11 +215,7 @@ class _CreateProductFormState extends State<CreateProductForm> {
           backgroundColor: AppColors.primaryColor,
           isEnabled: state.isValid,
           onTap: (context) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('Simpan Produk'),
-              ),
-            );
+            context.read<CreateProductBloc>().add(const CreateProductEvent.productSubmitted());
           },
         ),
       ],
@@ -288,6 +275,24 @@ class _CreateProductFormState extends State<CreateProductForm> {
                           fontFamily: FontFamily.poppins,
                         ),
                   ),
+                  AppSpacing.horizontalSpacing10,
+                  if (index > 0)
+                    ButtonText(
+                      context: context,
+                      icon: Icons.delete,
+                      text: 'Hapus',
+                      isEnabled: true,
+                      textColor: AppColors.dangerColor,
+                      iconColor: AppColors.dangerColor,
+                      onTap: (context) {
+                        context.read<CreateProductBloc>().add(
+                              CreateProductEvent.deleteItemProduct(
+                                index: index,
+                                productList: productList!,
+                              ),
+                            );
+                      },
+                    ),
                 ],
               ),
               AppSpacing.verticalSpacing20,
@@ -348,6 +353,7 @@ class _CreateProductFormState extends State<CreateProductForm> {
                               value: value,
                             ),
                           ),
+                      selected: productList?.uomId,
                     ),
                   ),
                 ],
@@ -386,7 +392,7 @@ class _CreateProductFormState extends State<CreateProductForm> {
             //   );
             // });
 
-            context.read<CreateProductBloc>().add(CreateProductEvent.addItemProduct(value: ProductList()));
+            context.read<CreateProductBloc>().add(const CreateProductEvent.addItemProduct(value: ProductList()));
           },
         ),
       ],

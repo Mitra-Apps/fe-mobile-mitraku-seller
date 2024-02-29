@@ -22,8 +22,6 @@ ProductPostRequest _$ProductPostRequestFromJson(Map<String, dynamic> json) {
 mixin _$ProductPostRequest {
   String? get storeId => throw _privateConstructorUsedError;
   List<ProductList>? get productList => throw _privateConstructorUsedError;
-  String? get productTypeId => throw _privateConstructorUsedError;
-  String? get productCategoryId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,11 +35,7 @@ abstract class $ProductPostRequestCopyWith<$Res> {
           ProductPostRequest value, $Res Function(ProductPostRequest) then) =
       _$ProductPostRequestCopyWithImpl<$Res, ProductPostRequest>;
   @useResult
-  $Res call(
-      {String? storeId,
-      List<ProductList>? productList,
-      String? productTypeId,
-      String? productCategoryId});
+  $Res call({String? storeId, List<ProductList>? productList});
 }
 
 /// @nodoc
@@ -59,8 +53,6 @@ class _$ProductPostRequestCopyWithImpl<$Res, $Val extends ProductPostRequest>
   $Res call({
     Object? storeId = freezed,
     Object? productList = freezed,
-    Object? productTypeId = freezed,
-    Object? productCategoryId = freezed,
   }) {
     return _then(_value.copyWith(
       storeId: freezed == storeId
@@ -71,14 +63,6 @@ class _$ProductPostRequestCopyWithImpl<$Res, $Val extends ProductPostRequest>
           ? _value.productList
           : productList // ignore: cast_nullable_to_non_nullable
               as List<ProductList>?,
-      productTypeId: freezed == productTypeId
-          ? _value.productTypeId
-          : productTypeId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      productCategoryId: freezed == productCategoryId
-          ? _value.productCategoryId
-          : productCategoryId // ignore: cast_nullable_to_non_nullable
-              as String?,
     ) as $Val);
   }
 }
@@ -91,11 +75,7 @@ abstract class _$$ProductPostRequestImplCopyWith<$Res>
       __$$ProductPostRequestImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String? storeId,
-      List<ProductList>? productList,
-      String? productTypeId,
-      String? productCategoryId});
+  $Res call({String? storeId, List<ProductList>? productList});
 }
 
 /// @nodoc
@@ -111,8 +91,6 @@ class __$$ProductPostRequestImplCopyWithImpl<$Res>
   $Res call({
     Object? storeId = freezed,
     Object? productList = freezed,
-    Object? productTypeId = freezed,
-    Object? productCategoryId = freezed,
   }) {
     return _then(_$ProductPostRequestImpl(
       storeId: freezed == storeId
@@ -123,14 +101,6 @@ class __$$ProductPostRequestImplCopyWithImpl<$Res>
           ? _value._productList
           : productList // ignore: cast_nullable_to_non_nullable
               as List<ProductList>?,
-      productTypeId: freezed == productTypeId
-          ? _value.productTypeId
-          : productTypeId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      productCategoryId: freezed == productCategoryId
-          ? _value.productCategoryId
-          : productCategoryId // ignore: cast_nullable_to_non_nullable
-              as String?,
     ));
   }
 }
@@ -139,10 +109,7 @@ class __$$ProductPostRequestImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ProductPostRequestImpl implements _ProductPostRequest {
   const _$ProductPostRequestImpl(
-      {this.storeId,
-      final List<ProductList>? productList,
-      this.productTypeId,
-      this.productCategoryId})
+      {this.storeId, final List<ProductList>? productList})
       : _productList = productList;
 
   factory _$ProductPostRequestImpl.fromJson(Map<String, dynamic> json) =>
@@ -161,13 +128,8 @@ class _$ProductPostRequestImpl implements _ProductPostRequest {
   }
 
   @override
-  final String? productTypeId;
-  @override
-  final String? productCategoryId;
-
-  @override
   String toString() {
-    return 'ProductPostRequest(storeId: $storeId, productList: $productList, productTypeId: $productTypeId, productCategoryId: $productCategoryId)';
+    return 'ProductPostRequest(storeId: $storeId, productList: $productList)';
   }
 
   @override
@@ -177,21 +139,13 @@ class _$ProductPostRequestImpl implements _ProductPostRequest {
             other is _$ProductPostRequestImpl &&
             (identical(other.storeId, storeId) || other.storeId == storeId) &&
             const DeepCollectionEquality()
-                .equals(other._productList, _productList) &&
-            (identical(other.productTypeId, productTypeId) ||
-                other.productTypeId == productTypeId) &&
-            (identical(other.productCategoryId, productCategoryId) ||
-                other.productCategoryId == productCategoryId));
+                .equals(other._productList, _productList));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      storeId,
-      const DeepCollectionEquality().hash(_productList),
-      productTypeId,
-      productCategoryId);
+      runtimeType, storeId, const DeepCollectionEquality().hash(_productList));
 
   @JsonKey(ignore: true)
   @override
@@ -211,9 +165,7 @@ class _$ProductPostRequestImpl implements _ProductPostRequest {
 abstract class _ProductPostRequest implements ProductPostRequest {
   const factory _ProductPostRequest(
       {final String? storeId,
-      final List<ProductList>? productList,
-      final String? productTypeId,
-      final String? productCategoryId}) = _$ProductPostRequestImpl;
+      final List<ProductList>? productList}) = _$ProductPostRequestImpl;
 
   factory _ProductPostRequest.fromJson(Map<String, dynamic> json) =
       _$ProductPostRequestImpl.fromJson;
@@ -222,10 +174,6 @@ abstract class _ProductPostRequest implements ProductPostRequest {
   String? get storeId;
   @override
   List<ProductList>? get productList;
-  @override
-  String? get productTypeId;
-  @override
-  String? get productCategoryId;
   @override
   @JsonKey(ignore: true)
   _$$ProductPostRequestImplCopyWith<_$ProductPostRequestImpl> get copyWith =>

@@ -18,14 +18,14 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$CreateProductEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function(String? value) onChangedProductType,
     required TResult Function(String? value) onChangedProductCategory,
-    required TResult Function() initListProduct,
+    required TResult Function() productSubmitted,
     required TResult Function(ProductList value) addItemProduct,
     required TResult Function(ProductList value, int index) updateItemProduct,
-    required TResult Function(int index) deleteItemProduct,
-    required TResult Function() getProductCategory,
-    required TResult Function() getUom,
+    required TResult Function(int index, ProductList productList)
+        deleteItemProduct,
     required TResult Function(int index, String? value) onChangedItemName,
     required TResult Function(int index, String? value) onChangedItemPrice,
     required TResult Function(int index, String? value) onChangedItemStock,
@@ -35,14 +35,13 @@ mixin _$CreateProductEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function(String? value)? onChangedProductType,
     TResult? Function(String? value)? onChangedProductCategory,
-    TResult? Function()? initListProduct,
+    TResult? Function()? productSubmitted,
     TResult? Function(ProductList value)? addItemProduct,
     TResult? Function(ProductList value, int index)? updateItemProduct,
-    TResult? Function(int index)? deleteItemProduct,
-    TResult? Function()? getProductCategory,
-    TResult? Function()? getUom,
+    TResult? Function(int index, ProductList productList)? deleteItemProduct,
     TResult? Function(int index, String? value)? onChangedItemName,
     TResult? Function(int index, String? value)? onChangedItemPrice,
     TResult? Function(int index, String? value)? onChangedItemStock,
@@ -52,14 +51,13 @@ mixin _$CreateProductEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function(String? value)? onChangedProductType,
     TResult Function(String? value)? onChangedProductCategory,
-    TResult Function()? initListProduct,
+    TResult Function()? productSubmitted,
     TResult Function(ProductList value)? addItemProduct,
     TResult Function(ProductList value, int index)? updateItemProduct,
-    TResult Function(int index)? deleteItemProduct,
-    TResult Function()? getProductCategory,
-    TResult Function()? getUom,
+    TResult Function(int index, ProductList productList)? deleteItemProduct,
     TResult Function(int index, String? value)? onChangedItemName,
     TResult Function(int index, String? value)? onChangedItemPrice,
     TResult Function(int index, String? value)? onChangedItemStock,
@@ -70,15 +68,14 @@ mixin _$CreateProductEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
     required TResult Function(_OnChangedProductType value) onChangedProductType,
     required TResult Function(_OnChangedProductCategory value)
         onChangedProductCategory,
-    required TResult Function(_InitListProduct value) initListProduct,
+    required TResult Function(_ProductSubmitted value) productSubmitted,
     required TResult Function(_AddItemProduct value) addItemProduct,
     required TResult Function(_UpdateItemProduct value) updateItemProduct,
     required TResult Function(_DeleteItemProduct value) deleteItemProduct,
-    required TResult Function(_GetProductCategory value) getProductCategory,
-    required TResult Function(_GetUom value) getUom,
     required TResult Function(_OnChangedItemName value) onChangedItemName,
     required TResult Function(_OnChangedItemPrice value) onChangedItemPrice,
     required TResult Function(_OnChangedItemStock value) onChangedItemStock,
@@ -88,15 +85,14 @@ mixin _$CreateProductEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
     TResult? Function(_OnChangedProductType value)? onChangedProductType,
     TResult? Function(_OnChangedProductCategory value)?
         onChangedProductCategory,
-    TResult? Function(_InitListProduct value)? initListProduct,
+    TResult? Function(_ProductSubmitted value)? productSubmitted,
     TResult? Function(_AddItemProduct value)? addItemProduct,
     TResult? Function(_UpdateItemProduct value)? updateItemProduct,
     TResult? Function(_DeleteItemProduct value)? deleteItemProduct,
-    TResult? Function(_GetProductCategory value)? getProductCategory,
-    TResult? Function(_GetUom value)? getUom,
     TResult? Function(_OnChangedItemName value)? onChangedItemName,
     TResult? Function(_OnChangedItemPrice value)? onChangedItemPrice,
     TResult? Function(_OnChangedItemStock value)? onChangedItemStock,
@@ -106,14 +102,13 @@ mixin _$CreateProductEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
     TResult Function(_OnChangedProductType value)? onChangedProductType,
     TResult Function(_OnChangedProductCategory value)? onChangedProductCategory,
-    TResult Function(_InitListProduct value)? initListProduct,
+    TResult Function(_ProductSubmitted value)? productSubmitted,
     TResult Function(_AddItemProduct value)? addItemProduct,
     TResult Function(_UpdateItemProduct value)? updateItemProduct,
     TResult Function(_DeleteItemProduct value)? deleteItemProduct,
-    TResult Function(_GetProductCategory value)? getProductCategory,
-    TResult Function(_GetUom value)? getUom,
     TResult Function(_OnChangedItemName value)? onChangedItemName,
     TResult Function(_OnChangedItemPrice value)? onChangedItemPrice,
     TResult Function(_OnChangedItemStock value)? onChangedItemStock,
@@ -140,6 +135,176 @@ class _$CreateProductEventCopyWithImpl<$Res, $Val extends CreateProductEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$InitImplCopyWith<$Res> {
+  factory _$$InitImplCopyWith(
+          _$InitImpl value, $Res Function(_$InitImpl) then) =
+      __$$InitImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$InitImplCopyWithImpl<$Res>
+    extends _$CreateProductEventCopyWithImpl<$Res, _$InitImpl>
+    implements _$$InitImplCopyWith<$Res> {
+  __$$InitImplCopyWithImpl(_$InitImpl _value, $Res Function(_$InitImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$InitImpl with DiagnosticableTreeMixin implements _Init {
+  const _$InitImpl();
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'CreateProductEvent.init()';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(DiagnosticsProperty('type', 'CreateProductEvent.init'));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$InitImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function(String? value) onChangedProductType,
+    required TResult Function(String? value) onChangedProductCategory,
+    required TResult Function() productSubmitted,
+    required TResult Function(ProductList value) addItemProduct,
+    required TResult Function(ProductList value, int index) updateItemProduct,
+    required TResult Function(int index, ProductList productList)
+        deleteItemProduct,
+    required TResult Function(int index, String? value) onChangedItemName,
+    required TResult Function(int index, String? value) onChangedItemPrice,
+    required TResult Function(int index, String? value) onChangedItemStock,
+    required TResult Function(int index, String? value) onChangedUomId,
+    required TResult Function(int index, bool? value) onChangedSaleStatus,
+  }) {
+    return init();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function(String? value)? onChangedProductType,
+    TResult? Function(String? value)? onChangedProductCategory,
+    TResult? Function()? productSubmitted,
+    TResult? Function(ProductList value)? addItemProduct,
+    TResult? Function(ProductList value, int index)? updateItemProduct,
+    TResult? Function(int index, ProductList productList)? deleteItemProduct,
+    TResult? Function(int index, String? value)? onChangedItemName,
+    TResult? Function(int index, String? value)? onChangedItemPrice,
+    TResult? Function(int index, String? value)? onChangedItemStock,
+    TResult? Function(int index, String? value)? onChangedUomId,
+    TResult? Function(int index, bool? value)? onChangedSaleStatus,
+  }) {
+    return init?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function(String? value)? onChangedProductType,
+    TResult Function(String? value)? onChangedProductCategory,
+    TResult Function()? productSubmitted,
+    TResult Function(ProductList value)? addItemProduct,
+    TResult Function(ProductList value, int index)? updateItemProduct,
+    TResult Function(int index, ProductList productList)? deleteItemProduct,
+    TResult Function(int index, String? value)? onChangedItemName,
+    TResult Function(int index, String? value)? onChangedItemPrice,
+    TResult Function(int index, String? value)? onChangedItemStock,
+    TResult Function(int index, String? value)? onChangedUomId,
+    TResult Function(int index, bool? value)? onChangedSaleStatus,
+    required TResult orElse(),
+  }) {
+    if (init != null) {
+      return init();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
+    required TResult Function(_OnChangedProductType value) onChangedProductType,
+    required TResult Function(_OnChangedProductCategory value)
+        onChangedProductCategory,
+    required TResult Function(_ProductSubmitted value) productSubmitted,
+    required TResult Function(_AddItemProduct value) addItemProduct,
+    required TResult Function(_UpdateItemProduct value) updateItemProduct,
+    required TResult Function(_DeleteItemProduct value) deleteItemProduct,
+    required TResult Function(_OnChangedItemName value) onChangedItemName,
+    required TResult Function(_OnChangedItemPrice value) onChangedItemPrice,
+    required TResult Function(_OnChangedItemStock value) onChangedItemStock,
+    required TResult Function(_OnChangedUomId value) onChangedUomId,
+    required TResult Function(_OnChangedSaleStatus value) onChangedSaleStatus,
+  }) {
+    return init(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
+    TResult? Function(_OnChangedProductType value)? onChangedProductType,
+    TResult? Function(_OnChangedProductCategory value)?
+        onChangedProductCategory,
+    TResult? Function(_ProductSubmitted value)? productSubmitted,
+    TResult? Function(_AddItemProduct value)? addItemProduct,
+    TResult? Function(_UpdateItemProduct value)? updateItemProduct,
+    TResult? Function(_DeleteItemProduct value)? deleteItemProduct,
+    TResult? Function(_OnChangedItemName value)? onChangedItemName,
+    TResult? Function(_OnChangedItemPrice value)? onChangedItemPrice,
+    TResult? Function(_OnChangedItemStock value)? onChangedItemStock,
+    TResult? Function(_OnChangedUomId value)? onChangedUomId,
+    TResult? Function(_OnChangedSaleStatus value)? onChangedSaleStatus,
+  }) {
+    return init?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
+    TResult Function(_OnChangedProductType value)? onChangedProductType,
+    TResult Function(_OnChangedProductCategory value)? onChangedProductCategory,
+    TResult Function(_ProductSubmitted value)? productSubmitted,
+    TResult Function(_AddItemProduct value)? addItemProduct,
+    TResult Function(_UpdateItemProduct value)? updateItemProduct,
+    TResult Function(_DeleteItemProduct value)? deleteItemProduct,
+    TResult Function(_OnChangedItemName value)? onChangedItemName,
+    TResult Function(_OnChangedItemPrice value)? onChangedItemPrice,
+    TResult Function(_OnChangedItemStock value)? onChangedItemStock,
+    TResult Function(_OnChangedUomId value)? onChangedUomId,
+    TResult Function(_OnChangedSaleStatus value)? onChangedSaleStatus,
+    required TResult orElse(),
+  }) {
+    if (init != null) {
+      return init(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Init implements CreateProductEvent {
+  const factory _Init() = _$InitImpl;
 }
 
 /// @nodoc
@@ -219,14 +384,14 @@ class _$OnChangedProductTypeImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function(String? value) onChangedProductType,
     required TResult Function(String? value) onChangedProductCategory,
-    required TResult Function() initListProduct,
+    required TResult Function() productSubmitted,
     required TResult Function(ProductList value) addItemProduct,
     required TResult Function(ProductList value, int index) updateItemProduct,
-    required TResult Function(int index) deleteItemProduct,
-    required TResult Function() getProductCategory,
-    required TResult Function() getUom,
+    required TResult Function(int index, ProductList productList)
+        deleteItemProduct,
     required TResult Function(int index, String? value) onChangedItemName,
     required TResult Function(int index, String? value) onChangedItemPrice,
     required TResult Function(int index, String? value) onChangedItemStock,
@@ -239,14 +404,13 @@ class _$OnChangedProductTypeImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function(String? value)? onChangedProductType,
     TResult? Function(String? value)? onChangedProductCategory,
-    TResult? Function()? initListProduct,
+    TResult? Function()? productSubmitted,
     TResult? Function(ProductList value)? addItemProduct,
     TResult? Function(ProductList value, int index)? updateItemProduct,
-    TResult? Function(int index)? deleteItemProduct,
-    TResult? Function()? getProductCategory,
-    TResult? Function()? getUom,
+    TResult? Function(int index, ProductList productList)? deleteItemProduct,
     TResult? Function(int index, String? value)? onChangedItemName,
     TResult? Function(int index, String? value)? onChangedItemPrice,
     TResult? Function(int index, String? value)? onChangedItemStock,
@@ -259,14 +423,13 @@ class _$OnChangedProductTypeImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function(String? value)? onChangedProductType,
     TResult Function(String? value)? onChangedProductCategory,
-    TResult Function()? initListProduct,
+    TResult Function()? productSubmitted,
     TResult Function(ProductList value)? addItemProduct,
     TResult Function(ProductList value, int index)? updateItemProduct,
-    TResult Function(int index)? deleteItemProduct,
-    TResult Function()? getProductCategory,
-    TResult Function()? getUom,
+    TResult Function(int index, ProductList productList)? deleteItemProduct,
     TResult Function(int index, String? value)? onChangedItemName,
     TResult Function(int index, String? value)? onChangedItemPrice,
     TResult Function(int index, String? value)? onChangedItemStock,
@@ -283,15 +446,14 @@ class _$OnChangedProductTypeImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
     required TResult Function(_OnChangedProductType value) onChangedProductType,
     required TResult Function(_OnChangedProductCategory value)
         onChangedProductCategory,
-    required TResult Function(_InitListProduct value) initListProduct,
+    required TResult Function(_ProductSubmitted value) productSubmitted,
     required TResult Function(_AddItemProduct value) addItemProduct,
     required TResult Function(_UpdateItemProduct value) updateItemProduct,
     required TResult Function(_DeleteItemProduct value) deleteItemProduct,
-    required TResult Function(_GetProductCategory value) getProductCategory,
-    required TResult Function(_GetUom value) getUom,
     required TResult Function(_OnChangedItemName value) onChangedItemName,
     required TResult Function(_OnChangedItemPrice value) onChangedItemPrice,
     required TResult Function(_OnChangedItemStock value) onChangedItemStock,
@@ -304,15 +466,14 @@ class _$OnChangedProductTypeImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
     TResult? Function(_OnChangedProductType value)? onChangedProductType,
     TResult? Function(_OnChangedProductCategory value)?
         onChangedProductCategory,
-    TResult? Function(_InitListProduct value)? initListProduct,
+    TResult? Function(_ProductSubmitted value)? productSubmitted,
     TResult? Function(_AddItemProduct value)? addItemProduct,
     TResult? Function(_UpdateItemProduct value)? updateItemProduct,
     TResult? Function(_DeleteItemProduct value)? deleteItemProduct,
-    TResult? Function(_GetProductCategory value)? getProductCategory,
-    TResult? Function(_GetUom value)? getUom,
     TResult? Function(_OnChangedItemName value)? onChangedItemName,
     TResult? Function(_OnChangedItemPrice value)? onChangedItemPrice,
     TResult? Function(_OnChangedItemStock value)? onChangedItemStock,
@@ -325,14 +486,13 @@ class _$OnChangedProductTypeImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
     TResult Function(_OnChangedProductType value)? onChangedProductType,
     TResult Function(_OnChangedProductCategory value)? onChangedProductCategory,
-    TResult Function(_InitListProduct value)? initListProduct,
+    TResult Function(_ProductSubmitted value)? productSubmitted,
     TResult Function(_AddItemProduct value)? addItemProduct,
     TResult Function(_UpdateItemProduct value)? updateItemProduct,
     TResult Function(_DeleteItemProduct value)? deleteItemProduct,
-    TResult Function(_GetProductCategory value)? getProductCategory,
-    TResult Function(_GetUom value)? getUom,
     TResult Function(_OnChangedItemName value)? onChangedItemName,
     TResult Function(_OnChangedItemPrice value)? onChangedItemPrice,
     TResult Function(_OnChangedItemStock value)? onChangedItemStock,
@@ -436,14 +596,14 @@ class _$OnChangedProductCategoryImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function(String? value) onChangedProductType,
     required TResult Function(String? value) onChangedProductCategory,
-    required TResult Function() initListProduct,
+    required TResult Function() productSubmitted,
     required TResult Function(ProductList value) addItemProduct,
     required TResult Function(ProductList value, int index) updateItemProduct,
-    required TResult Function(int index) deleteItemProduct,
-    required TResult Function() getProductCategory,
-    required TResult Function() getUom,
+    required TResult Function(int index, ProductList productList)
+        deleteItemProduct,
     required TResult Function(int index, String? value) onChangedItemName,
     required TResult Function(int index, String? value) onChangedItemPrice,
     required TResult Function(int index, String? value) onChangedItemStock,
@@ -456,14 +616,13 @@ class _$OnChangedProductCategoryImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function(String? value)? onChangedProductType,
     TResult? Function(String? value)? onChangedProductCategory,
-    TResult? Function()? initListProduct,
+    TResult? Function()? productSubmitted,
     TResult? Function(ProductList value)? addItemProduct,
     TResult? Function(ProductList value, int index)? updateItemProduct,
-    TResult? Function(int index)? deleteItemProduct,
-    TResult? Function()? getProductCategory,
-    TResult? Function()? getUom,
+    TResult? Function(int index, ProductList productList)? deleteItemProduct,
     TResult? Function(int index, String? value)? onChangedItemName,
     TResult? Function(int index, String? value)? onChangedItemPrice,
     TResult? Function(int index, String? value)? onChangedItemStock,
@@ -476,14 +635,13 @@ class _$OnChangedProductCategoryImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function(String? value)? onChangedProductType,
     TResult Function(String? value)? onChangedProductCategory,
-    TResult Function()? initListProduct,
+    TResult Function()? productSubmitted,
     TResult Function(ProductList value)? addItemProduct,
     TResult Function(ProductList value, int index)? updateItemProduct,
-    TResult Function(int index)? deleteItemProduct,
-    TResult Function()? getProductCategory,
-    TResult Function()? getUom,
+    TResult Function(int index, ProductList productList)? deleteItemProduct,
     TResult Function(int index, String? value)? onChangedItemName,
     TResult Function(int index, String? value)? onChangedItemPrice,
     TResult Function(int index, String? value)? onChangedItemStock,
@@ -500,15 +658,14 @@ class _$OnChangedProductCategoryImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
     required TResult Function(_OnChangedProductType value) onChangedProductType,
     required TResult Function(_OnChangedProductCategory value)
         onChangedProductCategory,
-    required TResult Function(_InitListProduct value) initListProduct,
+    required TResult Function(_ProductSubmitted value) productSubmitted,
     required TResult Function(_AddItemProduct value) addItemProduct,
     required TResult Function(_UpdateItemProduct value) updateItemProduct,
     required TResult Function(_DeleteItemProduct value) deleteItemProduct,
-    required TResult Function(_GetProductCategory value) getProductCategory,
-    required TResult Function(_GetUom value) getUom,
     required TResult Function(_OnChangedItemName value) onChangedItemName,
     required TResult Function(_OnChangedItemPrice value) onChangedItemPrice,
     required TResult Function(_OnChangedItemStock value) onChangedItemStock,
@@ -521,15 +678,14 @@ class _$OnChangedProductCategoryImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
     TResult? Function(_OnChangedProductType value)? onChangedProductType,
     TResult? Function(_OnChangedProductCategory value)?
         onChangedProductCategory,
-    TResult? Function(_InitListProduct value)? initListProduct,
+    TResult? Function(_ProductSubmitted value)? productSubmitted,
     TResult? Function(_AddItemProduct value)? addItemProduct,
     TResult? Function(_UpdateItemProduct value)? updateItemProduct,
     TResult? Function(_DeleteItemProduct value)? deleteItemProduct,
-    TResult? Function(_GetProductCategory value)? getProductCategory,
-    TResult? Function(_GetUom value)? getUom,
     TResult? Function(_OnChangedItemName value)? onChangedItemName,
     TResult? Function(_OnChangedItemPrice value)? onChangedItemPrice,
     TResult? Function(_OnChangedItemStock value)? onChangedItemStock,
@@ -542,14 +698,13 @@ class _$OnChangedProductCategoryImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
     TResult Function(_OnChangedProductType value)? onChangedProductType,
     TResult Function(_OnChangedProductCategory value)? onChangedProductCategory,
-    TResult Function(_InitListProduct value)? initListProduct,
+    TResult Function(_ProductSubmitted value)? productSubmitted,
     TResult Function(_AddItemProduct value)? addItemProduct,
     TResult Function(_UpdateItemProduct value)? updateItemProduct,
     TResult Function(_DeleteItemProduct value)? deleteItemProduct,
-    TResult Function(_GetProductCategory value)? getProductCategory,
-    TResult Function(_GetUom value)? getUom,
     TResult Function(_OnChangedItemName value)? onChangedItemName,
     TResult Function(_OnChangedItemPrice value)? onChangedItemPrice,
     TResult Function(_OnChangedItemStock value)? onChangedItemStock,
@@ -575,44 +730,44 @@ abstract class _OnChangedProductCategory implements CreateProductEvent {
 }
 
 /// @nodoc
-abstract class _$$InitListProductImplCopyWith<$Res> {
-  factory _$$InitListProductImplCopyWith(_$InitListProductImpl value,
-          $Res Function(_$InitListProductImpl) then) =
-      __$$InitListProductImplCopyWithImpl<$Res>;
+abstract class _$$ProductSubmittedImplCopyWith<$Res> {
+  factory _$$ProductSubmittedImplCopyWith(_$ProductSubmittedImpl value,
+          $Res Function(_$ProductSubmittedImpl) then) =
+      __$$ProductSubmittedImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$InitListProductImplCopyWithImpl<$Res>
-    extends _$CreateProductEventCopyWithImpl<$Res, _$InitListProductImpl>
-    implements _$$InitListProductImplCopyWith<$Res> {
-  __$$InitListProductImplCopyWithImpl(
-      _$InitListProductImpl _value, $Res Function(_$InitListProductImpl) _then)
+class __$$ProductSubmittedImplCopyWithImpl<$Res>
+    extends _$CreateProductEventCopyWithImpl<$Res, _$ProductSubmittedImpl>
+    implements _$$ProductSubmittedImplCopyWith<$Res> {
+  __$$ProductSubmittedImplCopyWithImpl(_$ProductSubmittedImpl _value,
+      $Res Function(_$ProductSubmittedImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$InitListProductImpl
+class _$ProductSubmittedImpl
     with DiagnosticableTreeMixin
-    implements _InitListProduct {
-  const _$InitListProductImpl();
+    implements _ProductSubmitted {
+  const _$ProductSubmittedImpl();
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CreateProductEvent.initListProduct()';
+    return 'CreateProductEvent.productSubmitted()';
   }
 
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties
-        .add(DiagnosticsProperty('type', 'CreateProductEvent.initListProduct'));
+    properties.add(
+        DiagnosticsProperty('type', 'CreateProductEvent.productSubmitted'));
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitListProductImpl);
+        (other.runtimeType == runtimeType && other is _$ProductSubmittedImpl);
   }
 
   @override
@@ -621,54 +776,52 @@ class _$InitListProductImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function(String? value) onChangedProductType,
     required TResult Function(String? value) onChangedProductCategory,
-    required TResult Function() initListProduct,
+    required TResult Function() productSubmitted,
     required TResult Function(ProductList value) addItemProduct,
     required TResult Function(ProductList value, int index) updateItemProduct,
-    required TResult Function(int index) deleteItemProduct,
-    required TResult Function() getProductCategory,
-    required TResult Function() getUom,
+    required TResult Function(int index, ProductList productList)
+        deleteItemProduct,
     required TResult Function(int index, String? value) onChangedItemName,
     required TResult Function(int index, String? value) onChangedItemPrice,
     required TResult Function(int index, String? value) onChangedItemStock,
     required TResult Function(int index, String? value) onChangedUomId,
     required TResult Function(int index, bool? value) onChangedSaleStatus,
   }) {
-    return initListProduct();
+    return productSubmitted();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function(String? value)? onChangedProductType,
     TResult? Function(String? value)? onChangedProductCategory,
-    TResult? Function()? initListProduct,
+    TResult? Function()? productSubmitted,
     TResult? Function(ProductList value)? addItemProduct,
     TResult? Function(ProductList value, int index)? updateItemProduct,
-    TResult? Function(int index)? deleteItemProduct,
-    TResult? Function()? getProductCategory,
-    TResult? Function()? getUom,
+    TResult? Function(int index, ProductList productList)? deleteItemProduct,
     TResult? Function(int index, String? value)? onChangedItemName,
     TResult? Function(int index, String? value)? onChangedItemPrice,
     TResult? Function(int index, String? value)? onChangedItemStock,
     TResult? Function(int index, String? value)? onChangedUomId,
     TResult? Function(int index, bool? value)? onChangedSaleStatus,
   }) {
-    return initListProduct?.call();
+    return productSubmitted?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function(String? value)? onChangedProductType,
     TResult Function(String? value)? onChangedProductCategory,
-    TResult Function()? initListProduct,
+    TResult Function()? productSubmitted,
     TResult Function(ProductList value)? addItemProduct,
     TResult Function(ProductList value, int index)? updateItemProduct,
-    TResult Function(int index)? deleteItemProduct,
-    TResult Function()? getProductCategory,
-    TResult Function()? getUom,
+    TResult Function(int index, ProductList productList)? deleteItemProduct,
     TResult Function(int index, String? value)? onChangedItemName,
     TResult Function(int index, String? value)? onChangedItemPrice,
     TResult Function(int index, String? value)? onChangedItemStock,
@@ -676,8 +829,8 @@ class _$InitListProductImpl
     TResult Function(int index, bool? value)? onChangedSaleStatus,
     required TResult orElse(),
   }) {
-    if (initListProduct != null) {
-      return initListProduct();
+    if (productSubmitted != null) {
+      return productSubmitted();
     }
     return orElse();
   }
@@ -685,56 +838,53 @@ class _$InitListProductImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
     required TResult Function(_OnChangedProductType value) onChangedProductType,
     required TResult Function(_OnChangedProductCategory value)
         onChangedProductCategory,
-    required TResult Function(_InitListProduct value) initListProduct,
+    required TResult Function(_ProductSubmitted value) productSubmitted,
     required TResult Function(_AddItemProduct value) addItemProduct,
     required TResult Function(_UpdateItemProduct value) updateItemProduct,
     required TResult Function(_DeleteItemProduct value) deleteItemProduct,
-    required TResult Function(_GetProductCategory value) getProductCategory,
-    required TResult Function(_GetUom value) getUom,
     required TResult Function(_OnChangedItemName value) onChangedItemName,
     required TResult Function(_OnChangedItemPrice value) onChangedItemPrice,
     required TResult Function(_OnChangedItemStock value) onChangedItemStock,
     required TResult Function(_OnChangedUomId value) onChangedUomId,
     required TResult Function(_OnChangedSaleStatus value) onChangedSaleStatus,
   }) {
-    return initListProduct(this);
+    return productSubmitted(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
     TResult? Function(_OnChangedProductType value)? onChangedProductType,
     TResult? Function(_OnChangedProductCategory value)?
         onChangedProductCategory,
-    TResult? Function(_InitListProduct value)? initListProduct,
+    TResult? Function(_ProductSubmitted value)? productSubmitted,
     TResult? Function(_AddItemProduct value)? addItemProduct,
     TResult? Function(_UpdateItemProduct value)? updateItemProduct,
     TResult? Function(_DeleteItemProduct value)? deleteItemProduct,
-    TResult? Function(_GetProductCategory value)? getProductCategory,
-    TResult? Function(_GetUom value)? getUom,
     TResult? Function(_OnChangedItemName value)? onChangedItemName,
     TResult? Function(_OnChangedItemPrice value)? onChangedItemPrice,
     TResult? Function(_OnChangedItemStock value)? onChangedItemStock,
     TResult? Function(_OnChangedUomId value)? onChangedUomId,
     TResult? Function(_OnChangedSaleStatus value)? onChangedSaleStatus,
   }) {
-    return initListProduct?.call(this);
+    return productSubmitted?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
     TResult Function(_OnChangedProductType value)? onChangedProductType,
     TResult Function(_OnChangedProductCategory value)? onChangedProductCategory,
-    TResult Function(_InitListProduct value)? initListProduct,
+    TResult Function(_ProductSubmitted value)? productSubmitted,
     TResult Function(_AddItemProduct value)? addItemProduct,
     TResult Function(_UpdateItemProduct value)? updateItemProduct,
     TResult Function(_DeleteItemProduct value)? deleteItemProduct,
-    TResult Function(_GetProductCategory value)? getProductCategory,
-    TResult Function(_GetUom value)? getUom,
     TResult Function(_OnChangedItemName value)? onChangedItemName,
     TResult Function(_OnChangedItemPrice value)? onChangedItemPrice,
     TResult Function(_OnChangedItemStock value)? onChangedItemStock,
@@ -742,15 +892,15 @@ class _$InitListProductImpl
     TResult Function(_OnChangedSaleStatus value)? onChangedSaleStatus,
     required TResult orElse(),
   }) {
-    if (initListProduct != null) {
-      return initListProduct(this);
+    if (productSubmitted != null) {
+      return productSubmitted(this);
     }
     return orElse();
   }
 }
 
-abstract class _InitListProduct implements CreateProductEvent {
-  const factory _InitListProduct() = _$InitListProductImpl;
+abstract class _ProductSubmitted implements CreateProductEvent {
+  const factory _ProductSubmitted() = _$ProductSubmittedImpl;
 }
 
 /// @nodoc
@@ -838,14 +988,14 @@ class _$AddItemProductImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function(String? value) onChangedProductType,
     required TResult Function(String? value) onChangedProductCategory,
-    required TResult Function() initListProduct,
+    required TResult Function() productSubmitted,
     required TResult Function(ProductList value) addItemProduct,
     required TResult Function(ProductList value, int index) updateItemProduct,
-    required TResult Function(int index) deleteItemProduct,
-    required TResult Function() getProductCategory,
-    required TResult Function() getUom,
+    required TResult Function(int index, ProductList productList)
+        deleteItemProduct,
     required TResult Function(int index, String? value) onChangedItemName,
     required TResult Function(int index, String? value) onChangedItemPrice,
     required TResult Function(int index, String? value) onChangedItemStock,
@@ -858,14 +1008,13 @@ class _$AddItemProductImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function(String? value)? onChangedProductType,
     TResult? Function(String? value)? onChangedProductCategory,
-    TResult? Function()? initListProduct,
+    TResult? Function()? productSubmitted,
     TResult? Function(ProductList value)? addItemProduct,
     TResult? Function(ProductList value, int index)? updateItemProduct,
-    TResult? Function(int index)? deleteItemProduct,
-    TResult? Function()? getProductCategory,
-    TResult? Function()? getUom,
+    TResult? Function(int index, ProductList productList)? deleteItemProduct,
     TResult? Function(int index, String? value)? onChangedItemName,
     TResult? Function(int index, String? value)? onChangedItemPrice,
     TResult? Function(int index, String? value)? onChangedItemStock,
@@ -878,14 +1027,13 @@ class _$AddItemProductImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function(String? value)? onChangedProductType,
     TResult Function(String? value)? onChangedProductCategory,
-    TResult Function()? initListProduct,
+    TResult Function()? productSubmitted,
     TResult Function(ProductList value)? addItemProduct,
     TResult Function(ProductList value, int index)? updateItemProduct,
-    TResult Function(int index)? deleteItemProduct,
-    TResult Function()? getProductCategory,
-    TResult Function()? getUom,
+    TResult Function(int index, ProductList productList)? deleteItemProduct,
     TResult Function(int index, String? value)? onChangedItemName,
     TResult Function(int index, String? value)? onChangedItemPrice,
     TResult Function(int index, String? value)? onChangedItemStock,
@@ -902,15 +1050,14 @@ class _$AddItemProductImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
     required TResult Function(_OnChangedProductType value) onChangedProductType,
     required TResult Function(_OnChangedProductCategory value)
         onChangedProductCategory,
-    required TResult Function(_InitListProduct value) initListProduct,
+    required TResult Function(_ProductSubmitted value) productSubmitted,
     required TResult Function(_AddItemProduct value) addItemProduct,
     required TResult Function(_UpdateItemProduct value) updateItemProduct,
     required TResult Function(_DeleteItemProduct value) deleteItemProduct,
-    required TResult Function(_GetProductCategory value) getProductCategory,
-    required TResult Function(_GetUom value) getUom,
     required TResult Function(_OnChangedItemName value) onChangedItemName,
     required TResult Function(_OnChangedItemPrice value) onChangedItemPrice,
     required TResult Function(_OnChangedItemStock value) onChangedItemStock,
@@ -923,15 +1070,14 @@ class _$AddItemProductImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
     TResult? Function(_OnChangedProductType value)? onChangedProductType,
     TResult? Function(_OnChangedProductCategory value)?
         onChangedProductCategory,
-    TResult? Function(_InitListProduct value)? initListProduct,
+    TResult? Function(_ProductSubmitted value)? productSubmitted,
     TResult? Function(_AddItemProduct value)? addItemProduct,
     TResult? Function(_UpdateItemProduct value)? updateItemProduct,
     TResult? Function(_DeleteItemProduct value)? deleteItemProduct,
-    TResult? Function(_GetProductCategory value)? getProductCategory,
-    TResult? Function(_GetUom value)? getUom,
     TResult? Function(_OnChangedItemName value)? onChangedItemName,
     TResult? Function(_OnChangedItemPrice value)? onChangedItemPrice,
     TResult? Function(_OnChangedItemStock value)? onChangedItemStock,
@@ -944,14 +1090,13 @@ class _$AddItemProductImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
     TResult Function(_OnChangedProductType value)? onChangedProductType,
     TResult Function(_OnChangedProductCategory value)? onChangedProductCategory,
-    TResult Function(_InitListProduct value)? initListProduct,
+    TResult Function(_ProductSubmitted value)? productSubmitted,
     TResult Function(_AddItemProduct value)? addItemProduct,
     TResult Function(_UpdateItemProduct value)? updateItemProduct,
     TResult Function(_DeleteItemProduct value)? deleteItemProduct,
-    TResult Function(_GetProductCategory value)? getProductCategory,
-    TResult Function(_GetUom value)? getUom,
     TResult Function(_OnChangedItemName value)? onChangedItemName,
     TResult Function(_OnChangedItemPrice value)? onChangedItemPrice,
     TResult Function(_OnChangedItemStock value)? onChangedItemStock,
@@ -1070,14 +1215,14 @@ class _$UpdateItemProductImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function(String? value) onChangedProductType,
     required TResult Function(String? value) onChangedProductCategory,
-    required TResult Function() initListProduct,
+    required TResult Function() productSubmitted,
     required TResult Function(ProductList value) addItemProduct,
     required TResult Function(ProductList value, int index) updateItemProduct,
-    required TResult Function(int index) deleteItemProduct,
-    required TResult Function() getProductCategory,
-    required TResult Function() getUom,
+    required TResult Function(int index, ProductList productList)
+        deleteItemProduct,
     required TResult Function(int index, String? value) onChangedItemName,
     required TResult Function(int index, String? value) onChangedItemPrice,
     required TResult Function(int index, String? value) onChangedItemStock,
@@ -1090,14 +1235,13 @@ class _$UpdateItemProductImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function(String? value)? onChangedProductType,
     TResult? Function(String? value)? onChangedProductCategory,
-    TResult? Function()? initListProduct,
+    TResult? Function()? productSubmitted,
     TResult? Function(ProductList value)? addItemProduct,
     TResult? Function(ProductList value, int index)? updateItemProduct,
-    TResult? Function(int index)? deleteItemProduct,
-    TResult? Function()? getProductCategory,
-    TResult? Function()? getUom,
+    TResult? Function(int index, ProductList productList)? deleteItemProduct,
     TResult? Function(int index, String? value)? onChangedItemName,
     TResult? Function(int index, String? value)? onChangedItemPrice,
     TResult? Function(int index, String? value)? onChangedItemStock,
@@ -1110,14 +1254,13 @@ class _$UpdateItemProductImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function(String? value)? onChangedProductType,
     TResult Function(String? value)? onChangedProductCategory,
-    TResult Function()? initListProduct,
+    TResult Function()? productSubmitted,
     TResult Function(ProductList value)? addItemProduct,
     TResult Function(ProductList value, int index)? updateItemProduct,
-    TResult Function(int index)? deleteItemProduct,
-    TResult Function()? getProductCategory,
-    TResult Function()? getUom,
+    TResult Function(int index, ProductList productList)? deleteItemProduct,
     TResult Function(int index, String? value)? onChangedItemName,
     TResult Function(int index, String? value)? onChangedItemPrice,
     TResult Function(int index, String? value)? onChangedItemStock,
@@ -1134,15 +1277,14 @@ class _$UpdateItemProductImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
     required TResult Function(_OnChangedProductType value) onChangedProductType,
     required TResult Function(_OnChangedProductCategory value)
         onChangedProductCategory,
-    required TResult Function(_InitListProduct value) initListProduct,
+    required TResult Function(_ProductSubmitted value) productSubmitted,
     required TResult Function(_AddItemProduct value) addItemProduct,
     required TResult Function(_UpdateItemProduct value) updateItemProduct,
     required TResult Function(_DeleteItemProduct value) deleteItemProduct,
-    required TResult Function(_GetProductCategory value) getProductCategory,
-    required TResult Function(_GetUom value) getUom,
     required TResult Function(_OnChangedItemName value) onChangedItemName,
     required TResult Function(_OnChangedItemPrice value) onChangedItemPrice,
     required TResult Function(_OnChangedItemStock value) onChangedItemStock,
@@ -1155,15 +1297,14 @@ class _$UpdateItemProductImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
     TResult? Function(_OnChangedProductType value)? onChangedProductType,
     TResult? Function(_OnChangedProductCategory value)?
         onChangedProductCategory,
-    TResult? Function(_InitListProduct value)? initListProduct,
+    TResult? Function(_ProductSubmitted value)? productSubmitted,
     TResult? Function(_AddItemProduct value)? addItemProduct,
     TResult? Function(_UpdateItemProduct value)? updateItemProduct,
     TResult? Function(_DeleteItemProduct value)? deleteItemProduct,
-    TResult? Function(_GetProductCategory value)? getProductCategory,
-    TResult? Function(_GetUom value)? getUom,
     TResult? Function(_OnChangedItemName value)? onChangedItemName,
     TResult? Function(_OnChangedItemPrice value)? onChangedItemPrice,
     TResult? Function(_OnChangedItemStock value)? onChangedItemStock,
@@ -1176,14 +1317,13 @@ class _$UpdateItemProductImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
     TResult Function(_OnChangedProductType value)? onChangedProductType,
     TResult Function(_OnChangedProductCategory value)? onChangedProductCategory,
-    TResult Function(_InitListProduct value)? initListProduct,
+    TResult Function(_ProductSubmitted value)? productSubmitted,
     TResult Function(_AddItemProduct value)? addItemProduct,
     TResult Function(_UpdateItemProduct value)? updateItemProduct,
     TResult Function(_DeleteItemProduct value)? deleteItemProduct,
-    TResult Function(_GetProductCategory value)? getProductCategory,
-    TResult Function(_GetUom value)? getUom,
     TResult Function(_OnChangedItemName value)? onChangedItemName,
     TResult Function(_OnChangedItemPrice value)? onChangedItemPrice,
     TResult Function(_OnChangedItemStock value)? onChangedItemStock,
@@ -1216,7 +1356,9 @@ abstract class _$$DeleteItemProductImplCopyWith<$Res> {
           $Res Function(_$DeleteItemProductImpl) then) =
       __$$DeleteItemProductImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({int index});
+  $Res call({int index, ProductList productList});
+
+  $ProductListCopyWith<$Res> get productList;
 }
 
 /// @nodoc
@@ -1231,13 +1373,26 @@ class __$$DeleteItemProductImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? index = null,
+    Object? productList = null,
   }) {
     return _then(_$DeleteItemProductImpl(
       index: null == index
           ? _value.index
           : index // ignore: cast_nullable_to_non_nullable
               as int,
+      productList: null == productList
+          ? _value.productList
+          : productList // ignore: cast_nullable_to_non_nullable
+              as ProductList,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ProductListCopyWith<$Res> get productList {
+    return $ProductListCopyWith<$Res>(_value.productList, (value) {
+      return _then(_value.copyWith(productList: value));
+    });
   }
 }
 
@@ -1246,14 +1401,17 @@ class __$$DeleteItemProductImplCopyWithImpl<$Res>
 class _$DeleteItemProductImpl
     with DiagnosticableTreeMixin
     implements _DeleteItemProduct {
-  const _$DeleteItemProductImpl({required this.index});
+  const _$DeleteItemProductImpl(
+      {required this.index, required this.productList});
 
   @override
   final int index;
+  @override
+  final ProductList productList;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CreateProductEvent.deleteItemProduct(index: $index)';
+    return 'CreateProductEvent.deleteItemProduct(index: $index, productList: $productList)';
   }
 
   @override
@@ -1261,7 +1419,8 @@ class _$DeleteItemProductImpl
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'CreateProductEvent.deleteItemProduct'))
-      ..add(DiagnosticsProperty('index', index));
+      ..add(DiagnosticsProperty('index', index))
+      ..add(DiagnosticsProperty('productList', productList));
   }
 
   @override
@@ -1269,11 +1428,13 @@ class _$DeleteItemProductImpl
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DeleteItemProductImpl &&
-            (identical(other.index, index) || other.index == index));
+            (identical(other.index, index) || other.index == index) &&
+            (identical(other.productList, productList) ||
+                other.productList == productList));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, index);
+  int get hashCode => Object.hash(runtimeType, index, productList);
 
   @JsonKey(ignore: true)
   @override
@@ -1285,54 +1446,52 @@ class _$DeleteItemProductImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function(String? value) onChangedProductType,
     required TResult Function(String? value) onChangedProductCategory,
-    required TResult Function() initListProduct,
+    required TResult Function() productSubmitted,
     required TResult Function(ProductList value) addItemProduct,
     required TResult Function(ProductList value, int index) updateItemProduct,
-    required TResult Function(int index) deleteItemProduct,
-    required TResult Function() getProductCategory,
-    required TResult Function() getUom,
+    required TResult Function(int index, ProductList productList)
+        deleteItemProduct,
     required TResult Function(int index, String? value) onChangedItemName,
     required TResult Function(int index, String? value) onChangedItemPrice,
     required TResult Function(int index, String? value) onChangedItemStock,
     required TResult Function(int index, String? value) onChangedUomId,
     required TResult Function(int index, bool? value) onChangedSaleStatus,
   }) {
-    return deleteItemProduct(index);
+    return deleteItemProduct(index, productList);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function(String? value)? onChangedProductType,
     TResult? Function(String? value)? onChangedProductCategory,
-    TResult? Function()? initListProduct,
+    TResult? Function()? productSubmitted,
     TResult? Function(ProductList value)? addItemProduct,
     TResult? Function(ProductList value, int index)? updateItemProduct,
-    TResult? Function(int index)? deleteItemProduct,
-    TResult? Function()? getProductCategory,
-    TResult? Function()? getUom,
+    TResult? Function(int index, ProductList productList)? deleteItemProduct,
     TResult? Function(int index, String? value)? onChangedItemName,
     TResult? Function(int index, String? value)? onChangedItemPrice,
     TResult? Function(int index, String? value)? onChangedItemStock,
     TResult? Function(int index, String? value)? onChangedUomId,
     TResult? Function(int index, bool? value)? onChangedSaleStatus,
   }) {
-    return deleteItemProduct?.call(index);
+    return deleteItemProduct?.call(index, productList);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function(String? value)? onChangedProductType,
     TResult Function(String? value)? onChangedProductCategory,
-    TResult Function()? initListProduct,
+    TResult Function()? productSubmitted,
     TResult Function(ProductList value)? addItemProduct,
     TResult Function(ProductList value, int index)? updateItemProduct,
-    TResult Function(int index)? deleteItemProduct,
-    TResult Function()? getProductCategory,
-    TResult Function()? getUom,
+    TResult Function(int index, ProductList productList)? deleteItemProduct,
     TResult Function(int index, String? value)? onChangedItemName,
     TResult Function(int index, String? value)? onChangedItemPrice,
     TResult Function(int index, String? value)? onChangedItemStock,
@@ -1341,7 +1500,7 @@ class _$DeleteItemProductImpl
     required TResult orElse(),
   }) {
     if (deleteItemProduct != null) {
-      return deleteItemProduct(index);
+      return deleteItemProduct(index, productList);
     }
     return orElse();
   }
@@ -1349,15 +1508,14 @@ class _$DeleteItemProductImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
     required TResult Function(_OnChangedProductType value) onChangedProductType,
     required TResult Function(_OnChangedProductCategory value)
         onChangedProductCategory,
-    required TResult Function(_InitListProduct value) initListProduct,
+    required TResult Function(_ProductSubmitted value) productSubmitted,
     required TResult Function(_AddItemProduct value) addItemProduct,
     required TResult Function(_UpdateItemProduct value) updateItemProduct,
     required TResult Function(_DeleteItemProduct value) deleteItemProduct,
-    required TResult Function(_GetProductCategory value) getProductCategory,
-    required TResult Function(_GetUom value) getUom,
     required TResult Function(_OnChangedItemName value) onChangedItemName,
     required TResult Function(_OnChangedItemPrice value) onChangedItemPrice,
     required TResult Function(_OnChangedItemStock value) onChangedItemStock,
@@ -1370,15 +1528,14 @@ class _$DeleteItemProductImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
     TResult? Function(_OnChangedProductType value)? onChangedProductType,
     TResult? Function(_OnChangedProductCategory value)?
         onChangedProductCategory,
-    TResult? Function(_InitListProduct value)? initListProduct,
+    TResult? Function(_ProductSubmitted value)? productSubmitted,
     TResult? Function(_AddItemProduct value)? addItemProduct,
     TResult? Function(_UpdateItemProduct value)? updateItemProduct,
     TResult? Function(_DeleteItemProduct value)? deleteItemProduct,
-    TResult? Function(_GetProductCategory value)? getProductCategory,
-    TResult? Function(_GetUom value)? getUom,
     TResult? Function(_OnChangedItemName value)? onChangedItemName,
     TResult? Function(_OnChangedItemPrice value)? onChangedItemPrice,
     TResult? Function(_OnChangedItemStock value)? onChangedItemStock,
@@ -1391,14 +1548,13 @@ class _$DeleteItemProductImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
     TResult Function(_OnChangedProductType value)? onChangedProductType,
     TResult Function(_OnChangedProductCategory value)? onChangedProductCategory,
-    TResult Function(_InitListProduct value)? initListProduct,
+    TResult Function(_ProductSubmitted value)? productSubmitted,
     TResult Function(_AddItemProduct value)? addItemProduct,
     TResult Function(_UpdateItemProduct value)? updateItemProduct,
     TResult Function(_DeleteItemProduct value)? deleteItemProduct,
-    TResult Function(_GetProductCategory value)? getProductCategory,
-    TResult Function(_GetUom value)? getUom,
     TResult Function(_OnChangedItemName value)? onChangedItemName,
     TResult Function(_OnChangedItemPrice value)? onChangedItemPrice,
     TResult Function(_OnChangedItemStock value)? onChangedItemStock,
@@ -1414,368 +1570,15 @@ class _$DeleteItemProductImpl
 }
 
 abstract class _DeleteItemProduct implements CreateProductEvent {
-  const factory _DeleteItemProduct({required final int index}) =
-      _$DeleteItemProductImpl;
+  const factory _DeleteItemProduct(
+      {required final int index,
+      required final ProductList productList}) = _$DeleteItemProductImpl;
 
   int get index;
+  ProductList get productList;
   @JsonKey(ignore: true)
   _$$DeleteItemProductImplCopyWith<_$DeleteItemProductImpl> get copyWith =>
       throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$GetProductCategoryImplCopyWith<$Res> {
-  factory _$$GetProductCategoryImplCopyWith(_$GetProductCategoryImpl value,
-          $Res Function(_$GetProductCategoryImpl) then) =
-      __$$GetProductCategoryImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$GetProductCategoryImplCopyWithImpl<$Res>
-    extends _$CreateProductEventCopyWithImpl<$Res, _$GetProductCategoryImpl>
-    implements _$$GetProductCategoryImplCopyWith<$Res> {
-  __$$GetProductCategoryImplCopyWithImpl(_$GetProductCategoryImpl _value,
-      $Res Function(_$GetProductCategoryImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$GetProductCategoryImpl
-    with DiagnosticableTreeMixin
-    implements _GetProductCategory {
-  const _$GetProductCategoryImpl();
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CreateProductEvent.getProductCategory()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(
-        DiagnosticsProperty('type', 'CreateProductEvent.getProductCategory'));
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetProductCategoryImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String? value) onChangedProductType,
-    required TResult Function(String? value) onChangedProductCategory,
-    required TResult Function() initListProduct,
-    required TResult Function(ProductList value) addItemProduct,
-    required TResult Function(ProductList value, int index) updateItemProduct,
-    required TResult Function(int index) deleteItemProduct,
-    required TResult Function() getProductCategory,
-    required TResult Function() getUom,
-    required TResult Function(int index, String? value) onChangedItemName,
-    required TResult Function(int index, String? value) onChangedItemPrice,
-    required TResult Function(int index, String? value) onChangedItemStock,
-    required TResult Function(int index, String? value) onChangedUomId,
-    required TResult Function(int index, bool? value) onChangedSaleStatus,
-  }) {
-    return getProductCategory();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? value)? onChangedProductType,
-    TResult? Function(String? value)? onChangedProductCategory,
-    TResult? Function()? initListProduct,
-    TResult? Function(ProductList value)? addItemProduct,
-    TResult? Function(ProductList value, int index)? updateItemProduct,
-    TResult? Function(int index)? deleteItemProduct,
-    TResult? Function()? getProductCategory,
-    TResult? Function()? getUom,
-    TResult? Function(int index, String? value)? onChangedItemName,
-    TResult? Function(int index, String? value)? onChangedItemPrice,
-    TResult? Function(int index, String? value)? onChangedItemStock,
-    TResult? Function(int index, String? value)? onChangedUomId,
-    TResult? Function(int index, bool? value)? onChangedSaleStatus,
-  }) {
-    return getProductCategory?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? value)? onChangedProductType,
-    TResult Function(String? value)? onChangedProductCategory,
-    TResult Function()? initListProduct,
-    TResult Function(ProductList value)? addItemProduct,
-    TResult Function(ProductList value, int index)? updateItemProduct,
-    TResult Function(int index)? deleteItemProduct,
-    TResult Function()? getProductCategory,
-    TResult Function()? getUom,
-    TResult Function(int index, String? value)? onChangedItemName,
-    TResult Function(int index, String? value)? onChangedItemPrice,
-    TResult Function(int index, String? value)? onChangedItemStock,
-    TResult Function(int index, String? value)? onChangedUomId,
-    TResult Function(int index, bool? value)? onChangedSaleStatus,
-    required TResult orElse(),
-  }) {
-    if (getProductCategory != null) {
-      return getProductCategory();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_OnChangedProductType value) onChangedProductType,
-    required TResult Function(_OnChangedProductCategory value)
-        onChangedProductCategory,
-    required TResult Function(_InitListProduct value) initListProduct,
-    required TResult Function(_AddItemProduct value) addItemProduct,
-    required TResult Function(_UpdateItemProduct value) updateItemProduct,
-    required TResult Function(_DeleteItemProduct value) deleteItemProduct,
-    required TResult Function(_GetProductCategory value) getProductCategory,
-    required TResult Function(_GetUom value) getUom,
-    required TResult Function(_OnChangedItemName value) onChangedItemName,
-    required TResult Function(_OnChangedItemPrice value) onChangedItemPrice,
-    required TResult Function(_OnChangedItemStock value) onChangedItemStock,
-    required TResult Function(_OnChangedUomId value) onChangedUomId,
-    required TResult Function(_OnChangedSaleStatus value) onChangedSaleStatus,
-  }) {
-    return getProductCategory(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_OnChangedProductType value)? onChangedProductType,
-    TResult? Function(_OnChangedProductCategory value)?
-        onChangedProductCategory,
-    TResult? Function(_InitListProduct value)? initListProduct,
-    TResult? Function(_AddItemProduct value)? addItemProduct,
-    TResult? Function(_UpdateItemProduct value)? updateItemProduct,
-    TResult? Function(_DeleteItemProduct value)? deleteItemProduct,
-    TResult? Function(_GetProductCategory value)? getProductCategory,
-    TResult? Function(_GetUom value)? getUom,
-    TResult? Function(_OnChangedItemName value)? onChangedItemName,
-    TResult? Function(_OnChangedItemPrice value)? onChangedItemPrice,
-    TResult? Function(_OnChangedItemStock value)? onChangedItemStock,
-    TResult? Function(_OnChangedUomId value)? onChangedUomId,
-    TResult? Function(_OnChangedSaleStatus value)? onChangedSaleStatus,
-  }) {
-    return getProductCategory?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_OnChangedProductType value)? onChangedProductType,
-    TResult Function(_OnChangedProductCategory value)? onChangedProductCategory,
-    TResult Function(_InitListProduct value)? initListProduct,
-    TResult Function(_AddItemProduct value)? addItemProduct,
-    TResult Function(_UpdateItemProduct value)? updateItemProduct,
-    TResult Function(_DeleteItemProduct value)? deleteItemProduct,
-    TResult Function(_GetProductCategory value)? getProductCategory,
-    TResult Function(_GetUom value)? getUom,
-    TResult Function(_OnChangedItemName value)? onChangedItemName,
-    TResult Function(_OnChangedItemPrice value)? onChangedItemPrice,
-    TResult Function(_OnChangedItemStock value)? onChangedItemStock,
-    TResult Function(_OnChangedUomId value)? onChangedUomId,
-    TResult Function(_OnChangedSaleStatus value)? onChangedSaleStatus,
-    required TResult orElse(),
-  }) {
-    if (getProductCategory != null) {
-      return getProductCategory(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _GetProductCategory implements CreateProductEvent {
-  const factory _GetProductCategory() = _$GetProductCategoryImpl;
-}
-
-/// @nodoc
-abstract class _$$GetUomImplCopyWith<$Res> {
-  factory _$$GetUomImplCopyWith(
-          _$GetUomImpl value, $Res Function(_$GetUomImpl) then) =
-      __$$GetUomImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$GetUomImplCopyWithImpl<$Res>
-    extends _$CreateProductEventCopyWithImpl<$Res, _$GetUomImpl>
-    implements _$$GetUomImplCopyWith<$Res> {
-  __$$GetUomImplCopyWithImpl(
-      _$GetUomImpl _value, $Res Function(_$GetUomImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$GetUomImpl with DiagnosticableTreeMixin implements _GetUom {
-  const _$GetUomImpl();
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CreateProductEvent.getUom()';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty('type', 'CreateProductEvent.getUom'));
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetUomImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String? value) onChangedProductType,
-    required TResult Function(String? value) onChangedProductCategory,
-    required TResult Function() initListProduct,
-    required TResult Function(ProductList value) addItemProduct,
-    required TResult Function(ProductList value, int index) updateItemProduct,
-    required TResult Function(int index) deleteItemProduct,
-    required TResult Function() getProductCategory,
-    required TResult Function() getUom,
-    required TResult Function(int index, String? value) onChangedItemName,
-    required TResult Function(int index, String? value) onChangedItemPrice,
-    required TResult Function(int index, String? value) onChangedItemStock,
-    required TResult Function(int index, String? value) onChangedUomId,
-    required TResult Function(int index, bool? value) onChangedSaleStatus,
-  }) {
-    return getUom();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String? value)? onChangedProductType,
-    TResult? Function(String? value)? onChangedProductCategory,
-    TResult? Function()? initListProduct,
-    TResult? Function(ProductList value)? addItemProduct,
-    TResult? Function(ProductList value, int index)? updateItemProduct,
-    TResult? Function(int index)? deleteItemProduct,
-    TResult? Function()? getProductCategory,
-    TResult? Function()? getUom,
-    TResult? Function(int index, String? value)? onChangedItemName,
-    TResult? Function(int index, String? value)? onChangedItemPrice,
-    TResult? Function(int index, String? value)? onChangedItemStock,
-    TResult? Function(int index, String? value)? onChangedUomId,
-    TResult? Function(int index, bool? value)? onChangedSaleStatus,
-  }) {
-    return getUom?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? value)? onChangedProductType,
-    TResult Function(String? value)? onChangedProductCategory,
-    TResult Function()? initListProduct,
-    TResult Function(ProductList value)? addItemProduct,
-    TResult Function(ProductList value, int index)? updateItemProduct,
-    TResult Function(int index)? deleteItemProduct,
-    TResult Function()? getProductCategory,
-    TResult Function()? getUom,
-    TResult Function(int index, String? value)? onChangedItemName,
-    TResult Function(int index, String? value)? onChangedItemPrice,
-    TResult Function(int index, String? value)? onChangedItemStock,
-    TResult Function(int index, String? value)? onChangedUomId,
-    TResult Function(int index, bool? value)? onChangedSaleStatus,
-    required TResult orElse(),
-  }) {
-    if (getUom != null) {
-      return getUom();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_OnChangedProductType value) onChangedProductType,
-    required TResult Function(_OnChangedProductCategory value)
-        onChangedProductCategory,
-    required TResult Function(_InitListProduct value) initListProduct,
-    required TResult Function(_AddItemProduct value) addItemProduct,
-    required TResult Function(_UpdateItemProduct value) updateItemProduct,
-    required TResult Function(_DeleteItemProduct value) deleteItemProduct,
-    required TResult Function(_GetProductCategory value) getProductCategory,
-    required TResult Function(_GetUom value) getUom,
-    required TResult Function(_OnChangedItemName value) onChangedItemName,
-    required TResult Function(_OnChangedItemPrice value) onChangedItemPrice,
-    required TResult Function(_OnChangedItemStock value) onChangedItemStock,
-    required TResult Function(_OnChangedUomId value) onChangedUomId,
-    required TResult Function(_OnChangedSaleStatus value) onChangedSaleStatus,
-  }) {
-    return getUom(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_OnChangedProductType value)? onChangedProductType,
-    TResult? Function(_OnChangedProductCategory value)?
-        onChangedProductCategory,
-    TResult? Function(_InitListProduct value)? initListProduct,
-    TResult? Function(_AddItemProduct value)? addItemProduct,
-    TResult? Function(_UpdateItemProduct value)? updateItemProduct,
-    TResult? Function(_DeleteItemProduct value)? deleteItemProduct,
-    TResult? Function(_GetProductCategory value)? getProductCategory,
-    TResult? Function(_GetUom value)? getUom,
-    TResult? Function(_OnChangedItemName value)? onChangedItemName,
-    TResult? Function(_OnChangedItemPrice value)? onChangedItemPrice,
-    TResult? Function(_OnChangedItemStock value)? onChangedItemStock,
-    TResult? Function(_OnChangedUomId value)? onChangedUomId,
-    TResult? Function(_OnChangedSaleStatus value)? onChangedSaleStatus,
-  }) {
-    return getUom?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_OnChangedProductType value)? onChangedProductType,
-    TResult Function(_OnChangedProductCategory value)? onChangedProductCategory,
-    TResult Function(_InitListProduct value)? initListProduct,
-    TResult Function(_AddItemProduct value)? addItemProduct,
-    TResult Function(_UpdateItemProduct value)? updateItemProduct,
-    TResult Function(_DeleteItemProduct value)? deleteItemProduct,
-    TResult Function(_GetProductCategory value)? getProductCategory,
-    TResult Function(_GetUom value)? getUom,
-    TResult Function(_OnChangedItemName value)? onChangedItemName,
-    TResult Function(_OnChangedItemPrice value)? onChangedItemPrice,
-    TResult Function(_OnChangedItemStock value)? onChangedItemStock,
-    TResult Function(_OnChangedUomId value)? onChangedUomId,
-    TResult Function(_OnChangedSaleStatus value)? onChangedSaleStatus,
-    required TResult orElse(),
-  }) {
-    if (getUom != null) {
-      return getUom(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _GetUom implements CreateProductEvent {
-  const factory _GetUom() = _$GetUomImpl;
 }
 
 /// @nodoc
@@ -1862,14 +1665,14 @@ class _$OnChangedItemNameImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function(String? value) onChangedProductType,
     required TResult Function(String? value) onChangedProductCategory,
-    required TResult Function() initListProduct,
+    required TResult Function() productSubmitted,
     required TResult Function(ProductList value) addItemProduct,
     required TResult Function(ProductList value, int index) updateItemProduct,
-    required TResult Function(int index) deleteItemProduct,
-    required TResult Function() getProductCategory,
-    required TResult Function() getUom,
+    required TResult Function(int index, ProductList productList)
+        deleteItemProduct,
     required TResult Function(int index, String? value) onChangedItemName,
     required TResult Function(int index, String? value) onChangedItemPrice,
     required TResult Function(int index, String? value) onChangedItemStock,
@@ -1882,14 +1685,13 @@ class _$OnChangedItemNameImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function(String? value)? onChangedProductType,
     TResult? Function(String? value)? onChangedProductCategory,
-    TResult? Function()? initListProduct,
+    TResult? Function()? productSubmitted,
     TResult? Function(ProductList value)? addItemProduct,
     TResult? Function(ProductList value, int index)? updateItemProduct,
-    TResult? Function(int index)? deleteItemProduct,
-    TResult? Function()? getProductCategory,
-    TResult? Function()? getUom,
+    TResult? Function(int index, ProductList productList)? deleteItemProduct,
     TResult? Function(int index, String? value)? onChangedItemName,
     TResult? Function(int index, String? value)? onChangedItemPrice,
     TResult? Function(int index, String? value)? onChangedItemStock,
@@ -1902,14 +1704,13 @@ class _$OnChangedItemNameImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function(String? value)? onChangedProductType,
     TResult Function(String? value)? onChangedProductCategory,
-    TResult Function()? initListProduct,
+    TResult Function()? productSubmitted,
     TResult Function(ProductList value)? addItemProduct,
     TResult Function(ProductList value, int index)? updateItemProduct,
-    TResult Function(int index)? deleteItemProduct,
-    TResult Function()? getProductCategory,
-    TResult Function()? getUom,
+    TResult Function(int index, ProductList productList)? deleteItemProduct,
     TResult Function(int index, String? value)? onChangedItemName,
     TResult Function(int index, String? value)? onChangedItemPrice,
     TResult Function(int index, String? value)? onChangedItemStock,
@@ -1926,15 +1727,14 @@ class _$OnChangedItemNameImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
     required TResult Function(_OnChangedProductType value) onChangedProductType,
     required TResult Function(_OnChangedProductCategory value)
         onChangedProductCategory,
-    required TResult Function(_InitListProduct value) initListProduct,
+    required TResult Function(_ProductSubmitted value) productSubmitted,
     required TResult Function(_AddItemProduct value) addItemProduct,
     required TResult Function(_UpdateItemProduct value) updateItemProduct,
     required TResult Function(_DeleteItemProduct value) deleteItemProduct,
-    required TResult Function(_GetProductCategory value) getProductCategory,
-    required TResult Function(_GetUom value) getUom,
     required TResult Function(_OnChangedItemName value) onChangedItemName,
     required TResult Function(_OnChangedItemPrice value) onChangedItemPrice,
     required TResult Function(_OnChangedItemStock value) onChangedItemStock,
@@ -1947,15 +1747,14 @@ class _$OnChangedItemNameImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
     TResult? Function(_OnChangedProductType value)? onChangedProductType,
     TResult? Function(_OnChangedProductCategory value)?
         onChangedProductCategory,
-    TResult? Function(_InitListProduct value)? initListProduct,
+    TResult? Function(_ProductSubmitted value)? productSubmitted,
     TResult? Function(_AddItemProduct value)? addItemProduct,
     TResult? Function(_UpdateItemProduct value)? updateItemProduct,
     TResult? Function(_DeleteItemProduct value)? deleteItemProduct,
-    TResult? Function(_GetProductCategory value)? getProductCategory,
-    TResult? Function(_GetUom value)? getUom,
     TResult? Function(_OnChangedItemName value)? onChangedItemName,
     TResult? Function(_OnChangedItemPrice value)? onChangedItemPrice,
     TResult? Function(_OnChangedItemStock value)? onChangedItemStock,
@@ -1968,14 +1767,13 @@ class _$OnChangedItemNameImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
     TResult Function(_OnChangedProductType value)? onChangedProductType,
     TResult Function(_OnChangedProductCategory value)? onChangedProductCategory,
-    TResult Function(_InitListProduct value)? initListProduct,
+    TResult Function(_ProductSubmitted value)? productSubmitted,
     TResult Function(_AddItemProduct value)? addItemProduct,
     TResult Function(_UpdateItemProduct value)? updateItemProduct,
     TResult Function(_DeleteItemProduct value)? deleteItemProduct,
-    TResult Function(_GetProductCategory value)? getProductCategory,
-    TResult Function(_GetUom value)? getUom,
     TResult Function(_OnChangedItemName value)? onChangedItemName,
     TResult Function(_OnChangedItemPrice value)? onChangedItemPrice,
     TResult Function(_OnChangedItemStock value)? onChangedItemStock,
@@ -2087,14 +1885,14 @@ class _$OnChangedItemPriceImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function(String? value) onChangedProductType,
     required TResult Function(String? value) onChangedProductCategory,
-    required TResult Function() initListProduct,
+    required TResult Function() productSubmitted,
     required TResult Function(ProductList value) addItemProduct,
     required TResult Function(ProductList value, int index) updateItemProduct,
-    required TResult Function(int index) deleteItemProduct,
-    required TResult Function() getProductCategory,
-    required TResult Function() getUom,
+    required TResult Function(int index, ProductList productList)
+        deleteItemProduct,
     required TResult Function(int index, String? value) onChangedItemName,
     required TResult Function(int index, String? value) onChangedItemPrice,
     required TResult Function(int index, String? value) onChangedItemStock,
@@ -2107,14 +1905,13 @@ class _$OnChangedItemPriceImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function(String? value)? onChangedProductType,
     TResult? Function(String? value)? onChangedProductCategory,
-    TResult? Function()? initListProduct,
+    TResult? Function()? productSubmitted,
     TResult? Function(ProductList value)? addItemProduct,
     TResult? Function(ProductList value, int index)? updateItemProduct,
-    TResult? Function(int index)? deleteItemProduct,
-    TResult? Function()? getProductCategory,
-    TResult? Function()? getUom,
+    TResult? Function(int index, ProductList productList)? deleteItemProduct,
     TResult? Function(int index, String? value)? onChangedItemName,
     TResult? Function(int index, String? value)? onChangedItemPrice,
     TResult? Function(int index, String? value)? onChangedItemStock,
@@ -2127,14 +1924,13 @@ class _$OnChangedItemPriceImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function(String? value)? onChangedProductType,
     TResult Function(String? value)? onChangedProductCategory,
-    TResult Function()? initListProduct,
+    TResult Function()? productSubmitted,
     TResult Function(ProductList value)? addItemProduct,
     TResult Function(ProductList value, int index)? updateItemProduct,
-    TResult Function(int index)? deleteItemProduct,
-    TResult Function()? getProductCategory,
-    TResult Function()? getUom,
+    TResult Function(int index, ProductList productList)? deleteItemProduct,
     TResult Function(int index, String? value)? onChangedItemName,
     TResult Function(int index, String? value)? onChangedItemPrice,
     TResult Function(int index, String? value)? onChangedItemStock,
@@ -2151,15 +1947,14 @@ class _$OnChangedItemPriceImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
     required TResult Function(_OnChangedProductType value) onChangedProductType,
     required TResult Function(_OnChangedProductCategory value)
         onChangedProductCategory,
-    required TResult Function(_InitListProduct value) initListProduct,
+    required TResult Function(_ProductSubmitted value) productSubmitted,
     required TResult Function(_AddItemProduct value) addItemProduct,
     required TResult Function(_UpdateItemProduct value) updateItemProduct,
     required TResult Function(_DeleteItemProduct value) deleteItemProduct,
-    required TResult Function(_GetProductCategory value) getProductCategory,
-    required TResult Function(_GetUom value) getUom,
     required TResult Function(_OnChangedItemName value) onChangedItemName,
     required TResult Function(_OnChangedItemPrice value) onChangedItemPrice,
     required TResult Function(_OnChangedItemStock value) onChangedItemStock,
@@ -2172,15 +1967,14 @@ class _$OnChangedItemPriceImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
     TResult? Function(_OnChangedProductType value)? onChangedProductType,
     TResult? Function(_OnChangedProductCategory value)?
         onChangedProductCategory,
-    TResult? Function(_InitListProduct value)? initListProduct,
+    TResult? Function(_ProductSubmitted value)? productSubmitted,
     TResult? Function(_AddItemProduct value)? addItemProduct,
     TResult? Function(_UpdateItemProduct value)? updateItemProduct,
     TResult? Function(_DeleteItemProduct value)? deleteItemProduct,
-    TResult? Function(_GetProductCategory value)? getProductCategory,
-    TResult? Function(_GetUom value)? getUom,
     TResult? Function(_OnChangedItemName value)? onChangedItemName,
     TResult? Function(_OnChangedItemPrice value)? onChangedItemPrice,
     TResult? Function(_OnChangedItemStock value)? onChangedItemStock,
@@ -2193,14 +1987,13 @@ class _$OnChangedItemPriceImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
     TResult Function(_OnChangedProductType value)? onChangedProductType,
     TResult Function(_OnChangedProductCategory value)? onChangedProductCategory,
-    TResult Function(_InitListProduct value)? initListProduct,
+    TResult Function(_ProductSubmitted value)? productSubmitted,
     TResult Function(_AddItemProduct value)? addItemProduct,
     TResult Function(_UpdateItemProduct value)? updateItemProduct,
     TResult Function(_DeleteItemProduct value)? deleteItemProduct,
-    TResult Function(_GetProductCategory value)? getProductCategory,
-    TResult Function(_GetUom value)? getUom,
     TResult Function(_OnChangedItemName value)? onChangedItemName,
     TResult Function(_OnChangedItemPrice value)? onChangedItemPrice,
     TResult Function(_OnChangedItemStock value)? onChangedItemStock,
@@ -2312,14 +2105,14 @@ class _$OnChangedItemStockImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function(String? value) onChangedProductType,
     required TResult Function(String? value) onChangedProductCategory,
-    required TResult Function() initListProduct,
+    required TResult Function() productSubmitted,
     required TResult Function(ProductList value) addItemProduct,
     required TResult Function(ProductList value, int index) updateItemProduct,
-    required TResult Function(int index) deleteItemProduct,
-    required TResult Function() getProductCategory,
-    required TResult Function() getUom,
+    required TResult Function(int index, ProductList productList)
+        deleteItemProduct,
     required TResult Function(int index, String? value) onChangedItemName,
     required TResult Function(int index, String? value) onChangedItemPrice,
     required TResult Function(int index, String? value) onChangedItemStock,
@@ -2332,14 +2125,13 @@ class _$OnChangedItemStockImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function(String? value)? onChangedProductType,
     TResult? Function(String? value)? onChangedProductCategory,
-    TResult? Function()? initListProduct,
+    TResult? Function()? productSubmitted,
     TResult? Function(ProductList value)? addItemProduct,
     TResult? Function(ProductList value, int index)? updateItemProduct,
-    TResult? Function(int index)? deleteItemProduct,
-    TResult? Function()? getProductCategory,
-    TResult? Function()? getUom,
+    TResult? Function(int index, ProductList productList)? deleteItemProduct,
     TResult? Function(int index, String? value)? onChangedItemName,
     TResult? Function(int index, String? value)? onChangedItemPrice,
     TResult? Function(int index, String? value)? onChangedItemStock,
@@ -2352,14 +2144,13 @@ class _$OnChangedItemStockImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function(String? value)? onChangedProductType,
     TResult Function(String? value)? onChangedProductCategory,
-    TResult Function()? initListProduct,
+    TResult Function()? productSubmitted,
     TResult Function(ProductList value)? addItemProduct,
     TResult Function(ProductList value, int index)? updateItemProduct,
-    TResult Function(int index)? deleteItemProduct,
-    TResult Function()? getProductCategory,
-    TResult Function()? getUom,
+    TResult Function(int index, ProductList productList)? deleteItemProduct,
     TResult Function(int index, String? value)? onChangedItemName,
     TResult Function(int index, String? value)? onChangedItemPrice,
     TResult Function(int index, String? value)? onChangedItemStock,
@@ -2376,15 +2167,14 @@ class _$OnChangedItemStockImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
     required TResult Function(_OnChangedProductType value) onChangedProductType,
     required TResult Function(_OnChangedProductCategory value)
         onChangedProductCategory,
-    required TResult Function(_InitListProduct value) initListProduct,
+    required TResult Function(_ProductSubmitted value) productSubmitted,
     required TResult Function(_AddItemProduct value) addItemProduct,
     required TResult Function(_UpdateItemProduct value) updateItemProduct,
     required TResult Function(_DeleteItemProduct value) deleteItemProduct,
-    required TResult Function(_GetProductCategory value) getProductCategory,
-    required TResult Function(_GetUom value) getUom,
     required TResult Function(_OnChangedItemName value) onChangedItemName,
     required TResult Function(_OnChangedItemPrice value) onChangedItemPrice,
     required TResult Function(_OnChangedItemStock value) onChangedItemStock,
@@ -2397,15 +2187,14 @@ class _$OnChangedItemStockImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
     TResult? Function(_OnChangedProductType value)? onChangedProductType,
     TResult? Function(_OnChangedProductCategory value)?
         onChangedProductCategory,
-    TResult? Function(_InitListProduct value)? initListProduct,
+    TResult? Function(_ProductSubmitted value)? productSubmitted,
     TResult? Function(_AddItemProduct value)? addItemProduct,
     TResult? Function(_UpdateItemProduct value)? updateItemProduct,
     TResult? Function(_DeleteItemProduct value)? deleteItemProduct,
-    TResult? Function(_GetProductCategory value)? getProductCategory,
-    TResult? Function(_GetUom value)? getUom,
     TResult? Function(_OnChangedItemName value)? onChangedItemName,
     TResult? Function(_OnChangedItemPrice value)? onChangedItemPrice,
     TResult? Function(_OnChangedItemStock value)? onChangedItemStock,
@@ -2418,14 +2207,13 @@ class _$OnChangedItemStockImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
     TResult Function(_OnChangedProductType value)? onChangedProductType,
     TResult Function(_OnChangedProductCategory value)? onChangedProductCategory,
-    TResult Function(_InitListProduct value)? initListProduct,
+    TResult Function(_ProductSubmitted value)? productSubmitted,
     TResult Function(_AddItemProduct value)? addItemProduct,
     TResult Function(_UpdateItemProduct value)? updateItemProduct,
     TResult Function(_DeleteItemProduct value)? deleteItemProduct,
-    TResult Function(_GetProductCategory value)? getProductCategory,
-    TResult Function(_GetUom value)? getUom,
     TResult Function(_OnChangedItemName value)? onChangedItemName,
     TResult Function(_OnChangedItemPrice value)? onChangedItemPrice,
     TResult Function(_OnChangedItemStock value)? onChangedItemStock,
@@ -2536,14 +2324,14 @@ class _$OnChangedUomIdImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function(String? value) onChangedProductType,
     required TResult Function(String? value) onChangedProductCategory,
-    required TResult Function() initListProduct,
+    required TResult Function() productSubmitted,
     required TResult Function(ProductList value) addItemProduct,
     required TResult Function(ProductList value, int index) updateItemProduct,
-    required TResult Function(int index) deleteItemProduct,
-    required TResult Function() getProductCategory,
-    required TResult Function() getUom,
+    required TResult Function(int index, ProductList productList)
+        deleteItemProduct,
     required TResult Function(int index, String? value) onChangedItemName,
     required TResult Function(int index, String? value) onChangedItemPrice,
     required TResult Function(int index, String? value) onChangedItemStock,
@@ -2556,14 +2344,13 @@ class _$OnChangedUomIdImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function(String? value)? onChangedProductType,
     TResult? Function(String? value)? onChangedProductCategory,
-    TResult? Function()? initListProduct,
+    TResult? Function()? productSubmitted,
     TResult? Function(ProductList value)? addItemProduct,
     TResult? Function(ProductList value, int index)? updateItemProduct,
-    TResult? Function(int index)? deleteItemProduct,
-    TResult? Function()? getProductCategory,
-    TResult? Function()? getUom,
+    TResult? Function(int index, ProductList productList)? deleteItemProduct,
     TResult? Function(int index, String? value)? onChangedItemName,
     TResult? Function(int index, String? value)? onChangedItemPrice,
     TResult? Function(int index, String? value)? onChangedItemStock,
@@ -2576,14 +2363,13 @@ class _$OnChangedUomIdImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function(String? value)? onChangedProductType,
     TResult Function(String? value)? onChangedProductCategory,
-    TResult Function()? initListProduct,
+    TResult Function()? productSubmitted,
     TResult Function(ProductList value)? addItemProduct,
     TResult Function(ProductList value, int index)? updateItemProduct,
-    TResult Function(int index)? deleteItemProduct,
-    TResult Function()? getProductCategory,
-    TResult Function()? getUom,
+    TResult Function(int index, ProductList productList)? deleteItemProduct,
     TResult Function(int index, String? value)? onChangedItemName,
     TResult Function(int index, String? value)? onChangedItemPrice,
     TResult Function(int index, String? value)? onChangedItemStock,
@@ -2600,15 +2386,14 @@ class _$OnChangedUomIdImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
     required TResult Function(_OnChangedProductType value) onChangedProductType,
     required TResult Function(_OnChangedProductCategory value)
         onChangedProductCategory,
-    required TResult Function(_InitListProduct value) initListProduct,
+    required TResult Function(_ProductSubmitted value) productSubmitted,
     required TResult Function(_AddItemProduct value) addItemProduct,
     required TResult Function(_UpdateItemProduct value) updateItemProduct,
     required TResult Function(_DeleteItemProduct value) deleteItemProduct,
-    required TResult Function(_GetProductCategory value) getProductCategory,
-    required TResult Function(_GetUom value) getUom,
     required TResult Function(_OnChangedItemName value) onChangedItemName,
     required TResult Function(_OnChangedItemPrice value) onChangedItemPrice,
     required TResult Function(_OnChangedItemStock value) onChangedItemStock,
@@ -2621,15 +2406,14 @@ class _$OnChangedUomIdImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
     TResult? Function(_OnChangedProductType value)? onChangedProductType,
     TResult? Function(_OnChangedProductCategory value)?
         onChangedProductCategory,
-    TResult? Function(_InitListProduct value)? initListProduct,
+    TResult? Function(_ProductSubmitted value)? productSubmitted,
     TResult? Function(_AddItemProduct value)? addItemProduct,
     TResult? Function(_UpdateItemProduct value)? updateItemProduct,
     TResult? Function(_DeleteItemProduct value)? deleteItemProduct,
-    TResult? Function(_GetProductCategory value)? getProductCategory,
-    TResult? Function(_GetUom value)? getUom,
     TResult? Function(_OnChangedItemName value)? onChangedItemName,
     TResult? Function(_OnChangedItemPrice value)? onChangedItemPrice,
     TResult? Function(_OnChangedItemStock value)? onChangedItemStock,
@@ -2642,14 +2426,13 @@ class _$OnChangedUomIdImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
     TResult Function(_OnChangedProductType value)? onChangedProductType,
     TResult Function(_OnChangedProductCategory value)? onChangedProductCategory,
-    TResult Function(_InitListProduct value)? initListProduct,
+    TResult Function(_ProductSubmitted value)? productSubmitted,
     TResult Function(_AddItemProduct value)? addItemProduct,
     TResult Function(_UpdateItemProduct value)? updateItemProduct,
     TResult Function(_DeleteItemProduct value)? deleteItemProduct,
-    TResult Function(_GetProductCategory value)? getProductCategory,
-    TResult Function(_GetUom value)? getUom,
     TResult Function(_OnChangedItemName value)? onChangedItemName,
     TResult Function(_OnChangedItemPrice value)? onChangedItemPrice,
     TResult Function(_OnChangedItemStock value)? onChangedItemStock,
@@ -2761,14 +2544,14 @@ class _$OnChangedSaleStatusImpl
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function(String? value) onChangedProductType,
     required TResult Function(String? value) onChangedProductCategory,
-    required TResult Function() initListProduct,
+    required TResult Function() productSubmitted,
     required TResult Function(ProductList value) addItemProduct,
     required TResult Function(ProductList value, int index) updateItemProduct,
-    required TResult Function(int index) deleteItemProduct,
-    required TResult Function() getProductCategory,
-    required TResult Function() getUom,
+    required TResult Function(int index, ProductList productList)
+        deleteItemProduct,
     required TResult Function(int index, String? value) onChangedItemName,
     required TResult Function(int index, String? value) onChangedItemPrice,
     required TResult Function(int index, String? value) onChangedItemStock,
@@ -2781,14 +2564,13 @@ class _$OnChangedSaleStatusImpl
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function(String? value)? onChangedProductType,
     TResult? Function(String? value)? onChangedProductCategory,
-    TResult? Function()? initListProduct,
+    TResult? Function()? productSubmitted,
     TResult? Function(ProductList value)? addItemProduct,
     TResult? Function(ProductList value, int index)? updateItemProduct,
-    TResult? Function(int index)? deleteItemProduct,
-    TResult? Function()? getProductCategory,
-    TResult? Function()? getUom,
+    TResult? Function(int index, ProductList productList)? deleteItemProduct,
     TResult? Function(int index, String? value)? onChangedItemName,
     TResult? Function(int index, String? value)? onChangedItemPrice,
     TResult? Function(int index, String? value)? onChangedItemStock,
@@ -2801,14 +2583,13 @@ class _$OnChangedSaleStatusImpl
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function(String? value)? onChangedProductType,
     TResult Function(String? value)? onChangedProductCategory,
-    TResult Function()? initListProduct,
+    TResult Function()? productSubmitted,
     TResult Function(ProductList value)? addItemProduct,
     TResult Function(ProductList value, int index)? updateItemProduct,
-    TResult Function(int index)? deleteItemProduct,
-    TResult Function()? getProductCategory,
-    TResult Function()? getUom,
+    TResult Function(int index, ProductList productList)? deleteItemProduct,
     TResult Function(int index, String? value)? onChangedItemName,
     TResult Function(int index, String? value)? onChangedItemPrice,
     TResult Function(int index, String? value)? onChangedItemStock,
@@ -2825,15 +2606,14 @@ class _$OnChangedSaleStatusImpl
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
     required TResult Function(_OnChangedProductType value) onChangedProductType,
     required TResult Function(_OnChangedProductCategory value)
         onChangedProductCategory,
-    required TResult Function(_InitListProduct value) initListProduct,
+    required TResult Function(_ProductSubmitted value) productSubmitted,
     required TResult Function(_AddItemProduct value) addItemProduct,
     required TResult Function(_UpdateItemProduct value) updateItemProduct,
     required TResult Function(_DeleteItemProduct value) deleteItemProduct,
-    required TResult Function(_GetProductCategory value) getProductCategory,
-    required TResult Function(_GetUom value) getUom,
     required TResult Function(_OnChangedItemName value) onChangedItemName,
     required TResult Function(_OnChangedItemPrice value) onChangedItemPrice,
     required TResult Function(_OnChangedItemStock value) onChangedItemStock,
@@ -2846,15 +2626,14 @@ class _$OnChangedSaleStatusImpl
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
     TResult? Function(_OnChangedProductType value)? onChangedProductType,
     TResult? Function(_OnChangedProductCategory value)?
         onChangedProductCategory,
-    TResult? Function(_InitListProduct value)? initListProduct,
+    TResult? Function(_ProductSubmitted value)? productSubmitted,
     TResult? Function(_AddItemProduct value)? addItemProduct,
     TResult? Function(_UpdateItemProduct value)? updateItemProduct,
     TResult? Function(_DeleteItemProduct value)? deleteItemProduct,
-    TResult? Function(_GetProductCategory value)? getProductCategory,
-    TResult? Function(_GetUom value)? getUom,
     TResult? Function(_OnChangedItemName value)? onChangedItemName,
     TResult? Function(_OnChangedItemPrice value)? onChangedItemPrice,
     TResult? Function(_OnChangedItemStock value)? onChangedItemStock,
@@ -2867,14 +2646,13 @@ class _$OnChangedSaleStatusImpl
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
     TResult Function(_OnChangedProductType value)? onChangedProductType,
     TResult Function(_OnChangedProductCategory value)? onChangedProductCategory,
-    TResult Function(_InitListProduct value)? initListProduct,
+    TResult Function(_ProductSubmitted value)? productSubmitted,
     TResult Function(_AddItemProduct value)? addItemProduct,
     TResult Function(_UpdateItemProduct value)? updateItemProduct,
     TResult Function(_DeleteItemProduct value)? deleteItemProduct,
-    TResult Function(_GetProductCategory value)? getProductCategory,
-    TResult Function(_GetUom value)? getUom,
     TResult Function(_OnChangedItemName value)? onChangedItemName,
     TResult Function(_OnChangedItemPrice value)? onChangedItemPrice,
     TResult Function(_OnChangedItemStock value)? onChangedItemStock,
@@ -2906,17 +2684,19 @@ mixin _$CreateProductState {
   UIStatus get status => throw _privateConstructorUsedError;
   CreateProductNotification? get notification =>
       throw _privateConstructorUsedError;
-  String get typeCategoryId => throw _privateConstructorUsedError;
+  String? get productCategoryId => throw _privateConstructorUsedError;
+  String? get productTypeId => throw _privateConstructorUsedError;
   bool get isValid => throw _privateConstructorUsedError;
+  ErrorResponse? get errorResponse => throw _privateConstructorUsedError;
   List<ProductCategoryResponse> get dataProductCategory =>
       throw _privateConstructorUsedError;
   List<ProductTypeResponse> get dataProductType =>
       throw _privateConstructorUsedError;
   List<UomResponse> get dataUom => throw _privateConstructorUsedError;
-  ErrorResponse? get errorResponse => throw _privateConstructorUsedError;
   ProductPostRequest get productPostRequest =>
       throw _privateConstructorUsedError;
   List<ProductList>? get productList => throw _privateConstructorUsedError;
+  MyStoreResponse? get myStoreResponse => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CreateProductStateCopyWith<CreateProductState> get copyWith =>
@@ -2932,19 +2712,22 @@ abstract class $CreateProductStateCopyWith<$Res> {
   $Res call(
       {UIStatus status,
       CreateProductNotification? notification,
-      String typeCategoryId,
+      String? productCategoryId,
+      String? productTypeId,
       bool isValid,
+      ErrorResponse? errorResponse,
       List<ProductCategoryResponse> dataProductCategory,
       List<ProductTypeResponse> dataProductType,
       List<UomResponse> dataUom,
-      ErrorResponse? errorResponse,
       ProductPostRequest productPostRequest,
-      List<ProductList>? productList});
+      List<ProductList>? productList,
+      MyStoreResponse? myStoreResponse});
 
   $UIStatusCopyWith<$Res> get status;
   $CreateProductNotificationCopyWith<$Res>? get notification;
   $ErrorResponseCopyWith<$Res>? get errorResponse;
   $ProductPostRequestCopyWith<$Res> get productPostRequest;
+  $MyStoreResponseCopyWith<$Res>? get myStoreResponse;
 }
 
 /// @nodoc
@@ -2962,14 +2745,16 @@ class _$CreateProductStateCopyWithImpl<$Res, $Val extends CreateProductState>
   $Res call({
     Object? status = null,
     Object? notification = freezed,
-    Object? typeCategoryId = null,
+    Object? productCategoryId = freezed,
+    Object? productTypeId = freezed,
     Object? isValid = null,
+    Object? errorResponse = freezed,
     Object? dataProductCategory = null,
     Object? dataProductType = null,
     Object? dataUom = null,
-    Object? errorResponse = freezed,
     Object? productPostRequest = null,
     Object? productList = freezed,
+    Object? myStoreResponse = freezed,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -2980,14 +2765,22 @@ class _$CreateProductStateCopyWithImpl<$Res, $Val extends CreateProductState>
           ? _value.notification
           : notification // ignore: cast_nullable_to_non_nullable
               as CreateProductNotification?,
-      typeCategoryId: null == typeCategoryId
-          ? _value.typeCategoryId
-          : typeCategoryId // ignore: cast_nullable_to_non_nullable
-              as String,
+      productCategoryId: freezed == productCategoryId
+          ? _value.productCategoryId
+          : productCategoryId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      productTypeId: freezed == productTypeId
+          ? _value.productTypeId
+          : productTypeId // ignore: cast_nullable_to_non_nullable
+              as String?,
       isValid: null == isValid
           ? _value.isValid
           : isValid // ignore: cast_nullable_to_non_nullable
               as bool,
+      errorResponse: freezed == errorResponse
+          ? _value.errorResponse
+          : errorResponse // ignore: cast_nullable_to_non_nullable
+              as ErrorResponse?,
       dataProductCategory: null == dataProductCategory
           ? _value.dataProductCategory
           : dataProductCategory // ignore: cast_nullable_to_non_nullable
@@ -3000,10 +2793,6 @@ class _$CreateProductStateCopyWithImpl<$Res, $Val extends CreateProductState>
           ? _value.dataUom
           : dataUom // ignore: cast_nullable_to_non_nullable
               as List<UomResponse>,
-      errorResponse: freezed == errorResponse
-          ? _value.errorResponse
-          : errorResponse // ignore: cast_nullable_to_non_nullable
-              as ErrorResponse?,
       productPostRequest: null == productPostRequest
           ? _value.productPostRequest
           : productPostRequest // ignore: cast_nullable_to_non_nullable
@@ -3012,6 +2801,10 @@ class _$CreateProductStateCopyWithImpl<$Res, $Val extends CreateProductState>
           ? _value.productList
           : productList // ignore: cast_nullable_to_non_nullable
               as List<ProductList>?,
+      myStoreResponse: freezed == myStoreResponse
+          ? _value.myStoreResponse
+          : myStoreResponse // ignore: cast_nullable_to_non_nullable
+              as MyStoreResponse?,
     ) as $Val);
   }
 
@@ -3056,6 +2849,18 @@ class _$CreateProductStateCopyWithImpl<$Res, $Val extends CreateProductState>
       return _then(_value.copyWith(productPostRequest: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MyStoreResponseCopyWith<$Res>? get myStoreResponse {
+    if (_value.myStoreResponse == null) {
+      return null;
+    }
+
+    return $MyStoreResponseCopyWith<$Res>(_value.myStoreResponse!, (value) {
+      return _then(_value.copyWith(myStoreResponse: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -3069,14 +2874,16 @@ abstract class _$$CreateProductStateImplCopyWith<$Res>
   $Res call(
       {UIStatus status,
       CreateProductNotification? notification,
-      String typeCategoryId,
+      String? productCategoryId,
+      String? productTypeId,
       bool isValid,
+      ErrorResponse? errorResponse,
       List<ProductCategoryResponse> dataProductCategory,
       List<ProductTypeResponse> dataProductType,
       List<UomResponse> dataUom,
-      ErrorResponse? errorResponse,
       ProductPostRequest productPostRequest,
-      List<ProductList>? productList});
+      List<ProductList>? productList,
+      MyStoreResponse? myStoreResponse});
 
   @override
   $UIStatusCopyWith<$Res> get status;
@@ -3086,6 +2893,8 @@ abstract class _$$CreateProductStateImplCopyWith<$Res>
   $ErrorResponseCopyWith<$Res>? get errorResponse;
   @override
   $ProductPostRequestCopyWith<$Res> get productPostRequest;
+  @override
+  $MyStoreResponseCopyWith<$Res>? get myStoreResponse;
 }
 
 /// @nodoc
@@ -3101,14 +2910,16 @@ class __$$CreateProductStateImplCopyWithImpl<$Res>
   $Res call({
     Object? status = null,
     Object? notification = freezed,
-    Object? typeCategoryId = null,
+    Object? productCategoryId = freezed,
+    Object? productTypeId = freezed,
     Object? isValid = null,
+    Object? errorResponse = freezed,
     Object? dataProductCategory = null,
     Object? dataProductType = null,
     Object? dataUom = null,
-    Object? errorResponse = freezed,
     Object? productPostRequest = null,
     Object? productList = freezed,
+    Object? myStoreResponse = freezed,
   }) {
     return _then(_$CreateProductStateImpl(
       status: null == status
@@ -3119,14 +2930,22 @@ class __$$CreateProductStateImplCopyWithImpl<$Res>
           ? _value.notification
           : notification // ignore: cast_nullable_to_non_nullable
               as CreateProductNotification?,
-      typeCategoryId: null == typeCategoryId
-          ? _value.typeCategoryId
-          : typeCategoryId // ignore: cast_nullable_to_non_nullable
-              as String,
+      productCategoryId: freezed == productCategoryId
+          ? _value.productCategoryId
+          : productCategoryId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      productTypeId: freezed == productTypeId
+          ? _value.productTypeId
+          : productTypeId // ignore: cast_nullable_to_non_nullable
+              as String?,
       isValid: null == isValid
           ? _value.isValid
           : isValid // ignore: cast_nullable_to_non_nullable
               as bool,
+      errorResponse: freezed == errorResponse
+          ? _value.errorResponse
+          : errorResponse // ignore: cast_nullable_to_non_nullable
+              as ErrorResponse?,
       dataProductCategory: null == dataProductCategory
           ? _value._dataProductCategory
           : dataProductCategory // ignore: cast_nullable_to_non_nullable
@@ -3139,10 +2958,6 @@ class __$$CreateProductStateImplCopyWithImpl<$Res>
           ? _value._dataUom
           : dataUom // ignore: cast_nullable_to_non_nullable
               as List<UomResponse>,
-      errorResponse: freezed == errorResponse
-          ? _value.errorResponse
-          : errorResponse // ignore: cast_nullable_to_non_nullable
-              as ErrorResponse?,
       productPostRequest: null == productPostRequest
           ? _value.productPostRequest
           : productPostRequest // ignore: cast_nullable_to_non_nullable
@@ -3151,6 +2966,10 @@ class __$$CreateProductStateImplCopyWithImpl<$Res>
           ? _value._productList
           : productList // ignore: cast_nullable_to_non_nullable
               as List<ProductList>?,
+      myStoreResponse: freezed == myStoreResponse
+          ? _value.myStoreResponse
+          : myStoreResponse // ignore: cast_nullable_to_non_nullable
+              as MyStoreResponse?,
     ));
   }
 }
@@ -3163,14 +2982,16 @@ class _$CreateProductStateImpl
   const _$CreateProductStateImpl(
       {this.status = const UIInitial(),
       this.notification,
-      this.typeCategoryId = '',
+      this.productCategoryId = '',
+      this.productTypeId = '',
       this.isValid = false,
+      this.errorResponse,
       final List<ProductCategoryResponse> dataProductCategory = const [],
       final List<ProductTypeResponse> dataProductType = const [],
       final List<UomResponse> dataUom = const [],
-      this.errorResponse,
       this.productPostRequest = const ProductPostRequest(),
-      final List<ProductList>? productList = const []})
+      final List<ProductList>? productList = const [],
+      this.myStoreResponse})
       : _dataProductCategory = dataProductCategory,
         _dataProductType = dataProductType,
         _dataUom = dataUom,
@@ -3183,10 +3004,15 @@ class _$CreateProductStateImpl
   final CreateProductNotification? notification;
   @override
   @JsonKey()
-  final String typeCategoryId;
+  final String? productCategoryId;
+  @override
+  @JsonKey()
+  final String? productTypeId;
   @override
   @JsonKey()
   final bool isValid;
+  @override
+  final ErrorResponse? errorResponse;
   final List<ProductCategoryResponse> _dataProductCategory;
   @override
   @JsonKey()
@@ -3216,8 +3042,6 @@ class _$CreateProductStateImpl
   }
 
   @override
-  final ErrorResponse? errorResponse;
-  @override
   @JsonKey()
   final ProductPostRequest productPostRequest;
   final List<ProductList>? _productList;
@@ -3232,8 +3056,11 @@ class _$CreateProductStateImpl
   }
 
   @override
+  final MyStoreResponse? myStoreResponse;
+
+  @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CreateProductState(status: $status, notification: $notification, typeCategoryId: $typeCategoryId, isValid: $isValid, dataProductCategory: $dataProductCategory, dataProductType: $dataProductType, dataUom: $dataUom, errorResponse: $errorResponse, productPostRequest: $productPostRequest, productList: $productList)';
+    return 'CreateProductState(status: $status, notification: $notification, productCategoryId: $productCategoryId, productTypeId: $productTypeId, isValid: $isValid, errorResponse: $errorResponse, dataProductCategory: $dataProductCategory, dataProductType: $dataProductType, dataUom: $dataUom, productPostRequest: $productPostRequest, productList: $productList, myStoreResponse: $myStoreResponse)';
   }
 
   @override
@@ -3243,14 +3070,16 @@ class _$CreateProductStateImpl
       ..add(DiagnosticsProperty('type', 'CreateProductState'))
       ..add(DiagnosticsProperty('status', status))
       ..add(DiagnosticsProperty('notification', notification))
-      ..add(DiagnosticsProperty('typeCategoryId', typeCategoryId))
+      ..add(DiagnosticsProperty('productCategoryId', productCategoryId))
+      ..add(DiagnosticsProperty('productTypeId', productTypeId))
       ..add(DiagnosticsProperty('isValid', isValid))
+      ..add(DiagnosticsProperty('errorResponse', errorResponse))
       ..add(DiagnosticsProperty('dataProductCategory', dataProductCategory))
       ..add(DiagnosticsProperty('dataProductType', dataProductType))
       ..add(DiagnosticsProperty('dataUom', dataUom))
-      ..add(DiagnosticsProperty('errorResponse', errorResponse))
       ..add(DiagnosticsProperty('productPostRequest', productPostRequest))
-      ..add(DiagnosticsProperty('productList', productList));
+      ..add(DiagnosticsProperty('productList', productList))
+      ..add(DiagnosticsProperty('myStoreResponse', myStoreResponse));
   }
 
   @override
@@ -3261,20 +3090,24 @@ class _$CreateProductStateImpl
             (identical(other.status, status) || other.status == status) &&
             (identical(other.notification, notification) ||
                 other.notification == notification) &&
-            (identical(other.typeCategoryId, typeCategoryId) ||
-                other.typeCategoryId == typeCategoryId) &&
+            (identical(other.productCategoryId, productCategoryId) ||
+                other.productCategoryId == productCategoryId) &&
+            (identical(other.productTypeId, productTypeId) ||
+                other.productTypeId == productTypeId) &&
             (identical(other.isValid, isValid) || other.isValid == isValid) &&
+            (identical(other.errorResponse, errorResponse) ||
+                other.errorResponse == errorResponse) &&
             const DeepCollectionEquality()
                 .equals(other._dataProductCategory, _dataProductCategory) &&
             const DeepCollectionEquality()
                 .equals(other._dataProductType, _dataProductType) &&
             const DeepCollectionEquality().equals(other._dataUom, _dataUom) &&
-            (identical(other.errorResponse, errorResponse) ||
-                other.errorResponse == errorResponse) &&
             (identical(other.productPostRequest, productPostRequest) ||
                 other.productPostRequest == productPostRequest) &&
             const DeepCollectionEquality()
-                .equals(other._productList, _productList));
+                .equals(other._productList, _productList) &&
+            (identical(other.myStoreResponse, myStoreResponse) ||
+                other.myStoreResponse == myStoreResponse));
   }
 
   @override
@@ -3282,14 +3115,16 @@ class _$CreateProductStateImpl
       runtimeType,
       status,
       notification,
-      typeCategoryId,
+      productCategoryId,
+      productTypeId,
       isValid,
+      errorResponse,
       const DeepCollectionEquality().hash(_dataProductCategory),
       const DeepCollectionEquality().hash(_dataProductType),
       const DeepCollectionEquality().hash(_dataUom),
-      errorResponse,
       productPostRequest,
-      const DeepCollectionEquality().hash(_productList));
+      const DeepCollectionEquality().hash(_productList),
+      myStoreResponse);
 
   @JsonKey(ignore: true)
   @override
@@ -3303,23 +3138,29 @@ abstract class _CreateProductState implements CreateProductState {
   const factory _CreateProductState(
       {final UIStatus status,
       final CreateProductNotification? notification,
-      final String typeCategoryId,
+      final String? productCategoryId,
+      final String? productTypeId,
       final bool isValid,
+      final ErrorResponse? errorResponse,
       final List<ProductCategoryResponse> dataProductCategory,
       final List<ProductTypeResponse> dataProductType,
       final List<UomResponse> dataUom,
-      final ErrorResponse? errorResponse,
       final ProductPostRequest productPostRequest,
-      final List<ProductList>? productList}) = _$CreateProductStateImpl;
+      final List<ProductList>? productList,
+      final MyStoreResponse? myStoreResponse}) = _$CreateProductStateImpl;
 
   @override
   UIStatus get status;
   @override
   CreateProductNotification? get notification;
   @override
-  String get typeCategoryId;
+  String? get productCategoryId;
+  @override
+  String? get productTypeId;
   @override
   bool get isValid;
+  @override
+  ErrorResponse? get errorResponse;
   @override
   List<ProductCategoryResponse> get dataProductCategory;
   @override
@@ -3327,11 +3168,11 @@ abstract class _CreateProductState implements CreateProductState {
   @override
   List<UomResponse> get dataUom;
   @override
-  ErrorResponse? get errorResponse;
-  @override
   ProductPostRequest get productPostRequest;
   @override
   List<ProductList>? get productList;
+  @override
+  MyStoreResponse? get myStoreResponse;
   @override
   @JsonKey(ignore: true)
   _$$CreateProductStateImplCopyWith<_$CreateProductStateImpl> get copyWith =>

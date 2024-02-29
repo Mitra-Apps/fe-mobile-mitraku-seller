@@ -43,6 +43,7 @@ class BlocModule {
         () => CreateProductBloc(
           productRepository: injector(),
           logService: injector(),
+          storeRepository: injector(),
         ),
       );
   }

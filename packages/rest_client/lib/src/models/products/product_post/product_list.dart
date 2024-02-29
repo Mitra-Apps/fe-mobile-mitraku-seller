@@ -4,17 +4,16 @@ part 'product_list.freezed.dart';
 part 'product_list.g.dart';
 
 /// Product list model
-@Freezed(fromJson: true)
+@freezed
 class ProductList with _$ProductList {
   ///
   const factory ProductList({
-    String? id,
-    String? storeId,
     String? name,
     bool? saleStatus,
     int? price,
     String? stock,
     String? uomId,
+    String? productTypeId,
   }) = _ProductList;
 
   ///

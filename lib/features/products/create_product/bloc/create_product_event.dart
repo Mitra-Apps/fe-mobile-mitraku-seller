@@ -2,6 +2,9 @@ part of 'create_product_bloc.dart';
 
 @freezed
 class CreateProductEvent with _$CreateProductEvent {
+  const factory CreateProductEvent.init() = _Init;
+
+  ///onChange Main Product Form
   const factory CreateProductEvent.onChangedProductType({
     required String? value,
   }) = _OnChangedProductType;
@@ -10,8 +13,9 @@ class CreateProductEvent with _$CreateProductEvent {
     required String? value,
   }) = _OnChangedProductCategory;
 
-  const factory CreateProductEvent.initListProduct() = _InitListProduct;
+  const factory CreateProductEvent.productSubmitted() = _ProductSubmitted;
 
+  ///CRUD Product
   const factory CreateProductEvent.addItemProduct({
     required ProductList value,
   }) = _AddItemProduct;
@@ -23,12 +27,10 @@ class CreateProductEvent with _$CreateProductEvent {
 
   const factory CreateProductEvent.deleteItemProduct({
     required int index,
+    required ProductList productList,
   }) = _DeleteItemProduct;
 
-  const factory CreateProductEvent.getProductCategory() = _GetProductCategory;
-  
-  const factory CreateProductEvent.getUom() = _GetUom;
-
+  ///On Change Product Item
   const factory CreateProductEvent.onChangedItemName({
     required int index,
     required String? value,

@@ -11,4 +11,5 @@ export 'products/product_type/product_type_response.dart';
 export 'register/register_otp_response.dart';
 export 'register/register_post.dart';
 export 'register/register_response.dart';
+export 'store/my_store/my_store_response.dart';
 export 'uom/uom_response.dart';

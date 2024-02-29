@@ -24,8 +24,13 @@ class RestClientModule {
           injector(instanceName: DioModule.dioInstanceName),
         ),
       )
-      ..registerFactory(
+      ..registerFactory<ProductApiClient>(
         () => ProductApiClient(
+          injector(instanceName: DioModule.dioInstanceName),
+        ),
+      )
+      ..registerFactory<StoreApiClient>(
+        () => StoreApiClient(
           injector(instanceName: DioModule.dioInstanceName),
         ),
       );

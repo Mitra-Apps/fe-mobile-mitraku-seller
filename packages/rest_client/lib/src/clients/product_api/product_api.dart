@@ -1,6 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:rest_client/rest_client.dart';
-import 'package:rest_client/src/models/uom/uom_response.dart';
 import 'package:retrofit/retrofit.dart';
 
 part 'product_api.g.dart';
@@ -33,6 +32,14 @@ abstract class ProductApiClient {
   Future<BaseResponse<List<UomResponse>>> getUom({
     @Header('Authorization') required String token,
     @Path('isDeactivated') required bool isDeactivated,
+    @Header('Content-Type') String content = 'application/json',
+  });
+
+  ///
+  @POST('/api/v1/products')
+  Future<BaseResponse> createProduct({
+    @Header('Authorization') required String token,
+    @Body() required Map<String, dynamic> json,
     @Header('Content-Type') String content = 'application/json',
   });
 }

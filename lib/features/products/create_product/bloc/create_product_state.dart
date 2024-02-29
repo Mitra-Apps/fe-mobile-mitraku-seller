@@ -5,13 +5,15 @@ class CreateProductState with _$CreateProductState {
   const factory CreateProductState({
     @Default(UIInitial()) UIStatus status,
     CreateProductNotification? notification,
-    @Default('') String typeCategoryId,
+    @Default('') String? productCategoryId,
+    @Default('') String? productTypeId,
     @Default(false) bool isValid,
+    ErrorResponse? errorResponse,
     @Default([]) List<ProductCategoryResponse> dataProductCategory,
     @Default([]) List<ProductTypeResponse> dataProductType,
     @Default([]) List<UomResponse> dataUom,
-    ErrorResponse? errorResponse,
     @Default(ProductPostRequest()) ProductPostRequest productPostRequest,
     @Default([]) List<ProductList>? productList,
+    MyStoreResponse? myStoreResponse,
   }) = _CreateProductState;
 }

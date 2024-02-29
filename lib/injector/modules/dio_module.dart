@@ -24,7 +24,8 @@ class DioModule {
           BaseOptions(
             baseUrl: AppConfig.baseUrl,
           ),
-        );
+        )..options.headers['Authorization'] =
+            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlcyI6WyJtZXJjaGFudCIsImN1c3RvbWVyIiwiYWRtaW4iXSwic3ViIjoiYjcwYTJhNWUtYmJkMi00MDAwLTk2YzAtYWFhNTMzYjgyMzZmIiwiZXhwIjoxNzA5MDE5NTE0LCJpYXQiOjE3MDkwMTU5MTR9.NT9-U5CBWs_m12ttuB3pBfpGZ7Vk3TbaYZIQn5SkHao';
         if (!kReleaseMode) {
           dio.interceptors.add(
             PrettyDioLogger(

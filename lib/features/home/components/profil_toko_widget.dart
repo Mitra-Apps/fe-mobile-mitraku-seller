@@ -45,9 +45,9 @@ class ProfilTokoWidget extends StatelessWidget {
                   ),
                   clipBehavior: Clip.hardEdge,
                   color: AppColors.disabledLightColor,
-                  child: imagePath!.isNotEmpty
+                  child: imagePath.isNotEmpty
                       ? Image.file(
-                          File(imagePath!),
+                          File(imagePath),
                           width: double.infinity,
                           height: 120,
                         )

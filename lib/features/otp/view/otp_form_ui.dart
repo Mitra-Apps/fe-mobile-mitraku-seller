@@ -39,14 +39,14 @@ class OTPFormUIState extends State<OTPFormUI> {
         OtpConfirmationPost(email: email, otp_code: int.parse(strOTP!))));
 
     isShowOTPError = otpInvalid;
+    pinController.setText('');
 
     if (otpInvalid) {
       _countError += 1;
-      pinController.setText('');
       strOTP = null;
     }
 
-    if (_countError % 3 == 0) {
+    if (_countError % 3 == 0 && _countError != 0) {
       hideVerifikasiButton = false;
       showResendOtpButton = true;
       strOTP != null;
@@ -126,6 +126,7 @@ class OTPFormUIState extends State<OTPFormUI> {
                       AppSpacing.verticalSpacing32,
                       GestureDetector(
                         onTap: () {
+                          _countError = 0;
                           context.push(AppRouter.loginPath);
                         },
                         child: const Row(

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:go_router/go_router.dart';
 import 'package:local_database/local_database.dart';
 import 'package:mitraku_seller/core/colors/colors.dart';
 import 'package:mitraku_seller/core/spacings/app_spacing.dart';
@@ -105,7 +106,7 @@ class _CreateProductFormState extends State<CreateProductForm> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<CreateProductBloc, CreateProductState>(
-      listenWhen: (prev, next) => prev.status != next.status,
+      listenWhen: (prev, next) => prev.notification != next.notification,
       listener: (BuildContext context, CreateProductState state) async {
         state.notification?.when(
           notifySuccess: (message) {
@@ -113,6 +114,15 @@ class _CreateProductFormState extends State<CreateProductForm> {
           },
           notifyFailed: (message) {
             showToastFailed(message);
+          },
+          notifyCreateProductSuccess: (String message) {
+            showToastSuccess(message);
+            Future.delayed(
+              const Duration(seconds: 1),
+              () {
+                context.pop();
+              },
+            );
           },
         );
       },

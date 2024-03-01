@@ -9,4 +9,8 @@ class CreateProductNotification with _$CreateProductNotification {
   factory CreateProductNotification.notifyFailed({
     required String message,
   }) = _NotificationNotifyFailed;
+
+    factory CreateProductNotification.notifyCreateProductSuccess({
+    required String message,
+  }) = _NotifyCreateProductSuccess;
 }

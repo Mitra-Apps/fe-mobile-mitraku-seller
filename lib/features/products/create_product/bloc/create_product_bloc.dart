@@ -326,10 +326,11 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
     try {
       final data = state.productPostRequest.copyWith(storeId: state.myStoreResponse?.id);
       final BaseResponse response = await _repository.createProduct(data);
-      if (response.code is int && response.code == 0) {
+      if (response.code == 0) {
         emit(
           state.copyWith(
-            notification: _NotificationNotifySuccess(
+            status: const UILoadSuccess(),
+            notification: _NotifyCreateProductSuccess(
               message: 'Membuat Product Berhasil',
             ),
           ),

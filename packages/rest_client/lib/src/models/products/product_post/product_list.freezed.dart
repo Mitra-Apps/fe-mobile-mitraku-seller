@@ -166,7 +166,7 @@ class __$$ProductListImplCopyWithImpl<$Res>
 class _$ProductListImpl implements _ProductList {
   const _$ProductListImpl(
       {this.name,
-      this.saleStatus,
+      this.saleStatus = true,
       this.price,
       this.stock,
       this.uomId,
@@ -178,6 +178,7 @@ class _$ProductListImpl implements _ProductList {
   @override
   final String? name;
   @override
+  @JsonKey()
   final bool? saleStatus;
   @override
   final int? price;

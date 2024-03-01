@@ -9,7 +9,7 @@ class ProductList with _$ProductList {
   ///
   const factory ProductList({
     String? name,
-    bool? saleStatus,
+    @Default(true) bool? saleStatus,
     int? price,
     String? stock,
     String? uomId,
@@ -17,5 +17,6 @@ class ProductList with _$ProductList {
   }) = _ProductList;
 
   ///
-  factory ProductList.fromJson(Map<String, dynamic> json) => _$ProductListFromJson(json);
+  factory ProductList.fromJson(Map<String, dynamic> json) =>
+   _$ProductListFromJson(json);
 }

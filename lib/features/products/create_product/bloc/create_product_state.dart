@@ -5,8 +5,8 @@ class CreateProductState with _$CreateProductState {
   const factory CreateProductState({
     @Default(UIInitial()) UIStatus status,
     CreateProductNotification? notification,
-    @Default('') String? productCategoryId,
-    @Default('') String? productTypeId,
+    String? productCategoryId,
+    String? productTypeId,
     @Default(false) bool isValid,
     ErrorResponse? errorResponse,
     @Default([]) List<ProductCategoryResponse> dataProductCategory,

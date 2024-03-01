@@ -2982,8 +2982,8 @@ class _$CreateProductStateImpl
   const _$CreateProductStateImpl(
       {this.status = const UIInitial(),
       this.notification,
-      this.productCategoryId = '',
-      this.productTypeId = '',
+      this.productCategoryId,
+      this.productTypeId,
       this.isValid = false,
       this.errorResponse,
       final List<ProductCategoryResponse> dataProductCategory = const [],
@@ -3003,10 +3003,8 @@ class _$CreateProductStateImpl
   @override
   final CreateProductNotification? notification;
   @override
-  @JsonKey()
   final String? productCategoryId;
   @override
-  @JsonKey()
   final String? productTypeId;
   @override
   @JsonKey()
@@ -3186,18 +3184,21 @@ mixin _$CreateProductNotification {
   TResult when<TResult extends Object?>({
     required TResult Function(String message) notifySuccess,
     required TResult Function(String message) notifyFailed,
+    required TResult Function(String message) notifyCreateProductSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String message)? notifySuccess,
     TResult? Function(String message)? notifyFailed,
+    TResult? Function(String message)? notifyCreateProductSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String message)? notifySuccess,
     TResult Function(String message)? notifyFailed,
+    TResult Function(String message)? notifyCreateProductSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -3205,18 +3206,24 @@ mixin _$CreateProductNotification {
   TResult map<TResult extends Object?>({
     required TResult Function(_NotificationNotifySuccess value) notifySuccess,
     required TResult Function(_NotificationNotifyFailed value) notifyFailed,
+    required TResult Function(_NotifyCreateProductSuccess value)
+        notifyCreateProductSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_NotificationNotifySuccess value)? notifySuccess,
     TResult? Function(_NotificationNotifyFailed value)? notifyFailed,
+    TResult? Function(_NotifyCreateProductSuccess value)?
+        notifyCreateProductSuccess,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_NotificationNotifySuccess value)? notifySuccess,
     TResult Function(_NotificationNotifyFailed value)? notifyFailed,
+    TResult Function(_NotifyCreateProductSuccess value)?
+        notifyCreateProductSuccess,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -3332,6 +3339,7 @@ class _$NotificationNotifySuccessImpl
   TResult when<TResult extends Object?>({
     required TResult Function(String message) notifySuccess,
     required TResult Function(String message) notifyFailed,
+    required TResult Function(String message) notifyCreateProductSuccess,
   }) {
     return notifySuccess(message);
   }
@@ -3341,6 +3349,7 @@ class _$NotificationNotifySuccessImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String message)? notifySuccess,
     TResult? Function(String message)? notifyFailed,
+    TResult? Function(String message)? notifyCreateProductSuccess,
   }) {
     return notifySuccess?.call(message);
   }
@@ -3350,6 +3359,7 @@ class _$NotificationNotifySuccessImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String message)? notifySuccess,
     TResult Function(String message)? notifyFailed,
+    TResult Function(String message)? notifyCreateProductSuccess,
     required TResult orElse(),
   }) {
     if (notifySuccess != null) {
@@ -3363,6 +3373,8 @@ class _$NotificationNotifySuccessImpl
   TResult map<TResult extends Object?>({
     required TResult Function(_NotificationNotifySuccess value) notifySuccess,
     required TResult Function(_NotificationNotifyFailed value) notifyFailed,
+    required TResult Function(_NotifyCreateProductSuccess value)
+        notifyCreateProductSuccess,
   }) {
     return notifySuccess(this);
   }
@@ -3372,6 +3384,8 @@ class _$NotificationNotifySuccessImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_NotificationNotifySuccess value)? notifySuccess,
     TResult? Function(_NotificationNotifyFailed value)? notifyFailed,
+    TResult? Function(_NotifyCreateProductSuccess value)?
+        notifyCreateProductSuccess,
   }) {
     return notifySuccess?.call(this);
   }
@@ -3381,6 +3395,8 @@ class _$NotificationNotifySuccessImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_NotificationNotifySuccess value)? notifySuccess,
     TResult Function(_NotificationNotifyFailed value)? notifyFailed,
+    TResult Function(_NotifyCreateProductSuccess value)?
+        notifyCreateProductSuccess,
     required TResult orElse(),
   }) {
     if (notifySuccess != null) {
@@ -3474,6 +3490,7 @@ class _$NotificationNotifyFailedImpl
   TResult when<TResult extends Object?>({
     required TResult Function(String message) notifySuccess,
     required TResult Function(String message) notifyFailed,
+    required TResult Function(String message) notifyCreateProductSuccess,
   }) {
     return notifyFailed(message);
   }
@@ -3483,6 +3500,7 @@ class _$NotificationNotifyFailedImpl
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String message)? notifySuccess,
     TResult? Function(String message)? notifyFailed,
+    TResult? Function(String message)? notifyCreateProductSuccess,
   }) {
     return notifyFailed?.call(message);
   }
@@ -3492,6 +3510,7 @@ class _$NotificationNotifyFailedImpl
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String message)? notifySuccess,
     TResult Function(String message)? notifyFailed,
+    TResult Function(String message)? notifyCreateProductSuccess,
     required TResult orElse(),
   }) {
     if (notifyFailed != null) {
@@ -3505,6 +3524,8 @@ class _$NotificationNotifyFailedImpl
   TResult map<TResult extends Object?>({
     required TResult Function(_NotificationNotifySuccess value) notifySuccess,
     required TResult Function(_NotificationNotifyFailed value) notifyFailed,
+    required TResult Function(_NotifyCreateProductSuccess value)
+        notifyCreateProductSuccess,
   }) {
     return notifyFailed(this);
   }
@@ -3514,6 +3535,8 @@ class _$NotificationNotifyFailedImpl
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_NotificationNotifySuccess value)? notifySuccess,
     TResult? Function(_NotificationNotifyFailed value)? notifyFailed,
+    TResult? Function(_NotifyCreateProductSuccess value)?
+        notifyCreateProductSuccess,
   }) {
     return notifyFailed?.call(this);
   }
@@ -3523,6 +3546,8 @@ class _$NotificationNotifyFailedImpl
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_NotificationNotifySuccess value)? notifySuccess,
     TResult Function(_NotificationNotifyFailed value)? notifyFailed,
+    TResult Function(_NotifyCreateProductSuccess value)?
+        notifyCreateProductSuccess,
     required TResult orElse(),
   }) {
     if (notifyFailed != null) {
@@ -3541,5 +3566,157 @@ abstract class _NotificationNotifyFailed implements CreateProductNotification {
   @override
   @JsonKey(ignore: true)
   _$$NotificationNotifyFailedImplCopyWith<_$NotificationNotifyFailedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$NotifyCreateProductSuccessImplCopyWith<$Res>
+    implements $CreateProductNotificationCopyWith<$Res> {
+  factory _$$NotifyCreateProductSuccessImplCopyWith(
+          _$NotifyCreateProductSuccessImpl value,
+          $Res Function(_$NotifyCreateProductSuccessImpl) then) =
+      __$$NotifyCreateProductSuccessImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$NotifyCreateProductSuccessImplCopyWithImpl<$Res>
+    extends _$CreateProductNotificationCopyWithImpl<$Res,
+        _$NotifyCreateProductSuccessImpl>
+    implements _$$NotifyCreateProductSuccessImplCopyWith<$Res> {
+  __$$NotifyCreateProductSuccessImplCopyWithImpl(
+      _$NotifyCreateProductSuccessImpl _value,
+      $Res Function(_$NotifyCreateProductSuccessImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$NotifyCreateProductSuccessImpl(
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$NotifyCreateProductSuccessImpl
+    with DiagnosticableTreeMixin
+    implements _NotifyCreateProductSuccess {
+  _$NotifyCreateProductSuccessImpl({required this.message});
+
+  @override
+  final String message;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'CreateProductNotification.notifyCreateProductSuccess(message: $message)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty(
+          'type', 'CreateProductNotification.notifyCreateProductSuccess'))
+      ..add(DiagnosticsProperty('message', message));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$NotifyCreateProductSuccessImplCopyWith<_$NotifyCreateProductSuccessImpl>
+      get copyWith => __$$NotifyCreateProductSuccessImplCopyWithImpl<
+          _$NotifyCreateProductSuccessImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String message) notifySuccess,
+    required TResult Function(String message) notifyFailed,
+    required TResult Function(String message) notifyCreateProductSuccess,
+  }) {
+    return notifyCreateProductSuccess(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String message)? notifySuccess,
+    TResult? Function(String message)? notifyFailed,
+    TResult? Function(String message)? notifyCreateProductSuccess,
+  }) {
+    return notifyCreateProductSuccess?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String message)? notifySuccess,
+    TResult Function(String message)? notifyFailed,
+    TResult Function(String message)? notifyCreateProductSuccess,
+    required TResult orElse(),
+  }) {
+    if (notifyCreateProductSuccess != null) {
+      return notifyCreateProductSuccess(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_NotificationNotifySuccess value) notifySuccess,
+    required TResult Function(_NotificationNotifyFailed value) notifyFailed,
+    required TResult Function(_NotifyCreateProductSuccess value)
+        notifyCreateProductSuccess,
+  }) {
+    return notifyCreateProductSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_NotificationNotifySuccess value)? notifySuccess,
+    TResult? Function(_NotificationNotifyFailed value)? notifyFailed,
+    TResult? Function(_NotifyCreateProductSuccess value)?
+        notifyCreateProductSuccess,
+  }) {
+    return notifyCreateProductSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_NotificationNotifySuccess value)? notifySuccess,
+    TResult Function(_NotificationNotifyFailed value)? notifyFailed,
+    TResult Function(_NotifyCreateProductSuccess value)?
+        notifyCreateProductSuccess,
+    required TResult orElse(),
+  }) {
+    if (notifyCreateProductSuccess != null) {
+      return notifyCreateProductSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NotifyCreateProductSuccess
+    implements CreateProductNotification {
+  factory _NotifyCreateProductSuccess({required final String message}) =
+      _$NotifyCreateProductSuccessImpl;
+
+  @override
+  String get message;
+  @override
+  @JsonKey(ignore: true)
+  _$$NotifyCreateProductSuccessImplCopyWith<_$NotifyCreateProductSuccessImpl>
       get copyWith => throw _privateConstructorUsedError;
 }

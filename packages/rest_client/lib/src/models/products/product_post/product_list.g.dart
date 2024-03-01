@@ -9,7 +9,7 @@ part of 'product_list.dart';
 _$ProductListImpl _$$ProductListImplFromJson(Map<String, dynamic> json) =>
     _$ProductListImpl(
       name: json['name'] as String?,
-      saleStatus: json['saleStatus'] as bool?,
+      saleStatus: json['saleStatus'] as bool? ?? true,
       price: json['price'] as int?,
       stock: json['stock'] as String?,
       uomId: json['uomId'] as String?,

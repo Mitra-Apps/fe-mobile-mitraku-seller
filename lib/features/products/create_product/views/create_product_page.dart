@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mitraku_seller/core/keys/app_keys.dart';
 import 'package:mitraku_seller/core/themes/app_themes.dart';
 import 'package:mitraku_seller/features/products/create_product/bloc/create_product_bloc.dart';
@@ -22,7 +23,7 @@ class _CreateProductPageState extends State<CreateProductPage> {
       key: const Key(WidgetKeys.createProductScaffoldKey),
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () => {},
+          onPressed: () => {context.pop()},
           icon: SvgPicture.asset(
             'assets/icons/icon_arrow_left.svg',
             colorFilter: const ColorFilter.mode(

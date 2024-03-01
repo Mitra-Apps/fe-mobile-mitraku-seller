@@ -135,5 +135,5 @@ class AppColors {
 
 class AppConstant {
   // ignore: lines_longer_than_80_chars
-  static const String token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlcyI6WyJtZXJjaGFudCIsImN1c3RvbWVyIl0sInN1YiI6IjdiNmMyMDYwLTRhNTYtNDM2YS05NWMzLTBhNmVkNWRmOWNjMyIsImV4cCI6MTcwOTIwMDY4NiwiaWF0IjoxNzA5MTk3MDg2fQ.5VZIih__6KR8TcbJg3fa_IHb5Ff8ZUIAg8ASGmKUcoY';
+  static const String token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlcyI6WyJtZXJjaGFudCIsImN1c3RvbWVyIl0sInN1YiI6IjdiNmMyMDYwLTRhNTYtNDM2YS05NWMzLTBhNmVkNWRmOWNjMyIsImV4cCI6MTcwOTI3NzU5NSwiaWF0IjoxNzA5MjczOTk1fQ.3vZdbE6ZAn8M8VaKwMwXVRazsFczMwQdSKzF8_Y68yQ';
 }

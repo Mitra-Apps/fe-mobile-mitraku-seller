@@ -8,3 +8,4 @@ export 'error_response/error_response.dart';
 export 'otpconfirmation/otp_confirmation_post.dart';
 export 'otpconfirmation/resend_otp_response.dart';
 export 'otpconfirmation/resend_otp_post.dart';
+export 'forgot_password/forgot_password_post.dart';

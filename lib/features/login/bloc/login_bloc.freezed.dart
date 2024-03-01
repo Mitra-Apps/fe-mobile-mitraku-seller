@@ -852,6 +852,8 @@ class _$LoginStateImpl implements _LoginState {
       {this.status = const UIInitial(),
       this.notification,
       this.loginResponse = const LoginResponse(
+          code: 0,
+          message: '',
           data: DataLoginResponse(access_token: '', refresh_token: '')),
       this.isBusy = false,
       this.loginBadRequest = 'AUTH_LOGIN_NOT_FOUND',

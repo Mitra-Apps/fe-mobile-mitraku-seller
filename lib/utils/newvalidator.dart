@@ -129,7 +129,7 @@ bool isShowValidateName(String? value) {
   return false;
 }
 
-// Address validation
+// Phone validation
 String validatePhone(String? value) {
   if (value == null || value.isEmpty) {
     return 'Nomor Telp tidak boleh kosong';
@@ -150,6 +150,35 @@ bool isShowValidatePhone(String? value) {
   } else if (value.length <= 9) {
     return true;
   } else if (value.length > 14) {
+    return true;
+  } else if (RegExp(r'^\s').hasMatch(value)) {
+    return true;
+  }
+
+  return false;
+}
+
+// OTP validation
+String validateOTP(String? value) {
+  if (value == null || value.isEmpty) {
+    return 'Kode OTP tidak boleh kosong';
+  } else if (value.length <= 3) {
+    return 'Kode OTP minimal 4 digit';
+  } else if (value.length > 4) {
+    return 'Kode OTP tidak boleh lebih dari 4 digit';
+  } else if (RegExp(r'^\s').hasMatch(value)) {
+    return 'Kode OTP tidak boleh kosong';
+  }
+
+  return '';
+}
+
+bool isShowValidateOTP(String? value) {
+  if (value == null || value.isEmpty) {
+    return true;
+  } else if (value.length <= 3) {
+    return true;
+  } else if (value.length > 4) {
     return true;
   } else if (RegExp(r'^\s').hasMatch(value)) {
     return true;

@@ -2,7 +2,9 @@ import 'package:flutter/foundation.dart';
 import 'package:mitraku_seller/features/app/bloc/app_bloc.dart';
 import 'package:mitraku_seller/features/demo/bloc/demo_bloc.dart';
 import 'package:mitraku_seller/features/dog_image_random/bloc/dog_image_random_bloc.dart';
+import 'package:mitraku_seller/features/forgotpassword/bloc/forgot_password_bloc.dart';
 import 'package:mitraku_seller/features/login/bloc/login_bloc.dart';
+import 'package:mitraku_seller/features/otp/bloc/otp_confirmation_bloc.dart';
 import 'package:mitraku_seller/features/products/create_product/bloc/create_product_bloc.dart';
 import 'package:mitraku_seller/features/register/bloc/register_bloc.dart';
 import 'package:mitraku_seller/injector/injector.dart';
@@ -34,10 +36,25 @@ class BlocModule {
         ),
       )
       ..registerFactory<RegisterBloc>(
-        () => RegisterBloc(registerRepository: injector(), logService: injector()),
+        () => RegisterBloc(
+          registerRepository: injector(),
+          logService: injector(),
+        ),
       )
       ..registerFactory<LoginBloc>(
         () => LoginBloc(loginRepository: injector(), logService: injector()),
+      )
+      ..registerFactory<OtpConfirmationBloc>(
+        () => OtpConfirmationBloc(
+          otpConfirmationRepository: injector(),
+          logService: injector(),
+        ),
+      )
+      ..registerFactory<ForgotPasswordBloc>(
+        () => ForgotPasswordBloc(
+          forgotPasswordRepository: injector(),
+          logService: injector(),
+        ),
       )
       ..registerFactory<CreateProductBloc>(
         () => CreateProductBloc(

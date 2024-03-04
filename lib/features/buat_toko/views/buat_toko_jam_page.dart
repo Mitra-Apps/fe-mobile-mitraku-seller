@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mitraku_seller/core/dimens/app_dimens.dart';
 import 'package:mitraku_seller/core/spacings/app_spacing.dart';
 import 'package:mitraku_seller/core/themes/app_themes.dart';
+import 'package:mitraku_seller/features/buat_toko/bloc/buat_toko_cubit.dart';
 import 'package:mitraku_seller/features/buat_toko/components/buat_toko_step_widget.dart';
 import 'package:mitraku_seller/features/buat_toko/components/jam_operasional_widget.dart';
 
@@ -13,92 +16,96 @@ class BuatTokoJamPage extends StatefulWidget {
 }
 
 class _BuatTokoPage extends State<BuatTokoJamPage> {
-  // Weekly schedule start from monday to sunday
-  List<bool> isOpen24HoursWeekly = [
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-  ];
-  List<bool> isClosedDayWeekly = [
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-  ];
-  List<TimeOfDay?> timeOpenWeekly = [
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-  ];
-  List<TimeOfDay?> timeClosedWeekly = [
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-  ];
+  late BuatTokoCubit buatTokoCubit;
   bool isMandatoryFieldCompleted = false;
 
   void _updateOpen24HoursCallback(
     int dayIndex,
     bool isSetToOpen,
   ) {
-    setState(() {
-      isOpen24HoursWeekly[dayIndex] = isSetToOpen;
-      _mandatoryFieldCheck();
-    });
+    final StoreModel currentState = buatTokoCubit.state;
+    final List<bool> updatedIsOpen24HoursWeekly =
+        currentState.scheduleModel!.isOpen24HoursWeekly;
+    updatedIsOpen24HoursWeekly[dayIndex] = isSetToOpen;
+    context.read<BuatTokoCubit>().updateStoreScheduleModel(
+          scheduleModel: StoreScheduleModel(
+              isOpen24HoursWeekly: updatedIsOpen24HoursWeekly,
+              isClosedDayWeekly: currentState.scheduleModel!.isClosedDayWeekly,
+              timeOpenWeekly: currentState.scheduleModel!.timeOpenWeekly,
+              timeClosedWeekly: currentState.scheduleModel!.timeClosedWeekly),
+        );
+    _checkMandatoryField();
   }
 
   void _updateClosedDayCallback(
     int dayIndex,
     bool isSetToClosed,
   ) {
-    setState(() {
-      isClosedDayWeekly[dayIndex] = isSetToClosed;
-      _mandatoryFieldCheck();
-    });
+    final StoreModel currentState = buatTokoCubit.state;
+    final List<bool> updatedIsClosedDayWeekly =
+        currentState.scheduleModel!.isClosedDayWeekly;
+    updatedIsClosedDayWeekly[dayIndex] = isSetToClosed;
+    context.read<BuatTokoCubit>().updateStoreScheduleModel(
+          scheduleModel: StoreScheduleModel(
+              isOpen24HoursWeekly:
+                  currentState.scheduleModel!.isOpen24HoursWeekly,
+              isClosedDayWeekly: updatedIsClosedDayWeekly,
+              timeOpenWeekly: currentState.scheduleModel!.timeOpenWeekly,
+              timeClosedWeekly: currentState.scheduleModel!.timeClosedWeekly),
+        );
+    _checkMandatoryField();
   }
 
   void _updateTimeOpenCallback(
     int dayIndex,
     TimeOfDay value,
   ) {
-    setState(() {
-      timeOpenWeekly[dayIndex] = value;
-      _mandatoryFieldCheck();
-    });
+    final StoreModel currentState = buatTokoCubit.state;
+    final List<TimeOfDay?> updatedTimeOpenWeekly =
+        currentState.scheduleModel!.timeOpenWeekly;
+    updatedTimeOpenWeekly[dayIndex] = value;
+    context.read<BuatTokoCubit>().updateStoreScheduleModel(
+          scheduleModel: StoreScheduleModel(
+              isOpen24HoursWeekly:
+                  currentState.scheduleModel!.isOpen24HoursWeekly,
+              isClosedDayWeekly: currentState.scheduleModel!.isClosedDayWeekly,
+              timeOpenWeekly: updatedTimeOpenWeekly,
+              timeClosedWeekly: currentState.scheduleModel!.timeClosedWeekly),
+        );
+    _checkMandatoryField();
   }
 
   void _updateTimeClosedCallback(
     int dayIndex,
     TimeOfDay value,
   ) {
-    setState(() {
-      timeClosedWeekly[dayIndex] = value;
-      _mandatoryFieldCheck();
-    });
+    final StoreModel currentState = buatTokoCubit.state;
+    final List<TimeOfDay?> updatedTimeClosedWeekly =
+        currentState.scheduleModel!.timeClosedWeekly;
+    updatedTimeClosedWeekly[dayIndex] = value;
+    context.read<BuatTokoCubit>().updateStoreScheduleModel(
+          scheduleModel: StoreScheduleModel(
+              isOpen24HoursWeekly:
+                  currentState.scheduleModel!.isOpen24HoursWeekly,
+              isClosedDayWeekly: currentState.scheduleModel!.isClosedDayWeekly,
+              timeOpenWeekly: currentState.scheduleModel!.timeOpenWeekly,
+              timeClosedWeekly: updatedTimeClosedWeekly),
+        );
+    _checkMandatoryField();
   }
 
-  void _mandatoryFieldCheck() {
+  void _checkMandatoryField() {
     // bool hasTrueInEither = isOpen24HoursWeekly.any((value) => value) ||
     //     isClosedDayWeekly.any((value) => value);
+    final StoreModel currentState = buatTokoCubit.state;
     bool hasMissingField = false;
-    for (int i = 0; i < isOpen24HoursWeekly.length; i++) {
-      if (!isOpen24HoursWeekly[i] && !isClosedDayWeekly[i]) {
-        if (timeOpenWeekly[i] == null || timeClosedWeekly[i] == null) {
+    for (int i = 0;
+        i < currentState.scheduleModel!.isOpen24HoursWeekly.length;
+        i++) {
+      if (!currentState.scheduleModel!.isOpen24HoursWeekly[i] &&
+          !currentState.scheduleModel!.isClosedDayWeekly[i]) {
+        if (currentState.scheduleModel!.timeOpenWeekly[i] == null ||
+            currentState.scheduleModel!.timeClosedWeekly[i] == null) {
           hasMissingField = true;
           break;
         }
@@ -110,82 +117,98 @@ class _BuatTokoPage extends State<BuatTokoJamPage> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    // Access the UserCubit using context.read in initState
+    buatTokoCubit = context.read<BuatTokoCubit>();
+    // Access the initial state
+    _checkMandatoryField();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          AppSpacing.verticalSpacing20,
-          const BuatTokoStepWidget(stepNumber: 2),
-          AppSpacing.verticalSpacing20,
-          ListView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            itemCount: 7,
-            itemBuilder: (context, index) => BuatTokoJamWidget(
-              dayIndex: index,
-              isOpen24Hours: isOpen24HoursWeekly[index],
-              isClosedDay: isClosedDayWeekly[index],
-              openTime: timeOpenWeekly[index],
-              closedTime: timeClosedWeekly[index],
-              updateOpen24HoursCallback: _updateOpen24HoursCallback,
-              updateClosedDayCallback: _updateClosedDayCallback,
-              updateTimeOpenCallback: _updateTimeOpenCallback,
-              updateTimeClosedCallback: _updateTimeClosedCallback,
-            ),
-          ),
-          AppSpacing.verticalSpacing20,
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+    return BlocBuilder<BuatTokoCubit, StoreModel>(
+      builder: (BuildContext context, StoreModel state) {
+        return SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  elevation: 0,
-                  backgroundColor: AppColors.mainWhiteColor,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                ),
-                onPressed: () {
-                  widget.changeCreateStoreStep(1);
-                },
-                child: Text(
-                  'Kembali',
-                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.dangerColor,
-                      ),
-                ),
-              ),
-              AppSpacing.horizontalSpacing20,
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: isMandatoryFieldCompleted
-                      ? AppColors.mainColor
-                      : AppColors.disabledLightColor,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                ),
-                onPressed: () {
-                  if (isMandatoryFieldCompleted) {
-                    widget.changeCreateStoreStep(3);
-                  }
-                },
-                child: Text(
-                  'Berikutnya',
-                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: isMandatoryFieldCompleted
-                            ? AppColors.mainWhiteColor
-                            : AppColors.disabledColor,
-                      ),
+              AppSpacing.verticalSpacing20,
+              const BuatTokoStepWidget(stepNumber: 2),
+              AppSpacing.verticalSpacing20,
+              ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: 7,
+                itemBuilder: (context, index) => BuatTokoJamWidget(
+                  dayIndex: index,
+                  isOpen24Hours:
+                      state.scheduleModel!.isOpen24HoursWeekly[index],
+                  isClosedDay: state.scheduleModel!.isClosedDayWeekly[index],
+                  openTime: state.scheduleModel!.timeOpenWeekly[index],
+                  closedTime: state.scheduleModel!.timeClosedWeekly[index],
+                  updateOpen24HoursCallback: _updateOpen24HoursCallback,
+                  updateClosedDayCallback: _updateClosedDayCallback,
+                  updateTimeOpenCallback: _updateTimeOpenCallback,
+                  updateTimeClosedCallback: _updateTimeClosedCallback,
                 ),
               ),
+              AppSpacing.verticalSpacing20,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.all(AppDimens.basePaddingHalf),
+                      elevation: 0,
+                      backgroundColor: AppColors.mainWhiteColor,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                    ),
+                    onPressed: () {
+                      widget.changeCreateStoreStep(1);
+                    },
+                    child: Text(
+                      'Kembali',
+                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.dangerColor,
+                          ),
+                    ),
+                  ),
+                  AppSpacing.horizontalSpacing20,
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.all(AppDimens.basePaddingHalf),
+                      backgroundColor: isMandatoryFieldCompleted
+                          ? AppColors.mainColor
+                          : AppColors.disabledLightColor,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                    ),
+                    onPressed: () {
+                      if (isMandatoryFieldCompleted) {
+                        widget.changeCreateStoreStep(3);
+                      }
+                    },
+                    child: Text(
+                      'Berikutnya',
+                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: isMandatoryFieldCompleted
+                                ? AppColors.mainWhiteColor
+                                : AppColors.disabledColor,
+                          ),
+                    ),
+                  ),
+                ],
+              ),
+              AppSpacing.verticalSpacing20,
             ],
           ),
-          AppSpacing.verticalSpacing20,
-        ],
-      ),
+        );
+      },
     );
   }
 }

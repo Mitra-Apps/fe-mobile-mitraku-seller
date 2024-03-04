@@ -53,12 +53,7 @@ class _BuatTokoPage extends State<BuatTokoPage> {
                   backgroundColor: AppColors.mainWhiteColor,
                 ),
                 onPressed: () {
-                  if (currentBuatTokoStep >= 2) {
-                    currentBuatTokoStep--;
-                    _changeBuatTokoStepCallback(currentBuatTokoStep);
-                  } else {
-                    widget.cancelCreateStoreCallback();
-                  }
+                  widget.cancelCreateStoreCallback();
                 },
                 child: SvgPicture.asset(
                   'assets/icons/icon_arrow_left.svg',
@@ -68,7 +63,7 @@ class _BuatTokoPage extends State<BuatTokoPage> {
             ),
             AppSpacing.horizontalSpacing10,
             Text(
-              'Buat Toko',
+              'Toko Anda',
               style: Theme.of(context)
                   .textTheme
                   .titleLarge!
@@ -76,6 +71,7 @@ class _BuatTokoPage extends State<BuatTokoPage> {
             ),
           ],
         ),
+        automaticallyImplyLeading: false,
       ),
       body: switch (currentBuatTokoStep) {
         1 => BuatTokoInformasiPage(

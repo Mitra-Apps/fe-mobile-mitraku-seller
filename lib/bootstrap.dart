@@ -27,6 +27,6 @@ Future<void> bootstrap({
 
     runApp(const App());
   }, (error, stack) {
-    Injector.instance<CrashlyticsService>().recordException(error, stack);
+    // Injector.instance<CrashlyticsService>().recordException(error, stack);
   });
 }

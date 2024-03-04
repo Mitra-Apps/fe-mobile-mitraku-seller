@@ -8,7 +8,13 @@ import 'package:mitraku_seller/core/spacings/app_spacing.dart';
 import 'package:mitraku_seller/core/themes/app_themes.dart';
 
 class BuatTokoUnggahFotoWidget extends StatefulWidget {
-  const BuatTokoUnggahFotoWidget({super.key});
+  const BuatTokoUnggahFotoWidget({
+    required this.updateInputValueCallback,
+    this.existingImagePath = '',
+    super.key,
+  });
+  final String existingImagePath;
+  final Function(String, String) updateInputValueCallback;
 
   @override
   State<BuatTokoUnggahFotoWidget> createState() =>
@@ -48,6 +54,10 @@ class _BuatTokoUnggahFotoWidgetState extends State<BuatTokoUnggahFotoWidget> {
         // File is the right size, upload/use it
         setState(() {
           _imageFile = File(pickedFile.path);
+          widget.updateInputValueCallback(
+            'FOTO',
+            _imageFile!.path,
+          );
         });
       } else {
         // File is too large, ask user to upload a smaller file, or compress the file/image
@@ -57,6 +67,14 @@ class _BuatTokoUnggahFotoWidgetState extends State<BuatTokoUnggahFotoWidget> {
     } else {
       await Future.delayed(Duration.zero).then((value) =>
           _showSnackbar(context, 'Hanya mendukung jenis file .png .jpg .jpeg'));
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.existingImagePath.isNotEmpty) {
+      _imageFile = File(widget.existingImagePath);
     }
   }
 
@@ -153,6 +171,10 @@ class _BuatTokoUnggahFotoWidgetState extends State<BuatTokoUnggahFotoWidget> {
                                   onPressed: () {
                                     setState(() {
                                       _imageFile = null;
+                                      widget.updateInputValueCallback(
+                                        'FOTO',
+                                        '',
+                                      );
                                     });
                                     // context.push(AppRouter.imagesFromDbPath);
                                   },

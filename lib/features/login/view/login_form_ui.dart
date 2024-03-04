@@ -154,7 +154,9 @@ class _LoginFormUIState extends State<LoginFormUI> {
                                   obscureText: true,
                                   onChanged: (value) => setState(() {
                                     strMerchantPassword = value;
-                                    isShowPasswordError = isShowValidatePassword(strMerchantPassword);
+                                    isShowPasswordError =
+                                        isShowValidatePasswordLogin(
+                                            strMerchantPassword);
                                   }),
                                   decoration: const InputDecoration(
                                     hintText: 'Masukkan Sandi',
@@ -176,11 +178,27 @@ class _LoginFormUIState extends State<LoginFormUI> {
                               child: Visibility(
                                   visible: isShowPasswordError,
                                   child: Text(
-                                    validatePassword(strMerchantPassword),
+                                    validatePasswordLogin(strMerchantPassword),
                                     softWrap: true,
                                     style: const TextStyle(fontSize: 12, fontWeight: FontWeight.normal, color: CustomColors.dangerColor),
                                   )),
                             )
+                          ],
+                        ),
+                        AppSpacing.verticalSpacing20,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                context.push(AppRouter.forgotPassPath);
+                              },
+                              child: const Text('Lupa Sandi?', style: TextStyle(
+                                fontSize: 12, fontWeight: FontWeight.w700,
+                                fontFamily: 'Poppins',
+                                color: CustomColors.dangerColor),
+                              ),
+                            ),
                           ],
                         ),
                         AppSpacing.verticalSpacing20,

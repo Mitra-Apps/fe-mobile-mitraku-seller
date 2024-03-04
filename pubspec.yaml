@@ -55,12 +55,13 @@ dependencies:
 
   local_database:
     path: packages/local_database
-  pinput: ^3.0.1
+  pinput: ^4.0.0
   google_fonts: ^6.1.0
   image_picker: ^1.0.7
   flutter_form_builder: ^9.1.1
   mask_text_input_formatter: ^2.8.0
   fluttertoast: ^8.0.9
+  timer_count_down: ^2.2.0
 
 dev_dependencies:
   flutter_test:

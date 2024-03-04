@@ -1,5 +1,4 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:rest_client/src/models/register/register_otp_response.dart';
 
 part 'register_response.freezed.dart';
 part 'register_response.g.dart';
@@ -9,7 +8,8 @@ part 'register_response.g.dart';
 class RegisterResponse with _$RegisterResponse {
   ///
   const factory RegisterResponse({
-    required RegisterOTPResponse data,
+    required int code,
+    required String message,
   }) = _RegisterResponse;
 
   ///

@@ -852,8 +852,7 @@ class _$RegisterStateImpl implements _RegisterState {
   const _$RegisterStateImpl(
       {this.status = const UIInitial(),
       this.notification,
-      this.registerResponse =
-          const RegisterResponse(data: RegisterOTPResponse(otp: '')),
+      this.registerResponse = const RegisterResponse(code: 0, message: ''),
       this.isBusy = false,
       this.registerBadRequest = '',
       this.registerSuccess = ''});

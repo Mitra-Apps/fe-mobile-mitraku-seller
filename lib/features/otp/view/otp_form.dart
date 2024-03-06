@@ -68,6 +68,11 @@ class OTPFormState extends State<OTPForm> {
               final prefs = await SharedPreferences.getInstance();
 
               await prefs.remove('otpInvalid');
+              await prefs.setString('access_token',
+                state.loginResponse.data.access_token,);
+              await prefs.setString('refresh_token',
+                state.loginResponse.data.refresh_token,);
+
               await context.push(AppRouter.homePath);
             }
 

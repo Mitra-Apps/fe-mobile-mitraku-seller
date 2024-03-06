@@ -106,6 +106,8 @@ class ForgotPasswordBloc extends Bloc<ForgotPasswordEvent, ForgotPasswordState> 
         state.copyWith(
           isBusy: false,
           resendOTPResponse: resendOTPResponse,
+          notification: _NotificationNotifySuccess(
+              message: 'OTP berhasil dikirim ke email'),
           forgotPassSuccess: 'SUCCESSREQOTP',
         ),
       );

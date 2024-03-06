@@ -1,21 +1,21 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'login_response.dart';
+part of 'resend_otp_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$LoginResponseImpl _$$LoginResponseImplFromJson(Map<String, dynamic> json) =>
-    _$LoginResponseImpl(
+_$ResendOTPResponseImpl _$$ResendOTPResponseImplFromJson(
+        Map<String, dynamic> json) =>
+    _$ResendOTPResponseImpl(
       code: json['code'] as int,
       message: json['message'] as String,
-      data: DataLoginResponse.fromJson(json['data'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$LoginResponseImplToJson(_$LoginResponseImpl instance) =>
+Map<String, dynamic> _$$ResendOTPResponseImplToJson(
+        _$ResendOTPResponseImpl instance) =>
     <String, dynamic>{
       'code': instance.code,
       'message': instance.message,
-      'data': instance.data,
     };

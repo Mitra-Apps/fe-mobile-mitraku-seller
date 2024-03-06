@@ -26,8 +26,6 @@ bool isShowValidateEmail(String? value) {
 String validatePassword(String? value, String? confirmPass) {
   if (value == null || value.isEmpty) {
     return 'Sandi tidak boleh kosong';
-  } else if (value != confirmPass) {
-    return 'Sandi dan Konfirmasi Sandi tidak cocok';
   } else if (value.length < 6) {
     return 'Sandi harus minimal 6 karakter';
   } else if (value.length > 8) {
@@ -36,14 +34,14 @@ String validatePassword(String? value, String? confirmPass) {
     return 'Sandi harus mengandung setidaknya 1 huruf kapital, 1 angka, dan 1 karakter khusus';
   } else if (RegExp(r'^\s').hasMatch(value)) {
     return 'Sandi tidak boleh kosong';
+  } else if (value != confirmPass) {
+    return 'Sandi dan Konfirmasi Sandi tidak cocok';
   }
   return '';
 }
 
 bool isShowValidatePassword(String? value, String? confirmPass) {
   if (value == null || value.isEmpty) {
-    return true;
-  } else if (value != confirmPass) {
     return true;
   } else if (value.length < 6) {
     return true;
@@ -52,6 +50,8 @@ bool isShowValidatePassword(String? value, String? confirmPass) {
   } else if (!RegExp(r'^(?=.*[A-Z])(?=.*\d)(?=.*[\W_])').hasMatch(value)) {
     return true;
   } else if (RegExp(r'^\s').hasMatch(value)) {
+    return true;
+  } else if (value != confirmPass) {
     return true;
   }
   return false;
@@ -129,7 +129,7 @@ bool isShowValidateName(String? value) {
   return false;
 }
 
-// Address validation
+// Phone validation
 String validatePhone(String? value) {
   if (value == null || value.isEmpty) {
     return 'Nomor Telp tidak boleh kosong';
@@ -150,6 +150,35 @@ bool isShowValidatePhone(String? value) {
   } else if (value.length <= 9) {
     return true;
   } else if (value.length > 14) {
+    return true;
+  } else if (RegExp(r'^\s').hasMatch(value)) {
+    return true;
+  }
+
+  return false;
+}
+
+// OTP validation
+String validateOTP(String? value) {
+  if (value == null || value.isEmpty) {
+    return 'Kode OTP tidak boleh kosong';
+  } else if (value.length <= 3) {
+    return 'Kode OTP minimal 4 digit';
+  } else if (value.length > 4) {
+    return 'Kode OTP tidak boleh lebih dari 4 digit';
+  } else if (RegExp(r'^\s').hasMatch(value)) {
+    return 'Kode OTP tidak boleh kosong';
+  }
+
+  return '';
+}
+
+bool isShowValidateOTP(String? value) {
+  if (value == null || value.isEmpty) {
+    return true;
+  } else if (value.length <= 3) {
+    return true;
+  } else if (value.length > 4) {
     return true;
   } else if (RegExp(r'^\s').hasMatch(value)) {
     return true;

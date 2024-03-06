@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'login_bloc.dart';
+part of 'otp_confirmation_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,58 +15,66 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$LoginEvent {
+mixin _$OtpConfirmationEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loaded,
-    required TResult Function(LoginPost loginPost) loginRequested,
+    required TResult Function(OtpConfirmationPost otpConfirmationPost)
+        otpRequested,
+    required TResult Function(ResendOTPPost resendOTPPost) resendOtpRequested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loaded,
-    TResult? Function(LoginPost loginPost)? loginRequested,
+    TResult? Function(OtpConfirmationPost otpConfirmationPost)? otpRequested,
+    TResult? Function(ResendOTPPost resendOTPPost)? resendOtpRequested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loaded,
-    TResult Function(LoginPost loginPost)? loginRequested,
+    TResult Function(OtpConfirmationPost otpConfirmationPost)? otpRequested,
+    TResult Function(ResendOTPPost resendOTPPost)? resendOtpRequested,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Loaded value) loaded,
-    required TResult Function(_LoginRequested value) loginRequested,
+    required TResult Function(_OtpConfrimationRequested value) otpRequested,
+    required TResult Function(_ResendOtpRequested value) resendOtpRequested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_LoginRequested value)? loginRequested,
+    TResult? Function(_OtpConfrimationRequested value)? otpRequested,
+    TResult? Function(_ResendOtpRequested value)? resendOtpRequested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loaded value)? loaded,
-    TResult Function(_LoginRequested value)? loginRequested,
+    TResult Function(_OtpConfrimationRequested value)? otpRequested,
+    TResult Function(_ResendOtpRequested value)? resendOtpRequested,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $LoginEventCopyWith<$Res> {
-  factory $LoginEventCopyWith(
-          LoginEvent value, $Res Function(LoginEvent) then) =
-      _$LoginEventCopyWithImpl<$Res, LoginEvent>;
+abstract class $OtpConfirmationEventCopyWith<$Res> {
+  factory $OtpConfirmationEventCopyWith(OtpConfirmationEvent value,
+          $Res Function(OtpConfirmationEvent) then) =
+      _$OtpConfirmationEventCopyWithImpl<$Res, OtpConfirmationEvent>;
 }
 
 /// @nodoc
-class _$LoginEventCopyWithImpl<$Res, $Val extends LoginEvent>
-    implements $LoginEventCopyWith<$Res> {
-  _$LoginEventCopyWithImpl(this._value, this._then);
+class _$OtpConfirmationEventCopyWithImpl<$Res,
+        $Val extends OtpConfirmationEvent>
+    implements $OtpConfirmationEventCopyWith<$Res> {
+  _$OtpConfirmationEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -83,7 +91,7 @@ abstract class _$$LoadedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$LoginEventCopyWithImpl<$Res, _$LoadedImpl>
+    extends _$OtpConfirmationEventCopyWithImpl<$Res, _$LoadedImpl>
     implements _$$LoadedImplCopyWith<$Res> {
   __$$LoadedImplCopyWithImpl(
       _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
@@ -97,7 +105,7 @@ class _$LoadedImpl implements _Loaded {
 
   @override
   String toString() {
-    return 'LoginEvent.loaded()';
+    return 'OtpConfirmationEvent.loaded()';
   }
 
   @override
@@ -113,7 +121,9 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loaded,
-    required TResult Function(LoginPost loginPost) loginRequested,
+    required TResult Function(OtpConfirmationPost otpConfirmationPost)
+        otpRequested,
+    required TResult Function(ResendOTPPost resendOTPPost) resendOtpRequested,
   }) {
     return loaded();
   }
@@ -122,7 +132,8 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loaded,
-    TResult? Function(LoginPost loginPost)? loginRequested,
+    TResult? Function(OtpConfirmationPost otpConfirmationPost)? otpRequested,
+    TResult? Function(ResendOTPPost resendOTPPost)? resendOtpRequested,
   }) {
     return loaded?.call();
   }
@@ -131,7 +142,8 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loaded,
-    TResult Function(LoginPost loginPost)? loginRequested,
+    TResult Function(OtpConfirmationPost otpConfirmationPost)? otpRequested,
+    TResult Function(ResendOTPPost resendOTPPost)? resendOtpRequested,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -144,7 +156,8 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Loaded value) loaded,
-    required TResult Function(_LoginRequested value) loginRequested,
+    required TResult Function(_OtpConfrimationRequested value) otpRequested,
+    required TResult Function(_ResendOtpRequested value) resendOtpRequested,
   }) {
     return loaded(this);
   }
@@ -153,7 +166,8 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_LoginRequested value)? loginRequested,
+    TResult? Function(_OtpConfrimationRequested value)? otpRequested,
+    TResult? Function(_ResendOtpRequested value)? resendOtpRequested,
   }) {
     return loaded?.call(this);
   }
@@ -162,7 +176,8 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loaded value)? loaded,
-    TResult Function(_LoginRequested value)? loginRequested,
+    TResult Function(_OtpConfrimationRequested value)? otpRequested,
+    TResult Function(_ResendOtpRequested value)? resendOtpRequested,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -172,110 +187,118 @@ class _$LoadedImpl implements _Loaded {
   }
 }
 
-abstract class _Loaded implements LoginEvent {
+abstract class _Loaded implements OtpConfirmationEvent {
   const factory _Loaded() = _$LoadedImpl;
 }
 
 /// @nodoc
-abstract class _$$LoginRequestedImplCopyWith<$Res> {
-  factory _$$LoginRequestedImplCopyWith(_$LoginRequestedImpl value,
-          $Res Function(_$LoginRequestedImpl) then) =
-      __$$LoginRequestedImplCopyWithImpl<$Res>;
+abstract class _$$OtpConfrimationRequestedImplCopyWith<$Res> {
+  factory _$$OtpConfrimationRequestedImplCopyWith(
+          _$OtpConfrimationRequestedImpl value,
+          $Res Function(_$OtpConfrimationRequestedImpl) then) =
+      __$$OtpConfrimationRequestedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({LoginPost loginPost});
+  $Res call({OtpConfirmationPost otpConfirmationPost});
 
-  $LoginPostCopyWith<$Res> get loginPost;
+  $OtpConfirmationPostCopyWith<$Res> get otpConfirmationPost;
 }
 
 /// @nodoc
-class __$$LoginRequestedImplCopyWithImpl<$Res>
-    extends _$LoginEventCopyWithImpl<$Res, _$LoginRequestedImpl>
-    implements _$$LoginRequestedImplCopyWith<$Res> {
-  __$$LoginRequestedImplCopyWithImpl(
-      _$LoginRequestedImpl _value, $Res Function(_$LoginRequestedImpl) _then)
+class __$$OtpConfrimationRequestedImplCopyWithImpl<$Res>
+    extends _$OtpConfirmationEventCopyWithImpl<$Res,
+        _$OtpConfrimationRequestedImpl>
+    implements _$$OtpConfrimationRequestedImplCopyWith<$Res> {
+  __$$OtpConfrimationRequestedImplCopyWithImpl(
+      _$OtpConfrimationRequestedImpl _value,
+      $Res Function(_$OtpConfrimationRequestedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? loginPost = null,
+    Object? otpConfirmationPost = null,
   }) {
-    return _then(_$LoginRequestedImpl(
-      null == loginPost
-          ? _value.loginPost
-          : loginPost // ignore: cast_nullable_to_non_nullable
-              as LoginPost,
+    return _then(_$OtpConfrimationRequestedImpl(
+      null == otpConfirmationPost
+          ? _value.otpConfirmationPost
+          : otpConfirmationPost // ignore: cast_nullable_to_non_nullable
+              as OtpConfirmationPost,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $LoginPostCopyWith<$Res> get loginPost {
-    return $LoginPostCopyWith<$Res>(_value.loginPost, (value) {
-      return _then(_value.copyWith(loginPost: value));
+  $OtpConfirmationPostCopyWith<$Res> get otpConfirmationPost {
+    return $OtpConfirmationPostCopyWith<$Res>(_value.otpConfirmationPost,
+        (value) {
+      return _then(_value.copyWith(otpConfirmationPost: value));
     });
   }
 }
 
 /// @nodoc
 
-class _$LoginRequestedImpl implements _LoginRequested {
-  const _$LoginRequestedImpl(this.loginPost);
+class _$OtpConfrimationRequestedImpl implements _OtpConfrimationRequested {
+  const _$OtpConfrimationRequestedImpl(this.otpConfirmationPost);
 
   @override
-  final LoginPost loginPost;
+  final OtpConfirmationPost otpConfirmationPost;
 
   @override
   String toString() {
-    return 'LoginEvent.loginRequested(loginPost: $loginPost)';
+    return 'OtpConfirmationEvent.otpRequested(otpConfirmationPost: $otpConfirmationPost)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LoginRequestedImpl &&
-            (identical(other.loginPost, loginPost) ||
-                other.loginPost == loginPost));
+            other is _$OtpConfrimationRequestedImpl &&
+            (identical(other.otpConfirmationPost, otpConfirmationPost) ||
+                other.otpConfirmationPost == otpConfirmationPost));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, loginPost);
+  int get hashCode => Object.hash(runtimeType, otpConfirmationPost);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LoginRequestedImplCopyWith<_$LoginRequestedImpl> get copyWith =>
-      __$$LoginRequestedImplCopyWithImpl<_$LoginRequestedImpl>(
-          this, _$identity);
+  _$$OtpConfrimationRequestedImplCopyWith<_$OtpConfrimationRequestedImpl>
+      get copyWith => __$$OtpConfrimationRequestedImplCopyWithImpl<
+          _$OtpConfrimationRequestedImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loaded,
-    required TResult Function(LoginPost loginPost) loginRequested,
+    required TResult Function(OtpConfirmationPost otpConfirmationPost)
+        otpRequested,
+    required TResult Function(ResendOTPPost resendOTPPost) resendOtpRequested,
   }) {
-    return loginRequested(loginPost);
+    return otpRequested(otpConfirmationPost);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loaded,
-    TResult? Function(LoginPost loginPost)? loginRequested,
+    TResult? Function(OtpConfirmationPost otpConfirmationPost)? otpRequested,
+    TResult? Function(ResendOTPPost resendOTPPost)? resendOtpRequested,
   }) {
-    return loginRequested?.call(loginPost);
+    return otpRequested?.call(otpConfirmationPost);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loaded,
-    TResult Function(LoginPost loginPost)? loginRequested,
+    TResult Function(OtpConfirmationPost otpConfirmationPost)? otpRequested,
+    TResult Function(ResendOTPPost resendOTPPost)? resendOtpRequested,
     required TResult orElse(),
   }) {
-    if (loginRequested != null) {
-      return loginRequested(loginPost);
+    if (otpRequested != null) {
+      return otpRequested(otpConfirmationPost);
     }
     return orElse();
   }
@@ -284,46 +307,203 @@ class _$LoginRequestedImpl implements _LoginRequested {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Loaded value) loaded,
-    required TResult Function(_LoginRequested value) loginRequested,
+    required TResult Function(_OtpConfrimationRequested value) otpRequested,
+    required TResult Function(_ResendOtpRequested value) resendOtpRequested,
   }) {
-    return loginRequested(this);
+    return otpRequested(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_LoginRequested value)? loginRequested,
+    TResult? Function(_OtpConfrimationRequested value)? otpRequested,
+    TResult? Function(_ResendOtpRequested value)? resendOtpRequested,
   }) {
-    return loginRequested?.call(this);
+    return otpRequested?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loaded value)? loaded,
-    TResult Function(_LoginRequested value)? loginRequested,
+    TResult Function(_OtpConfrimationRequested value)? otpRequested,
+    TResult Function(_ResendOtpRequested value)? resendOtpRequested,
     required TResult orElse(),
   }) {
-    if (loginRequested != null) {
-      return loginRequested(this);
+    if (otpRequested != null) {
+      return otpRequested(this);
     }
     return orElse();
   }
 }
 
-abstract class _LoginRequested implements LoginEvent {
-  const factory _LoginRequested(final LoginPost loginPost) =
-      _$LoginRequestedImpl;
+abstract class _OtpConfrimationRequested implements OtpConfirmationEvent {
+  const factory _OtpConfrimationRequested(
+          final OtpConfirmationPost otpConfirmationPost) =
+      _$OtpConfrimationRequestedImpl;
 
-  LoginPost get loginPost;
+  OtpConfirmationPost get otpConfirmationPost;
   @JsonKey(ignore: true)
-  _$$LoginRequestedImplCopyWith<_$LoginRequestedImpl> get copyWith =>
+  _$$OtpConfrimationRequestedImplCopyWith<_$OtpConfrimationRequestedImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ResendOtpRequestedImplCopyWith<$Res> {
+  factory _$$ResendOtpRequestedImplCopyWith(_$ResendOtpRequestedImpl value,
+          $Res Function(_$ResendOtpRequestedImpl) then) =
+      __$$ResendOtpRequestedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ResendOTPPost resendOTPPost});
+
+  $ResendOTPPostCopyWith<$Res> get resendOTPPost;
+}
+
+/// @nodoc
+class __$$ResendOtpRequestedImplCopyWithImpl<$Res>
+    extends _$OtpConfirmationEventCopyWithImpl<$Res, _$ResendOtpRequestedImpl>
+    implements _$$ResendOtpRequestedImplCopyWith<$Res> {
+  __$$ResendOtpRequestedImplCopyWithImpl(_$ResendOtpRequestedImpl _value,
+      $Res Function(_$ResendOtpRequestedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? resendOTPPost = null,
+  }) {
+    return _then(_$ResendOtpRequestedImpl(
+      null == resendOTPPost
+          ? _value.resendOTPPost
+          : resendOTPPost // ignore: cast_nullable_to_non_nullable
+              as ResendOTPPost,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ResendOTPPostCopyWith<$Res> get resendOTPPost {
+    return $ResendOTPPostCopyWith<$Res>(_value.resendOTPPost, (value) {
+      return _then(_value.copyWith(resendOTPPost: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$ResendOtpRequestedImpl implements _ResendOtpRequested {
+  const _$ResendOtpRequestedImpl(this.resendOTPPost);
+
+  @override
+  final ResendOTPPost resendOTPPost;
+
+  @override
+  String toString() {
+    return 'OtpConfirmationEvent.resendOtpRequested(resendOTPPost: $resendOTPPost)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ResendOtpRequestedImpl &&
+            (identical(other.resendOTPPost, resendOTPPost) ||
+                other.resendOTPPost == resendOTPPost));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, resendOTPPost);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ResendOtpRequestedImplCopyWith<_$ResendOtpRequestedImpl> get copyWith =>
+      __$$ResendOtpRequestedImplCopyWithImpl<_$ResendOtpRequestedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loaded,
+    required TResult Function(OtpConfirmationPost otpConfirmationPost)
+        otpRequested,
+    required TResult Function(ResendOTPPost resendOTPPost) resendOtpRequested,
+  }) {
+    return resendOtpRequested(resendOTPPost);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loaded,
+    TResult? Function(OtpConfirmationPost otpConfirmationPost)? otpRequested,
+    TResult? Function(ResendOTPPost resendOTPPost)? resendOtpRequested,
+  }) {
+    return resendOtpRequested?.call(resendOTPPost);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loaded,
+    TResult Function(OtpConfirmationPost otpConfirmationPost)? otpRequested,
+    TResult Function(ResendOTPPost resendOTPPost)? resendOtpRequested,
+    required TResult orElse(),
+  }) {
+    if (resendOtpRequested != null) {
+      return resendOtpRequested(resendOTPPost);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_OtpConfrimationRequested value) otpRequested,
+    required TResult Function(_ResendOtpRequested value) resendOtpRequested,
+  }) {
+    return resendOtpRequested(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_OtpConfrimationRequested value)? otpRequested,
+    TResult? Function(_ResendOtpRequested value)? resendOtpRequested,
+  }) {
+    return resendOtpRequested?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_OtpConfrimationRequested value)? otpRequested,
+    TResult Function(_ResendOtpRequested value)? resendOtpRequested,
+    required TResult orElse(),
+  }) {
+    if (resendOtpRequested != null) {
+      return resendOtpRequested(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ResendOtpRequested implements OtpConfirmationEvent {
+  const factory _ResendOtpRequested(final ResendOTPPost resendOTPPost) =
+      _$ResendOtpRequestedImpl;
+
+  ResendOTPPost get resendOTPPost;
+  @JsonKey(ignore: true)
+  _$$ResendOtpRequestedImplCopyWith<_$ResendOtpRequestedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$LoginNotification {
+mixin _$OtpConfirmationNotification {
   String get message => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -365,23 +545,26 @@ mixin _$LoginNotification {
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $LoginNotificationCopyWith<LoginNotification> get copyWith =>
-      throw _privateConstructorUsedError;
+  $OtpConfirmationNotificationCopyWith<OtpConfirmationNotification>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $LoginNotificationCopyWith<$Res> {
-  factory $LoginNotificationCopyWith(
-          LoginNotification value, $Res Function(LoginNotification) then) =
-      _$LoginNotificationCopyWithImpl<$Res, LoginNotification>;
+abstract class $OtpConfirmationNotificationCopyWith<$Res> {
+  factory $OtpConfirmationNotificationCopyWith(
+          OtpConfirmationNotification value,
+          $Res Function(OtpConfirmationNotification) then) =
+      _$OtpConfirmationNotificationCopyWithImpl<$Res,
+          OtpConfirmationNotification>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class _$LoginNotificationCopyWithImpl<$Res, $Val extends LoginNotification>
-    implements $LoginNotificationCopyWith<$Res> {
-  _$LoginNotificationCopyWithImpl(this._value, this._then);
+class _$OtpConfirmationNotificationCopyWithImpl<$Res,
+        $Val extends OtpConfirmationNotification>
+    implements $OtpConfirmationNotificationCopyWith<$Res> {
+  _$OtpConfirmationNotificationCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -404,7 +587,7 @@ class _$LoginNotificationCopyWithImpl<$Res, $Val extends LoginNotification>
 
 /// @nodoc
 abstract class _$$NotificationNotifySuccessImplCopyWith<$Res>
-    implements $LoginNotificationCopyWith<$Res> {
+    implements $OtpConfirmationNotificationCopyWith<$Res> {
   factory _$$NotificationNotifySuccessImplCopyWith(
           _$NotificationNotifySuccessImpl value,
           $Res Function(_$NotificationNotifySuccessImpl) then) =
@@ -416,7 +599,7 @@ abstract class _$$NotificationNotifySuccessImplCopyWith<$Res>
 
 /// @nodoc
 class __$$NotificationNotifySuccessImplCopyWithImpl<$Res>
-    extends _$LoginNotificationCopyWithImpl<$Res,
+    extends _$OtpConfirmationNotificationCopyWithImpl<$Res,
         _$NotificationNotifySuccessImpl>
     implements _$$NotificationNotifySuccessImplCopyWith<$Res> {
   __$$NotificationNotifySuccessImplCopyWithImpl(
@@ -448,7 +631,7 @@ class _$NotificationNotifySuccessImpl implements _NotificationNotifySuccess {
 
   @override
   String toString() {
-    return 'LoginNotification.notifySuccess(message: $message)';
+    return 'OtpConfirmationNotification.notifySuccess(message: $message)';
   }
 
   @JsonKey(ignore: true)
@@ -521,7 +704,8 @@ class _$NotificationNotifySuccessImpl implements _NotificationNotifySuccess {
   }
 }
 
-abstract class _NotificationNotifySuccess implements LoginNotification {
+abstract class _NotificationNotifySuccess
+    implements OtpConfirmationNotification {
   factory _NotificationNotifySuccess({required final String message}) =
       _$NotificationNotifySuccessImpl;
 
@@ -535,7 +719,7 @@ abstract class _NotificationNotifySuccess implements LoginNotification {
 
 /// @nodoc
 abstract class _$$NotificationNotifyFailedImplCopyWith<$Res>
-    implements $LoginNotificationCopyWith<$Res> {
+    implements $OtpConfirmationNotificationCopyWith<$Res> {
   factory _$$NotificationNotifyFailedImplCopyWith(
           _$NotificationNotifyFailedImpl value,
           $Res Function(_$NotificationNotifyFailedImpl) then) =
@@ -547,7 +731,7 @@ abstract class _$$NotificationNotifyFailedImplCopyWith<$Res>
 
 /// @nodoc
 class __$$NotificationNotifyFailedImplCopyWithImpl<$Res>
-    extends _$LoginNotificationCopyWithImpl<$Res,
+    extends _$OtpConfirmationNotificationCopyWithImpl<$Res,
         _$NotificationNotifyFailedImpl>
     implements _$$NotificationNotifyFailedImplCopyWith<$Res> {
   __$$NotificationNotifyFailedImplCopyWithImpl(
@@ -579,7 +763,7 @@ class _$NotificationNotifyFailedImpl implements _NotificationNotifyFailed {
 
   @override
   String toString() {
-    return 'LoginNotification.notifyFailed(message: $message)';
+    return 'OtpConfirmationNotification.notifyFailed(message: $message)';
   }
 
   @JsonKey(ignore: true)
@@ -652,7 +836,8 @@ class _$NotificationNotifyFailedImpl implements _NotificationNotifyFailed {
   }
 }
 
-abstract class _NotificationNotifyFailed implements LoginNotification {
+abstract class _NotificationNotifyFailed
+    implements OtpConfirmationNotification {
   factory _NotificationNotifyFailed({required final String message}) =
       _$NotificationNotifyFailedImpl;
 
@@ -665,42 +850,47 @@ abstract class _NotificationNotifyFailed implements LoginNotification {
 }
 
 /// @nodoc
-mixin _$LoginState {
+mixin _$OtpConfirmationState {
   UIStatus get status => throw _privateConstructorUsedError;
-  LoginNotification? get notification => throw _privateConstructorUsedError;
+  OtpConfirmationNotification? get notification =>
+      throw _privateConstructorUsedError;
   LoginResponse get loginResponse => throw _privateConstructorUsedError;
   bool get isBusy => throw _privateConstructorUsedError;
-  String get loginBadRequest => throw _privateConstructorUsedError;
-  String get loginSuccess => throw _privateConstructorUsedError;
+  String get otpBadRequest => throw _privateConstructorUsedError;
+  String get otpSuccess => throw _privateConstructorUsedError;
+  ResendOTPResponse get resendOTPResponse => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $LoginStateCopyWith<LoginState> get copyWith =>
+  $OtpConfirmationStateCopyWith<OtpConfirmationState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $LoginStateCopyWith<$Res> {
-  factory $LoginStateCopyWith(
-          LoginState value, $Res Function(LoginState) then) =
-      _$LoginStateCopyWithImpl<$Res, LoginState>;
+abstract class $OtpConfirmationStateCopyWith<$Res> {
+  factory $OtpConfirmationStateCopyWith(OtpConfirmationState value,
+          $Res Function(OtpConfirmationState) then) =
+      _$OtpConfirmationStateCopyWithImpl<$Res, OtpConfirmationState>;
   @useResult
   $Res call(
       {UIStatus status,
-      LoginNotification? notification,
+      OtpConfirmationNotification? notification,
       LoginResponse loginResponse,
       bool isBusy,
-      String loginBadRequest,
-      String loginSuccess});
+      String otpBadRequest,
+      String otpSuccess,
+      ResendOTPResponse resendOTPResponse});
 
   $UIStatusCopyWith<$Res> get status;
-  $LoginNotificationCopyWith<$Res>? get notification;
+  $OtpConfirmationNotificationCopyWith<$Res>? get notification;
   $LoginResponseCopyWith<$Res> get loginResponse;
+  $ResendOTPResponseCopyWith<$Res> get resendOTPResponse;
 }
 
 /// @nodoc
-class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
-    implements $LoginStateCopyWith<$Res> {
-  _$LoginStateCopyWithImpl(this._value, this._then);
+class _$OtpConfirmationStateCopyWithImpl<$Res,
+        $Val extends OtpConfirmationState>
+    implements $OtpConfirmationStateCopyWith<$Res> {
+  _$OtpConfirmationStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -714,8 +904,9 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
     Object? notification = freezed,
     Object? loginResponse = null,
     Object? isBusy = null,
-    Object? loginBadRequest = null,
-    Object? loginSuccess = null,
+    Object? otpBadRequest = null,
+    Object? otpSuccess = null,
+    Object? resendOTPResponse = null,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -725,7 +916,7 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
       notification: freezed == notification
           ? _value.notification
           : notification // ignore: cast_nullable_to_non_nullable
-              as LoginNotification?,
+              as OtpConfirmationNotification?,
       loginResponse: null == loginResponse
           ? _value.loginResponse
           : loginResponse // ignore: cast_nullable_to_non_nullable
@@ -734,14 +925,18 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
           ? _value.isBusy
           : isBusy // ignore: cast_nullable_to_non_nullable
               as bool,
-      loginBadRequest: null == loginBadRequest
-          ? _value.loginBadRequest
-          : loginBadRequest // ignore: cast_nullable_to_non_nullable
+      otpBadRequest: null == otpBadRequest
+          ? _value.otpBadRequest
+          : otpBadRequest // ignore: cast_nullable_to_non_nullable
               as String,
-      loginSuccess: null == loginSuccess
-          ? _value.loginSuccess
-          : loginSuccess // ignore: cast_nullable_to_non_nullable
+      otpSuccess: null == otpSuccess
+          ? _value.otpSuccess
+          : otpSuccess // ignore: cast_nullable_to_non_nullable
               as String,
+      resendOTPResponse: null == resendOTPResponse
+          ? _value.resendOTPResponse
+          : resendOTPResponse // ignore: cast_nullable_to_non_nullable
+              as ResendOTPResponse,
     ) as $Val);
   }
 
@@ -755,12 +950,13 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
 
   @override
   @pragma('vm:prefer-inline')
-  $LoginNotificationCopyWith<$Res>? get notification {
+  $OtpConfirmationNotificationCopyWith<$Res>? get notification {
     if (_value.notification == null) {
       return null;
     }
 
-    return $LoginNotificationCopyWith<$Res>(_value.notification!, (value) {
+    return $OtpConfirmationNotificationCopyWith<$Res>(_value.notification!,
+        (value) {
       return _then(_value.copyWith(notification: value) as $Val);
     });
   }
@@ -772,38 +968,49 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
       return _then(_value.copyWith(loginResponse: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ResendOTPResponseCopyWith<$Res> get resendOTPResponse {
+    return $ResendOTPResponseCopyWith<$Res>(_value.resendOTPResponse, (value) {
+      return _then(_value.copyWith(resendOTPResponse: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
-abstract class _$$LoginStateImplCopyWith<$Res>
-    implements $LoginStateCopyWith<$Res> {
-  factory _$$LoginStateImplCopyWith(
-          _$LoginStateImpl value, $Res Function(_$LoginStateImpl) then) =
-      __$$LoginStateImplCopyWithImpl<$Res>;
+abstract class _$$OtpConfirmationStateImplCopyWith<$Res>
+    implements $OtpConfirmationStateCopyWith<$Res> {
+  factory _$$OtpConfirmationStateImplCopyWith(_$OtpConfirmationStateImpl value,
+          $Res Function(_$OtpConfirmationStateImpl) then) =
+      __$$OtpConfirmationStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {UIStatus status,
-      LoginNotification? notification,
+      OtpConfirmationNotification? notification,
       LoginResponse loginResponse,
       bool isBusy,
-      String loginBadRequest,
-      String loginSuccess});
+      String otpBadRequest,
+      String otpSuccess,
+      ResendOTPResponse resendOTPResponse});
 
   @override
   $UIStatusCopyWith<$Res> get status;
   @override
-  $LoginNotificationCopyWith<$Res>? get notification;
+  $OtpConfirmationNotificationCopyWith<$Res>? get notification;
   @override
   $LoginResponseCopyWith<$Res> get loginResponse;
+  @override
+  $ResendOTPResponseCopyWith<$Res> get resendOTPResponse;
 }
 
 /// @nodoc
-class __$$LoginStateImplCopyWithImpl<$Res>
-    extends _$LoginStateCopyWithImpl<$Res, _$LoginStateImpl>
-    implements _$$LoginStateImplCopyWith<$Res> {
-  __$$LoginStateImplCopyWithImpl(
-      _$LoginStateImpl _value, $Res Function(_$LoginStateImpl) _then)
+class __$$OtpConfirmationStateImplCopyWithImpl<$Res>
+    extends _$OtpConfirmationStateCopyWithImpl<$Res, _$OtpConfirmationStateImpl>
+    implements _$$OtpConfirmationStateImplCopyWith<$Res> {
+  __$$OtpConfirmationStateImplCopyWithImpl(_$OtpConfirmationStateImpl _value,
+      $Res Function(_$OtpConfirmationStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -813,10 +1020,11 @@ class __$$LoginStateImplCopyWithImpl<$Res>
     Object? notification = freezed,
     Object? loginResponse = null,
     Object? isBusy = null,
-    Object? loginBadRequest = null,
-    Object? loginSuccess = null,
+    Object? otpBadRequest = null,
+    Object? otpSuccess = null,
+    Object? resendOTPResponse = null,
   }) {
-    return _then(_$LoginStateImpl(
+    return _then(_$OtpConfirmationStateImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -824,7 +1032,7 @@ class __$$LoginStateImplCopyWithImpl<$Res>
       notification: freezed == notification
           ? _value.notification
           : notification // ignore: cast_nullable_to_non_nullable
-              as LoginNotification?,
+              as OtpConfirmationNotification?,
       loginResponse: null == loginResponse
           ? _value.loginResponse
           : loginResponse // ignore: cast_nullable_to_non_nullable
@@ -833,22 +1041,26 @@ class __$$LoginStateImplCopyWithImpl<$Res>
           ? _value.isBusy
           : isBusy // ignore: cast_nullable_to_non_nullable
               as bool,
-      loginBadRequest: null == loginBadRequest
-          ? _value.loginBadRequest
-          : loginBadRequest // ignore: cast_nullable_to_non_nullable
+      otpBadRequest: null == otpBadRequest
+          ? _value.otpBadRequest
+          : otpBadRequest // ignore: cast_nullable_to_non_nullable
               as String,
-      loginSuccess: null == loginSuccess
-          ? _value.loginSuccess
-          : loginSuccess // ignore: cast_nullable_to_non_nullable
+      otpSuccess: null == otpSuccess
+          ? _value.otpSuccess
+          : otpSuccess // ignore: cast_nullable_to_non_nullable
               as String,
+      resendOTPResponse: null == resendOTPResponse
+          ? _value.resendOTPResponse
+          : resendOTPResponse // ignore: cast_nullable_to_non_nullable
+              as ResendOTPResponse,
     ));
   }
 }
 
 /// @nodoc
 
-class _$LoginStateImpl implements _LoginState {
-  const _$LoginStateImpl(
+class _$OtpConfirmationStateImpl implements _OtpConfirmationState {
+  const _$OtpConfirmationStateImpl(
       {this.status = const UIInitial(),
       this.notification,
       this.loginResponse = const LoginResponse(
@@ -856,14 +1068,15 @@ class _$LoginStateImpl implements _LoginState {
           message: '',
           data: DataLoginResponse(access_token: '', refresh_token: '')),
       this.isBusy = false,
-      this.loginBadRequest = 'AUTH_LOGIN_NOT_FOUND',
-      this.loginSuccess = ''});
+      this.otpBadRequest = 'AUTH_OTP_INVALID',
+      this.otpSuccess = '',
+      this.resendOTPResponse = const ResendOTPResponse(code: 0, message: '')});
 
   @override
   @JsonKey()
   final UIStatus status;
   @override
-  final LoginNotification? notification;
+  final OtpConfirmationNotification? notification;
   @override
   @JsonKey()
   final LoginResponse loginResponse;
@@ -872,67 +1085,77 @@ class _$LoginStateImpl implements _LoginState {
   final bool isBusy;
   @override
   @JsonKey()
-  final String loginBadRequest;
+  final String otpBadRequest;
   @override
   @JsonKey()
-  final String loginSuccess;
+  final String otpSuccess;
+  @override
+  @JsonKey()
+  final ResendOTPResponse resendOTPResponse;
 
   @override
   String toString() {
-    return 'LoginState(status: $status, notification: $notification, loginResponse: $loginResponse, isBusy: $isBusy, loginBadRequest: $loginBadRequest, loginSuccess: $loginSuccess)';
+    return 'OtpConfirmationState(status: $status, notification: $notification, loginResponse: $loginResponse, isBusy: $isBusy, otpBadRequest: $otpBadRequest, otpSuccess: $otpSuccess, resendOTPResponse: $resendOTPResponse)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LoginStateImpl &&
+            other is _$OtpConfirmationStateImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.notification, notification) ||
                 other.notification == notification) &&
             (identical(other.loginResponse, loginResponse) ||
                 other.loginResponse == loginResponse) &&
             (identical(other.isBusy, isBusy) || other.isBusy == isBusy) &&
-            (identical(other.loginBadRequest, loginBadRequest) ||
-                other.loginBadRequest == loginBadRequest) &&
-            (identical(other.loginSuccess, loginSuccess) ||
-                other.loginSuccess == loginSuccess));
+            (identical(other.otpBadRequest, otpBadRequest) ||
+                other.otpBadRequest == otpBadRequest) &&
+            (identical(other.otpSuccess, otpSuccess) ||
+                other.otpSuccess == otpSuccess) &&
+            (identical(other.resendOTPResponse, resendOTPResponse) ||
+                other.resendOTPResponse == resendOTPResponse));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, status, notification,
-      loginResponse, isBusy, loginBadRequest, loginSuccess);
+      loginResponse, isBusy, otpBadRequest, otpSuccess, resendOTPResponse);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LoginStateImplCopyWith<_$LoginStateImpl> get copyWith =>
-      __$$LoginStateImplCopyWithImpl<_$LoginStateImpl>(this, _$identity);
+  _$$OtpConfirmationStateImplCopyWith<_$OtpConfirmationStateImpl>
+      get copyWith =>
+          __$$OtpConfirmationStateImplCopyWithImpl<_$OtpConfirmationStateImpl>(
+              this, _$identity);
 }
 
-abstract class _LoginState implements LoginState {
-  const factory _LoginState(
+abstract class _OtpConfirmationState implements OtpConfirmationState {
+  const factory _OtpConfirmationState(
       {final UIStatus status,
-      final LoginNotification? notification,
+      final OtpConfirmationNotification? notification,
       final LoginResponse loginResponse,
       final bool isBusy,
-      final String loginBadRequest,
-      final String loginSuccess}) = _$LoginStateImpl;
+      final String otpBadRequest,
+      final String otpSuccess,
+      final ResendOTPResponse resendOTPResponse}) = _$OtpConfirmationStateImpl;
 
   @override
   UIStatus get status;
   @override
-  LoginNotification? get notification;
+  OtpConfirmationNotification? get notification;
   @override
   LoginResponse get loginResponse;
   @override
   bool get isBusy;
   @override
-  String get loginBadRequest;
+  String get otpBadRequest;
   @override
-  String get loginSuccess;
+  String get otpSuccess;
+  @override
+  ResendOTPResponse get resendOTPResponse;
   @override
   @JsonKey(ignore: true)
-  _$$LoginStateImplCopyWith<_$LoginStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$OtpConfirmationStateImplCopyWith<_$OtpConfirmationStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }

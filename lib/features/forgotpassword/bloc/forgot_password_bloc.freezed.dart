@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'login_bloc.dart';
+part of 'forgot_password_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,58 +15,67 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$LoginEvent {
+mixin _$ForgotPasswordEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loaded,
-    required TResult Function(LoginPost loginPost) loginRequested,
+    required TResult Function(ForgotPasswordPost forgotPasswordPost)
+        forgotPassRequested,
+    required TResult Function(ResendOTPPost resendOTPPost) reqOtp,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loaded,
-    TResult? Function(LoginPost loginPost)? loginRequested,
+    TResult? Function(ForgotPasswordPost forgotPasswordPost)?
+        forgotPassRequested,
+    TResult? Function(ResendOTPPost resendOTPPost)? reqOtp,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loaded,
-    TResult Function(LoginPost loginPost)? loginRequested,
+    TResult Function(ForgotPasswordPost forgotPasswordPost)?
+        forgotPassRequested,
+    TResult Function(ResendOTPPost resendOTPPost)? reqOtp,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Loaded value) loaded,
-    required TResult Function(_LoginRequested value) loginRequested,
+    required TResult Function(_ForgotPassRequested value) forgotPassRequested,
+    required TResult Function(_ReqOtpRequested value) reqOtp,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_LoginRequested value)? loginRequested,
+    TResult? Function(_ForgotPassRequested value)? forgotPassRequested,
+    TResult? Function(_ReqOtpRequested value)? reqOtp,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loaded value)? loaded,
-    TResult Function(_LoginRequested value)? loginRequested,
+    TResult Function(_ForgotPassRequested value)? forgotPassRequested,
+    TResult Function(_ReqOtpRequested value)? reqOtp,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $LoginEventCopyWith<$Res> {
-  factory $LoginEventCopyWith(
-          LoginEvent value, $Res Function(LoginEvent) then) =
-      _$LoginEventCopyWithImpl<$Res, LoginEvent>;
+abstract class $ForgotPasswordEventCopyWith<$Res> {
+  factory $ForgotPasswordEventCopyWith(
+          ForgotPasswordEvent value, $Res Function(ForgotPasswordEvent) then) =
+      _$ForgotPasswordEventCopyWithImpl<$Res, ForgotPasswordEvent>;
 }
 
 /// @nodoc
-class _$LoginEventCopyWithImpl<$Res, $Val extends LoginEvent>
-    implements $LoginEventCopyWith<$Res> {
-  _$LoginEventCopyWithImpl(this._value, this._then);
+class _$ForgotPasswordEventCopyWithImpl<$Res, $Val extends ForgotPasswordEvent>
+    implements $ForgotPasswordEventCopyWith<$Res> {
+  _$ForgotPasswordEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -83,7 +92,7 @@ abstract class _$$LoadedImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LoadedImplCopyWithImpl<$Res>
-    extends _$LoginEventCopyWithImpl<$Res, _$LoadedImpl>
+    extends _$ForgotPasswordEventCopyWithImpl<$Res, _$LoadedImpl>
     implements _$$LoadedImplCopyWith<$Res> {
   __$$LoadedImplCopyWithImpl(
       _$LoadedImpl _value, $Res Function(_$LoadedImpl) _then)
@@ -97,7 +106,7 @@ class _$LoadedImpl implements _Loaded {
 
   @override
   String toString() {
-    return 'LoginEvent.loaded()';
+    return 'ForgotPasswordEvent.loaded()';
   }
 
   @override
@@ -113,7 +122,9 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loaded,
-    required TResult Function(LoginPost loginPost) loginRequested,
+    required TResult Function(ForgotPasswordPost forgotPasswordPost)
+        forgotPassRequested,
+    required TResult Function(ResendOTPPost resendOTPPost) reqOtp,
   }) {
     return loaded();
   }
@@ -122,7 +133,9 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loaded,
-    TResult? Function(LoginPost loginPost)? loginRequested,
+    TResult? Function(ForgotPasswordPost forgotPasswordPost)?
+        forgotPassRequested,
+    TResult? Function(ResendOTPPost resendOTPPost)? reqOtp,
   }) {
     return loaded?.call();
   }
@@ -131,7 +144,9 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loaded,
-    TResult Function(LoginPost loginPost)? loginRequested,
+    TResult Function(ForgotPasswordPost forgotPasswordPost)?
+        forgotPassRequested,
+    TResult Function(ResendOTPPost resendOTPPost)? reqOtp,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -144,7 +159,8 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Loaded value) loaded,
-    required TResult Function(_LoginRequested value) loginRequested,
+    required TResult Function(_ForgotPassRequested value) forgotPassRequested,
+    required TResult Function(_ReqOtpRequested value) reqOtp,
   }) {
     return loaded(this);
   }
@@ -153,7 +169,8 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_LoginRequested value)? loginRequested,
+    TResult? Function(_ForgotPassRequested value)? forgotPassRequested,
+    TResult? Function(_ReqOtpRequested value)? reqOtp,
   }) {
     return loaded?.call(this);
   }
@@ -162,7 +179,8 @@ class _$LoadedImpl implements _Loaded {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loaded value)? loaded,
-    TResult Function(_LoginRequested value)? loginRequested,
+    TResult Function(_ForgotPassRequested value)? forgotPassRequested,
+    TResult Function(_ReqOtpRequested value)? reqOtp,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -172,110 +190,117 @@ class _$LoadedImpl implements _Loaded {
   }
 }
 
-abstract class _Loaded implements LoginEvent {
+abstract class _Loaded implements ForgotPasswordEvent {
   const factory _Loaded() = _$LoadedImpl;
 }
 
 /// @nodoc
-abstract class _$$LoginRequestedImplCopyWith<$Res> {
-  factory _$$LoginRequestedImplCopyWith(_$LoginRequestedImpl value,
-          $Res Function(_$LoginRequestedImpl) then) =
-      __$$LoginRequestedImplCopyWithImpl<$Res>;
+abstract class _$$ForgotPassRequestedImplCopyWith<$Res> {
+  factory _$$ForgotPassRequestedImplCopyWith(_$ForgotPassRequestedImpl value,
+          $Res Function(_$ForgotPassRequestedImpl) then) =
+      __$$ForgotPassRequestedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({LoginPost loginPost});
+  $Res call({ForgotPasswordPost forgotPasswordPost});
 
-  $LoginPostCopyWith<$Res> get loginPost;
+  $ForgotPasswordPostCopyWith<$Res> get forgotPasswordPost;
 }
 
 /// @nodoc
-class __$$LoginRequestedImplCopyWithImpl<$Res>
-    extends _$LoginEventCopyWithImpl<$Res, _$LoginRequestedImpl>
-    implements _$$LoginRequestedImplCopyWith<$Res> {
-  __$$LoginRequestedImplCopyWithImpl(
-      _$LoginRequestedImpl _value, $Res Function(_$LoginRequestedImpl) _then)
+class __$$ForgotPassRequestedImplCopyWithImpl<$Res>
+    extends _$ForgotPasswordEventCopyWithImpl<$Res, _$ForgotPassRequestedImpl>
+    implements _$$ForgotPassRequestedImplCopyWith<$Res> {
+  __$$ForgotPassRequestedImplCopyWithImpl(_$ForgotPassRequestedImpl _value,
+      $Res Function(_$ForgotPassRequestedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? loginPost = null,
+    Object? forgotPasswordPost = null,
   }) {
-    return _then(_$LoginRequestedImpl(
-      null == loginPost
-          ? _value.loginPost
-          : loginPost // ignore: cast_nullable_to_non_nullable
-              as LoginPost,
+    return _then(_$ForgotPassRequestedImpl(
+      null == forgotPasswordPost
+          ? _value.forgotPasswordPost
+          : forgotPasswordPost // ignore: cast_nullable_to_non_nullable
+              as ForgotPasswordPost,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $LoginPostCopyWith<$Res> get loginPost {
-    return $LoginPostCopyWith<$Res>(_value.loginPost, (value) {
-      return _then(_value.copyWith(loginPost: value));
+  $ForgotPasswordPostCopyWith<$Res> get forgotPasswordPost {
+    return $ForgotPasswordPostCopyWith<$Res>(_value.forgotPasswordPost,
+        (value) {
+      return _then(_value.copyWith(forgotPasswordPost: value));
     });
   }
 }
 
 /// @nodoc
 
-class _$LoginRequestedImpl implements _LoginRequested {
-  const _$LoginRequestedImpl(this.loginPost);
+class _$ForgotPassRequestedImpl implements _ForgotPassRequested {
+  const _$ForgotPassRequestedImpl(this.forgotPasswordPost);
 
   @override
-  final LoginPost loginPost;
+  final ForgotPasswordPost forgotPasswordPost;
 
   @override
   String toString() {
-    return 'LoginEvent.loginRequested(loginPost: $loginPost)';
+    return 'ForgotPasswordEvent.forgotPassRequested(forgotPasswordPost: $forgotPasswordPost)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LoginRequestedImpl &&
-            (identical(other.loginPost, loginPost) ||
-                other.loginPost == loginPost));
+            other is _$ForgotPassRequestedImpl &&
+            (identical(other.forgotPasswordPost, forgotPasswordPost) ||
+                other.forgotPasswordPost == forgotPasswordPost));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, loginPost);
+  int get hashCode => Object.hash(runtimeType, forgotPasswordPost);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LoginRequestedImplCopyWith<_$LoginRequestedImpl> get copyWith =>
-      __$$LoginRequestedImplCopyWithImpl<_$LoginRequestedImpl>(
+  _$$ForgotPassRequestedImplCopyWith<_$ForgotPassRequestedImpl> get copyWith =>
+      __$$ForgotPassRequestedImplCopyWithImpl<_$ForgotPassRequestedImpl>(
           this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loaded,
-    required TResult Function(LoginPost loginPost) loginRequested,
+    required TResult Function(ForgotPasswordPost forgotPasswordPost)
+        forgotPassRequested,
+    required TResult Function(ResendOTPPost resendOTPPost) reqOtp,
   }) {
-    return loginRequested(loginPost);
+    return forgotPassRequested(forgotPasswordPost);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? loaded,
-    TResult? Function(LoginPost loginPost)? loginRequested,
+    TResult? Function(ForgotPasswordPost forgotPasswordPost)?
+        forgotPassRequested,
+    TResult? Function(ResendOTPPost resendOTPPost)? reqOtp,
   }) {
-    return loginRequested?.call(loginPost);
+    return forgotPassRequested?.call(forgotPasswordPost);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loaded,
-    TResult Function(LoginPost loginPost)? loginRequested,
+    TResult Function(ForgotPasswordPost forgotPasswordPost)?
+        forgotPassRequested,
+    TResult Function(ResendOTPPost resendOTPPost)? reqOtp,
     required TResult orElse(),
   }) {
-    if (loginRequested != null) {
-      return loginRequested(loginPost);
+    if (forgotPassRequested != null) {
+      return forgotPassRequested(forgotPasswordPost);
     }
     return orElse();
   }
@@ -284,46 +309,204 @@ class _$LoginRequestedImpl implements _LoginRequested {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Loaded value) loaded,
-    required TResult Function(_LoginRequested value) loginRequested,
+    required TResult Function(_ForgotPassRequested value) forgotPassRequested,
+    required TResult Function(_ReqOtpRequested value) reqOtp,
   }) {
-    return loginRequested(this);
+    return forgotPassRequested(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Loaded value)? loaded,
-    TResult? Function(_LoginRequested value)? loginRequested,
+    TResult? Function(_ForgotPassRequested value)? forgotPassRequested,
+    TResult? Function(_ReqOtpRequested value)? reqOtp,
   }) {
-    return loginRequested?.call(this);
+    return forgotPassRequested?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Loaded value)? loaded,
-    TResult Function(_LoginRequested value)? loginRequested,
+    TResult Function(_ForgotPassRequested value)? forgotPassRequested,
+    TResult Function(_ReqOtpRequested value)? reqOtp,
     required TResult orElse(),
   }) {
-    if (loginRequested != null) {
-      return loginRequested(this);
+    if (forgotPassRequested != null) {
+      return forgotPassRequested(this);
     }
     return orElse();
   }
 }
 
-abstract class _LoginRequested implements LoginEvent {
-  const factory _LoginRequested(final LoginPost loginPost) =
-      _$LoginRequestedImpl;
+abstract class _ForgotPassRequested implements ForgotPasswordEvent {
+  const factory _ForgotPassRequested(
+      final ForgotPasswordPost forgotPasswordPost) = _$ForgotPassRequestedImpl;
 
-  LoginPost get loginPost;
+  ForgotPasswordPost get forgotPasswordPost;
   @JsonKey(ignore: true)
-  _$$LoginRequestedImplCopyWith<_$LoginRequestedImpl> get copyWith =>
+  _$$ForgotPassRequestedImplCopyWith<_$ForgotPassRequestedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$LoginNotification {
+abstract class _$$ReqOtpRequestedImplCopyWith<$Res> {
+  factory _$$ReqOtpRequestedImplCopyWith(_$ReqOtpRequestedImpl value,
+          $Res Function(_$ReqOtpRequestedImpl) then) =
+      __$$ReqOtpRequestedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ResendOTPPost resendOTPPost});
+
+  $ResendOTPPostCopyWith<$Res> get resendOTPPost;
+}
+
+/// @nodoc
+class __$$ReqOtpRequestedImplCopyWithImpl<$Res>
+    extends _$ForgotPasswordEventCopyWithImpl<$Res, _$ReqOtpRequestedImpl>
+    implements _$$ReqOtpRequestedImplCopyWith<$Res> {
+  __$$ReqOtpRequestedImplCopyWithImpl(
+      _$ReqOtpRequestedImpl _value, $Res Function(_$ReqOtpRequestedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? resendOTPPost = null,
+  }) {
+    return _then(_$ReqOtpRequestedImpl(
+      null == resendOTPPost
+          ? _value.resendOTPPost
+          : resendOTPPost // ignore: cast_nullable_to_non_nullable
+              as ResendOTPPost,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ResendOTPPostCopyWith<$Res> get resendOTPPost {
+    return $ResendOTPPostCopyWith<$Res>(_value.resendOTPPost, (value) {
+      return _then(_value.copyWith(resendOTPPost: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$ReqOtpRequestedImpl implements _ReqOtpRequested {
+  const _$ReqOtpRequestedImpl(this.resendOTPPost);
+
+  @override
+  final ResendOTPPost resendOTPPost;
+
+  @override
+  String toString() {
+    return 'ForgotPasswordEvent.reqOtp(resendOTPPost: $resendOTPPost)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ReqOtpRequestedImpl &&
+            (identical(other.resendOTPPost, resendOTPPost) ||
+                other.resendOTPPost == resendOTPPost));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, resendOTPPost);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ReqOtpRequestedImplCopyWith<_$ReqOtpRequestedImpl> get copyWith =>
+      __$$ReqOtpRequestedImplCopyWithImpl<_$ReqOtpRequestedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loaded,
+    required TResult Function(ForgotPasswordPost forgotPasswordPost)
+        forgotPassRequested,
+    required TResult Function(ResendOTPPost resendOTPPost) reqOtp,
+  }) {
+    return reqOtp(resendOTPPost);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loaded,
+    TResult? Function(ForgotPasswordPost forgotPasswordPost)?
+        forgotPassRequested,
+    TResult? Function(ResendOTPPost resendOTPPost)? reqOtp,
+  }) {
+    return reqOtp?.call(resendOTPPost);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loaded,
+    TResult Function(ForgotPasswordPost forgotPasswordPost)?
+        forgotPassRequested,
+    TResult Function(ResendOTPPost resendOTPPost)? reqOtp,
+    required TResult orElse(),
+  }) {
+    if (reqOtp != null) {
+      return reqOtp(resendOTPPost);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loaded value) loaded,
+    required TResult Function(_ForgotPassRequested value) forgotPassRequested,
+    required TResult Function(_ReqOtpRequested value) reqOtp,
+  }) {
+    return reqOtp(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Loaded value)? loaded,
+    TResult? Function(_ForgotPassRequested value)? forgotPassRequested,
+    TResult? Function(_ReqOtpRequested value)? reqOtp,
+  }) {
+    return reqOtp?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loaded value)? loaded,
+    TResult Function(_ForgotPassRequested value)? forgotPassRequested,
+    TResult Function(_ReqOtpRequested value)? reqOtp,
+    required TResult orElse(),
+  }) {
+    if (reqOtp != null) {
+      return reqOtp(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ReqOtpRequested implements ForgotPasswordEvent {
+  const factory _ReqOtpRequested(final ResendOTPPost resendOTPPost) =
+      _$ReqOtpRequestedImpl;
+
+  ResendOTPPost get resendOTPPost;
+  @JsonKey(ignore: true)
+  _$$ReqOtpRequestedImplCopyWith<_$ReqOtpRequestedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$ForgotPasswordNotification {
   String get message => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
@@ -365,23 +548,25 @@ mixin _$LoginNotification {
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $LoginNotificationCopyWith<LoginNotification> get copyWith =>
-      throw _privateConstructorUsedError;
+  $ForgotPasswordNotificationCopyWith<ForgotPasswordNotification>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $LoginNotificationCopyWith<$Res> {
-  factory $LoginNotificationCopyWith(
-          LoginNotification value, $Res Function(LoginNotification) then) =
-      _$LoginNotificationCopyWithImpl<$Res, LoginNotification>;
+abstract class $ForgotPasswordNotificationCopyWith<$Res> {
+  factory $ForgotPasswordNotificationCopyWith(ForgotPasswordNotification value,
+          $Res Function(ForgotPasswordNotification) then) =
+      _$ForgotPasswordNotificationCopyWithImpl<$Res,
+          ForgotPasswordNotification>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class _$LoginNotificationCopyWithImpl<$Res, $Val extends LoginNotification>
-    implements $LoginNotificationCopyWith<$Res> {
-  _$LoginNotificationCopyWithImpl(this._value, this._then);
+class _$ForgotPasswordNotificationCopyWithImpl<$Res,
+        $Val extends ForgotPasswordNotification>
+    implements $ForgotPasswordNotificationCopyWith<$Res> {
+  _$ForgotPasswordNotificationCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -404,7 +589,7 @@ class _$LoginNotificationCopyWithImpl<$Res, $Val extends LoginNotification>
 
 /// @nodoc
 abstract class _$$NotificationNotifySuccessImplCopyWith<$Res>
-    implements $LoginNotificationCopyWith<$Res> {
+    implements $ForgotPasswordNotificationCopyWith<$Res> {
   factory _$$NotificationNotifySuccessImplCopyWith(
           _$NotificationNotifySuccessImpl value,
           $Res Function(_$NotificationNotifySuccessImpl) then) =
@@ -416,7 +601,7 @@ abstract class _$$NotificationNotifySuccessImplCopyWith<$Res>
 
 /// @nodoc
 class __$$NotificationNotifySuccessImplCopyWithImpl<$Res>
-    extends _$LoginNotificationCopyWithImpl<$Res,
+    extends _$ForgotPasswordNotificationCopyWithImpl<$Res,
         _$NotificationNotifySuccessImpl>
     implements _$$NotificationNotifySuccessImplCopyWith<$Res> {
   __$$NotificationNotifySuccessImplCopyWithImpl(
@@ -448,7 +633,7 @@ class _$NotificationNotifySuccessImpl implements _NotificationNotifySuccess {
 
   @override
   String toString() {
-    return 'LoginNotification.notifySuccess(message: $message)';
+    return 'ForgotPasswordNotification.notifySuccess(message: $message)';
   }
 
   @JsonKey(ignore: true)
@@ -521,7 +706,8 @@ class _$NotificationNotifySuccessImpl implements _NotificationNotifySuccess {
   }
 }
 
-abstract class _NotificationNotifySuccess implements LoginNotification {
+abstract class _NotificationNotifySuccess
+    implements ForgotPasswordNotification {
   factory _NotificationNotifySuccess({required final String message}) =
       _$NotificationNotifySuccessImpl;
 
@@ -535,7 +721,7 @@ abstract class _NotificationNotifySuccess implements LoginNotification {
 
 /// @nodoc
 abstract class _$$NotificationNotifyFailedImplCopyWith<$Res>
-    implements $LoginNotificationCopyWith<$Res> {
+    implements $ForgotPasswordNotificationCopyWith<$Res> {
   factory _$$NotificationNotifyFailedImplCopyWith(
           _$NotificationNotifyFailedImpl value,
           $Res Function(_$NotificationNotifyFailedImpl) then) =
@@ -547,7 +733,7 @@ abstract class _$$NotificationNotifyFailedImplCopyWith<$Res>
 
 /// @nodoc
 class __$$NotificationNotifyFailedImplCopyWithImpl<$Res>
-    extends _$LoginNotificationCopyWithImpl<$Res,
+    extends _$ForgotPasswordNotificationCopyWithImpl<$Res,
         _$NotificationNotifyFailedImpl>
     implements _$$NotificationNotifyFailedImplCopyWith<$Res> {
   __$$NotificationNotifyFailedImplCopyWithImpl(
@@ -579,7 +765,7 @@ class _$NotificationNotifyFailedImpl implements _NotificationNotifyFailed {
 
   @override
   String toString() {
-    return 'LoginNotification.notifyFailed(message: $message)';
+    return 'ForgotPasswordNotification.notifyFailed(message: $message)';
   }
 
   @JsonKey(ignore: true)
@@ -652,7 +838,7 @@ class _$NotificationNotifyFailedImpl implements _NotificationNotifyFailed {
   }
 }
 
-abstract class _NotificationNotifyFailed implements LoginNotification {
+abstract class _NotificationNotifyFailed implements ForgotPasswordNotification {
   factory _NotificationNotifyFailed({required final String message}) =
       _$NotificationNotifyFailedImpl;
 
@@ -665,42 +851,46 @@ abstract class _NotificationNotifyFailed implements LoginNotification {
 }
 
 /// @nodoc
-mixin _$LoginState {
+mixin _$ForgotPasswordState {
   UIStatus get status => throw _privateConstructorUsedError;
-  LoginNotification? get notification => throw _privateConstructorUsedError;
+  ForgotPasswordNotification? get notification =>
+      throw _privateConstructorUsedError;
   LoginResponse get loginResponse => throw _privateConstructorUsedError;
   bool get isBusy => throw _privateConstructorUsedError;
-  String get loginBadRequest => throw _privateConstructorUsedError;
-  String get loginSuccess => throw _privateConstructorUsedError;
+  String get forgotPassBadRequest => throw _privateConstructorUsedError;
+  String get forgotPassSuccess => throw _privateConstructorUsedError;
+  ResendOTPResponse get resendOTPResponse => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $LoginStateCopyWith<LoginState> get copyWith =>
+  $ForgotPasswordStateCopyWith<ForgotPasswordState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $LoginStateCopyWith<$Res> {
-  factory $LoginStateCopyWith(
-          LoginState value, $Res Function(LoginState) then) =
-      _$LoginStateCopyWithImpl<$Res, LoginState>;
+abstract class $ForgotPasswordStateCopyWith<$Res> {
+  factory $ForgotPasswordStateCopyWith(
+          ForgotPasswordState value, $Res Function(ForgotPasswordState) then) =
+      _$ForgotPasswordStateCopyWithImpl<$Res, ForgotPasswordState>;
   @useResult
   $Res call(
       {UIStatus status,
-      LoginNotification? notification,
+      ForgotPasswordNotification? notification,
       LoginResponse loginResponse,
       bool isBusy,
-      String loginBadRequest,
-      String loginSuccess});
+      String forgotPassBadRequest,
+      String forgotPassSuccess,
+      ResendOTPResponse resendOTPResponse});
 
   $UIStatusCopyWith<$Res> get status;
-  $LoginNotificationCopyWith<$Res>? get notification;
+  $ForgotPasswordNotificationCopyWith<$Res>? get notification;
   $LoginResponseCopyWith<$Res> get loginResponse;
+  $ResendOTPResponseCopyWith<$Res> get resendOTPResponse;
 }
 
 /// @nodoc
-class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
-    implements $LoginStateCopyWith<$Res> {
-  _$LoginStateCopyWithImpl(this._value, this._then);
+class _$ForgotPasswordStateCopyWithImpl<$Res, $Val extends ForgotPasswordState>
+    implements $ForgotPasswordStateCopyWith<$Res> {
+  _$ForgotPasswordStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -714,8 +904,9 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
     Object? notification = freezed,
     Object? loginResponse = null,
     Object? isBusy = null,
-    Object? loginBadRequest = null,
-    Object? loginSuccess = null,
+    Object? forgotPassBadRequest = null,
+    Object? forgotPassSuccess = null,
+    Object? resendOTPResponse = null,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -725,7 +916,7 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
       notification: freezed == notification
           ? _value.notification
           : notification // ignore: cast_nullable_to_non_nullable
-              as LoginNotification?,
+              as ForgotPasswordNotification?,
       loginResponse: null == loginResponse
           ? _value.loginResponse
           : loginResponse // ignore: cast_nullable_to_non_nullable
@@ -734,14 +925,18 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
           ? _value.isBusy
           : isBusy // ignore: cast_nullable_to_non_nullable
               as bool,
-      loginBadRequest: null == loginBadRequest
-          ? _value.loginBadRequest
-          : loginBadRequest // ignore: cast_nullable_to_non_nullable
+      forgotPassBadRequest: null == forgotPassBadRequest
+          ? _value.forgotPassBadRequest
+          : forgotPassBadRequest // ignore: cast_nullable_to_non_nullable
               as String,
-      loginSuccess: null == loginSuccess
-          ? _value.loginSuccess
-          : loginSuccess // ignore: cast_nullable_to_non_nullable
+      forgotPassSuccess: null == forgotPassSuccess
+          ? _value.forgotPassSuccess
+          : forgotPassSuccess // ignore: cast_nullable_to_non_nullable
               as String,
+      resendOTPResponse: null == resendOTPResponse
+          ? _value.resendOTPResponse
+          : resendOTPResponse // ignore: cast_nullable_to_non_nullable
+              as ResendOTPResponse,
     ) as $Val);
   }
 
@@ -755,12 +950,13 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
 
   @override
   @pragma('vm:prefer-inline')
-  $LoginNotificationCopyWith<$Res>? get notification {
+  $ForgotPasswordNotificationCopyWith<$Res>? get notification {
     if (_value.notification == null) {
       return null;
     }
 
-    return $LoginNotificationCopyWith<$Res>(_value.notification!, (value) {
+    return $ForgotPasswordNotificationCopyWith<$Res>(_value.notification!,
+        (value) {
       return _then(_value.copyWith(notification: value) as $Val);
     });
   }
@@ -772,38 +968,49 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
       return _then(_value.copyWith(loginResponse: value) as $Val);
     });
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ResendOTPResponseCopyWith<$Res> get resendOTPResponse {
+    return $ResendOTPResponseCopyWith<$Res>(_value.resendOTPResponse, (value) {
+      return _then(_value.copyWith(resendOTPResponse: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
-abstract class _$$LoginStateImplCopyWith<$Res>
-    implements $LoginStateCopyWith<$Res> {
-  factory _$$LoginStateImplCopyWith(
-          _$LoginStateImpl value, $Res Function(_$LoginStateImpl) then) =
-      __$$LoginStateImplCopyWithImpl<$Res>;
+abstract class _$$ForgotPasswordStateImplCopyWith<$Res>
+    implements $ForgotPasswordStateCopyWith<$Res> {
+  factory _$$ForgotPasswordStateImplCopyWith(_$ForgotPasswordStateImpl value,
+          $Res Function(_$ForgotPasswordStateImpl) then) =
+      __$$ForgotPasswordStateImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
       {UIStatus status,
-      LoginNotification? notification,
+      ForgotPasswordNotification? notification,
       LoginResponse loginResponse,
       bool isBusy,
-      String loginBadRequest,
-      String loginSuccess});
+      String forgotPassBadRequest,
+      String forgotPassSuccess,
+      ResendOTPResponse resendOTPResponse});
 
   @override
   $UIStatusCopyWith<$Res> get status;
   @override
-  $LoginNotificationCopyWith<$Res>? get notification;
+  $ForgotPasswordNotificationCopyWith<$Res>? get notification;
   @override
   $LoginResponseCopyWith<$Res> get loginResponse;
+  @override
+  $ResendOTPResponseCopyWith<$Res> get resendOTPResponse;
 }
 
 /// @nodoc
-class __$$LoginStateImplCopyWithImpl<$Res>
-    extends _$LoginStateCopyWithImpl<$Res, _$LoginStateImpl>
-    implements _$$LoginStateImplCopyWith<$Res> {
-  __$$LoginStateImplCopyWithImpl(
-      _$LoginStateImpl _value, $Res Function(_$LoginStateImpl) _then)
+class __$$ForgotPasswordStateImplCopyWithImpl<$Res>
+    extends _$ForgotPasswordStateCopyWithImpl<$Res, _$ForgotPasswordStateImpl>
+    implements _$$ForgotPasswordStateImplCopyWith<$Res> {
+  __$$ForgotPasswordStateImplCopyWithImpl(_$ForgotPasswordStateImpl _value,
+      $Res Function(_$ForgotPasswordStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -813,10 +1020,11 @@ class __$$LoginStateImplCopyWithImpl<$Res>
     Object? notification = freezed,
     Object? loginResponse = null,
     Object? isBusy = null,
-    Object? loginBadRequest = null,
-    Object? loginSuccess = null,
+    Object? forgotPassBadRequest = null,
+    Object? forgotPassSuccess = null,
+    Object? resendOTPResponse = null,
   }) {
-    return _then(_$LoginStateImpl(
+    return _then(_$ForgotPasswordStateImpl(
       status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
@@ -824,7 +1032,7 @@ class __$$LoginStateImplCopyWithImpl<$Res>
       notification: freezed == notification
           ? _value.notification
           : notification // ignore: cast_nullable_to_non_nullable
-              as LoginNotification?,
+              as ForgotPasswordNotification?,
       loginResponse: null == loginResponse
           ? _value.loginResponse
           : loginResponse // ignore: cast_nullable_to_non_nullable
@@ -833,22 +1041,26 @@ class __$$LoginStateImplCopyWithImpl<$Res>
           ? _value.isBusy
           : isBusy // ignore: cast_nullable_to_non_nullable
               as bool,
-      loginBadRequest: null == loginBadRequest
-          ? _value.loginBadRequest
-          : loginBadRequest // ignore: cast_nullable_to_non_nullable
+      forgotPassBadRequest: null == forgotPassBadRequest
+          ? _value.forgotPassBadRequest
+          : forgotPassBadRequest // ignore: cast_nullable_to_non_nullable
               as String,
-      loginSuccess: null == loginSuccess
-          ? _value.loginSuccess
-          : loginSuccess // ignore: cast_nullable_to_non_nullable
+      forgotPassSuccess: null == forgotPassSuccess
+          ? _value.forgotPassSuccess
+          : forgotPassSuccess // ignore: cast_nullable_to_non_nullable
               as String,
+      resendOTPResponse: null == resendOTPResponse
+          ? _value.resendOTPResponse
+          : resendOTPResponse // ignore: cast_nullable_to_non_nullable
+              as ResendOTPResponse,
     ));
   }
 }
 
 /// @nodoc
 
-class _$LoginStateImpl implements _LoginState {
-  const _$LoginStateImpl(
+class _$ForgotPasswordStateImpl implements _ForgotPasswordState {
+  const _$ForgotPasswordStateImpl(
       {this.status = const UIInitial(),
       this.notification,
       this.loginResponse = const LoginResponse(
@@ -856,14 +1068,15 @@ class _$LoginStateImpl implements _LoginState {
           message: '',
           data: DataLoginResponse(access_token: '', refresh_token: '')),
       this.isBusy = false,
-      this.loginBadRequest = 'AUTH_LOGIN_NOT_FOUND',
-      this.loginSuccess = ''});
+      this.forgotPassBadRequest = 'RECORD_NOT_FOUND',
+      this.forgotPassSuccess = '',
+      this.resendOTPResponse = const ResendOTPResponse(code: 0, message: '')});
 
   @override
   @JsonKey()
   final UIStatus status;
   @override
-  final LoginNotification? notification;
+  final ForgotPasswordNotification? notification;
   @override
   @JsonKey()
   final LoginResponse loginResponse;
@@ -872,67 +1085,83 @@ class _$LoginStateImpl implements _LoginState {
   final bool isBusy;
   @override
   @JsonKey()
-  final String loginBadRequest;
+  final String forgotPassBadRequest;
   @override
   @JsonKey()
-  final String loginSuccess;
+  final String forgotPassSuccess;
+  @override
+  @JsonKey()
+  final ResendOTPResponse resendOTPResponse;
 
   @override
   String toString() {
-    return 'LoginState(status: $status, notification: $notification, loginResponse: $loginResponse, isBusy: $isBusy, loginBadRequest: $loginBadRequest, loginSuccess: $loginSuccess)';
+    return 'ForgotPasswordState(status: $status, notification: $notification, loginResponse: $loginResponse, isBusy: $isBusy, forgotPassBadRequest: $forgotPassBadRequest, forgotPassSuccess: $forgotPassSuccess, resendOTPResponse: $resendOTPResponse)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$LoginStateImpl &&
+            other is _$ForgotPasswordStateImpl &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.notification, notification) ||
                 other.notification == notification) &&
             (identical(other.loginResponse, loginResponse) ||
                 other.loginResponse == loginResponse) &&
             (identical(other.isBusy, isBusy) || other.isBusy == isBusy) &&
-            (identical(other.loginBadRequest, loginBadRequest) ||
-                other.loginBadRequest == loginBadRequest) &&
-            (identical(other.loginSuccess, loginSuccess) ||
-                other.loginSuccess == loginSuccess));
+            (identical(other.forgotPassBadRequest, forgotPassBadRequest) ||
+                other.forgotPassBadRequest == forgotPassBadRequest) &&
+            (identical(other.forgotPassSuccess, forgotPassSuccess) ||
+                other.forgotPassSuccess == forgotPassSuccess) &&
+            (identical(other.resendOTPResponse, resendOTPResponse) ||
+                other.resendOTPResponse == resendOTPResponse));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, notification,
-      loginResponse, isBusy, loginBadRequest, loginSuccess);
+  int get hashCode => Object.hash(
+      runtimeType,
+      status,
+      notification,
+      loginResponse,
+      isBusy,
+      forgotPassBadRequest,
+      forgotPassSuccess,
+      resendOTPResponse);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$LoginStateImplCopyWith<_$LoginStateImpl> get copyWith =>
-      __$$LoginStateImplCopyWithImpl<_$LoginStateImpl>(this, _$identity);
+  _$$ForgotPasswordStateImplCopyWith<_$ForgotPasswordStateImpl> get copyWith =>
+      __$$ForgotPasswordStateImplCopyWithImpl<_$ForgotPasswordStateImpl>(
+          this, _$identity);
 }
 
-abstract class _LoginState implements LoginState {
-  const factory _LoginState(
+abstract class _ForgotPasswordState implements ForgotPasswordState {
+  const factory _ForgotPasswordState(
       {final UIStatus status,
-      final LoginNotification? notification,
+      final ForgotPasswordNotification? notification,
       final LoginResponse loginResponse,
       final bool isBusy,
-      final String loginBadRequest,
-      final String loginSuccess}) = _$LoginStateImpl;
+      final String forgotPassBadRequest,
+      final String forgotPassSuccess,
+      final ResendOTPResponse resendOTPResponse}) = _$ForgotPasswordStateImpl;
 
   @override
   UIStatus get status;
   @override
-  LoginNotification? get notification;
+  ForgotPasswordNotification? get notification;
   @override
   LoginResponse get loginResponse;
   @override
   bool get isBusy;
   @override
-  String get loginBadRequest;
+  String get forgotPassBadRequest;
   @override
-  String get loginSuccess;
+  String get forgotPassSuccess;
+  @override
+  ResendOTPResponse get resendOTPResponse;
   @override
   @JsonKey(ignore: true)
-  _$$LoginStateImplCopyWith<_$LoginStateImpl> get copyWith =>
+  _$$ForgotPasswordStateImplCopyWith<_$ForgotPasswordStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

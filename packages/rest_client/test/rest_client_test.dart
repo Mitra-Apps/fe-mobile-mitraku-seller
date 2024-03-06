@@ -7,7 +7,7 @@ import 'package:rest_client/rest_client.dart';
 void main() {
   final Dio dio = Dio(
     BaseOptions(
-      baseUrl: 'http://172.19.14.120:7000',
+      baseUrl: 'http://172.19.14.96:7000',
     ),
   );
 
@@ -23,7 +23,7 @@ void main() {
 
     final registerClient = await registerApiClient.register(registerPost.toJson());
 
-    expect(registerClient.data.otp, isNotEmpty);
+    expect(registerClient.code, 0);
   });
 
   test('register failed with unverified email exist', () async {
@@ -37,7 +37,7 @@ void main() {
     try {
       final registerClient = await registerApiClient.register(registerPost.toJson());
 
-      expect(registerClient.data.otp, isNotEmpty);
+      expect(registerClient.code, 0);
     } on DioException catch (e) {
       final errorResponse = ErrorResponse.fromJson(e.response!.data);
       expect(errorResponse.code_detail, 'AUTH_REGISTER_USER_UNVERIFIED');
@@ -55,7 +55,7 @@ void main() {
     try {
       final registerClient = await registerApiClient.register(registerPost.toJson());
 
-      expect(registerClient.data.otp, isNotEmpty);
+      expect(registerClient.code, 0);
     } on DioException catch (e) {
       final errorResponse = ErrorResponse.fromJson(e.response!.data);
       expect(errorResponse.code_detail, 'UNKNOWN');
@@ -70,7 +70,7 @@ void main() {
     try {
       final registerClient = await registerApiClient.register(registerPost.toJson());
 
-      expect(registerClient.data.otp, isNotEmpty);
+      expect(registerClient.code, 0);
     } on DioException catch (e) {
       final errorResponse = ErrorResponse.fromJson(e.response!.data);
       expect(errorResponse.code_detail, 'AUTH_REGISTER_USER_VERIFIED');

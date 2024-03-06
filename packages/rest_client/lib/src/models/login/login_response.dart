@@ -8,6 +8,8 @@ part 'login_response.g.dart';
 class LoginResponse with _$LoginResponse {
   ///
   const factory LoginResponse({
+    required int code,
+    required String message,
     required DataLoginResponse data,
   }) = _LoginResponse;
 

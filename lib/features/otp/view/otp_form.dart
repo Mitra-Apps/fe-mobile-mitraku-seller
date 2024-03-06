@@ -71,6 +71,13 @@ class OTPFormState extends State<OTPForm> {
             );
 
             if (state.otpSuccess == 'OTPSUCCESS') {
+              final prefs = await SharedPreferences.getInstance();
+
+              await prefs.setString('access_token',
+                state.loginResponse.data.access_token,);
+              await prefs.setString('refresh_token',
+                state.loginResponse.data.refresh_token,);
+
               await context.push(AppRouter.homePath);
             }
 

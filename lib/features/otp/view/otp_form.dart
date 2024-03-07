@@ -49,6 +49,12 @@ class OTPFormState extends State<OTPForm> {
     );
   }
 
+  _sendOTPInvalid(bool? invalidOTP) {
+    setState(() {
+      otpInvalid = invalidOTP!;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -65,16 +71,11 @@ class OTPFormState extends State<OTPForm> {
             );
 
             if (state.otpSuccess == 'OTPSUCCESS') {
-              final prefs = await SharedPreferences.getInstance();
-
-              await prefs.remove('otpInvalid');
               await context.push(AppRouter.homePath);
             }
 
             if (state.otpBadRequest == 'AUTH_OTP_INVALID') {
-              otpInvalid = true;
-              final prefs = await SharedPreferences.getInstance();
-              await prefs.setBool('otpInvalid', otpInvalid);
+              _sendOTPInvalid(true);
             }
           },
           builder: (context, state) {
@@ -83,7 +84,7 @@ class OTPFormState extends State<OTPForm> {
               children: [
                 state.status.when(
                   initial: () {
-                    return OTPFormUI();
+                    return OTPFormUI(otpInvalid: otpInvalid,);
                   },
                   loading: () {
                     return Container();

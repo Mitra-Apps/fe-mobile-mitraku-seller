@@ -9,7 +9,6 @@ class ForgotPasswordForm extends StatefulWidget {
 
 class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
   late FToast fToast;
-  bool? resetForm;
 
   @override
   void initState() {
@@ -111,10 +110,6 @@ class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
             await prefs.setString('refresh_token',
               state.loginResponse.data.refresh_token,);
           }
-
-          if (state.forgotPassBadRequest == 'RECORD_NOT_FOUND') {
-            resetForm = true;
-          }
         },
         builder: (context, state) {
           return Stack(
@@ -122,7 +117,7 @@ class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
             children: [
               state.status.when(
                 initial: () {
-                  return ForgotPasswordFormUI(resetForm: resetForm,);
+                  return ForgotPasswordFormUI();
                 },
                 loading: () {
                   return Container();

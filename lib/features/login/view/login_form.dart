@@ -138,12 +138,16 @@ class _LoginFormState extends State<LoginForm> {
                 _showToastSuccess(message);
               },
               notifyFailed: (message) {
-                if (state.loginBadRequest == 'AUTH_LOGIN_PASSWORD_INCORRECT') {
-                  _showToastFailed(message);
-                }
-
-                if (state.loginBadRequest == 'AUTH_LOGIN_PASSWORD_INCORRECT_3X') {
-                  _alertForgotPassword();
+                
+                switch(state.loginBadRequest) {
+                  case 'AUTH_LOGIN_NOT_FOUND':
+                    _showToastFailed(message);
+                  case 'AUTH_LOGIN_PASSWORD_INCORRECT':
+                    _showToastFailed(message);
+                  case 'AUTH_LOGIN_PASSWORD_INCORRECT_3X':
+                    _alertForgotPassword();
+                  default:
+                    _showToastFailed(message);
                 }
               },
             );

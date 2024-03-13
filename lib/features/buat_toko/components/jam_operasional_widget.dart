@@ -198,7 +198,9 @@ class _BuatTokoJamWidgetState extends State<BuatTokoJamWidget> {
                 value: widget.isClosedDay,
                 onChanged: (value) {
                   widget.updateClosedDayCallback(
-                      widget.dayIndex, !widget.isClosedDay);
+                    widget.dayIndex,
+                    !widget.isClosedDay,
+                  );
                 },
                 activeTrackColor: AppColors.disabledLightColor,
                 inactiveTrackColor: AppColors.disabledLightColor,

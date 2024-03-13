@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mitraku_seller/core/keys/app_keys.dart';
 import 'package:mitraku_seller/core/spacings/app_spacing.dart';
 import 'package:mitraku_seller/core/themes/app_themes.dart';
+import 'package:mitraku_seller/router/app_router.dart';
 
 class ProductPage extends StatefulWidget {
-  const ProductPage({super.key});
+  const ProductPage({super.key}); 
 
   @override
   State<ProductPage> createState() => _ProductPageState();
@@ -63,7 +65,9 @@ class _ProductPageState extends State<ProductPage> {
           ),
           AppSpacing.verticalSpacing8,
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              context.push(AppRouter.createProductPath);
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.warningColor,
               shape: RoundedRectangleBorder(

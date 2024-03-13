@@ -122,12 +122,18 @@ class AppThemes {
 }
 
 class AppColors {
-  static final Color mainColor = Color(0xff000068);
-  static final Color mainBlackColor = Color(0xff343434);
-  static final Color mainWhiteColor = Color(0xffffffff);
-  static final Color disabledColor = Color(0xff828282);
-  static final Color disabledLightColor = Color(0xfff0f0f0);
-  static final Color successColor = Color(0xff2fa83b);
-  static final Color warningColor = Color(0xffc0c31f);
-  static final Color dangerColor = Color(0xffe23f3f);
+  static const Color mainColor = Color.fromARGB(255, 3, 3, 3);
+  static const Color mainBlackColor = Color(0xff343434);
+  static const Color mainWhiteColor = Color(0xffffffff);
+  static const Color disabledColor = Color(0xff828282);
+  static const Color disabledLightColor = Color(0xfff0f0f0);
+  static const Color successColor = Color(0xff2fa83b);
+  static const Color warningColor = Color(0xffc0c31f);
+  static const Color dangerColor = Color(0xffe23f3f);
+  static const Color primaryColor = Color(0xff000068);
+}
+
+class AppConstant {
+  // ignore: lines_longer_than_80_chars
+  static const String token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlcyI6WyJtZXJjaGFudCIsImN1c3RvbWVyIl0sInN1YiI6IjdiNmMyMDYwLTRhNTYtNDM2YS05NWMzLTBhNmVkNWRmOWNjMyIsImV4cCI6MTcwOTI4NjM0MiwiaWF0IjoxNzA5MjgyNzQyfQ.KMHsIaQsgvfimtxvP0osjFj-fkZ7BDgJEfQfGwCUMI0';
 }

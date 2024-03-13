@@ -6,7 +6,7 @@ class LoadingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: const Color(0xFF000000).withOpacity(0.1),
+      color: const Color(0xFF000000).withOpacity(0),
       child: const Center(
         child: InkWell(
           child: SizedBox(

@@ -6,8 +6,12 @@ import 'package:mitraku_seller/data/repositories/login/remote/login_repository.d
 import 'package:mitraku_seller/data/repositories/login/remote/login_repository_impl.dart';
 import 'package:mitraku_seller/data/repositories/otp/otp_confirmation_repository.dart';
 import 'package:mitraku_seller/data/repositories/otp/otp_confirmation_repository_impl.dart';
+import 'package:mitraku_seller/data/repositories/product/remote/product_repository.dart';
+import 'package:mitraku_seller/data/repositories/product/remote/product_repository_impl.dart';
 import 'package:mitraku_seller/data/repositories/register/remote/register_repository.dart';
 import 'package:mitraku_seller/data/repositories/register/remote/register_repository_impl.dart';
+import 'package:mitraku_seller/data/repositories/store/remote/store_repository.dart';
+import 'package:mitraku_seller/data/repositories/store/remote/store_repository_impl.dart';
 import 'package:mitraku_seller/injector/injector.dart';
 
 class RepositoryModule {
@@ -31,10 +35,16 @@ class RepositoryModule {
         () => LoginRepositoryImpl(loginApiClient: injector()),
       )
       ..registerFactory<OtpConfirmationRepository>(
-    () => OtpConfirmationRepositoryImpl(
-        otpApiClient: injector(),),)
+        () => OtpConfirmationRepositoryImpl(otpApiClient: injector()),
+      )
       ..registerFactory<ForgotPasswordRepository>(
-        () => ForgotPasswordRepositoryImpl(
-        forgotPasswordApiClient: injector(),),);
+        () => ForgotPasswordRepositoryImpl(forgotPasswordApiClient: injector()),
+      )
+      ..registerFactory<ProductRepository>(
+        () => ProductRepositoryImpl(productApiClient: injector()),
+      )
+      ..registerFactory<StoreRepository>(
+        () => StoreRepositoryImpl(storeApiClient: injector()),
+      );
   }
 }

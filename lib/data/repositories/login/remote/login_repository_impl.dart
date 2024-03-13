@@ -1,8 +1,10 @@
+import 'package:dio/dio.dart';
 import 'package:mitraku_seller/data/repositories/login/remote/login_repository.dart';
 import 'package:rest_client/rest_client.dart';
 
 class LoginRepositoryImpl implements LoginRepository {
-  LoginRepositoryImpl({required LoginApiClient loginApiClient}): _loginApiClient = loginApiClient;
+  LoginRepositoryImpl({required LoginApiClient loginApiClient})
+      : _loginApiClient = loginApiClient;
 
   late final LoginApiClient _loginApiClient;
 

@@ -40,9 +40,6 @@ class RepositoryModule {
       ..registerFactory<ForgotPasswordRepository>(
         () => ForgotPasswordRepositoryImpl(forgotPasswordApiClient: injector()),
       )
-      ..registerFactory<LoginRepository>(
-        () => LoginRepositoryImpl(loginApiClient: injector()),
-      )
       ..registerFactory<ProductRepository>(
         () => ProductRepositoryImpl(productApiClient: injector()),
       )

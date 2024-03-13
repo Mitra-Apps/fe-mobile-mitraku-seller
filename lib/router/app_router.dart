@@ -113,6 +113,11 @@ class AppRouter {
         path: forgotPassPath,
         builder: (context, state) => const ForgotPasswordPage(),
       ),
+      GoRoute(
+        name: createProductName,
+        path: createProductPath,
+        builder: (context, state) => const CreateProductPage(),
+      ),
     ],
   );
 }

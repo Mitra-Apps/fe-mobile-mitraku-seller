@@ -1,8 +1,8 @@
 part of 'otp_page.dart';
 
 class OTPFormUI extends StatefulWidget {
-  OTPFormUI({super.key});
-
+  const OTPFormUI({super.key, this.otpInvalid});
+  final bool? otpInvalid;
   @override
   OTPFormUIState createState() => OTPFormUIState();
 }
@@ -11,16 +11,14 @@ class OTPFormUIState extends State<OTPFormUI> {
   final _formKey = GlobalKey<FormState>();
 
   String? strOTP;
-
   bool otpInteracts() => strOTP != null;
-  bool isShowOTPError = false;
   bool hideVerifikasiButton = true;
   bool showResendOtpButton = false;
   bool showCountDownTimer = false;
   bool disableResendOtpButton = false;
   var _isLoading = false;
   final pinController = TextEditingController();
-  var _countError = 0;
+  var _countError = 1;
 
   Future<void> _onSubmit() async {
     setState(() => _isLoading = true);
@@ -31,26 +29,23 @@ class OTPFormUIState extends State<OTPFormUI> {
 
     final prefs = await SharedPreferences.getInstance();
     late String email = prefs.getString('email') ?? '';
-    late bool otpInvalid = prefs.getBool('otpInvalid') ?? false;
 
     if (!context.mounted) return;
 
     context.read<OtpConfirmationBloc>().add(OtpConfirmationEvent.otpRequested(
         OtpConfirmationPost(email: email, otp_code: int.parse(strOTP!))));
 
-    isShowOTPError = otpInvalid;
     pinController.setText('');
 
-    if (otpInvalid) {
+    if (widget.otpInvalid!) {
       _countError += 1;
       strOTP = null;
     }
 
-    if (_countError % 3 == 0 && _countError != 0) {
+    if (_countError % 3 == 0) {
       hideVerifikasiButton = false;
       showResendOtpButton = true;
       strOTP != null;
-      await prefs.remove('otpInvalid');
     }
 
     if (showCountDownTimer) {
@@ -126,7 +121,6 @@ class OTPFormUIState extends State<OTPFormUI> {
                       AppSpacing.verticalSpacing32,
                       GestureDetector(
                         onTap: () {
-                          _countError = 0;
                           context.push(AppRouter.loginPath);
                         },
                         child: const Row(
@@ -161,7 +155,7 @@ class OTPFormUIState extends State<OTPFormUI> {
                         children: [
                           Flexible(
                             child: Visibility(
-                                visible: isShowOTPError,
+                                visible: widget.otpInvalid!,
                                 child: const Text(
                                   'Kode OTP tidak berlaku',
                                   softWrap: true,

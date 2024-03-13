@@ -1,8 +1,7 @@
 part of 'forgot_password_page.dart';
 
 class ForgotPasswordFormUI extends StatefulWidget {
-  ForgotPasswordFormUI({super.key, this.resetForm});
-  bool? resetForm;
+  ForgotPasswordFormUI({super.key});
 
   @override
   ForgotPasswordFormUIState createState() => ForgotPasswordFormUIState();
@@ -30,10 +29,6 @@ class ForgotPasswordFormUIState extends State<ForgotPasswordFormUI> {
     context.read<ForgotPasswordBloc>().add(ForgotPasswordEvent.reqOtp(
         ResendOTPPost(email: strMerchantEmail!),
     ),);
-
-    if (widget.resetForm!) {
-      _formKey.currentState!.reset();
-    }
   }
 
   Future<void> _onSubmit() async {

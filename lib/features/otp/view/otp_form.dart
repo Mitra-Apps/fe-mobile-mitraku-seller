@@ -74,9 +74,9 @@ class OTPFormState extends State<OTPForm> {
               final prefs = await SharedPreferences.getInstance();
 
               await prefs.setString('access_token',
-                state.loginResponse.data.access_token,);
+                state.loginResponse.data.accessToken,);
               await prefs.setString('refresh_token',
-                state.loginResponse.data.refresh_token,);
+                state.loginResponse.data.refreshToken,);
 
               await context.push(AppRouter.homePath);
             }

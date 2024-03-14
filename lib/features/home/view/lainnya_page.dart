@@ -5,6 +5,7 @@ import 'package:mitraku_seller/core/keys/app_keys.dart';
 import 'package:mitraku_seller/core/spacings/app_spacing.dart';
 import 'package:mitraku_seller/core/themes/app_themes.dart';
 import 'package:mitraku_seller/features/app/bloc/app_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LainnyaPage extends StatelessWidget {
   const LainnyaPage({super.key});
@@ -142,9 +143,7 @@ class LainnyaPage extends StatelessWidget {
         ),
         MaterialButton(
           padding: EdgeInsets.zero,
-          onPressed: () {
-            context.read<AppBloc>().add(const AppEvent.enableFirstUse());
-          },
+          onPressed: () => _onLogout(context),
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
             child: Row(
@@ -173,5 +172,11 @@ class LainnyaPage extends StatelessWidget {
         ),
       ]),
     );
+  }
+
+  void _onLogout(BuildContext context) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.clear();
+    context.read<AppBloc>().add(const AppEvent.enableFirstUse());
   }
 }

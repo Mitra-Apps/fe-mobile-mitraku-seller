@@ -63,15 +63,13 @@ class _$AppDatabase extends AppDatabase {
 
   DogImageDao? _dogImageDaoInstance;
 
-  UserDao? _userDaoInstance;
-
   Future<sqflite.Database> open(
     String path,
     List<Migration> migrations, [
     Callback? callback,
   ]) async {
     final databaseOptions = sqflite.OpenDatabaseOptions(
-      version: 2,
+      version: 1,
       onConfigure: (database) async {
         await database.execute('PRAGMA foreign_keys = ON');
         await callback?.onConfigure?.call(database);
@@ -88,8 +86,6 @@ class _$AppDatabase extends AppDatabase {
       onCreate: (database, version) async {
         await database.execute(
             'CREATE TABLE IF NOT EXISTS `DogImageEntity` (`message` TEXT NOT NULL, `status` TEXT NOT NULL, PRIMARY KEY (`message`))');
-        await database.execute(
-            'CREATE TABLE IF NOT EXISTS `UserEntity` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `token` TEXT NOT NULL, `refreshToken` TEXT NOT NULL)');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -100,11 +96,6 @@ class _$AppDatabase extends AppDatabase {
   @override
   DogImageDao get dogImageDao {
     return _dogImageDaoInstance ??= _$DogImageDao(database, changeListener);
-  }
-
-  @override
-  UserDao get userDao {
-    return _userDaoInstance ??= _$UserDao(database, changeListener);
   }
 }
 
@@ -155,57 +146,5 @@ class _$DogImageDao extends DogImageDao {
   @override
   Future<void> deleteDogImage(DogImageEntity dogImageEntity) async {
     await _dogImageEntityDeletionAdapter.delete(dogImageEntity);
-  }
-}
-
-class _$UserDao extends UserDao {
-  _$UserDao(
-    this.database,
-    this.changeListener,
-  )   : _queryAdapter = QueryAdapter(database),
-        _userEntityInsertionAdapter = InsertionAdapter(
-            database,
-            'UserEntity',
-            (UserEntity item) => <String, Object?>{
-                  'id': item.id,
-                  'token': item.token,
-                  'refreshToken': item.refreshToken
-                }),
-        _userEntityDeletionAdapter = DeletionAdapter(
-            database,
-            'UserEntity',
-            ['id'],
-            (UserEntity item) => <String, Object?>{
-                  'id': item.id,
-                  'token': item.token,
-                  'refreshToken': item.refreshToken
-                });
-
-  final sqflite.DatabaseExecutor database;
-
-  final StreamController<String> changeListener;
-
-  final QueryAdapter _queryAdapter;
-
-  final InsertionAdapter<UserEntity> _userEntityInsertionAdapter;
-
-  final DeletionAdapter<UserEntity> _userEntityDeletionAdapter;
-
-  @override
-  Future<List<UserEntity>> getUser() async {
-    return _queryAdapter.queryList('SELECT * FROM UserEntity',
-        mapper: (Map<String, Object?> row) => UserEntity(row['id'] as int?,
-            row['token'] as String, row['refreshToken'] as String));
-  }
-
-  @override
-  Future<void> insertUser(UserEntity userEntity) async {
-    await _userEntityInsertionAdapter.insert(
-        userEntity, OnConflictStrategy.abort);
-  }
-
-  @override
-  Future<void> deleteUser(UserEntity userEntity) async {
-    await _userEntityDeletionAdapter.delete(userEntity);
   }
 }

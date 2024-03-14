@@ -106,9 +106,9 @@ class _ForgotPasswordFormState extends State<ForgotPasswordForm> {
 
             final prefs = await SharedPreferences.getInstance();
             await prefs.setString('access_token',
-              state.loginResponse.data.access_token,);
+              state.loginResponse.data.accessToken,);
             await prefs.setString('refresh_token',
-              state.loginResponse.data.refresh_token,);
+              state.loginResponse.data.refreshToken,);
           }
         },
         builder: (context, state) {

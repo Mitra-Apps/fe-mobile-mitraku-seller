@@ -5,8 +5,8 @@ class ForgotPasswordState with _$ForgotPasswordState {
   const factory ForgotPasswordState({
     @Default(UIInitial()) UIStatus status,
     ForgotPasswordNotification? notification,
-    @Default(LoginResponse(code: 0, message: '',data: DataLoginResponse(access_token: '',
-        refresh_token: ''))) LoginResponse loginResponse,
+    @Default(LoginResponse(code: 0, message: '',data: DataLoginResponse(accessToken: '',
+        refreshToken: ''))) LoginResponse loginResponse,
     @Default(false) bool isBusy,
     @Default('RECORD_NOT_FOUND') String forgotPassBadRequest,
     @Default('') String forgotPassSuccess,

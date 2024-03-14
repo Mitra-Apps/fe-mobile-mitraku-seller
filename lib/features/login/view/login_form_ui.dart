@@ -213,7 +213,6 @@ class _LoginFormUIState extends State<LoginFormUI> {
                           ],
                         ),
                         AppSpacing.verticalSpacing20,
-                        //TODO remove _onSubmit to null after ? sign
                         Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 15),
                             child: ElevatedButton.icon(
@@ -222,7 +221,7 @@ class _LoginFormUIState extends State<LoginFormUI> {
                                       isShowEmailError ||
                                       isShowPasswordError ||
                                       _isLoading
-                                  ? _onSubmit
+                                  ? null
                                   : _onSubmit,
                               style: ElevatedButton.styleFrom(
                                   padding: const EdgeInsets.symmetric(

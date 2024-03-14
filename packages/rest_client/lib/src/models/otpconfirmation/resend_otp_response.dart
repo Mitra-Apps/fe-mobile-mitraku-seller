@@ -7,7 +7,8 @@ part 'resend_otp_response.g.dart';
 class ResendOTPResponse with _$ResendOTPResponse {
   ///
   const factory ResendOTPResponse({
-    required int otp,
+    required int code,
+    required String message,
   }) = _ResendOTPResponse;
 
   ///

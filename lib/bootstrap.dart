@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 import 'package:mitraku_seller/core/bloc_core/bloc_observer.dart';
 import 'package:mitraku_seller/features/app/view/app.dart';
 import 'package:mitraku_seller/injector/injector.dart';
@@ -27,6 +28,7 @@ Future<void> bootstrap({
 
     runApp(const App());
   }, (error, stack) {
+    debugPrint(error.toString());
     Injector.instance<CrashlyticsService>().recordException(error, stack);
   });
 }

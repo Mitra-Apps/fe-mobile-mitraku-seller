@@ -92,7 +92,8 @@ class _BuatTokoFieldWidgetState extends State<BuatTokoFieldWidget> {
         AppSpacing.verticalSpacing10,
         Padding(
           padding: const EdgeInsets.symmetric(
-              horizontal: AppDimens.basePaddingDouble),
+            horizontal: AppDimens.basePaddingDouble,
+          ),
           child: Row(
             children: [
               Text(

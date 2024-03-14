@@ -12,7 +12,7 @@ part of 'register_response.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 RegisterResponse _$RegisterResponseFromJson(Map<String, dynamic> json) {
   return _RegisterResponse.fromJson(json);
@@ -20,7 +20,8 @@ RegisterResponse _$RegisterResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$RegisterResponse {
-  RegisterOTPResponse get data => throw _privateConstructorUsedError;
+  int get code => throw _privateConstructorUsedError;
+  String get message => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,9 +35,7 @@ abstract class $RegisterResponseCopyWith<$Res> {
           RegisterResponse value, $Res Function(RegisterResponse) then) =
       _$RegisterResponseCopyWithImpl<$Res, RegisterResponse>;
   @useResult
-  $Res call({RegisterOTPResponse data});
-
-  $RegisterOTPResponseCopyWith<$Res> get data;
+  $Res call({int code, String message});
 }
 
 /// @nodoc
@@ -52,22 +51,19 @@ class _$RegisterResponseCopyWithImpl<$Res, $Val extends RegisterResponse>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = null,
+    Object? code = null,
+    Object? message = null,
   }) {
     return _then(_value.copyWith(
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as RegisterOTPResponse,
+      code: null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as int,
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $RegisterOTPResponseCopyWith<$Res> get data {
-    return $RegisterOTPResponseCopyWith<$Res>(_value.data, (value) {
-      return _then(_value.copyWith(data: value) as $Val);
-    });
   }
 }
 
@@ -79,10 +75,7 @@ abstract class _$$RegisterResponseImplCopyWith<$Res>
       __$$RegisterResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({RegisterOTPResponse data});
-
-  @override
-  $RegisterOTPResponseCopyWith<$Res> get data;
+  $Res call({int code, String message});
 }
 
 /// @nodoc
@@ -96,13 +89,18 @@ class __$$RegisterResponseImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = null,
+    Object? code = null,
+    Object? message = null,
   }) {
     return _then(_$RegisterResponseImpl(
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as RegisterOTPResponse,
+      code: null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as int,
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -110,17 +108,19 @@ class __$$RegisterResponseImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$RegisterResponseImpl implements _RegisterResponse {
-  const _$RegisterResponseImpl({required this.data});
+  const _$RegisterResponseImpl({required this.code, required this.message});
 
   factory _$RegisterResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$RegisterResponseImplFromJson(json);
 
   @override
-  final RegisterOTPResponse data;
+  final int code;
+  @override
+  final String message;
 
   @override
   String toString() {
-    return 'RegisterResponse(data: $data)';
+    return 'RegisterResponse(code: $code, message: $message)';
   }
 
   @override
@@ -128,12 +128,13 @@ class _$RegisterResponseImpl implements _RegisterResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$RegisterResponseImpl &&
-            (identical(other.data, data) || other.data == data));
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, data);
+  int get hashCode => Object.hash(runtimeType, code, message);
 
   @JsonKey(ignore: true)
   @override
@@ -151,14 +152,17 @@ class _$RegisterResponseImpl implements _RegisterResponse {
 }
 
 abstract class _RegisterResponse implements RegisterResponse {
-  const factory _RegisterResponse({required final RegisterOTPResponse data}) =
-      _$RegisterResponseImpl;
+  const factory _RegisterResponse(
+      {required final int code,
+      required final String message}) = _$RegisterResponseImpl;
 
   factory _RegisterResponse.fromJson(Map<String, dynamic> json) =
       _$RegisterResponseImpl.fromJson;
 
   @override
-  RegisterOTPResponse get data;
+  int get code;
+  @override
+  String get message;
   @override
   @JsonKey(ignore: true)
   _$$RegisterResponseImplCopyWith<_$RegisterResponseImpl> get copyWith =>

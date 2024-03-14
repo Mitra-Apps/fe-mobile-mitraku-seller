@@ -12,7 +12,7 @@ part of 'data_login_response.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 DataLoginResponse _$DataLoginResponseFromJson(Map<String, dynamic> json) {
   return _DataLoginResponse.fromJson(json);
@@ -20,8 +20,10 @@ DataLoginResponse _$DataLoginResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$DataLoginResponse {
-  String get access_token => throw _privateConstructorUsedError;
-  String get refresh_token => throw _privateConstructorUsedError;
+  @JsonKey(name: "access_token")
+  String get accessToken => throw _privateConstructorUsedError;
+  @JsonKey(name: "refresh_token")
+  String get refreshToken => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +37,9 @@ abstract class $DataLoginResponseCopyWith<$Res> {
           DataLoginResponse value, $Res Function(DataLoginResponse) then) =
       _$DataLoginResponseCopyWithImpl<$Res, DataLoginResponse>;
   @useResult
-  $Res call({String access_token, String refresh_token});
+  $Res call(
+      {@JsonKey(name: "access_token") String accessToken,
+      @JsonKey(name: "refresh_token") String refreshToken});
 }
 
 /// @nodoc
@@ -51,17 +55,17 @@ class _$DataLoginResponseCopyWithImpl<$Res, $Val extends DataLoginResponse>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? access_token = null,
-    Object? refresh_token = null,
+    Object? accessToken = null,
+    Object? refreshToken = null,
   }) {
     return _then(_value.copyWith(
-      access_token: null == access_token
-          ? _value.access_token
-          : access_token // ignore: cast_nullable_to_non_nullable
+      accessToken: null == accessToken
+          ? _value.accessToken
+          : accessToken // ignore: cast_nullable_to_non_nullable
               as String,
-      refresh_token: null == refresh_token
-          ? _value.refresh_token
-          : refresh_token // ignore: cast_nullable_to_non_nullable
+      refreshToken: null == refreshToken
+          ? _value.refreshToken
+          : refreshToken // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -75,7 +79,9 @@ abstract class _$$DataLoginResponseImplCopyWith<$Res>
       __$$DataLoginResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String access_token, String refresh_token});
+  $Res call(
+      {@JsonKey(name: "access_token") String accessToken,
+      @JsonKey(name: "refresh_token") String refreshToken});
 }
 
 /// @nodoc
@@ -89,17 +95,17 @@ class __$$DataLoginResponseImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? access_token = null,
-    Object? refresh_token = null,
+    Object? accessToken = null,
+    Object? refreshToken = null,
   }) {
     return _then(_$DataLoginResponseImpl(
-      access_token: null == access_token
-          ? _value.access_token
-          : access_token // ignore: cast_nullable_to_non_nullable
+      accessToken: null == accessToken
+          ? _value.accessToken
+          : accessToken // ignore: cast_nullable_to_non_nullable
               as String,
-      refresh_token: null == refresh_token
-          ? _value.refresh_token
-          : refresh_token // ignore: cast_nullable_to_non_nullable
+      refreshToken: null == refreshToken
+          ? _value.refreshToken
+          : refreshToken // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -109,19 +115,22 @@ class __$$DataLoginResponseImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$DataLoginResponseImpl implements _DataLoginResponse {
   const _$DataLoginResponseImpl(
-      {required this.access_token, required this.refresh_token});
+      {@JsonKey(name: "access_token") required this.accessToken,
+      @JsonKey(name: "refresh_token") required this.refreshToken});
 
   factory _$DataLoginResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$DataLoginResponseImplFromJson(json);
 
   @override
-  final String access_token;
+  @JsonKey(name: "access_token")
+  final String accessToken;
   @override
-  final String refresh_token;
+  @JsonKey(name: "refresh_token")
+  final String refreshToken;
 
   @override
   String toString() {
-    return 'DataLoginResponse(access_token: $access_token, refresh_token: $refresh_token)';
+    return 'DataLoginResponse(accessToken: $accessToken, refreshToken: $refreshToken)';
   }
 
   @override
@@ -129,15 +138,15 @@ class _$DataLoginResponseImpl implements _DataLoginResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DataLoginResponseImpl &&
-            (identical(other.access_token, access_token) ||
-                other.access_token == access_token) &&
-            (identical(other.refresh_token, refresh_token) ||
-                other.refresh_token == refresh_token));
+            (identical(other.accessToken, accessToken) ||
+                other.accessToken == accessToken) &&
+            (identical(other.refreshToken, refreshToken) ||
+                other.refreshToken == refreshToken));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, access_token, refresh_token);
+  int get hashCode => Object.hash(runtimeType, accessToken, refreshToken);
 
   @JsonKey(ignore: true)
   @override
@@ -156,16 +165,19 @@ class _$DataLoginResponseImpl implements _DataLoginResponse {
 
 abstract class _DataLoginResponse implements DataLoginResponse {
   const factory _DataLoginResponse(
-      {required final String access_token,
-      required final String refresh_token}) = _$DataLoginResponseImpl;
+          {@JsonKey(name: "access_token") required final String accessToken,
+          @JsonKey(name: "refresh_token") required final String refreshToken}) =
+      _$DataLoginResponseImpl;
 
   factory _DataLoginResponse.fromJson(Map<String, dynamic> json) =
       _$DataLoginResponseImpl.fromJson;
 
   @override
-  String get access_token;
+  @JsonKey(name: "access_token")
+  String get accessToken;
   @override
-  String get refresh_token;
+  @JsonKey(name: "refresh_token")
+  String get refreshToken;
   @override
   @JsonKey(ignore: true)
   _$$DataLoginResponseImplCopyWith<_$DataLoginResponseImpl> get copyWith =>

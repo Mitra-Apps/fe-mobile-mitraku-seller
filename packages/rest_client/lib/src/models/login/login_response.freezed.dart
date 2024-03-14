@@ -12,7 +12,7 @@ part of 'login_response.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 LoginResponse _$LoginResponseFromJson(Map<String, dynamic> json) {
   return _LoginResponse.fromJson(json);
@@ -20,6 +20,8 @@ LoginResponse _$LoginResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$LoginResponse {
+  int get code => throw _privateConstructorUsedError;
+  String get message => throw _privateConstructorUsedError;
   DataLoginResponse get data => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -34,7 +36,7 @@ abstract class $LoginResponseCopyWith<$Res> {
           LoginResponse value, $Res Function(LoginResponse) then) =
       _$LoginResponseCopyWithImpl<$Res, LoginResponse>;
   @useResult
-  $Res call({DataLoginResponse data});
+  $Res call({int code, String message, DataLoginResponse data});
 
   $DataLoginResponseCopyWith<$Res> get data;
 }
@@ -52,9 +54,19 @@ class _$LoginResponseCopyWithImpl<$Res, $Val extends LoginResponse>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? code = null,
+    Object? message = null,
     Object? data = null,
   }) {
     return _then(_value.copyWith(
+      code: null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as int,
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -79,7 +91,7 @@ abstract class _$$LoginResponseImplCopyWith<$Res>
       __$$LoginResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({DataLoginResponse data});
+  $Res call({int code, String message, DataLoginResponse data});
 
   @override
   $DataLoginResponseCopyWith<$Res> get data;
@@ -96,9 +108,19 @@ class __$$LoginResponseImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? code = null,
+    Object? message = null,
     Object? data = null,
   }) {
     return _then(_$LoginResponseImpl(
+      code: null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
+              as int,
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
@@ -110,17 +132,22 @@ class __$$LoginResponseImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$LoginResponseImpl implements _LoginResponse {
-  const _$LoginResponseImpl({required this.data});
+  const _$LoginResponseImpl(
+      {required this.code, required this.message, required this.data});
 
   factory _$LoginResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$LoginResponseImplFromJson(json);
 
   @override
+  final int code;
+  @override
+  final String message;
+  @override
   final DataLoginResponse data;
 
   @override
   String toString() {
-    return 'LoginResponse(data: $data)';
+    return 'LoginResponse(code: $code, message: $message, data: $data)';
   }
 
   @override
@@ -128,12 +155,14 @@ class _$LoginResponseImpl implements _LoginResponse {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LoginResponseImpl &&
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.message, message) || other.message == message) &&
             (identical(other.data, data) || other.data == data));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, data);
+  int get hashCode => Object.hash(runtimeType, code, message, data);
 
   @JsonKey(ignore: true)
   @override
@@ -150,12 +179,18 @@ class _$LoginResponseImpl implements _LoginResponse {
 }
 
 abstract class _LoginResponse implements LoginResponse {
-  const factory _LoginResponse({required final DataLoginResponse data}) =
-      _$LoginResponseImpl;
+  const factory _LoginResponse(
+      {required final int code,
+      required final String message,
+      required final DataLoginResponse data}) = _$LoginResponseImpl;
 
   factory _LoginResponse.fromJson(Map<String, dynamic> json) =
       _$LoginResponseImpl.fromJson;
 
+  @override
+  int get code;
+  @override
+  String get message;
   @override
   DataLoginResponse get data;
   @override

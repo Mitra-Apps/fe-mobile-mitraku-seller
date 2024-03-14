@@ -1,8 +1,8 @@
 part of 'otp_page.dart';
 
 class OTPFormUI extends StatefulWidget {
-  OTPFormUI({super.key});
-
+  const OTPFormUI({super.key, this.otpInvalid});
+  final bool? otpInvalid;
   @override
   OTPFormUIState createState() => OTPFormUIState();
 }
@@ -11,15 +11,14 @@ class OTPFormUIState extends State<OTPFormUI> {
   final _formKey = GlobalKey<FormState>();
 
   String? strOTP;
-
   bool otpInteracts() => strOTP != null;
-  bool isShowOTPError = false;
   bool hideVerifikasiButton = true;
   bool showResendOtpButton = false;
   bool showCountDownTimer = false;
+  bool disableResendOtpButton = false;
   var _isLoading = false;
   final pinController = TextEditingController();
-  var _countError = 0;
+  var _countError = 1;
 
   Future<void> _onSubmit() async {
     setState(() => _isLoading = true);
@@ -30,18 +29,16 @@ class OTPFormUIState extends State<OTPFormUI> {
 
     final prefs = await SharedPreferences.getInstance();
     late String email = prefs.getString('email') ?? '';
-    late bool otpInvalid = prefs.getBool('otpInvalid') ?? false;
 
     if (!context.mounted) return;
 
     context.read<OtpConfirmationBloc>().add(OtpConfirmationEvent.otpRequested(
         OtpConfirmationPost(email: email, otp_code: int.parse(strOTP!))));
 
-    isShowOTPError = otpInvalid;
+    pinController.setText('');
 
-    if (otpInvalid) {
+    if (widget.otpInvalid!) {
       _countError += 1;
-      pinController.setText('');
       strOTP = null;
     }
 
@@ -49,7 +46,10 @@ class OTPFormUIState extends State<OTPFormUI> {
       hideVerifikasiButton = false;
       showResendOtpButton = true;
       strOTP != null;
-      await prefs.remove('otpInvalid');
+    }
+
+    if (showCountDownTimer) {
+      disableResendOtpButton = true;
     }
   }
 
@@ -155,7 +155,7 @@ class OTPFormUIState extends State<OTPFormUI> {
                         children: [
                           Flexible(
                             child: Visibility(
-                                visible: isShowOTPError,
+                                visible: widget.otpInvalid!,
                                 child: const Text(
                                   'Kode OTP tidak berlaku',
                                   softWrap: true,
@@ -216,8 +216,8 @@ class OTPFormUIState extends State<OTPFormUI> {
                           )
                       ),),
                       Visibility(visible: showResendOtpButton, child: GestureDetector(
-                        onTap: _onResend,
-                        child: const Row(
+                        onTap: disableResendOtpButton ? null : _onResend,
+                        child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
@@ -226,44 +226,44 @@ class OTPFormUIState extends State<OTPFormUI> {
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,
                                 fontFamily: 'Poppins',
-                                color: CustomColors.mainColor
+                                color: disableResendOtpButton ?
+                                  CustomColors.disabledBoldColor :
+                                  CustomColors.mainColor
                               ),
                             ),
                           ],
                         ),
                       ),),
-                      Visibility(visible: showCountDownTimer, child: GestureDetector(
-                        onTap: _onResend,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Text(
-                              'Kirim Ulang OTP :',
-                              style: TextStyle(
+                      AppSpacing.verticalSpacing20,
+                      Visibility(visible: showCountDownTimer, child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            'Kirim Ulang OTP : ',
+                            style: TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,
                                 fontFamily: 'Poppins',
                                 color: CustomColors.disabledBoldColor
-                              ),
                             ),
-                            Countdown(
-                              seconds: 59,
-                              build: (BuildContext context, double time) =>
-                                  Text(time.toString(),
-                                    style: TextStyle(fontSize: 14,
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: 'Poppins',
-                                    color: CustomColors.disabledBoldColor),),
-                              interval: const Duration(milliseconds: 100),
-                              onFinished: () {
-                                setState(() {
-                                  showResendOtpButton = true;
-                                  showCountDownTimer = false;
-                                });
-                              },
-                            ),
-                          ],
-                        ),
+                          ),
+                          Countdown(
+                            seconds: 59,
+                            build: (BuildContext context, double time) =>
+                                Text('00:${time.toInt()}',
+                                  style: const TextStyle(fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                      fontFamily: 'Poppins',
+                                      color: CustomColors.disabledBoldColor),),
+                            interval: const Duration(seconds: 1),
+                            onFinished: () {
+                              setState(() {
+                                showCountDownTimer = false;
+                                disableResendOtpButton = false;
+                              });
+                            },
+                          ),
+                        ],
                       ),),
                       AppSpacing.verticalSpacing128,
                     ],

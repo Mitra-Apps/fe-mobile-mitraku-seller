@@ -49,33 +49,10 @@ class OTPFormState extends State<OTPForm> {
     );
   }
 
-  _showToastFailed(String message) {
-    Widget toast = Container(
-      padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10.0),
-        color: CustomColors.dangerColor,
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          SvgPicture.asset("assets/icons/icon_white_close.svg"),
-          const SizedBox(
-            width: 12.0,
-          ),
-          Text(message, style: const TextStyle(fontSize: 8,
-              fontWeight: FontWeight.normal,
-              color: CustomColors.whiteColor),),
-        ],
-      ),
-    );
-
-
-    fToast.showToast(
-      child: toast,
-      gravity: ToastGravity.TOP,
-      toastDuration: const Duration(seconds: 3),
-    );
+  _sendOTPInvalid(bool? invalidOTP) {
+    setState(() {
+      otpInvalid = invalidOTP!;
+    });
   }
 
   @override
@@ -89,21 +66,23 @@ class OTPFormState extends State<OTPForm> {
                 _showToastSuccess(message);
               },
               notifyFailed: (message) {
-                _showToastFailed(message);
+
               },
             );
 
             if (state.otpSuccess == 'OTPSUCCESS') {
               final prefs = await SharedPreferences.getInstance();
 
-              await prefs.remove('otpInvalid');
+              await prefs.setString('access_token',
+                state.loginResponse.data.accessToken,);
+              await prefs.setString('refresh_token',
+                state.loginResponse.data.refreshToken,);
+
               await context.push(AppRouter.homePath);
             }
 
             if (state.otpBadRequest == 'AUTH_OTP_INVALID') {
-              otpInvalid = true;
-              final prefs = await SharedPreferences.getInstance();
-              await prefs.setBool('otpInvalid', otpInvalid);
+              _sendOTPInvalid(true);
             }
           },
           builder: (context, state) {
@@ -112,7 +91,7 @@ class OTPFormState extends State<OTPForm> {
               children: [
                 state.status.when(
                   initial: () {
-                    return OTPFormUI();
+                    return OTPFormUI(otpInvalid: otpInvalid,);
                   },
                   loading: () {
                     return Container();

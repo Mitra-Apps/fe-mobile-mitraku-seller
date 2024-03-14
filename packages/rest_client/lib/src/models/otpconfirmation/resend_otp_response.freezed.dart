@@ -12,7 +12,7 @@ part of 'resend_otp_response.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 ResendOTPResponse _$ResendOTPResponseFromJson(Map<String, dynamic> json) {
   return _ResendOTPResponse.fromJson(json);
@@ -20,7 +20,8 @@ ResendOTPResponse _$ResendOTPResponseFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ResendOTPResponse {
-  int get otp => throw _privateConstructorUsedError;
+  int get code => throw _privateConstructorUsedError;
+  String get message => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +35,7 @@ abstract class $ResendOTPResponseCopyWith<$Res> {
           ResendOTPResponse value, $Res Function(ResendOTPResponse) then) =
       _$ResendOTPResponseCopyWithImpl<$Res, ResendOTPResponse>;
   @useResult
-  $Res call({int otp});
+  $Res call({int code, String message});
 }
 
 /// @nodoc
@@ -50,13 +51,18 @@ class _$ResendOTPResponseCopyWithImpl<$Res, $Val extends ResendOTPResponse>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? otp = null,
+    Object? code = null,
+    Object? message = null,
   }) {
     return _then(_value.copyWith(
-      otp: null == otp
-          ? _value.otp
-          : otp // ignore: cast_nullable_to_non_nullable
+      code: null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
               as int,
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -69,7 +75,7 @@ abstract class _$$ResendOTPResponseImplCopyWith<$Res>
       __$$ResendOTPResponseImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int otp});
+  $Res call({int code, String message});
 }
 
 /// @nodoc
@@ -83,13 +89,18 @@ class __$$ResendOTPResponseImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? otp = null,
+    Object? code = null,
+    Object? message = null,
   }) {
     return _then(_$ResendOTPResponseImpl(
-      otp: null == otp
-          ? _value.otp
-          : otp // ignore: cast_nullable_to_non_nullable
+      code: null == code
+          ? _value.code
+          : code // ignore: cast_nullable_to_non_nullable
               as int,
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -97,30 +108,33 @@ class __$$ResendOTPResponseImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$ResendOTPResponseImpl implements _ResendOTPResponse {
-  const _$ResendOTPResponseImpl({required this.otp});
+  const _$ResendOTPResponseImpl({required this.code, required this.message});
 
   factory _$ResendOTPResponseImpl.fromJson(Map<String, dynamic> json) =>
       _$$ResendOTPResponseImplFromJson(json);
 
   @override
-  final int otp;
+  final int code;
+  @override
+  final String message;
 
   @override
   String toString() {
-    return 'ResendOTPResponse(otp: $otp)';
+    return 'ResendOTPResponse(code: $code, message: $message)';
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ResendOTPResponseImpl &&
-            (identical(other.otp, otp) || other.otp == otp));
+            (identical(other.code, code) || other.code == code) &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, otp);
+  int get hashCode => Object.hash(runtimeType, code, message);
 
   @JsonKey(ignore: true)
   @override
@@ -138,14 +152,17 @@ class _$ResendOTPResponseImpl implements _ResendOTPResponse {
 }
 
 abstract class _ResendOTPResponse implements ResendOTPResponse {
-  const factory _ResendOTPResponse({required final int otp}) =
-      _$ResendOTPResponseImpl;
+  const factory _ResendOTPResponse(
+      {required final int code,
+      required final String message}) = _$ResendOTPResponseImpl;
 
   factory _ResendOTPResponse.fromJson(Map<String, dynamic> json) =
       _$ResendOTPResponseImpl.fromJson;
 
   @override
-  int get otp;
+  int get code;
+  @override
+  String get message;
   @override
   @JsonKey(ignore: true)
   _$$ResendOTPResponseImplCopyWith<_$ResendOTPResponseImpl> get copyWith =>

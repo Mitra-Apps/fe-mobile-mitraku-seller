@@ -1,16 +1,18 @@
+import 'package:flutter/foundation.dart';
+import 'package:go_router/go_router.dart';
 import 'package:mitraku_seller/features/app/view/app_director.dart';
 import 'package:mitraku_seller/features/demo/view/assets_page.dart';
 import 'package:mitraku_seller/features/demo/view/images_from_db_page.dart';
 import 'package:mitraku_seller/features/dog_image_random/view/dog_image_random_page.dart';
+import 'package:mitraku_seller/features/forgotpassword/view/forgot_password_page.dart';
 import 'package:mitraku_seller/features/home/home_page.dart';
 import 'package:mitraku_seller/features/login/view/login_page.dart';
 import 'package:mitraku_seller/features/otp/view/otp_page.dart';
+import 'package:mitraku_seller/features/products/create_product/views/create_product_page.dart';
 import 'package:mitraku_seller/features/register/view/register_page.dart';
 import 'package:mitraku_seller/features/setting/setting_page.dart';
 import 'package:mitraku_seller/generated/l10n.dart';
 import 'package:mitraku_seller/widgets/error_page.dart';
-import 'package:flutter/foundation.dart';
-import 'package:go_router/go_router.dart';
 
 class AppRouter {
   AppRouter._();
@@ -33,14 +35,20 @@ class AppRouter {
   static const String imagesFromDbNamed = 'imagesFromDb';
   static const String imagesFromDbPath = '/imagesFromDb';
 
-  static const String registerNamed = "register";
-  static const String registerPath = "/register";
+  static const String registerNamed = 'register';
+  static const String registerPath = '/register';
 
-  static const String loginName = "login";
-  static const String loginPath = "/login";
+  static const String loginName = 'login';
+  static const String loginPath = '/login';
 
-  static const String otpName = "otp";
-  static const String otpPath = "/otp";
+  static const String otpName = 'otp';
+  static const String otpPath = '/otp';
+
+  static const String createProductName = 'createProduct';
+  static const String createProductPath = '/createProduct';
+
+  static const String forgotPassName = "forgotPass";
+  static const String forgotPassPath = "/forgotPass";
 
   static GoRouter get router => _router;
   static final _router = GoRouter(
@@ -99,6 +107,16 @@ class AppRouter {
         name: otpName,
         path: otpPath,
         builder: (context, state) => const OTPPage(),
+      ),
+      GoRoute(
+        name: forgotPassName,
+        path: forgotPassPath,
+        builder: (context, state) => const ForgotPasswordPage(),
+      ),
+      GoRoute(
+        name: createProductName,
+        path: createProductPath,
+        builder: (context, state) => const CreateProductPage(),
       ),
     ],
   );

@@ -12,7 +12,7 @@ part of 'login_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$LoginEvent {
@@ -852,7 +852,9 @@ class _$LoginStateImpl implements _LoginState {
       {this.status = const UIInitial(),
       this.notification,
       this.loginResponse = const LoginResponse(
-          data: DataLoginResponse(access_token: '', refresh_token: '')),
+          code: 0,
+          message: '',
+          data: DataLoginResponse(accessToken: '', refreshToken: '')),
       this.isBusy = false,
       this.loginBadRequest = 'AUTH_LOGIN_NOT_FOUND',
       this.loginSuccess = ''});

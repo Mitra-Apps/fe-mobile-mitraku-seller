@@ -33,6 +33,11 @@ class RestClientModule {
         () => TokoAndaApiClient(
           injector(instanceName: DioModule.dioInstanceName),
         ),
+      )
+      ..registerFactory<BuatTokoApiClient>(
+        () => BuatTokoApiClient(
+          injector(instanceName: DioModule.dioInstanceName),
+        ),
       );
   }
 }

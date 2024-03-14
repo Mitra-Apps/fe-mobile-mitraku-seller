@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:mitraku_seller/features/app/bloc/app_bloc.dart';
+import 'package:mitraku_seller/features/buat_toko/bloc/buat_toko_bloc.dart';
 import 'package:mitraku_seller/features/demo/bloc/demo_bloc.dart';
 import 'package:mitraku_seller/features/dog_image_random/bloc/dog_image_random_bloc.dart';
 import 'package:mitraku_seller/features/home/bloc/toko_anda_bloc.dart';
@@ -45,7 +46,11 @@ class BlocModule {
         () => OtpConfirmationBloc(
             otpConfirmationRepository: injector(), logService: injector()),
       )
-      ..registerFactory<TokoAndaBloc>(() =>
-          TokoAndaBloc(tokoAndaRepository: injector(), logService: injector()));
+      ..registerFactory<TokoAndaBloc>(
+        () => TokoAndaBloc(
+            tokoAndaRepository: injector(), logService: injector()),
+      )
+      ..registerFactory<BuatTokoBloc>(() =>
+          BuatTokoBloc(buatTokoRepository: injector(), logService: injector()));
   }
 }

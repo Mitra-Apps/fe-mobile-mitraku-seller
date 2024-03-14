@@ -4,7 +4,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mitraku_seller/core/bloc_core/ui_status.dart';
-import 'package:mitraku_seller/data/repositories/login/remote/login_repository.dart';
 import 'package:mitraku_seller/data/repositories/toko_anda/remote/toko_anda_repository.dart';
 import 'package:mitraku_seller/services/log_service/log_service.dart';
 import 'package:rest_client/rest_client.dart';
@@ -55,81 +54,41 @@ class TokoAndaBloc extends Bloc<TokoAndaEvent, TokoAndaState> {
     }
   }
 
-  // Future<FutureOr<void>> _onLogin(
-  //   _LoginRequestedX event,
-  //   Emitter<TokoAndaState> emit,
-  // ) async {
-  //   try {
-  //     emit(
-  //       state.copyWith(
-  //         isBusy: true,
-  //       ),
-  //     );
-
-  //     final LoginResponse loginResponse =
-  //         await _repository.login(event.loginPost);
-
-  //     emit(
-  //       state.copyWith(
-  //         isBusy: false,
-  //         notification: _NotificationNotifySuccessX(
-  //           message: 'Selamat berhasil masuk',
-  //         ),
-  //         status: const UILoadSuccess(),
-  //         loginResponse: loginResponse,
-  //         loginSuccess: 'SUCCESSLOGIN',
-  //       ),
-  //     );
-  //   } on DioException catch (e) {
-  //     if (e.response != null) {
-  //       final errorResponse = ErrorResponse.fromJson(e.response!.data);
-  //       emit(
-  //         state.copyWith(
-  //             isBusy: false,
-  //             notification: _NotificationNotifyFailedX(
-  //               message: errorResponse.message,
-  //             ),
-  //             loginBadRequest: errorResponse.code_detail),
-  //       );
-  //     }
-  //   }
-  // }
-
   FutureOr<void> _onMyStoreRequested(
     _MyStoreGetRequested event,
     Emitter<TokoAndaState> emit,
   ) async {
     try {
-      // emit(
-      //   state.copyWith(
-      //     isBusy: true,
-      //   ),
-      // );
+      emit(
+        state.copyWith(
+          isBusy: true,
+        ),
+      );
 
       final TokoAndaResponse response = await _repository.getMyStore();
 
-      // if (event.insertDb && !kIsWeb && _localRepository != null) {
-      //   final DogImageEntity entity = MapperUtils.mapDogImage(image);
-      //   await _localRepository!.insertDogImageDB(entity);
-      // }
-
-      // emit(
-      //   state.copyWith(
-      //     isBusy: false,
-      //     status: const UILoadSuccess(),
-      //     dogImage: image,
-      //   ),
-      // );
-    } catch (e, s) {
-      // _log.e('DogImageRandomLoaded failed', e, s);
-      // emit(
-      //   state.copyWith(
-      //     isBusy: false,
-      //     notification: _NotificationNotifyFailed(
-      //       message: e.toString(),
-      //     ),
-      //   ),
-      // );
+      emit(
+        state.copyWith(
+          isBusy: false,
+          notification: _NotificationNotifySuccess(
+            message: 'Selamat berhasil masuk',
+          ),
+          status: const UILoadSuccess(),
+          tokoAndaResponse: response,
+        ),
+      );
+    } on DioException catch (e) {
+      if (e.response != null) {
+        final errorResponse = ErrorResponse.fromJson(e.response!.data);
+        emit(
+          state.copyWith(
+            isBusy: false,
+            notification: _NotificationNotifyFailed(
+              message: errorResponse.message,
+            ),
+          ),
+        );
+      }
     }
   }
 }

@@ -90,6 +90,9 @@ class _LoginFormState extends State<LoginForm> {
           listener: (context, state) async {
             state.notification?.when(
               notifySuccess: (message) {
+                Injector.updateDioHeaders(
+                  state.loginResponse.data.access_token,
+                );
                 _showToastSuccess(message);
               },
               notifyFailed: (message) {

@@ -35,7 +35,7 @@ class SilakanBuatTokoWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    _fetchDataFromApi(context);
+    // _fetchDataFromApi(context);
 
     return Center(
       child: Column(

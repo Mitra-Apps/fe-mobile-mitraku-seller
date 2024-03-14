@@ -21,7 +21,7 @@ class TokoAndaPage extends StatefulWidget {
 class _TokoAndaPage extends State<TokoAndaPage> {
   bool isCreateEditStoreMode = false;
   bool isStoreExist = false;
-  bool isLoadingApi = false;
+  bool isLoadingApi = true;
 
   void _createEditStoreCallback() {
     setState(() {
@@ -48,14 +48,16 @@ class _TokoAndaPage extends State<TokoAndaPage> {
     });
   }
 
-  // @override
-  // void didChangeDependencies() {
-  //   context.read<TokoAndaBloc>().add(
-  //         const TokoAndaEvent.myStoreGetRequested(),
-  //       );
-  //   //do whatever you want with the bloc here.
-  //   super.didChangeDependencies();
-  // }
+  void _loadTokoAndaResponse(TokoAndaState state) {
+    setState(() {
+      if (state.tokoAndaResponse.data == null) {
+        isStoreExist = false;
+      } else {
+        isStoreExist = true;
+      }
+      isLoadingApi = false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,27 +78,28 @@ class _TokoAndaPage extends State<TokoAndaPage> {
           : BlocConsumer<BuatTokoCubit, StoreModel>(
               // listenWhen: (prev, next) =>
               //     prev.notification != next.notification,
-              listener: (context, state) async {
-                _changeLoadingStatusCallback(false);
-                print('DAFUQ');
-                // state.notification?.when(
-                //   notifySuccess: (message) {
-                //     _showToastSuccess(message);
-                //   },
-                //   notifyFailed: (message) {
-                //     _showToastFailed(message);
-                //   },
-                // );
-
-                // if (state.loginBadRequest == 'AUTH_LOGIN_USER_UNVERIFIED') {
-                //   await context.push(AppRouter.otpPath);
-                // }
-                // if (state.loginSuccess == 'SUCCESSLOGIN') {
-                //   await context.push(AppRouter.homePath);
-                // }
-              },
+              listener: (context, state) async {},
               builder: (BuildContext context, StoreModel state) {
                 return BlocConsumer<TokoAndaBloc, TokoAndaState>(
+                  listener: (context, state) async {
+                    state.notification?.when(
+                      notifySuccess: (message) {
+                        _loadTokoAndaResponse(state);
+                        // _showToastSuccess(message);
+                      },
+                      notifyFailed: (message) {
+                        _loadTokoAndaResponse(state);
+                        // _showToastSuccess(message);
+                      },
+                    );
+
+                    // if (state.loginBadRequest == 'AUTH_LOGIN_USER_UNVERIFIED') {
+                    //   await context.push(AppRouter.otpPath);
+                    // }
+                    // if (state.loginSuccess == 'SUCCESSLOGIN') {
+                    //   await context.push(AppRouter.homePath);
+                    // }
+                  },
                   builder: (context, tokoAndaState) {
                     // Build UI based on both BuatTokoCubit and TokoAndaBloc states
                     return Scaffold(
@@ -126,9 +129,6 @@ class _TokoAndaPage extends State<TokoAndaPage> {
                                   onEditStoreCallback: _createEditStoreCallback,
                                 ),
                     );
-                  },
-                  listener: (context, tokoAndaState) {
-                    // Perform side effects or handle events from TokoAndaBloc
                   },
                 );
               },

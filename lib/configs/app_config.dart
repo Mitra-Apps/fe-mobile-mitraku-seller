@@ -1,6 +1,7 @@
 class AppConfig {
   static String baseUrl = '';
   static String newBaseUrl = '';
+  static String bearerToken = '';
 
   static const String defaultLocale = 'en';
 

@@ -4,9 +4,9 @@ part of 'toko_anda_bloc.dart';
 class TokoAndaNotification with _$TokoAndaNotification {
   factory TokoAndaNotification.notifySuccess({
     required String message,
-  }) = _NotificationNotifySuccessX;
+  }) = _NotificationNotifySuccess;
 
   factory TokoAndaNotification.notifyFailed({
     required String message,
-  }) = _NotificationNotifyFailedX;
+  }) = _NotificationNotifyFailed;
 }

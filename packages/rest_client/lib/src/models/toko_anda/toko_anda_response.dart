@@ -7,8 +7,11 @@ part 'toko_anda_response.g.dart';
 @Freezed(fromJson: true)
 class TokoAndaResponse with _$TokoAndaResponse {
   ///
-  const factory TokoAndaResponse({required int code, required String message}) =
-      _TokoAndaResponse;
+  const factory TokoAndaResponse({
+    required int code,
+    required String message,
+    required TokoAndaData? data,
+  }) = _TokoAndaResponse;
 
   ///
   factory TokoAndaResponse.fromJson(Map<String, dynamic> json) =>

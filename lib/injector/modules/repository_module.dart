@@ -1,3 +1,5 @@
+import 'package:mitraku_seller/data/repositories/buat_toko/buat_toko_repository.dart';
+import 'package:mitraku_seller/data/repositories/buat_toko/buat_toko_repository_impl.dart';
 import 'package:mitraku_seller/data/repositories/dog_image_random/remote/dog_image_random_repository.dart';
 import 'package:mitraku_seller/data/repositories/dog_image_random/remote/dog_image_random_repository_impl.dart';
 import 'package:mitraku_seller/data/repositories/login/remote/login_repository.dart';
@@ -35,6 +37,9 @@ class RepositoryModule {
       )
       ..registerFactory<TokoAndaRepository>(
         () => TokoAndaRepositoryImpl(tokoAndaApi: injector()),
+      )
+      ..registerFactory<BuatTokoRepository>(
+        () => BuatTokoRepositoryImpl(buatTokoApi: injector()),
       );
   }
 }

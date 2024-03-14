@@ -1,20 +1,20 @@
-part of 'toko_anda_bloc.dart';
+part of 'buat_toko_bloc.dart';
 
 @Freezed()
-class TokoAndaState with _$TokoAndaState {
-  const factory TokoAndaState({
+class BuatTokoState with _$BuatTokoState {
+  const factory BuatTokoState({
     @Default(UIInitial()) UIStatus status,
-    TokoAndaNotification? notification,
+    BuatTokoNotification? notification,
     @Default(
-      TokoAndaResponse(
+      BuatTokoResponse(
         code: 0,
         message: '',
         data: null,
       ),
     )
-    TokoAndaResponse tokoAndaResponse,
+    BuatTokoResponse buatTokoResponse,
     @Default(false) bool isBusy,
     // @Default('AUTH_LOGIN_NOT_FOUND') String loginBadRequest,
     // @Default('') String loginSuccess,
-  }) = _TokoAndaState;
+  }) = _BuatTokoState;
 }

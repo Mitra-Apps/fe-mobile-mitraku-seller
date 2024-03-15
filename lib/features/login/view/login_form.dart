@@ -157,16 +157,13 @@ class _LoginFormState extends State<LoginForm> {
             }
 
             if (state.loginSuccess == 'SUCCESSLOGIN') {
-              await context.push(AppRouter.homePath);
-
-              debugPrint('token in login: ${state.loginResponse.data.accessToken}');
-
               final prefs = await SharedPreferences.getInstance();
               await prefs.setString('access_token',
                   state.loginResponse.data.accessToken,);
               await prefs.setString('refresh_token',
                   state.loginResponse.data.refreshToken,);
-              debugPrint('token in login: ${state.loginResponse.data.accessToken}');
+
+              await context.push(AppRouter.homePath);
             }
           },
           builder: (context, state) {

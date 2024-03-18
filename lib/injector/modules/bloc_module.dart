@@ -42,7 +42,7 @@ class BlocModule {
         ),
       )
       ..registerFactory<LoginBloc>(
-        () => LoginBloc(loginRepository: injector(), logService: injector()),
+        () => LoginBloc(authRepository: injector(), logService: injector()),
       )
       ..registerFactory<OtpConfirmationBloc>(
         () => OtpConfirmationBloc(

@@ -2680,504 +2680,6 @@ abstract class _OnChangedSaleStatus implements CreateProductEvent {
 }
 
 /// @nodoc
-mixin _$CreateProductState {
-  UIStatus get status => throw _privateConstructorUsedError;
-  CreateProductNotification? get notification =>
-      throw _privateConstructorUsedError;
-  String? get productCategoryId => throw _privateConstructorUsedError;
-  String? get productTypeId => throw _privateConstructorUsedError;
-  bool get isValid => throw _privateConstructorUsedError;
-  ErrorResponse? get errorResponse => throw _privateConstructorUsedError;
-  List<ProductCategoryResponse> get dataProductCategory =>
-      throw _privateConstructorUsedError;
-  List<ProductTypeResponse> get dataProductType =>
-      throw _privateConstructorUsedError;
-  List<UomResponse> get dataUom => throw _privateConstructorUsedError;
-  ProductPostRequest get productPostRequest =>
-      throw _privateConstructorUsedError;
-  List<ProductList>? get productList => throw _privateConstructorUsedError;
-  MyStoreResponse? get myStoreResponse => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $CreateProductStateCopyWith<CreateProductState> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $CreateProductStateCopyWith<$Res> {
-  factory $CreateProductStateCopyWith(
-          CreateProductState value, $Res Function(CreateProductState) then) =
-      _$CreateProductStateCopyWithImpl<$Res, CreateProductState>;
-  @useResult
-  $Res call(
-      {UIStatus status,
-      CreateProductNotification? notification,
-      String? productCategoryId,
-      String? productTypeId,
-      bool isValid,
-      ErrorResponse? errorResponse,
-      List<ProductCategoryResponse> dataProductCategory,
-      List<ProductTypeResponse> dataProductType,
-      List<UomResponse> dataUom,
-      ProductPostRequest productPostRequest,
-      List<ProductList>? productList,
-      MyStoreResponse? myStoreResponse});
-
-  $UIStatusCopyWith<$Res> get status;
-  $CreateProductNotificationCopyWith<$Res>? get notification;
-  $ErrorResponseCopyWith<$Res>? get errorResponse;
-  $ProductPostRequestCopyWith<$Res> get productPostRequest;
-  $MyStoreResponseCopyWith<$Res>? get myStoreResponse;
-}
-
-/// @nodoc
-class _$CreateProductStateCopyWithImpl<$Res, $Val extends CreateProductState>
-    implements $CreateProductStateCopyWith<$Res> {
-  _$CreateProductStateCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? status = null,
-    Object? notification = freezed,
-    Object? productCategoryId = freezed,
-    Object? productTypeId = freezed,
-    Object? isValid = null,
-    Object? errorResponse = freezed,
-    Object? dataProductCategory = null,
-    Object? dataProductType = null,
-    Object? dataUom = null,
-    Object? productPostRequest = null,
-    Object? productList = freezed,
-    Object? myStoreResponse = freezed,
-  }) {
-    return _then(_value.copyWith(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as UIStatus,
-      notification: freezed == notification
-          ? _value.notification
-          : notification // ignore: cast_nullable_to_non_nullable
-              as CreateProductNotification?,
-      productCategoryId: freezed == productCategoryId
-          ? _value.productCategoryId
-          : productCategoryId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      productTypeId: freezed == productTypeId
-          ? _value.productTypeId
-          : productTypeId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      isValid: null == isValid
-          ? _value.isValid
-          : isValid // ignore: cast_nullable_to_non_nullable
-              as bool,
-      errorResponse: freezed == errorResponse
-          ? _value.errorResponse
-          : errorResponse // ignore: cast_nullable_to_non_nullable
-              as ErrorResponse?,
-      dataProductCategory: null == dataProductCategory
-          ? _value.dataProductCategory
-          : dataProductCategory // ignore: cast_nullable_to_non_nullable
-              as List<ProductCategoryResponse>,
-      dataProductType: null == dataProductType
-          ? _value.dataProductType
-          : dataProductType // ignore: cast_nullable_to_non_nullable
-              as List<ProductTypeResponse>,
-      dataUom: null == dataUom
-          ? _value.dataUom
-          : dataUom // ignore: cast_nullable_to_non_nullable
-              as List<UomResponse>,
-      productPostRequest: null == productPostRequest
-          ? _value.productPostRequest
-          : productPostRequest // ignore: cast_nullable_to_non_nullable
-              as ProductPostRequest,
-      productList: freezed == productList
-          ? _value.productList
-          : productList // ignore: cast_nullable_to_non_nullable
-              as List<ProductList>?,
-      myStoreResponse: freezed == myStoreResponse
-          ? _value.myStoreResponse
-          : myStoreResponse // ignore: cast_nullable_to_non_nullable
-              as MyStoreResponse?,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $UIStatusCopyWith<$Res> get status {
-    return $UIStatusCopyWith<$Res>(_value.status, (value) {
-      return _then(_value.copyWith(status: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $CreateProductNotificationCopyWith<$Res>? get notification {
-    if (_value.notification == null) {
-      return null;
-    }
-
-    return $CreateProductNotificationCopyWith<$Res>(_value.notification!,
-        (value) {
-      return _then(_value.copyWith(notification: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ErrorResponseCopyWith<$Res>? get errorResponse {
-    if (_value.errorResponse == null) {
-      return null;
-    }
-
-    return $ErrorResponseCopyWith<$Res>(_value.errorResponse!, (value) {
-      return _then(_value.copyWith(errorResponse: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $ProductPostRequestCopyWith<$Res> get productPostRequest {
-    return $ProductPostRequestCopyWith<$Res>(_value.productPostRequest,
-        (value) {
-      return _then(_value.copyWith(productPostRequest: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $MyStoreResponseCopyWith<$Res>? get myStoreResponse {
-    if (_value.myStoreResponse == null) {
-      return null;
-    }
-
-    return $MyStoreResponseCopyWith<$Res>(_value.myStoreResponse!, (value) {
-      return _then(_value.copyWith(myStoreResponse: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$CreateProductStateImplCopyWith<$Res>
-    implements $CreateProductStateCopyWith<$Res> {
-  factory _$$CreateProductStateImplCopyWith(_$CreateProductStateImpl value,
-          $Res Function(_$CreateProductStateImpl) then) =
-      __$$CreateProductStateImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {UIStatus status,
-      CreateProductNotification? notification,
-      String? productCategoryId,
-      String? productTypeId,
-      bool isValid,
-      ErrorResponse? errorResponse,
-      List<ProductCategoryResponse> dataProductCategory,
-      List<ProductTypeResponse> dataProductType,
-      List<UomResponse> dataUom,
-      ProductPostRequest productPostRequest,
-      List<ProductList>? productList,
-      MyStoreResponse? myStoreResponse});
-
-  @override
-  $UIStatusCopyWith<$Res> get status;
-  @override
-  $CreateProductNotificationCopyWith<$Res>? get notification;
-  @override
-  $ErrorResponseCopyWith<$Res>? get errorResponse;
-  @override
-  $ProductPostRequestCopyWith<$Res> get productPostRequest;
-  @override
-  $MyStoreResponseCopyWith<$Res>? get myStoreResponse;
-}
-
-/// @nodoc
-class __$$CreateProductStateImplCopyWithImpl<$Res>
-    extends _$CreateProductStateCopyWithImpl<$Res, _$CreateProductStateImpl>
-    implements _$$CreateProductStateImplCopyWith<$Res> {
-  __$$CreateProductStateImplCopyWithImpl(_$CreateProductStateImpl _value,
-      $Res Function(_$CreateProductStateImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? status = null,
-    Object? notification = freezed,
-    Object? productCategoryId = freezed,
-    Object? productTypeId = freezed,
-    Object? isValid = null,
-    Object? errorResponse = freezed,
-    Object? dataProductCategory = null,
-    Object? dataProductType = null,
-    Object? dataUom = null,
-    Object? productPostRequest = null,
-    Object? productList = freezed,
-    Object? myStoreResponse = freezed,
-  }) {
-    return _then(_$CreateProductStateImpl(
-      status: null == status
-          ? _value.status
-          : status // ignore: cast_nullable_to_non_nullable
-              as UIStatus,
-      notification: freezed == notification
-          ? _value.notification
-          : notification // ignore: cast_nullable_to_non_nullable
-              as CreateProductNotification?,
-      productCategoryId: freezed == productCategoryId
-          ? _value.productCategoryId
-          : productCategoryId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      productTypeId: freezed == productTypeId
-          ? _value.productTypeId
-          : productTypeId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      isValid: null == isValid
-          ? _value.isValid
-          : isValid // ignore: cast_nullable_to_non_nullable
-              as bool,
-      errorResponse: freezed == errorResponse
-          ? _value.errorResponse
-          : errorResponse // ignore: cast_nullable_to_non_nullable
-              as ErrorResponse?,
-      dataProductCategory: null == dataProductCategory
-          ? _value._dataProductCategory
-          : dataProductCategory // ignore: cast_nullable_to_non_nullable
-              as List<ProductCategoryResponse>,
-      dataProductType: null == dataProductType
-          ? _value._dataProductType
-          : dataProductType // ignore: cast_nullable_to_non_nullable
-              as List<ProductTypeResponse>,
-      dataUom: null == dataUom
-          ? _value._dataUom
-          : dataUom // ignore: cast_nullable_to_non_nullable
-              as List<UomResponse>,
-      productPostRequest: null == productPostRequest
-          ? _value.productPostRequest
-          : productPostRequest // ignore: cast_nullable_to_non_nullable
-              as ProductPostRequest,
-      productList: freezed == productList
-          ? _value._productList
-          : productList // ignore: cast_nullable_to_non_nullable
-              as List<ProductList>?,
-      myStoreResponse: freezed == myStoreResponse
-          ? _value.myStoreResponse
-          : myStoreResponse // ignore: cast_nullable_to_non_nullable
-              as MyStoreResponse?,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$CreateProductStateImpl
-    with DiagnosticableTreeMixin
-    implements _CreateProductState {
-  const _$CreateProductStateImpl(
-      {this.status = const UIInitial(),
-      this.notification,
-      this.productCategoryId,
-      this.productTypeId,
-      this.isValid = false,
-      this.errorResponse,
-      final List<ProductCategoryResponse> dataProductCategory = const [],
-      final List<ProductTypeResponse> dataProductType = const [],
-      final List<UomResponse> dataUom = const [],
-      this.productPostRequest = const ProductPostRequest(),
-      final List<ProductList>? productList = const [],
-      this.myStoreResponse})
-      : _dataProductCategory = dataProductCategory,
-        _dataProductType = dataProductType,
-        _dataUom = dataUom,
-        _productList = productList;
-
-  @override
-  @JsonKey()
-  final UIStatus status;
-  @override
-  final CreateProductNotification? notification;
-  @override
-  final String? productCategoryId;
-  @override
-  final String? productTypeId;
-  @override
-  @JsonKey()
-  final bool isValid;
-  @override
-  final ErrorResponse? errorResponse;
-  final List<ProductCategoryResponse> _dataProductCategory;
-  @override
-  @JsonKey()
-  List<ProductCategoryResponse> get dataProductCategory {
-    if (_dataProductCategory is EqualUnmodifiableListView)
-      return _dataProductCategory;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_dataProductCategory);
-  }
-
-  final List<ProductTypeResponse> _dataProductType;
-  @override
-  @JsonKey()
-  List<ProductTypeResponse> get dataProductType {
-    if (_dataProductType is EqualUnmodifiableListView) return _dataProductType;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_dataProductType);
-  }
-
-  final List<UomResponse> _dataUom;
-  @override
-  @JsonKey()
-  List<UomResponse> get dataUom {
-    if (_dataUom is EqualUnmodifiableListView) return _dataUom;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_dataUom);
-  }
-
-  @override
-  @JsonKey()
-  final ProductPostRequest productPostRequest;
-  final List<ProductList>? _productList;
-  @override
-  @JsonKey()
-  List<ProductList>? get productList {
-    final value = _productList;
-    if (value == null) return null;
-    if (_productList is EqualUnmodifiableListView) return _productList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  @override
-  final MyStoreResponse? myStoreResponse;
-
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CreateProductState(status: $status, notification: $notification, productCategoryId: $productCategoryId, productTypeId: $productTypeId, isValid: $isValid, errorResponse: $errorResponse, dataProductCategory: $dataProductCategory, dataProductType: $dataProductType, dataUom: $dataUom, productPostRequest: $productPostRequest, productList: $productList, myStoreResponse: $myStoreResponse)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'CreateProductState'))
-      ..add(DiagnosticsProperty('status', status))
-      ..add(DiagnosticsProperty('notification', notification))
-      ..add(DiagnosticsProperty('productCategoryId', productCategoryId))
-      ..add(DiagnosticsProperty('productTypeId', productTypeId))
-      ..add(DiagnosticsProperty('isValid', isValid))
-      ..add(DiagnosticsProperty('errorResponse', errorResponse))
-      ..add(DiagnosticsProperty('dataProductCategory', dataProductCategory))
-      ..add(DiagnosticsProperty('dataProductType', dataProductType))
-      ..add(DiagnosticsProperty('dataUom', dataUom))
-      ..add(DiagnosticsProperty('productPostRequest', productPostRequest))
-      ..add(DiagnosticsProperty('productList', productList))
-      ..add(DiagnosticsProperty('myStoreResponse', myStoreResponse));
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$CreateProductStateImpl &&
-            (identical(other.status, status) || other.status == status) &&
-            (identical(other.notification, notification) ||
-                other.notification == notification) &&
-            (identical(other.productCategoryId, productCategoryId) ||
-                other.productCategoryId == productCategoryId) &&
-            (identical(other.productTypeId, productTypeId) ||
-                other.productTypeId == productTypeId) &&
-            (identical(other.isValid, isValid) || other.isValid == isValid) &&
-            (identical(other.errorResponse, errorResponse) ||
-                other.errorResponse == errorResponse) &&
-            const DeepCollectionEquality()
-                .equals(other._dataProductCategory, _dataProductCategory) &&
-            const DeepCollectionEquality()
-                .equals(other._dataProductType, _dataProductType) &&
-            const DeepCollectionEquality().equals(other._dataUom, _dataUom) &&
-            (identical(other.productPostRequest, productPostRequest) ||
-                other.productPostRequest == productPostRequest) &&
-            const DeepCollectionEquality()
-                .equals(other._productList, _productList) &&
-            (identical(other.myStoreResponse, myStoreResponse) ||
-                other.myStoreResponse == myStoreResponse));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      status,
-      notification,
-      productCategoryId,
-      productTypeId,
-      isValid,
-      errorResponse,
-      const DeepCollectionEquality().hash(_dataProductCategory),
-      const DeepCollectionEquality().hash(_dataProductType),
-      const DeepCollectionEquality().hash(_dataUom),
-      productPostRequest,
-      const DeepCollectionEquality().hash(_productList),
-      myStoreResponse);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$CreateProductStateImplCopyWith<_$CreateProductStateImpl> get copyWith =>
-      __$$CreateProductStateImplCopyWithImpl<_$CreateProductStateImpl>(
-          this, _$identity);
-}
-
-abstract class _CreateProductState implements CreateProductState {
-  const factory _CreateProductState(
-      {final UIStatus status,
-      final CreateProductNotification? notification,
-      final String? productCategoryId,
-      final String? productTypeId,
-      final bool isValid,
-      final ErrorResponse? errorResponse,
-      final List<ProductCategoryResponse> dataProductCategory,
-      final List<ProductTypeResponse> dataProductType,
-      final List<UomResponse> dataUom,
-      final ProductPostRequest productPostRequest,
-      final List<ProductList>? productList,
-      final MyStoreResponse? myStoreResponse}) = _$CreateProductStateImpl;
-
-  @override
-  UIStatus get status;
-  @override
-  CreateProductNotification? get notification;
-  @override
-  String? get productCategoryId;
-  @override
-  String? get productTypeId;
-  @override
-  bool get isValid;
-  @override
-  ErrorResponse? get errorResponse;
-  @override
-  List<ProductCategoryResponse> get dataProductCategory;
-  @override
-  List<ProductTypeResponse> get dataProductType;
-  @override
-  List<UomResponse> get dataUom;
-  @override
-  ProductPostRequest get productPostRequest;
-  @override
-  List<ProductList>? get productList;
-  @override
-  MyStoreResponse? get myStoreResponse;
-  @override
-  @JsonKey(ignore: true)
-  _$$CreateProductStateImplCopyWith<_$CreateProductStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
 mixin _$CreateProductNotification {
   String get message => throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -3719,4 +3221,528 @@ abstract class _NotifyCreateProductSuccess
   @JsonKey(ignore: true)
   _$$NotifyCreateProductSuccessImplCopyWith<_$NotifyCreateProductSuccessImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$CreateProductState {
+  UIStatus get status => throw _privateConstructorUsedError;
+  CreateProductNotification? get notification =>
+      throw _privateConstructorUsedError;
+  String? get productCategoryId => throw _privateConstructorUsedError;
+  String? get productTypeId => throw _privateConstructorUsedError;
+  bool get isValid => throw _privateConstructorUsedError;
+  ErrorResponse? get errorResponse => throw _privateConstructorUsedError;
+  List<ProductCategoryResponse>? get dataProductCategory =>
+      throw _privateConstructorUsedError;
+  List<ProductTypeResponse> get dataProductType =>
+      throw _privateConstructorUsedError;
+  List<String> get dataUom => throw _privateConstructorUsedError;
+  ProductPostRequest get productPostRequest =>
+      throw _privateConstructorUsedError;
+  List<ProductList>? get productList => throw _privateConstructorUsedError;
+  MyStoreResponse? get myStoreResponse => throw _privateConstructorUsedError;
+  bool get isEnabledAddItem => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $CreateProductStateCopyWith<CreateProductState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CreateProductStateCopyWith<$Res> {
+  factory $CreateProductStateCopyWith(
+          CreateProductState value, $Res Function(CreateProductState) then) =
+      _$CreateProductStateCopyWithImpl<$Res, CreateProductState>;
+  @useResult
+  $Res call(
+      {UIStatus status,
+      CreateProductNotification? notification,
+      String? productCategoryId,
+      String? productTypeId,
+      bool isValid,
+      ErrorResponse? errorResponse,
+      List<ProductCategoryResponse>? dataProductCategory,
+      List<ProductTypeResponse> dataProductType,
+      List<String> dataUom,
+      ProductPostRequest productPostRequest,
+      List<ProductList>? productList,
+      MyStoreResponse? myStoreResponse,
+      bool isEnabledAddItem});
+
+  $UIStatusCopyWith<$Res> get status;
+  $CreateProductNotificationCopyWith<$Res>? get notification;
+  $ErrorResponseCopyWith<$Res>? get errorResponse;
+  $ProductPostRequestCopyWith<$Res> get productPostRequest;
+  $MyStoreResponseCopyWith<$Res>? get myStoreResponse;
+}
+
+/// @nodoc
+class _$CreateProductStateCopyWithImpl<$Res, $Val extends CreateProductState>
+    implements $CreateProductStateCopyWith<$Res> {
+  _$CreateProductStateCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = null,
+    Object? notification = freezed,
+    Object? productCategoryId = freezed,
+    Object? productTypeId = freezed,
+    Object? isValid = null,
+    Object? errorResponse = freezed,
+    Object? dataProductCategory = freezed,
+    Object? dataProductType = null,
+    Object? dataUom = null,
+    Object? productPostRequest = null,
+    Object? productList = freezed,
+    Object? myStoreResponse = freezed,
+    Object? isEnabledAddItem = null,
+  }) {
+    return _then(_value.copyWith(
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as UIStatus,
+      notification: freezed == notification
+          ? _value.notification
+          : notification // ignore: cast_nullable_to_non_nullable
+              as CreateProductNotification?,
+      productCategoryId: freezed == productCategoryId
+          ? _value.productCategoryId
+          : productCategoryId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      productTypeId: freezed == productTypeId
+          ? _value.productTypeId
+          : productTypeId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isValid: null == isValid
+          ? _value.isValid
+          : isValid // ignore: cast_nullable_to_non_nullable
+              as bool,
+      errorResponse: freezed == errorResponse
+          ? _value.errorResponse
+          : errorResponse // ignore: cast_nullable_to_non_nullable
+              as ErrorResponse?,
+      dataProductCategory: freezed == dataProductCategory
+          ? _value.dataProductCategory
+          : dataProductCategory // ignore: cast_nullable_to_non_nullable
+              as List<ProductCategoryResponse>?,
+      dataProductType: null == dataProductType
+          ? _value.dataProductType
+          : dataProductType // ignore: cast_nullable_to_non_nullable
+              as List<ProductTypeResponse>,
+      dataUom: null == dataUom
+          ? _value.dataUom
+          : dataUom // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      productPostRequest: null == productPostRequest
+          ? _value.productPostRequest
+          : productPostRequest // ignore: cast_nullable_to_non_nullable
+              as ProductPostRequest,
+      productList: freezed == productList
+          ? _value.productList
+          : productList // ignore: cast_nullable_to_non_nullable
+              as List<ProductList>?,
+      myStoreResponse: freezed == myStoreResponse
+          ? _value.myStoreResponse
+          : myStoreResponse // ignore: cast_nullable_to_non_nullable
+              as MyStoreResponse?,
+      isEnabledAddItem: null == isEnabledAddItem
+          ? _value.isEnabledAddItem
+          : isEnabledAddItem // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UIStatusCopyWith<$Res> get status {
+    return $UIStatusCopyWith<$Res>(_value.status, (value) {
+      return _then(_value.copyWith(status: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $CreateProductNotificationCopyWith<$Res>? get notification {
+    if (_value.notification == null) {
+      return null;
+    }
+
+    return $CreateProductNotificationCopyWith<$Res>(_value.notification!,
+        (value) {
+      return _then(_value.copyWith(notification: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ErrorResponseCopyWith<$Res>? get errorResponse {
+    if (_value.errorResponse == null) {
+      return null;
+    }
+
+    return $ErrorResponseCopyWith<$Res>(_value.errorResponse!, (value) {
+      return _then(_value.copyWith(errorResponse: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ProductPostRequestCopyWith<$Res> get productPostRequest {
+    return $ProductPostRequestCopyWith<$Res>(_value.productPostRequest,
+        (value) {
+      return _then(_value.copyWith(productPostRequest: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MyStoreResponseCopyWith<$Res>? get myStoreResponse {
+    if (_value.myStoreResponse == null) {
+      return null;
+    }
+
+    return $MyStoreResponseCopyWith<$Res>(_value.myStoreResponse!, (value) {
+      return _then(_value.copyWith(myStoreResponse: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$CreateProductStateImplCopyWith<$Res>
+    implements $CreateProductStateCopyWith<$Res> {
+  factory _$$CreateProductStateImplCopyWith(_$CreateProductStateImpl value,
+          $Res Function(_$CreateProductStateImpl) then) =
+      __$$CreateProductStateImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {UIStatus status,
+      CreateProductNotification? notification,
+      String? productCategoryId,
+      String? productTypeId,
+      bool isValid,
+      ErrorResponse? errorResponse,
+      List<ProductCategoryResponse>? dataProductCategory,
+      List<ProductTypeResponse> dataProductType,
+      List<String> dataUom,
+      ProductPostRequest productPostRequest,
+      List<ProductList>? productList,
+      MyStoreResponse? myStoreResponse,
+      bool isEnabledAddItem});
+
+  @override
+  $UIStatusCopyWith<$Res> get status;
+  @override
+  $CreateProductNotificationCopyWith<$Res>? get notification;
+  @override
+  $ErrorResponseCopyWith<$Res>? get errorResponse;
+  @override
+  $ProductPostRequestCopyWith<$Res> get productPostRequest;
+  @override
+  $MyStoreResponseCopyWith<$Res>? get myStoreResponse;
+}
+
+/// @nodoc
+class __$$CreateProductStateImplCopyWithImpl<$Res>
+    extends _$CreateProductStateCopyWithImpl<$Res, _$CreateProductStateImpl>
+    implements _$$CreateProductStateImplCopyWith<$Res> {
+  __$$CreateProductStateImplCopyWithImpl(_$CreateProductStateImpl _value,
+      $Res Function(_$CreateProductStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? status = null,
+    Object? notification = freezed,
+    Object? productCategoryId = freezed,
+    Object? productTypeId = freezed,
+    Object? isValid = null,
+    Object? errorResponse = freezed,
+    Object? dataProductCategory = freezed,
+    Object? dataProductType = null,
+    Object? dataUom = null,
+    Object? productPostRequest = null,
+    Object? productList = freezed,
+    Object? myStoreResponse = freezed,
+    Object? isEnabledAddItem = null,
+  }) {
+    return _then(_$CreateProductStateImpl(
+      status: null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as UIStatus,
+      notification: freezed == notification
+          ? _value.notification
+          : notification // ignore: cast_nullable_to_non_nullable
+              as CreateProductNotification?,
+      productCategoryId: freezed == productCategoryId
+          ? _value.productCategoryId
+          : productCategoryId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      productTypeId: freezed == productTypeId
+          ? _value.productTypeId
+          : productTypeId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      isValid: null == isValid
+          ? _value.isValid
+          : isValid // ignore: cast_nullable_to_non_nullable
+              as bool,
+      errorResponse: freezed == errorResponse
+          ? _value.errorResponse
+          : errorResponse // ignore: cast_nullable_to_non_nullable
+              as ErrorResponse?,
+      dataProductCategory: freezed == dataProductCategory
+          ? _value._dataProductCategory
+          : dataProductCategory // ignore: cast_nullable_to_non_nullable
+              as List<ProductCategoryResponse>?,
+      dataProductType: null == dataProductType
+          ? _value._dataProductType
+          : dataProductType // ignore: cast_nullable_to_non_nullable
+              as List<ProductTypeResponse>,
+      dataUom: null == dataUom
+          ? _value._dataUom
+          : dataUom // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      productPostRequest: null == productPostRequest
+          ? _value.productPostRequest
+          : productPostRequest // ignore: cast_nullable_to_non_nullable
+              as ProductPostRequest,
+      productList: freezed == productList
+          ? _value._productList
+          : productList // ignore: cast_nullable_to_non_nullable
+              as List<ProductList>?,
+      myStoreResponse: freezed == myStoreResponse
+          ? _value.myStoreResponse
+          : myStoreResponse // ignore: cast_nullable_to_non_nullable
+              as MyStoreResponse?,
+      isEnabledAddItem: null == isEnabledAddItem
+          ? _value.isEnabledAddItem
+          : isEnabledAddItem // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CreateProductStateImpl
+    with DiagnosticableTreeMixin
+    implements _CreateProductState {
+  const _$CreateProductStateImpl(
+      {this.status = const UIInitial(),
+      this.notification,
+      this.productCategoryId,
+      this.productTypeId,
+      this.isValid = false,
+      this.errorResponse,
+      final List<ProductCategoryResponse>? dataProductCategory = const [],
+      final List<ProductTypeResponse> dataProductType = const [],
+      final List<String> dataUom = const [],
+      this.productPostRequest = const ProductPostRequest(),
+      final List<ProductList>? productList = const [],
+      this.myStoreResponse,
+      this.isEnabledAddItem = false})
+      : _dataProductCategory = dataProductCategory,
+        _dataProductType = dataProductType,
+        _dataUom = dataUom,
+        _productList = productList;
+
+  @override
+  @JsonKey()
+  final UIStatus status;
+  @override
+  final CreateProductNotification? notification;
+  @override
+  final String? productCategoryId;
+  @override
+  final String? productTypeId;
+  @override
+  @JsonKey()
+  final bool isValid;
+  @override
+  final ErrorResponse? errorResponse;
+  final List<ProductCategoryResponse>? _dataProductCategory;
+  @override
+  @JsonKey()
+  List<ProductCategoryResponse>? get dataProductCategory {
+    final value = _dataProductCategory;
+    if (value == null) return null;
+    if (_dataProductCategory is EqualUnmodifiableListView)
+      return _dataProductCategory;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<ProductTypeResponse> _dataProductType;
+  @override
+  @JsonKey()
+  List<ProductTypeResponse> get dataProductType {
+    if (_dataProductType is EqualUnmodifiableListView) return _dataProductType;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_dataProductType);
+  }
+
+  final List<String> _dataUom;
+  @override
+  @JsonKey()
+  List<String> get dataUom {
+    if (_dataUom is EqualUnmodifiableListView) return _dataUom;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_dataUom);
+  }
+
+  @override
+  @JsonKey()
+  final ProductPostRequest productPostRequest;
+  final List<ProductList>? _productList;
+  @override
+  @JsonKey()
+  List<ProductList>? get productList {
+    final value = _productList;
+    if (value == null) return null;
+    if (_productList is EqualUnmodifiableListView) return _productList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  final MyStoreResponse? myStoreResponse;
+  @override
+  @JsonKey()
+  final bool isEnabledAddItem;
+
+  @override
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+    return 'CreateProductState(status: $status, notification: $notification, productCategoryId: $productCategoryId, productTypeId: $productTypeId, isValid: $isValid, errorResponse: $errorResponse, dataProductCategory: $dataProductCategory, dataProductType: $dataProductType, dataUom: $dataUom, productPostRequest: $productPostRequest, productList: $productList, myStoreResponse: $myStoreResponse, isEnabledAddItem: $isEnabledAddItem)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'CreateProductState'))
+      ..add(DiagnosticsProperty('status', status))
+      ..add(DiagnosticsProperty('notification', notification))
+      ..add(DiagnosticsProperty('productCategoryId', productCategoryId))
+      ..add(DiagnosticsProperty('productTypeId', productTypeId))
+      ..add(DiagnosticsProperty('isValid', isValid))
+      ..add(DiagnosticsProperty('errorResponse', errorResponse))
+      ..add(DiagnosticsProperty('dataProductCategory', dataProductCategory))
+      ..add(DiagnosticsProperty('dataProductType', dataProductType))
+      ..add(DiagnosticsProperty('dataUom', dataUom))
+      ..add(DiagnosticsProperty('productPostRequest', productPostRequest))
+      ..add(DiagnosticsProperty('productList', productList))
+      ..add(DiagnosticsProperty('myStoreResponse', myStoreResponse))
+      ..add(DiagnosticsProperty('isEnabledAddItem', isEnabledAddItem));
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CreateProductStateImpl &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.notification, notification) ||
+                other.notification == notification) &&
+            (identical(other.productCategoryId, productCategoryId) ||
+                other.productCategoryId == productCategoryId) &&
+            (identical(other.productTypeId, productTypeId) ||
+                other.productTypeId == productTypeId) &&
+            (identical(other.isValid, isValid) || other.isValid == isValid) &&
+            (identical(other.errorResponse, errorResponse) ||
+                other.errorResponse == errorResponse) &&
+            const DeepCollectionEquality()
+                .equals(other._dataProductCategory, _dataProductCategory) &&
+            const DeepCollectionEquality()
+                .equals(other._dataProductType, _dataProductType) &&
+            const DeepCollectionEquality().equals(other._dataUom, _dataUom) &&
+            (identical(other.productPostRequest, productPostRequest) ||
+                other.productPostRequest == productPostRequest) &&
+            const DeepCollectionEquality()
+                .equals(other._productList, _productList) &&
+            (identical(other.myStoreResponse, myStoreResponse) ||
+                other.myStoreResponse == myStoreResponse) &&
+            (identical(other.isEnabledAddItem, isEnabledAddItem) ||
+                other.isEnabledAddItem == isEnabledAddItem));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      status,
+      notification,
+      productCategoryId,
+      productTypeId,
+      isValid,
+      errorResponse,
+      const DeepCollectionEquality().hash(_dataProductCategory),
+      const DeepCollectionEquality().hash(_dataProductType),
+      const DeepCollectionEquality().hash(_dataUom),
+      productPostRequest,
+      const DeepCollectionEquality().hash(_productList),
+      myStoreResponse,
+      isEnabledAddItem);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CreateProductStateImplCopyWith<_$CreateProductStateImpl> get copyWith =>
+      __$$CreateProductStateImplCopyWithImpl<_$CreateProductStateImpl>(
+          this, _$identity);
+}
+
+abstract class _CreateProductState implements CreateProductState {
+  const factory _CreateProductState(
+      {final UIStatus status,
+      final CreateProductNotification? notification,
+      final String? productCategoryId,
+      final String? productTypeId,
+      final bool isValid,
+      final ErrorResponse? errorResponse,
+      final List<ProductCategoryResponse>? dataProductCategory,
+      final List<ProductTypeResponse> dataProductType,
+      final List<String> dataUom,
+      final ProductPostRequest productPostRequest,
+      final List<ProductList>? productList,
+      final MyStoreResponse? myStoreResponse,
+      final bool isEnabledAddItem}) = _$CreateProductStateImpl;
+
+  @override
+  UIStatus get status;
+  @override
+  CreateProductNotification? get notification;
+  @override
+  String? get productCategoryId;
+  @override
+  String? get productTypeId;
+  @override
+  bool get isValid;
+  @override
+  ErrorResponse? get errorResponse;
+  @override
+  List<ProductCategoryResponse>? get dataProductCategory;
+  @override
+  List<ProductTypeResponse> get dataProductType;
+  @override
+  List<String> get dataUom;
+  @override
+  ProductPostRequest get productPostRequest;
+  @override
+  List<ProductList>? get productList;
+  @override
+  MyStoreResponse? get myStoreResponse;
+  @override
+  bool get isEnabledAddItem;
+  @override
+  @JsonKey(ignore: true)
+  _$$CreateProductStateImplCopyWith<_$CreateProductStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

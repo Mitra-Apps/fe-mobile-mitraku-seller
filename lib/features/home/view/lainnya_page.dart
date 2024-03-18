@@ -174,9 +174,9 @@ class LainnyaPage extends StatelessWidget {
     );
   }
 
-  void _onLogout(BuildContext context) async {
+  Future<void> _onLogout(BuildContext context) async {
+    context.read<AppBloc>().add(const AppEvent.enableFirstUse());
     final prefs = await SharedPreferences.getInstance();
     await prefs.clear();
-    context.read<AppBloc>().add(const AppEvent.enableFirstUse());
   }
 }

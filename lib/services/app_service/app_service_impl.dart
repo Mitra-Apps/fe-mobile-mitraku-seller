@@ -14,8 +14,16 @@ class AppServiceImpl implements AppService {
       _localStorageService.getBool(key: AppKeys.darkModeKey) ?? false;
 
   @override
-  bool get isFirstUse =>
-      _localStorageService.getBool(key: AppKeys.isFirstUseKey) ?? true;
+  bool get isFirstUse {
+    final token = _localStorageService.getString(
+      key: AppKeys.accessTokenKey,
+    );
+    if(token != null && token.isNotEmpty){
+      return false;
+    }else{
+      return true;
+    }
+  }
 
   @override
   String get locale =>
@@ -32,10 +40,7 @@ class AppServiceImpl implements AppService {
 
   @override
   Future<void> setIsFirstUse({required bool isFirstUse}) async {
-    return _localStorageService.setValue(
-      key: AppKeys.isFirstUseKey,
-      value: isFirstUse,
-    );
+    return _localStorageService.clearAll();
   }
 
   @override

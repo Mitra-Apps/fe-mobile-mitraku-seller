@@ -9,11 +9,12 @@ class CreateProductState with _$CreateProductState {
     String? productTypeId,
     @Default(false) bool isValid,
     ErrorResponse? errorResponse,
-    @Default([]) List<ProductCategoryResponse> dataProductCategory,
+    @Default([]) List<ProductCategoryResponse>? dataProductCategory,
     @Default([]) List<ProductTypeResponse> dataProductType,
-    @Default([]) List<UomResponse> dataUom,
+    @Default([]) List<String> dataUom,
     @Default(ProductPostRequest()) ProductPostRequest productPostRequest,
     @Default([]) List<ProductList>? productList,
     MyStoreResponse? myStoreResponse,
+    @Default(false) bool isEnabledAddItem,
   }) = _CreateProductState;
 }

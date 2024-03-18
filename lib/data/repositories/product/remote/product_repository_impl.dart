@@ -1,9 +1,7 @@
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'dart:math';
 
 import 'package:flutter/foundation.dart';
-import 'package:mitraku_seller/core/themes/app_themes.dart';
 import 'package:mitraku_seller/data/repositories/product/remote/product_repository.dart';
 import 'package:rest_client/rest_client.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -18,7 +16,7 @@ class ProductRepositoryImpl implements ProductRepository {
   late final ProductApiClient _productApiClient;
 
   @override
-  Future<BaseResponse<List<ProductCategoryResponse>>> getProductCategory() async {
+  Future<BaseResponse<DataProductCategoryResponse>> getProductCategory() async {
     final prefs = await SharedPreferences.getInstance();
     final accessToken = prefs.getString('access_token');
     final refreshToken = prefs.getString('refresh_token');

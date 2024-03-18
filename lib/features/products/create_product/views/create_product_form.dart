@@ -1,5 +1,6 @@
 // ignore_for_file: lines_longer_than_80_chars
 
+import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -171,7 +172,7 @@ class _CreateProductFormState extends State<CreateProductForm> {
         DropDownWidget(
           fieldTitle: 'Kategori Produk',
           fieldHint: 'Pilih Kategori',
-          labels: state.dataProductCategory
+          labels: state.dataProductCategory!
               .map(
                 (e) => Label(
                   value: e.id.toString(),
@@ -203,7 +204,7 @@ class _CreateProductFormState extends State<CreateProductForm> {
         ),
         AppSpacing.verticalSpacing20,
         const Divider(color: AppColors.disabledColor),
-        itemProductSection(context),
+        itemProductSection(context, state),
         AppSpacing.verticalSpacing20,
         ListView.builder(
           physics: const NeverScrollableScrollPhysics(),
@@ -225,14 +226,17 @@ class _CreateProductFormState extends State<CreateProductForm> {
           backgroundColor: AppColors.primaryColor,
           isEnabled: state.isValid,
           onTap: (context) {
-            context.read<CreateProductBloc>().add(const CreateProductEvent.productSubmitted());
+            context
+                .read<CreateProductBloc>()
+                .add(const CreateProductEvent.productSubmitted());
           },
         ),
       ],
     );
   }
 
-  Color isButtonColorValid(CreateProductState state) => state.isValid ? AppColors.primaryColor : AppColors.disabledColor;
+  Color isButtonColorValid(CreateProductState state) =>
+      state.isValid ? AppColors.primaryColor : AppColors.disabledColor;
 
   Widget itemProductWidget(
     BuildContext context,
@@ -260,16 +264,20 @@ class _CreateProductFormState extends State<CreateProductForm> {
                     child: FittedBox(
                       fit: BoxFit.fill,
                       child: Switch(
-                        value: productList?.saleStatus ?? true,
-                        onChanged: (value) => context.read<CreateProductBloc>().add(
-                              CreateProductEvent.onChangedSaleStatus(
-                                index: index,
-                                value: value,
-                              ),
-                            ),
-                        trackOutlineWidth: MaterialStateProperty.resolveWith((Set<MaterialState> states) {
-                          return 1;
-                        }),
+                        value: productList?.saleStatus ?? false,
+                        onChanged: (value) => state.isEnabledAddItem
+                            ? context.read<CreateProductBloc>().add(
+                                  CreateProductEvent.onChangedSaleStatus(
+                                    index: index,
+                                    value: value,
+                                  ),
+                                )
+                            : null,
+                        trackOutlineWidth: MaterialStateProperty.resolveWith(
+                          (Set<MaterialState> states) {
+                            return 1;
+                          },
+                        ),
                         activeTrackColor: AppColors.primaryColor,
                         activeColor: AppColors.mainWhiteColor,
                         inactiveTrackColor: AppColors.disabledLightColor,
@@ -309,6 +317,7 @@ class _CreateProductFormState extends State<CreateProductForm> {
               Row(
                 children: [
                   TextFieldFormWidget(
+                    isEnable: state.isEnabledAddItem,
                     onChanged: (value) => context.read<CreateProductBloc>().add(
                           CreateProductEvent.onChangedItemName(
                             index: index,
@@ -317,9 +326,11 @@ class _CreateProductFormState extends State<CreateProductForm> {
                         ),
                     title: 'Nama Item',
                     hint: 'Tuliskan nama item',
+                    keyboardType: TextInputType.text,
                   ),
                   AppSpacing.horizontalSpacing16,
                   TextFieldFormWidget(
+                    isEnable: state.isEnabledAddItem,
                     onChanged: (value) => context.read<CreateProductBloc>().add(
                           CreateProductEvent.onChangedItemPrice(
                             index: index,
@@ -328,6 +339,11 @@ class _CreateProductFormState extends State<CreateProductForm> {
                         ),
                     title: 'Harga Item',
                     hint: 'Cth: Rp.20.000',
+                    keyboardType: TextInputType.number,
+                    inputFormatters: [
+                      CurrencyTextInputFormatter(
+                          decimalDigits: 0, symbol: 'Rp.'),
+                    ],
                   ),
                 ],
               ),
@@ -335,6 +351,7 @@ class _CreateProductFormState extends State<CreateProductForm> {
               Row(
                 children: [
                   TextFieldFormWidget(
+                    isEnable: state.isEnabledAddItem,
                     onChanged: (value) => context.read<CreateProductBloc>().add(
                           CreateProductEvent.onChangedItemStock(
                             index: index,
@@ -343,27 +360,31 @@ class _CreateProductFormState extends State<CreateProductForm> {
                         ),
                     title: 'Stok Item',
                     hint: 'Cth: 5',
+                    keyboardType: TextInputType.number,
                   ),
                   AppSpacing.horizontalSpacing16,
                   Expanded(
                     child: DropDownWidget(
                       fieldTitle: 'Satuan Item',
-                      fieldHint: 'Kg',
-                      labels: state.dataUom
-                          .map(
-                            (e) => Label(
-                              value: e.id,
-                              label: e.name,
-                            ),
-                          )
-                          .toList(),
-                      onChanged: (value) => context.read<CreateProductBloc>().add(
-                            CreateProductEvent.onChangedUomId(
-                              index: index,
-                              value: value,
-                            ),
-                          ),
-                      selected: productList?.uomId,
+                      fieldHint: 'Silahkan Pilih',
+                      labels: state.isEnabledAddItem
+                          ? state.dataUom
+                              .map(
+                                (e) => Label(
+                                  value: e,
+                                  label: e,
+                                ),
+                              )
+                              .toList()
+                          : [],
+                      onChanged: (value) =>
+                          context.read<CreateProductBloc>().add(
+                                CreateProductEvent.onChangedUomId(
+                                  index: index,
+                                  value: value,
+                                ),
+                              ),
+                      selected: productList?.uom,
                     ),
                   ),
                 ],
@@ -375,7 +396,7 @@ class _CreateProductFormState extends State<CreateProductForm> {
     );
   }
 
-  Row itemProductSection(BuildContext context) {
+  Row itemProductSection(BuildContext context, CreateProductState state) {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -394,15 +415,13 @@ class _CreateProductFormState extends State<CreateProductForm> {
           icon: Icons.add,
           text: 'Tambah Item',
           backgroundColor: AppColors.successColor,
-          isEnabled: true,
+          isEnabled: state.isEnabledAddItem,
           onTap: (context) {
-            // setState(() {
-            //   labels.add(
-            //     Label(label: 'Coba 1', value: 'Coba 1'),
-            //   );
-            // });
-
-            context.read<CreateProductBloc>().add(const CreateProductEvent.addItemProduct(value: ProductList()));
+            context.read<CreateProductBloc>().add(
+                  const CreateProductEvent.addItemProduct(
+                    value: ProductList(),
+                  ),
+                );
           },
         ),
       ],

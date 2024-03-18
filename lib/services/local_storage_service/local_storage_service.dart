@@ -35,4 +35,6 @@ abstract class LocalStorageService {
   FutureOr<bool> removeEntry({
     required String key,
   });
+
+  Future<void> clearAll();
 }

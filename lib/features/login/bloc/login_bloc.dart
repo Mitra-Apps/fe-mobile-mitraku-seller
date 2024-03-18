@@ -1,13 +1,13 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mitraku_seller/core/bloc_core/ui_status.dart';
-import 'package:mitraku_seller/data/repositories/login/remote/login_repository.dart';
+import 'package:mitraku_seller/data/repositories/auth/remote/auth_repository.dart';
 import 'package:mitraku_seller/services/log_service/log_service.dart';
 import 'package:rest_client/rest_client.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'login_bloc.freezed.dart';
 
@@ -19,18 +19,18 @@ part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc(
-      {required LoginRepository loginRepository,
+      {required AuthRepository authRepository,
         required LogService logService,})
       : super(
     const LoginState(),
   ) {
-    _repository = loginRepository;
+    _repository = authRepository;
     _log = logService;
     on<_Loaded>(_onLoaded);
     on<_LoginRequested>(_onLogin);
   }
 
-  late final LoginRepository _repository;
+  late final AuthRepository _repository;
   late final LogService _log;
 
   FutureOr<void> _onLoaded(_Loaded event, Emitter<LoginState> emit) {
@@ -63,6 +63,14 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
       final LoginResponse loginResponse =
       await _repository.login(event.loginPost);
+
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString('access_token',
+        loginResponse.data.accessToken,);
+      await prefs.setString('refresh_token',
+        loginResponse.data.refreshToken,);
+      await prefs.setString('email', event.loginPost.email);
+      await prefs.setString('password', event.loginPost.password);
 
       emit(
         state.copyWith(

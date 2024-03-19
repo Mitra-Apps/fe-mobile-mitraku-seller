@@ -3242,6 +3242,7 @@ mixin _$CreateProductState {
   List<ProductList>? get productList => throw _privateConstructorUsedError;
   MyStoreResponse? get myStoreResponse => throw _privateConstructorUsedError;
   bool get isEnabledAddItem => throw _privateConstructorUsedError;
+  bool get isBusy => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CreateProductStateCopyWith<CreateProductState> get copyWith =>
@@ -3267,7 +3268,8 @@ abstract class $CreateProductStateCopyWith<$Res> {
       ProductPostRequest productPostRequest,
       List<ProductList>? productList,
       MyStoreResponse? myStoreResponse,
-      bool isEnabledAddItem});
+      bool isEnabledAddItem,
+      bool isBusy});
 
   $UIStatusCopyWith<$Res> get status;
   $CreateProductNotificationCopyWith<$Res>? get notification;
@@ -3302,6 +3304,7 @@ class _$CreateProductStateCopyWithImpl<$Res, $Val extends CreateProductState>
     Object? productList = freezed,
     Object? myStoreResponse = freezed,
     Object? isEnabledAddItem = null,
+    Object? isBusy = null,
   }) {
     return _then(_value.copyWith(
       status: null == status
@@ -3355,6 +3358,10 @@ class _$CreateProductStateCopyWithImpl<$Res, $Val extends CreateProductState>
       isEnabledAddItem: null == isEnabledAddItem
           ? _value.isEnabledAddItem
           : isEnabledAddItem // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isBusy: null == isBusy
+          ? _value.isBusy
+          : isBusy // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -3435,7 +3442,8 @@ abstract class _$$CreateProductStateImplCopyWith<$Res>
       ProductPostRequest productPostRequest,
       List<ProductList>? productList,
       MyStoreResponse? myStoreResponse,
-      bool isEnabledAddItem});
+      bool isEnabledAddItem,
+      bool isBusy});
 
   @override
   $UIStatusCopyWith<$Res> get status;
@@ -3473,6 +3481,7 @@ class __$$CreateProductStateImplCopyWithImpl<$Res>
     Object? productList = freezed,
     Object? myStoreResponse = freezed,
     Object? isEnabledAddItem = null,
+    Object? isBusy = null,
   }) {
     return _then(_$CreateProductStateImpl(
       status: null == status
@@ -3527,6 +3536,10 @@ class __$$CreateProductStateImplCopyWithImpl<$Res>
           ? _value.isEnabledAddItem
           : isEnabledAddItem // ignore: cast_nullable_to_non_nullable
               as bool,
+      isBusy: null == isBusy
+          ? _value.isBusy
+          : isBusy // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -3549,7 +3562,8 @@ class _$CreateProductStateImpl
       this.productPostRequest = const ProductPostRequest(),
       final List<ProductList>? productList = const [],
       this.myStoreResponse,
-      this.isEnabledAddItem = false})
+      this.isEnabledAddItem = false,
+      this.isBusy = false})
       : _dataProductCategory = dataProductCategory,
         _dataProductType = dataProductType,
         _dataUom = dataUom,
@@ -3618,10 +3632,13 @@ class _$CreateProductStateImpl
   @override
   @JsonKey()
   final bool isEnabledAddItem;
+  @override
+  @JsonKey()
+  final bool isBusy;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CreateProductState(status: $status, notification: $notification, productCategoryId: $productCategoryId, productTypeId: $productTypeId, isValid: $isValid, errorResponse: $errorResponse, dataProductCategory: $dataProductCategory, dataProductType: $dataProductType, dataUom: $dataUom, productPostRequest: $productPostRequest, productList: $productList, myStoreResponse: $myStoreResponse, isEnabledAddItem: $isEnabledAddItem)';
+    return 'CreateProductState(status: $status, notification: $notification, productCategoryId: $productCategoryId, productTypeId: $productTypeId, isValid: $isValid, errorResponse: $errorResponse, dataProductCategory: $dataProductCategory, dataProductType: $dataProductType, dataUom: $dataUom, productPostRequest: $productPostRequest, productList: $productList, myStoreResponse: $myStoreResponse, isEnabledAddItem: $isEnabledAddItem, isBusy: $isBusy)';
   }
 
   @override
@@ -3641,7 +3658,8 @@ class _$CreateProductStateImpl
       ..add(DiagnosticsProperty('productPostRequest', productPostRequest))
       ..add(DiagnosticsProperty('productList', productList))
       ..add(DiagnosticsProperty('myStoreResponse', myStoreResponse))
-      ..add(DiagnosticsProperty('isEnabledAddItem', isEnabledAddItem));
+      ..add(DiagnosticsProperty('isEnabledAddItem', isEnabledAddItem))
+      ..add(DiagnosticsProperty('isBusy', isBusy));
   }
 
   @override
@@ -3671,7 +3689,8 @@ class _$CreateProductStateImpl
             (identical(other.myStoreResponse, myStoreResponse) ||
                 other.myStoreResponse == myStoreResponse) &&
             (identical(other.isEnabledAddItem, isEnabledAddItem) ||
-                other.isEnabledAddItem == isEnabledAddItem));
+                other.isEnabledAddItem == isEnabledAddItem) &&
+            (identical(other.isBusy, isBusy) || other.isBusy == isBusy));
   }
 
   @override
@@ -3689,7 +3708,8 @@ class _$CreateProductStateImpl
       productPostRequest,
       const DeepCollectionEquality().hash(_productList),
       myStoreResponse,
-      isEnabledAddItem);
+      isEnabledAddItem,
+      isBusy);
 
   @JsonKey(ignore: true)
   @override
@@ -3713,7 +3733,8 @@ abstract class _CreateProductState implements CreateProductState {
       final ProductPostRequest productPostRequest,
       final List<ProductList>? productList,
       final MyStoreResponse? myStoreResponse,
-      final bool isEnabledAddItem}) = _$CreateProductStateImpl;
+      final bool isEnabledAddItem,
+      final bool isBusy}) = _$CreateProductStateImpl;
 
   @override
   UIStatus get status;
@@ -3741,6 +3762,8 @@ abstract class _CreateProductState implements CreateProductState {
   MyStoreResponse? get myStoreResponse;
   @override
   bool get isEnabledAddItem;
+  @override
+  bool get isBusy;
   @override
   @JsonKey(ignore: true)
   _$$CreateProductStateImplCopyWith<_$CreateProductStateImpl> get copyWith =>

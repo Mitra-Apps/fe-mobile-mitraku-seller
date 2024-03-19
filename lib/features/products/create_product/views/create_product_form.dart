@@ -128,6 +128,8 @@ class _CreateProductFormState extends State<CreateProductForm> {
           },
         );
       },
+      buildWhen: (prev, next) =>
+          prev.status != next.status || prev.isBusy != next.isBusy,
       builder: (context, state) {
         return Stack(
           alignment: Alignment.center,

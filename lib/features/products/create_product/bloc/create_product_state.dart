@@ -16,5 +16,6 @@ class CreateProductState with _$CreateProductState {
     @Default([]) List<ProductList>? productList,
     MyStoreResponse? myStoreResponse,
     @Default(false) bool isEnabledAddItem,
+    @Default(false) bool isBusy,
   }) = _CreateProductState;
 }

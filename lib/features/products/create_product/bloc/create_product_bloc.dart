@@ -13,8 +13,11 @@ import 'package:mitraku_seller/services/log_service/log_service.dart';
 import 'package:rest_client/rest_client.dart';
 
 part 'create_product_bloc.freezed.dart';
+
 part 'create_product_event.dart';
+
 part 'create_product_notification.dart';
+
 part 'create_product_state.dart';
 
 class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
@@ -52,6 +55,12 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
   ) async {
     emit(
       state.copyWith(
+        isBusy: true,
+      ),
+    );
+    emit(
+      state.copyWith(
+        isBusy: false,
         productCategoryId: event.value,
         productTypeId: null,
         isEnabledAddItem: isEnabledAddItem(
@@ -71,6 +80,13 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
   ) async {
     emit(
       state.copyWith(
+        isBusy: true,
+      ),
+    );
+    emit(
+      state.copyWith(
+        isBusy: false,
+        status: const UILoadSuccess(),
         productTypeId: event.value,
         isEnabledAddItem: isEnabledAddItem(
           state.productCategoryId,
@@ -85,10 +101,16 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
     String value,
   ) async {
     try {
+      emit(
+        state.copyWith(
+          isBusy: true,
+        ),
+      );
       final BaseResponse<List<ProductTypeResponse>> response =
           await _repository.getProductType(value);
       emit(
         state.copyWith(
+          isBusy: false,
           status: const UILoadSuccess(),
           dataProductType: response.data,
         ),
@@ -154,10 +176,17 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
     _AddItemProduct event,
     Emitter<CreateProductState> emit,
   ) {
+    emit(
+      state.copyWith(
+        isBusy: true,
+      ),
+    );
+
     final data = state.productPostRequest.productList?.toList();
     data?.add(event.value);
     emit(
       state.copyWith(
+        isBusy: false,
         productPostRequest: state.productPostRequest.copyWith(
           productList: data,
         ),
@@ -169,10 +198,17 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
     _DeleteItemProduct event,
     Emitter<CreateProductState> emit,
   ) {
+    emit(
+      state.copyWith(
+        isBusy: true,
+      ),
+    );
+
     final data = state.productPostRequest.productList?.toList();
     if (data?.remove(event.productList) ?? true) {
       emit(
         state.copyWith(
+          isBusy: false,
           productPostRequest: state.productPostRequest.copyWith(
             productList: data,
           ),
@@ -185,13 +221,22 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
     _OnChangedItemName event,
     Emitter<CreateProductState> emit,
   ) {
+    emit(
+      state.copyWith(
+        isBusy: true,
+      ),
+    );
+
     final data = state.productPostRequest.productList?.toList();
     final productList = data?[event.index];
     if (productList != null) {
       data?[event.index] = productList.copyWith(
-          name: event.value, productTypeId: state.productTypeId);
+        name: event.value?.trim(),
+        productTypeId: state.productTypeId,
+      );
       emit(
         state.copyWith(
+          isBusy: false,
           productPostRequest: state.productPostRequest.copyWith(
             productList: data,
           ),
@@ -206,14 +251,21 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
     _OnChangedItemPrice event,
     Emitter<CreateProductState> emit,
   ) {
+    emit(
+      state.copyWith(
+        isBusy: true,
+      ),
+    );
+
     final data = state.productPostRequest.productList?.toList();
     final productList = data?[event.index];
     if (productList != null) {
-      final splitValue = event.value?.split('Rp.');
+      final splitValue = event.value?.trim().split('Rp.');
       final value = splitValue?[1].replaceAll(',', '');
-      data?[event.index] = productList.copyWith(price: int.parse(value!));
+      data?[event.index] = productList.copyWith(price: int.parse(value!.trim()));
       emit(
         state.copyWith(
+          isBusy: false,
           productPostRequest: state.productPostRequest.copyWith(
             productList: data,
           ),
@@ -227,12 +279,19 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
     _OnChangedItemStock event,
     Emitter<CreateProductState> emit,
   ) {
+    emit(
+      state.copyWith(
+        isBusy: true,
+      ),
+    );
+
     final data = state.productPostRequest.productList?.toList();
     final productList = data?[event.index];
     if (productList != null) {
-      data?[event.index] = productList.copyWith(stock: event.value);
+      data?[event.index] = productList.copyWith(stock: event.value?.trim());
       emit(
         state.copyWith(
+          isBusy: false,
           productPostRequest:
               state.productPostRequest.copyWith(productList: data),
           isValid: isValidToSave(data),
@@ -245,12 +304,19 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
     _OnChangedUomId event,
     Emitter<CreateProductState> emit,
   ) {
+    emit(
+      state.copyWith(
+        isBusy: true,
+      ),
+    );
+
     final data = state.productPostRequest.productList?.toList();
     final productList = data?[event.index];
     if (productList != null) {
-      data?[event.index] = productList.copyWith(uom: event.value);
+      data?[event.index] = productList.copyWith(uom: event.value?.trim());
       emit(
         state.copyWith(
+          isBusy: false,
           productPostRequest:
               state.productPostRequest.copyWith(productList: data),
           isValid: isValidToSave(data),
@@ -263,12 +329,19 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
     _OnChangedSaleStatus event,
     Emitter<CreateProductState> emit,
   ) {
+    emit(
+      state.copyWith(
+        isBusy: true,
+      ),
+    );
+
     final data = state.productPostRequest.productList?.toList();
     final productList = data?[event.index];
     if (productList != null) {
       data?[event.index] = productList.copyWith(saleStatus: event.value);
       emit(
         state.copyWith(
+          isBusy: false,
           productPostRequest:
               state.productPostRequest.copyWith(productList: data),
           isValid: isValidToSave(data),
@@ -298,7 +371,12 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
   Future<void> getProductCategory(
     Emitter<CreateProductState> emit,
   ) async {
-    emit(state.copyWith(status: const UILoading()));
+    emit(
+      state.copyWith(
+        isBusy: true,
+        status: const UILoading(),
+      ),
+    );
     try {
       final BaseResponse<DataProductCategoryResponse> response =
           await _repository.getProductCategory();
@@ -358,6 +436,7 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
           await _repositoryStore.getMyStore();
       emit(
         state.copyWith(
+          isBusy: false,
           status: const UILoadSuccess(),
           myStoreResponse: response.data,
         ),
@@ -384,15 +463,21 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
     Emitter<CreateProductState> emit,
   ) async {
     try {
+      emit(
+        state.copyWith(
+          isBusy: true,
+        ),
+      );
+
       final data = state.productPostRequest.copyWith(
         storeId: state.myStoreResponse?.id,
       );
-      if(checkSimilarName(state.productPostRequest.productList)){
+      if (checkSimilarName(state.productPostRequest.productList)) {
         final BaseResponse response = await _repository.createProduct(data);
         if (response.code == 0) {
           emit(
             state.copyWith(
-              status: const UILoadSuccess(),
+              isBusy: false,
               notification: _NotifyCreateProductSuccess(
                 message: 'Membuat Produk Berhasil',
               ),
@@ -401,37 +486,36 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
         } else {
           emit(
             state.copyWith(
-              status: const UILoadSuccess(),
+              isBusy: false,
               notification: _NotificationNotifyFailed(
                 message: response.message,
               ),
             ),
           );
         }
-      }else{
+      } else {
         emit(
           state.copyWith(
             status: const UILoadSuccess(),
             notification: _NotificationNotifyFailed(
               message: 'Nama Item tidak boleh sama',
             ),
+            isBusy: false,
           ),
         );
       }
     } on DioException catch (e, s) {
-      if (e.response != null) {
-        _log.e(e.message.toString(), e, s);
-        final errorResponse = ErrorResponse.fromJson(e.response?.data);
-        emit(
-          state.copyWith(
-            notification: _NotificationNotifyFailed(
-              message: errorResponse.message,
-            ),
-            status: UILoadFailed(message: errorResponse.message),
-            errorResponse: errorResponse,
+      final errorResponse = ErrorResponse.fromJson(e.response?.data);
+      debugPrint(errorResponse.message);
+      _log.e(errorResponse.message, e, s);
+      emit(
+        state.copyWith(
+          isBusy: false,
+          notification: _NotificationNotifyFailed(
+            message: errorResponse.message,
           ),
-        );
-      }
+        ),
+      );
     }
   }
 
@@ -439,21 +523,21 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
     var isValid = true;
     final List<String?> temptName = [];
     productList?.forEach((item) {
-      if(containsSimilarName(temptName, item.name)){
+      if (containsSimilarName(temptName, item.name)) {
         isValid = false;
-      }else{
+      } else {
         temptName.add(item.name);
       }
     });
     return isValid;
   }
 
-  bool containsSimilarName(List<String?> data, String? itemName){
-    for(final String? itemTempt in data){
+  bool containsSimilarName(List<String?> data, String? itemName) {
+    for (final String? itemTempt in data) {
       final name = itemName?.trim().toLowerCase();
       final nameTempt = itemTempt?.trim().toLowerCase();
 
-      if(name == nameTempt){
+      if (name == nameTempt) {
         return true;
       }
     }

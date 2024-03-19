@@ -12,10 +12,14 @@ class TextFieldFormWidget extends StatelessWidget {
     this.keyboardType,
     this.inputFormatters,
     this.isEnable = true,
+    this.isError = false,
+    this.errorText = '',
     super.key,
   });
 
-  final bool? isEnable;
+  final String errorText;
+  final bool isError;
+  final bool isEnable;
   final String title;
   final String hint;
   final ValueChanged<String?> onChanged;
@@ -70,6 +74,17 @@ class TextFieldFormWidget extends StatelessWidget {
                   borderSide: BorderSide.none,
                   borderRadius: BorderRadius.circular(4),
                 ),
+              ),
+            ),
+          ),
+          SizedBox(
+            width: double.infinity,
+            child: Text(
+              isError ? errorText : '',
+              style: const TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.normal,
+                color: AppColors.dangerColor,
               ),
             ),
           ),

@@ -2,6 +2,7 @@
 
 import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -342,12 +343,15 @@ class _CreateProductFormState extends State<CreateProductForm> {
                     keyboardType: TextInputType.number,
                     inputFormatters: [
                       CurrencyTextInputFormatter(
-                          decimalDigits: 0, symbol: 'Rp.'),
+                        decimalDigits: 0,
+                        symbol: 'Rp.',
+                        enableNegative: false,
+                      ),
                     ],
                   ),
                 ],
               ),
-              AppSpacing.verticalSpacing20,
+              AppSpacing.verticalSpacing12,
               Row(
                 children: [
                   TextFieldFormWidget(
@@ -361,6 +365,9 @@ class _CreateProductFormState extends State<CreateProductForm> {
                     title: 'Stok Item',
                     hint: 'Cth: 5',
                     keyboardType: TextInputType.number,
+                    inputFormatters: [
+                      FilteringTextInputFormatter.allow(RegExp('[0-9]')),
+                    ],
                   ),
                   AppSpacing.horizontalSpacing16,
                   Expanded(

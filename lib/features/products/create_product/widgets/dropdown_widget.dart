@@ -11,9 +11,13 @@ class DropDownWidget extends StatelessWidget {
     required this.labels,
     required this.onChanged,
     this.selected,
+    this.isError = false,
+    this.errorText = '',
     super.key,
   });
 
+  final String errorText;
+  final bool isError;
   final String fieldTitle;
   final String fieldHint;
   final List<Label> labels;
@@ -62,6 +66,17 @@ class DropDownWidget extends StatelessWidget {
             underline: const SizedBox(),
             hint: Text(fieldHint),
             items: buildItemList(context),
+          ),
+        ),
+        SizedBox(
+          width: double.infinity,
+          child: Text(
+            isError ? errorText : '',
+            style: const TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.normal,
+              color: AppColors.dangerColor,
+            ),
           ),
         ),
       ],

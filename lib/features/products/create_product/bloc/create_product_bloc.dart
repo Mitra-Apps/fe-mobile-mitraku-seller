@@ -358,9 +358,6 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
           await _repositoryStore.getMyStore();
       emit(
         state.copyWith(
-          notification: _NotificationNotifySuccess(
-            message: response.message,
-          ),
           status: const UILoadSuccess(),
           myStoreResponse: response.data,
         ),
@@ -390,22 +387,33 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
       final data = state.productPostRequest.copyWith(
         storeId: state.myStoreResponse?.id,
       );
-      final BaseResponse response = await _repository.createProduct(data);
-      if (response.code == 0) {
-        emit(
-          state.copyWith(
-            status: const UILoadSuccess(),
-            notification: _NotifyCreateProductSuccess(
-              message: 'Membuat Produk Berhasil',
+      if(checkSimilarName(state.productPostRequest.productList)){
+        final BaseResponse response = await _repository.createProduct(data);
+        if (response.code == 0) {
+          emit(
+            state.copyWith(
+              status: const UILoadSuccess(),
+              notification: _NotifyCreateProductSuccess(
+                message: 'Membuat Produk Berhasil',
+              ),
             ),
-          ),
-        );
-      } else {
+          );
+        } else {
+          emit(
+            state.copyWith(
+              status: const UILoadSuccess(),
+              notification: _NotificationNotifyFailed(
+                message: response.message,
+              ),
+            ),
+          );
+        }
+      }else{
         emit(
           state.copyWith(
             status: const UILoadSuccess(),
             notification: _NotificationNotifyFailed(
-              message: response.message,
+              message: 'Nama Item tidak boleh sama',
             ),
           ),
         );
@@ -425,5 +433,31 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
         );
       }
     }
+  }
+
+  bool checkSimilarName(List<ProductList>? productList) {
+    var isValid = true;
+    final List<String?> temptName = [];
+    productList?.forEach((item) {
+      if(containsSimilarName(temptName, item.name)){
+        isValid = false;
+      }else{
+        temptName.add(item.name);
+      }
+    });
+    return isValid;
+  }
+
+  bool containsSimilarName(List<String?> data, String? itemName){
+    for(final String? itemTempt in data){
+      final name = itemName?.trim().toLowerCase();
+      final nameTempt = itemTempt?.trim().toLowerCase();
+
+      if(name == nameTempt){
+        return true;
+      }
+    }
+
+    return false;
   }
 }

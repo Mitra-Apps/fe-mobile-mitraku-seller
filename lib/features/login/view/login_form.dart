@@ -157,12 +157,6 @@ class _LoginFormState extends State<LoginForm> {
             }
 
             if (state.loginSuccess == 'SUCCESSLOGIN') {
-              final prefs = await SharedPreferences.getInstance();
-              await prefs.setString('access_token',
-                  state.loginResponse.data.accessToken,);
-              await prefs.setString('refresh_token',
-                  state.loginResponse.data.refreshToken,);
-
               await context.push(AppRouter.homePath);
             }
           },

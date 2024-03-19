@@ -12,10 +12,10 @@ import 'package:mitraku_seller/data/repositories/store/remote/store_repository.d
 import 'package:mitraku_seller/services/log_service/log_service.dart';
 import 'package:rest_client/rest_client.dart';
 
-part 'create_product_event.dart';
-part 'create_product_state.dart';
 part 'create_product_bloc.freezed.dart';
+part 'create_product_event.dart';
 part 'create_product_notification.dart';
+part 'create_product_state.dart';
 
 class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
   CreateProductBloc({
@@ -46,18 +46,37 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
   late final StoreRepository _repositoryStore;
   late final LogService _log;
 
-  FutureOr<void> _onChangedProductCategory(_OnChangedProductCategory event, Emitter<CreateProductState> emit) async {
+  FutureOr<void> _onChangedProductCategory(
+    _OnChangedProductCategory event,
+    Emitter<CreateProductState> emit,
+  ) async {
     emit(
-      state.copyWith(productCategoryId: event.value),
+      state.copyWith(
+        productCategoryId: event.value,
+        productTypeId: null,
+        isEnabledAddItem: isEnabledAddItem(
+          event.value,
+          null,
+        ),
+      ),
     );
     if (event.value?.isNotEmpty ?? true) {
       await getProductType(emit, event.value!);
     }
   }
 
-  FutureOr<void> _onChangedProductType(_OnChangedProductType event, Emitter<CreateProductState> emit) async {
+  FutureOr<void> _onChangedProductType(
+    _OnChangedProductType event,
+    Emitter<CreateProductState> emit,
+  ) async {
     emit(
-      state.copyWith(productTypeId: event.value),
+      state.copyWith(
+        productTypeId: event.value,
+        isEnabledAddItem: isEnabledAddItem(
+          state.productCategoryId,
+          event.value,
+        ),
+      ),
     );
   }
 
@@ -66,12 +85,10 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
     String value,
   ) async {
     try {
-      final BaseResponse<List<ProductTypeResponse>> response = await _repository.getProductType(value);
+      final BaseResponse<List<ProductTypeResponse>> response =
+          await _repository.getProductType(value);
       emit(
         state.copyWith(
-          notification: _NotificationNotifySuccess(
-            message: response.message,
-          ),
           status: const UILoadSuccess(),
           dataProductType: response.data,
         ),
@@ -112,7 +129,7 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
         isValid = false;
       }
 
-      if (item.uomId?.isEmpty ?? true) {
+      if (item.uom?.isEmpty ?? true) {
         isValid = false;
       }
 
@@ -123,13 +140,29 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
     return isValid;
   }
 
+  bool isEnabledAddItem(String? productCategoryId, String? productTypeId) {
+    if (productCategoryId?.isEmpty ?? true) {
+      return false;
+    }
+    if (productTypeId?.isEmpty ?? true) {
+      return false;
+    }
+    return true;
+  }
+
   FutureOr<void> _addItemProduct(
     _AddItemProduct event,
     Emitter<CreateProductState> emit,
   ) {
     final data = state.productPostRequest.productList?.toList();
     data?.add(event.value);
-    emit(state.copyWith(productPostRequest: state.productPostRequest.copyWith(productList: data)));
+    emit(
+      state.copyWith(
+        productPostRequest: state.productPostRequest.copyWith(
+          productList: data,
+        ),
+      ),
+    );
   }
 
   FutureOr<void> _deleteItemProduct(
@@ -138,7 +171,13 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
   ) {
     final data = state.productPostRequest.productList?.toList();
     if (data?.remove(event.productList) ?? true) {
-      emit(state.copyWith(productPostRequest: state.productPostRequest.copyWith(productList: data)));
+      emit(
+        state.copyWith(
+          productPostRequest: state.productPostRequest.copyWith(
+            productList: data,
+          ),
+        ),
+      );
     }
   }
 
@@ -149,11 +188,15 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
     final data = state.productPostRequest.productList?.toList();
     final productList = data?[event.index];
     if (productList != null) {
-      data?[event.index] = productList.copyWith(name: event.value, productTypeId: state.productTypeId);
+      data?[event.index] = productList.copyWith(
+          name: event.value, productTypeId: state.productTypeId);
       emit(
         state.copyWith(
-          productPostRequest: state.productPostRequest.copyWith(productList: data),
+          productPostRequest: state.productPostRequest.copyWith(
+            productList: data,
+          ),
           isValid: isValidToSave(data),
+          isEnabledAddItem: true,
         ),
       );
     }
@@ -166,10 +209,14 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
     final data = state.productPostRequest.productList?.toList();
     final productList = data?[event.index];
     if (productList != null) {
-      data?[event.index] = productList.copyWith(price: int.parse(event.value!));
+      final splitValue = event.value?.split('Rp.');
+      final value = splitValue?[1].replaceAll(',', '');
+      data?[event.index] = productList.copyWith(price: int.parse(value!));
       emit(
         state.copyWith(
-          productPostRequest: state.productPostRequest.copyWith(productList: data),
+          productPostRequest: state.productPostRequest.copyWith(
+            productList: data,
+          ),
           isValid: isValidToSave(data),
         ),
       );
@@ -186,7 +233,8 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
       data?[event.index] = productList.copyWith(stock: event.value);
       emit(
         state.copyWith(
-          productPostRequest: state.productPostRequest.copyWith(productList: data),
+          productPostRequest:
+              state.productPostRequest.copyWith(productList: data),
           isValid: isValidToSave(data),
         ),
       );
@@ -200,10 +248,11 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
     final data = state.productPostRequest.productList?.toList();
     final productList = data?[event.index];
     if (productList != null) {
-      data?[event.index] = productList.copyWith(uomId: event.value);
+      data?[event.index] = productList.copyWith(uom: event.value);
       emit(
         state.copyWith(
-          productPostRequest: state.productPostRequest.copyWith(productList: data),
+          productPostRequest:
+              state.productPostRequest.copyWith(productList: data),
           isValid: isValidToSave(data),
         ),
       );
@@ -220,7 +269,8 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
       data?[event.index] = productList.copyWith(saleStatus: event.value);
       emit(
         state.copyWith(
-          productPostRequest: state.productPostRequest.copyWith(productList: data),
+          productPostRequest:
+              state.productPostRequest.copyWith(productList: data),
           isValid: isValidToSave(data),
         ),
       );
@@ -233,7 +283,13 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
   ) async {
     if (state.productPostRequest.productList?.isEmpty ?? true) {
       final List<ProductList> data = [const ProductList()];
-      emit(state.copyWith(productPostRequest: state.productPostRequest.copyWith(productList: data)));
+      emit(
+        state.copyWith(
+          productPostRequest: state.productPostRequest.copyWith(
+            productList: data,
+          ),
+        ),
+      );
     }
 
     await getProductCategory(emit);
@@ -244,9 +300,15 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
   ) async {
     emit(state.copyWith(status: const UILoading()));
     try {
-      final BaseResponse<List<ProductCategoryResponse>> response = await _repository.getProductCategory();
-      emit(state.copyWith(dataProductCategory: response.data));
-      await getUom(emit);
+      final BaseResponse<DataProductCategoryResponse> response =
+          await _repository.getProductCategory();
+      emit(
+        state.copyWith(
+          dataProductCategory: response.data.productCategory,
+          dataUom: response.data.uom!,
+        ),
+      );
+      await getMyStore(emit);
     } on DioException catch (e, s) {
       if (e.response != null) {
         _log.e(e.message.toString(), e, s);
@@ -268,9 +330,9 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
     Emitter<CreateProductState> emit,
   ) async {
     try {
-      final BaseResponse<List<UomResponse>> response = await _repository.getUom();
-      emit(state.copyWith(dataUom: response.data));
-      await getMyStore(emit);
+      final BaseResponse<List<UomResponse>> response =
+          await _repository.getUom();
+      // emit(state.copyWith(dataUom: response.data));
     } on DioException catch (e, s) {
       if (e.response != null) {
         _log.e(e.message.toString(), e, s);
@@ -292,7 +354,8 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
     Emitter<CreateProductState> emit,
   ) async {
     try {
-      final BaseResponse<MyStoreResponse> response = await _repositoryStore.getMyStore();
+      final BaseResponse<MyStoreResponse> response =
+          await _repositoryStore.getMyStore();
       emit(
         state.copyWith(
           notification: _NotificationNotifySuccess(
@@ -324,14 +387,25 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
     Emitter<CreateProductState> emit,
   ) async {
     try {
-      final data = state.productPostRequest.copyWith(storeId: state.myStoreResponse?.id);
+      final data = state.productPostRequest.copyWith(
+        storeId: state.myStoreResponse?.id,
+      );
       final BaseResponse response = await _repository.createProduct(data);
       if (response.code == 0) {
         emit(
           state.copyWith(
             status: const UILoadSuccess(),
             notification: _NotifyCreateProductSuccess(
-              message: 'Membuat Product Berhasil',
+              message: 'Membuat Produk Berhasil',
+            ),
+          ),
+        );
+      } else {
+        emit(
+          state.copyWith(
+            status: const UILoadSuccess(),
+            notification: _NotificationNotifyFailed(
+              message: response.message,
             ),
           ),
         );

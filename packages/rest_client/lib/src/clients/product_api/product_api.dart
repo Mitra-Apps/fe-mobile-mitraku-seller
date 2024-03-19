@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:rest_client/rest_client.dart';
+import 'package:rest_client/src/models/products/product_category/data_product_category_response.dart';
 import 'package:retrofit/retrofit.dart';
 
 part 'product_api.g.dart';
@@ -12,7 +13,7 @@ abstract class ProductApiClient {
 
   ///
   @GET('/api/v1/product-category/{isDeactivated}')
-  Future<BaseResponse<List<ProductCategoryResponse>>> getProductCategory({
+  Future<BaseResponse<DataProductCategoryResponse>> getProductCategory({
     @Header('Authorization') required String token,
     @Path('isDeactivated') required bool isDeactivated,
     @Header('Content-Type') String content = 'application/json',

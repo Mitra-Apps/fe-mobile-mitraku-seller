@@ -19,7 +19,7 @@ class _ProductApiClient implements ProductApiClient {
   String? baseUrl;
 
   @override
-  Future<BaseResponse<List<ProductCategoryResponse>>> getProductCategory({
+  Future<BaseResponse<DataProductCategoryResponse>> getProductCategory({
     required String token,
     required bool isDeactivated,
     String content = 'application/json',
@@ -33,7 +33,7 @@ class _ProductApiClient implements ProductApiClient {
     _headers.removeWhere((k, v) => v == null);
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<BaseResponse<List<ProductCategoryResponse>>>(Options(
+        _setStreamType<BaseResponse<DataProductCategoryResponse>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -46,14 +46,10 @@ class _ProductApiClient implements ProductApiClient {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = BaseResponse<List<ProductCategoryResponse>>.fromJson(
+    final value = BaseResponse<DataProductCategoryResponse>.fromJson(
       _result.data!,
-      (json) => json is List<dynamic>
-          ? json
-              .map<ProductCategoryResponse>((i) =>
-                  ProductCategoryResponse.fromJson(i as Map<String, dynamic>))
-              .toList()
-          : List.empty(),
+      (json) =>
+          DataProductCategoryResponse.fromJson(json as Map<String, dynamic>),
     );
     return value;
   }

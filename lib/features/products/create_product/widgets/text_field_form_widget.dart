@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:mitraku_seller/core/spacings/app_spacing.dart';
 import 'package:mitraku_seller/core/themes/app_themes.dart';
 import 'package:mitraku_seller/generated/fonts.gen.dart';
@@ -8,12 +9,18 @@ class TextFieldFormWidget extends StatelessWidget {
     required this.title,
     required this.hint,
     required this.onChanged,
+    this.keyboardType,
+    this.inputFormatters,
+    this.isEnable = true,
     super.key,
   });
 
+  final bool? isEnable;
   final String title;
   final String hint;
   final ValueChanged<String?> onChanged;
+  final TextInputType? keyboardType;
+  final List<TextInputFormatter>? inputFormatters;
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +49,9 @@ class TextFieldFormWidget extends StatelessWidget {
           SizedBox(
             height: 40,
             child: TextField(
+              enabled: isEnable,
+              inputFormatters: inputFormatters,
+              keyboardType: keyboardType,
               onChanged: onChanged,
               style: Theme.of(context).textTheme.bodySmall,
               decoration: InputDecoration(

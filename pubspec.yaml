@@ -62,6 +62,7 @@ dependencies:
   mask_text_input_formatter: ^2.8.0
   fluttertoast: ^8.0.9
   timer_count_down: ^2.2.0
+  currency_text_input_formatter: ^2.1.11
 
 dev_dependencies:
   flutter_test:

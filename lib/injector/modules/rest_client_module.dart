@@ -19,8 +19,8 @@ class RestClientModule {
           injector(instanceName: DioModule.dioInstanceName),
         ),
       )
-      ..registerFactory<LoginApiClient>(
-        () => LoginApiClient(
+      ..registerFactory<AuthApiClient>(
+        () => AuthApiClient(
           injector(instanceName: DioModule.dioInstanceName),
         ),
       )

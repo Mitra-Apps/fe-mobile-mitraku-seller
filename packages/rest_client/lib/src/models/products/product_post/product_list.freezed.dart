@@ -12,7 +12,7 @@ part of 'product_list.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 ProductList _$ProductListFromJson(Map<String, dynamic> json) {
   return _ProductList.fromJson(json);
@@ -20,11 +20,17 @@ ProductList _$ProductListFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ProductList {
+  @JsonKey(name: 'name')
   String? get name => throw _privateConstructorUsedError;
+  @JsonKey(name: 'saleStatus')
   bool? get saleStatus => throw _privateConstructorUsedError;
+  @JsonKey(name: 'price')
   int? get price => throw _privateConstructorUsedError;
+  @JsonKey(name: 'stock')
   String? get stock => throw _privateConstructorUsedError;
-  String? get uomId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'uom')
+  String? get uom => throw _privateConstructorUsedError;
+  @JsonKey(name: 'productTypeId')
   String? get productTypeId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -40,12 +46,12 @@ abstract class $ProductListCopyWith<$Res> {
       _$ProductListCopyWithImpl<$Res, ProductList>;
   @useResult
   $Res call(
-      {String? name,
-      bool? saleStatus,
-      int? price,
-      String? stock,
-      String? uomId,
-      String? productTypeId});
+      {@JsonKey(name: 'name') String? name,
+      @JsonKey(name: 'saleStatus') bool? saleStatus,
+      @JsonKey(name: 'price') int? price,
+      @JsonKey(name: 'stock') String? stock,
+      @JsonKey(name: 'uom') String? uom,
+      @JsonKey(name: 'productTypeId') String? productTypeId});
 }
 
 /// @nodoc
@@ -65,7 +71,7 @@ class _$ProductListCopyWithImpl<$Res, $Val extends ProductList>
     Object? saleStatus = freezed,
     Object? price = freezed,
     Object? stock = freezed,
-    Object? uomId = freezed,
+    Object? uom = freezed,
     Object? productTypeId = freezed,
   }) {
     return _then(_value.copyWith(
@@ -85,9 +91,9 @@ class _$ProductListCopyWithImpl<$Res, $Val extends ProductList>
           ? _value.stock
           : stock // ignore: cast_nullable_to_non_nullable
               as String?,
-      uomId: freezed == uomId
-          ? _value.uomId
-          : uomId // ignore: cast_nullable_to_non_nullable
+      uom: freezed == uom
+          ? _value.uom
+          : uom // ignore: cast_nullable_to_non_nullable
               as String?,
       productTypeId: freezed == productTypeId
           ? _value.productTypeId
@@ -106,12 +112,12 @@ abstract class _$$ProductListImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String? name,
-      bool? saleStatus,
-      int? price,
-      String? stock,
-      String? uomId,
-      String? productTypeId});
+      {@JsonKey(name: 'name') String? name,
+      @JsonKey(name: 'saleStatus') bool? saleStatus,
+      @JsonKey(name: 'price') int? price,
+      @JsonKey(name: 'stock') String? stock,
+      @JsonKey(name: 'uom') String? uom,
+      @JsonKey(name: 'productTypeId') String? productTypeId});
 }
 
 /// @nodoc
@@ -129,7 +135,7 @@ class __$$ProductListImplCopyWithImpl<$Res>
     Object? saleStatus = freezed,
     Object? price = freezed,
     Object? stock = freezed,
-    Object? uomId = freezed,
+    Object? uom = freezed,
     Object? productTypeId = freezed,
   }) {
     return _then(_$ProductListImpl(
@@ -149,9 +155,9 @@ class __$$ProductListImplCopyWithImpl<$Res>
           ? _value.stock
           : stock // ignore: cast_nullable_to_non_nullable
               as String?,
-      uomId: freezed == uomId
-          ? _value.uomId
-          : uomId // ignore: cast_nullable_to_non_nullable
+      uom: freezed == uom
+          ? _value.uom
+          : uom // ignore: cast_nullable_to_non_nullable
               as String?,
       productTypeId: freezed == productTypeId
           ? _value.productTypeId
@@ -165,37 +171,42 @@ class __$$ProductListImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ProductListImpl implements _ProductList {
   const _$ProductListImpl(
-      {this.name,
-      this.saleStatus = true,
-      this.price,
-      this.stock,
-      this.uomId,
-      this.productTypeId});
+      {@JsonKey(name: 'name') this.name,
+      @JsonKey(name: 'saleStatus') this.saleStatus = false,
+      @JsonKey(name: 'price') this.price,
+      @JsonKey(name: 'stock') this.stock,
+      @JsonKey(name: 'uom') this.uom,
+      @JsonKey(name: 'productTypeId') this.productTypeId});
 
   factory _$ProductListImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductListImplFromJson(json);
 
   @override
+  @JsonKey(name: 'name')
   final String? name;
   @override
-  @JsonKey()
+  @JsonKey(name: 'saleStatus')
   final bool? saleStatus;
   @override
+  @JsonKey(name: 'price')
   final int? price;
   @override
+  @JsonKey(name: 'stock')
   final String? stock;
   @override
-  final String? uomId;
+  @JsonKey(name: 'uom')
+  final String? uom;
   @override
+  @JsonKey(name: 'productTypeId')
   final String? productTypeId;
 
   @override
   String toString() {
-    return 'ProductList(name: $name, saleStatus: $saleStatus, price: $price, stock: $stock, uomId: $uomId, productTypeId: $productTypeId)';
+    return 'ProductList(name: $name, saleStatus: $saleStatus, price: $price, stock: $stock, uom: $uom, productTypeId: $productTypeId)';
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProductListImpl &&
@@ -204,7 +215,7 @@ class _$ProductListImpl implements _ProductList {
                 other.saleStatus == saleStatus) &&
             (identical(other.price, price) || other.price == price) &&
             (identical(other.stock, stock) || other.stock == stock) &&
-            (identical(other.uomId, uomId) || other.uomId == uomId) &&
+            (identical(other.uom, uom) || other.uom == uom) &&
             (identical(other.productTypeId, productTypeId) ||
                 other.productTypeId == productTypeId));
   }
@@ -212,7 +223,7 @@ class _$ProductListImpl implements _ProductList {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, name, saleStatus, price, stock, uomId, productTypeId);
+      runtimeType, name, saleStatus, price, stock, uom, productTypeId);
 
   @JsonKey(ignore: true)
   @override
@@ -230,27 +241,34 @@ class _$ProductListImpl implements _ProductList {
 
 abstract class _ProductList implements ProductList {
   const factory _ProductList(
-      {final String? name,
-      final bool? saleStatus,
-      final int? price,
-      final String? stock,
-      final String? uomId,
-      final String? productTypeId}) = _$ProductListImpl;
+          {@JsonKey(name: 'name') final String? name,
+          @JsonKey(name: 'saleStatus') final bool? saleStatus,
+          @JsonKey(name: 'price') final int? price,
+          @JsonKey(name: 'stock') final String? stock,
+          @JsonKey(name: 'uom') final String? uom,
+          @JsonKey(name: 'productTypeId') final String? productTypeId}) =
+      _$ProductListImpl;
 
   factory _ProductList.fromJson(Map<String, dynamic> json) =
       _$ProductListImpl.fromJson;
 
   @override
+  @JsonKey(name: 'name')
   String? get name;
   @override
+  @JsonKey(name: 'saleStatus')
   bool? get saleStatus;
   @override
+  @JsonKey(name: 'price')
   int? get price;
   @override
+  @JsonKey(name: 'stock')
   String? get stock;
   @override
-  String? get uomId;
+  @JsonKey(name: 'uom')
+  String? get uom;
   @override
+  @JsonKey(name: 'productTypeId')
   String? get productTypeId;
   @override
   @JsonKey(ignore: true)

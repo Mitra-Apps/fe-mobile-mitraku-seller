@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'base_response.dart';
+part of 'base_response_nullable.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,37 +14,38 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-BaseResponse<T> _$BaseResponseFromJson<T>(
+BaseResponseNullable<T> _$BaseResponseNullableFromJson<T>(
     Map<String, dynamic> json, T Function(Object?) fromJsonT) {
-  return _BaseResponse<T>.fromJson(json, fromJsonT);
+  return _BaseResponseNullable<T>.fromJson(json, fromJsonT);
 }
 
 /// @nodoc
-mixin _$BaseResponse<T> {
+mixin _$BaseResponseNullable<T> {
   dynamic get code => throw _privateConstructorUsedError;
-  T get data => throw _privateConstructorUsedError;
+  T? get data => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson(Object? Function(T) toJsonT) =>
       throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $BaseResponseCopyWith<T, BaseResponse<T>> get copyWith =>
+  $BaseResponseNullableCopyWith<T, BaseResponseNullable<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $BaseResponseCopyWith<T, $Res> {
-  factory $BaseResponseCopyWith(
-          BaseResponse<T> value, $Res Function(BaseResponse<T>) then) =
-      _$BaseResponseCopyWithImpl<T, $Res, BaseResponse<T>>;
+abstract class $BaseResponseNullableCopyWith<T, $Res> {
+  factory $BaseResponseNullableCopyWith(BaseResponseNullable<T> value,
+          $Res Function(BaseResponseNullable<T>) then) =
+      _$BaseResponseNullableCopyWithImpl<T, $Res, BaseResponseNullable<T>>;
   @useResult
-  $Res call({dynamic code, T data, String message});
+  $Res call({dynamic code, T? data, String message});
 }
 
 /// @nodoc
-class _$BaseResponseCopyWithImpl<T, $Res, $Val extends BaseResponse<T>>
-    implements $BaseResponseCopyWith<T, $Res> {
-  _$BaseResponseCopyWithImpl(this._value, this._then);
+class _$BaseResponseNullableCopyWithImpl<T, $Res,
+        $Val extends BaseResponseNullable<T>>
+    implements $BaseResponseNullableCopyWith<T, $Res> {
+  _$BaseResponseNullableCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -66,7 +67,7 @@ class _$BaseResponseCopyWithImpl<T, $Res, $Val extends BaseResponse<T>>
       data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as T,
+              as T?,
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -76,22 +77,24 @@ class _$BaseResponseCopyWithImpl<T, $Res, $Val extends BaseResponse<T>>
 }
 
 /// @nodoc
-abstract class _$$BaseResponseImplCopyWith<T, $Res>
-    implements $BaseResponseCopyWith<T, $Res> {
-  factory _$$BaseResponseImplCopyWith(_$BaseResponseImpl<T> value,
-          $Res Function(_$BaseResponseImpl<T>) then) =
-      __$$BaseResponseImplCopyWithImpl<T, $Res>;
+abstract class _$$BaseResponseNullableImplCopyWith<T, $Res>
+    implements $BaseResponseNullableCopyWith<T, $Res> {
+  factory _$$BaseResponseNullableImplCopyWith(
+          _$BaseResponseNullableImpl<T> value,
+          $Res Function(_$BaseResponseNullableImpl<T>) then) =
+      __$$BaseResponseNullableImplCopyWithImpl<T, $Res>;
   @override
   @useResult
-  $Res call({dynamic code, T data, String message});
+  $Res call({dynamic code, T? data, String message});
 }
 
 /// @nodoc
-class __$$BaseResponseImplCopyWithImpl<T, $Res>
-    extends _$BaseResponseCopyWithImpl<T, $Res, _$BaseResponseImpl<T>>
-    implements _$$BaseResponseImplCopyWith<T, $Res> {
-  __$$BaseResponseImplCopyWithImpl(
-      _$BaseResponseImpl<T> _value, $Res Function(_$BaseResponseImpl<T>) _then)
+class __$$BaseResponseNullableImplCopyWithImpl<T, $Res>
+    extends _$BaseResponseNullableCopyWithImpl<T, $Res,
+        _$BaseResponseNullableImpl<T>>
+    implements _$$BaseResponseNullableImplCopyWith<T, $Res> {
+  __$$BaseResponseNullableImplCopyWithImpl(_$BaseResponseNullableImpl<T> _value,
+      $Res Function(_$BaseResponseNullableImpl<T>) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -101,7 +104,7 @@ class __$$BaseResponseImplCopyWithImpl<T, $Res>
     Object? data = freezed,
     Object? message = null,
   }) {
-    return _then(_$BaseResponseImpl<T>(
+    return _then(_$BaseResponseNullableImpl<T>(
       code: freezed == code
           ? _value.code
           : code // ignore: cast_nullable_to_non_nullable
@@ -109,7 +112,7 @@ class __$$BaseResponseImplCopyWithImpl<T, $Res>
       data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as T,
+              as T?,
       message: null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -120,31 +123,31 @@ class __$$BaseResponseImplCopyWithImpl<T, $Res>
 
 /// @nodoc
 @JsonSerializable(genericArgumentFactories: true)
-class _$BaseResponseImpl<T> implements _BaseResponse<T> {
-  const _$BaseResponseImpl(
+class _$BaseResponseNullableImpl<T> implements _BaseResponseNullable<T> {
+  const _$BaseResponseNullableImpl(
       {required this.code, required this.data, required this.message});
 
-  factory _$BaseResponseImpl.fromJson(
+  factory _$BaseResponseNullableImpl.fromJson(
           Map<String, dynamic> json, T Function(Object?) fromJsonT) =>
-      _$$BaseResponseImplFromJson(json, fromJsonT);
+      _$$BaseResponseNullableImplFromJson(json, fromJsonT);
 
   @override
   final dynamic code;
   @override
-  final T data;
+  final T? data;
   @override
   final String message;
 
   @override
   String toString() {
-    return 'BaseResponse<$T>(code: $code, data: $data, message: $message)';
+    return 'BaseResponseNullable<$T>(code: $code, data: $data, message: $message)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$BaseResponseImpl<T> &&
+            other is _$BaseResponseNullableImpl<T> &&
             const DeepCollectionEquality().equals(other.code, code) &&
             const DeepCollectionEquality().equals(other.data, data) &&
             (identical(other.message, message) || other.message == message));
@@ -161,34 +164,34 @@ class _$BaseResponseImpl<T> implements _BaseResponse<T> {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$BaseResponseImplCopyWith<T, _$BaseResponseImpl<T>> get copyWith =>
-      __$$BaseResponseImplCopyWithImpl<T, _$BaseResponseImpl<T>>(
-          this, _$identity);
+  _$$BaseResponseNullableImplCopyWith<T, _$BaseResponseNullableImpl<T>>
+      get copyWith => __$$BaseResponseNullableImplCopyWithImpl<T,
+          _$BaseResponseNullableImpl<T>>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson(Object? Function(T) toJsonT) {
-    return _$$BaseResponseImplToJson<T>(this, toJsonT);
+    return _$$BaseResponseNullableImplToJson<T>(this, toJsonT);
   }
 }
 
-abstract class _BaseResponse<T> implements BaseResponse<T> {
-  const factory _BaseResponse(
+abstract class _BaseResponseNullable<T> implements BaseResponseNullable<T> {
+  const factory _BaseResponseNullable(
       {required final dynamic code,
-      required final T data,
-      required final String message}) = _$BaseResponseImpl<T>;
+      required final T? data,
+      required final String message}) = _$BaseResponseNullableImpl<T>;
 
-  factory _BaseResponse.fromJson(
+  factory _BaseResponseNullable.fromJson(
           Map<String, dynamic> json, T Function(Object?) fromJsonT) =
-      _$BaseResponseImpl<T>.fromJson;
+      _$BaseResponseNullableImpl<T>.fromJson;
 
   @override
   dynamic get code;
   @override
-  T get data;
+  T? get data;
   @override
   String get message;
   @override
   @JsonKey(ignore: true)
-  _$$BaseResponseImplCopyWith<T, _$BaseResponseImpl<T>> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$BaseResponseNullableImplCopyWith<T, _$BaseResponseNullableImpl<T>>
+      get copyWith => throw _privateConstructorUsedError;
 }

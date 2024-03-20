@@ -1,8 +1,8 @@
-import 'package:mitraku_seller/configs/app_config.dart';
-import 'package:mitraku_seller/injector/injector.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
+import 'package:mitraku_seller/configs/app_config.dart';
+import 'package:mitraku_seller/injector/injector.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class DioModule {
@@ -39,5 +39,21 @@ class DioModule {
       },
       instanceName: dioInstanceName,
     );
+  }
+
+  static void updateHeadersToken(String token) {
+    if (_injector.isRegistered<Dio>(instanceName: dioInstanceName)) {
+      final Dio dioInstance = _injector<Dio>(instanceName: dioInstanceName);
+      dioInstance.options.headers['Authorization'] = 'Bearer $token';
+      if (kDebugMode) {
+        print('Dio headers updated with new token: $token');
+      }
+    } else {
+      if (kDebugMode) {
+        print(
+          'Dio instance not registered in GetIt with the specified instance name',
+        );
+      }
+    }
   }
 }

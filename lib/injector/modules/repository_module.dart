@@ -1,9 +1,9 @@
+import 'package:mitraku_seller/data/repositories/auth/remote/auth_repository.dart';
+import 'package:mitraku_seller/data/repositories/auth/remote/auth_repository_impl.dart';
 import 'package:mitraku_seller/data/repositories/dog_image_random/remote/dog_image_random_repository.dart';
 import 'package:mitraku_seller/data/repositories/dog_image_random/remote/dog_image_random_repository_impl.dart';
 import 'package:mitraku_seller/data/repositories/forgot_password/remote/forgot_password_repository.dart';
 import 'package:mitraku_seller/data/repositories/forgot_password/remote/forgot_password_repository_impl.dart';
-import 'package:mitraku_seller/data/repositories/login/remote/login_repository.dart';
-import 'package:mitraku_seller/data/repositories/login/remote/login_repository_impl.dart';
 import 'package:mitraku_seller/data/repositories/otp/otp_confirmation_repository.dart';
 import 'package:mitraku_seller/data/repositories/otp/otp_confirmation_repository_impl.dart';
 import 'package:mitraku_seller/data/repositories/product/remote/product_repository.dart';
@@ -31,8 +31,8 @@ class RepositoryModule {
           registerApiClient: injector(),
         ),
       )
-      ..registerFactory<LoginRepository>(
-        () => LoginRepositoryImpl(loginApiClient: injector()),
+      ..registerFactory<AuthRepository>(
+        () => AuthRepositoryImpl(authApiClient: injector()),
       )
       ..registerFactory<OtpConfirmationRepository>(
         () => OtpConfirmationRepositoryImpl(otpApiClient: injector()),

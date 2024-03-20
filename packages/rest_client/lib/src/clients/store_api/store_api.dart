@@ -12,8 +12,22 @@ abstract class StoreApiClient {
 
   ///
   @GET('/api/v1/stores/my-store')
-  Future<BaseResponse<MyStoreResponse>> getMyStore({
+  Future<BaseResponseNullable<MyStoreResponse>> getMyStore();
+
+  ///
+  @POST('/api/v1/stores')
+  Future<BaseResponseNullable<MyStoreResponse>> postCreateStore({
+    // @Header('Authorization') required String token,
+    // @Header('Content-Type') String content = 'application/json',
+    @Body() required Map<String, dynamic> json,
+  });
+
+  ///
+  @PUT('/api/v1/stores/{storeId}')
+  Future<BaseResponseNullable<MyStoreResponse>> putEditStore({
     @Header('Authorization') required String token,
     @Header('Content-Type') String content = 'application/json',
+    @Path('storeId') required String storeId,
+    @Body() required Map<String, dynamic> json,
   });
 }

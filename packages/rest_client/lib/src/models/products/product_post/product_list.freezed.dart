@@ -206,7 +206,7 @@ class _$ProductListImpl implements _ProductList {
   }
 
   @override
-  bool operator ==(Object other) {
+  bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProductListImpl &&

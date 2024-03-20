@@ -31,4 +31,8 @@ class Injector {
   static void resetLazySingleton() {
     instance.resetLazySingleton();
   }
+
+  static void updateDioHeaders(String token) {
+    DioModule.updateHeadersToken(token);
+  }
 }

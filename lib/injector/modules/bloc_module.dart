@@ -8,6 +8,7 @@ import 'package:mitraku_seller/features/login/bloc/login_bloc.dart';
 import 'package:mitraku_seller/features/otp/bloc/otp_confirmation_bloc.dart';
 import 'package:mitraku_seller/features/products/create_product/bloc/create_product_bloc.dart';
 import 'package:mitraku_seller/features/register/bloc/register_bloc.dart';
+import 'package:mitraku_seller/features/stores/bloc/your_store_bloc.dart';
 import 'package:mitraku_seller/injector/injector.dart';
 
 class BlocModule {
@@ -64,8 +65,14 @@ class BlocModule {
           storeRepository: injector(),
         ),
       )
+      ..registerFactory<YourStoreBloc>(
+        () => YourStoreBloc(
+          storeRepository: injector(),
+          logService: injector(),
+        ),
+      )
       ..registerFactory<OtherBloc>(
-            () => OtherBloc(
+        () => OtherBloc(
           authRepository: injector(),
           logService: injector(),
         ),

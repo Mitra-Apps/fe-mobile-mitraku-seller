@@ -12,13 +12,39 @@ class StoreRepositoryImpl implements StoreRepository {
   late final StoreApiClient _storeApiClient;
 
   @override
-  Future<BaseResponse<MyStoreResponse>> getMyStore() async {
+  Future<BaseResponseNullable<MyStoreResponse>> getMyStore() async {
     final prefs = await SharedPreferences.getInstance();
     final accessToken = prefs.getString('access_token');
     final refreshToken = prefs.getString('refresh_token');
 
-    final response = await _storeApiClient.getMyStore(
+    final response = await _storeApiClient.getMyStore();
+    return response;
+  }
+
+  @override
+  Future<BaseResponseNullable> postCreateStore(
+      CreateStorePostRequest buatTokoPostRequest) async {
+    final prefs = await SharedPreferences.getInstance();
+    final accessToken = prefs.getString('access_token');
+    final refreshToken = prefs.getString('refresh_token');
+
+    final response = await _storeApiClient.postCreateStore(
+      json: buatTokoPostRequest.toJson(),
+    );
+    return response;
+  }
+
+  @override
+  Future<BaseResponseNullable> putEditStore(
+      String storeId, ProductPostRequest productPostRequest) async {
+    final prefs = await SharedPreferences.getInstance();
+    final accessToken = prefs.getString('access_token');
+    final refreshToken = prefs.getString('refresh_token');
+
+    final response = await _storeApiClient.putEditStore(
       token: 'Bearer $accessToken',
+      storeId: storeId,
+      json: productPostRequest.toJson(),
     );
     return response;
   }

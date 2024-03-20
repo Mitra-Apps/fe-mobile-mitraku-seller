@@ -33,17 +33,17 @@ class LoginPage extends StatelessWidget {
         },
         child: const Scaffold(
           body: Center(
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: LoginForm(),),
-                ],
-              ),
-            )
-          ),
+              child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: LoginForm(),
+                ),
+              ],
+            ),
+          )),
         ),
       ),
     );

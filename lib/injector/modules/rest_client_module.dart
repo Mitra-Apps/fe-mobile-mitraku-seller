@@ -19,13 +19,30 @@ class RestClientModule {
           injector(instanceName: DioModule.dioInstanceName),
         ),
       )
-      ..registerFactory<LoginApiClient>(() => LoginApiClient(
-            injector(instanceName: DioModule.dioInstanceName),
-          ),)
-      ..registerFactory<OtpApiClient>(() =>
-          OtpApiClient(injector(instanceName: DioModule.dioInstanceName)),)
-      ..registerFactory<ForgotPasswordApiClient>(() =>
-          ForgotPasswordApiClient(injector(
-              instanceName: DioModule.dioInstanceName,),),);
+      ..registerFactory<AuthApiClient>(
+        () => AuthApiClient(
+          injector(instanceName: DioModule.dioInstanceName),
+        ),
+      )
+      ..registerFactory<OtpApiClient>(
+        () => OtpApiClient(injector(instanceName: DioModule.dioInstanceName)),
+      )
+      ..registerFactory<ForgotPasswordApiClient>(
+        () => ForgotPasswordApiClient(
+          injector(
+            instanceName: DioModule.dioInstanceName,
+          ),
+        ),
+      )
+      ..registerFactory<ProductApiClient>(
+        () => ProductApiClient(
+          injector(instanceName: DioModule.dioInstanceName),
+        ),
+      )
+      ..registerFactory<StoreApiClient>(
+        () => StoreApiClient(
+          injector(instanceName: DioModule.dioInstanceName),
+        ),
+      );
   }
 }

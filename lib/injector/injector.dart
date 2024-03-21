@@ -1,11 +1,11 @@
+import 'package:flutter/foundation.dart';
+import 'package:get_it/get_it.dart';
 import 'package:mitraku_seller/injector/modules/bloc_module.dart';
 import 'package:mitraku_seller/injector/modules/database_module.dart';
 import 'package:mitraku_seller/injector/modules/dio_module.dart';
 import 'package:mitraku_seller/injector/modules/repository_module.dart';
 import 'package:mitraku_seller/injector/modules/rest_client_module.dart';
 import 'package:mitraku_seller/injector/modules/service_module.dart';
-import 'package:flutter/foundation.dart';
-import 'package:get_it/get_it.dart';
 
 class Injector {
   Injector._();
@@ -30,5 +30,9 @@ class Injector {
 
   static void resetLazySingleton() {
     instance.resetLazySingleton();
+  }
+
+  static void updateDioHeaders(String token) {
+    DioModule.updateHeadersToken(token);
   }
 }

@@ -106,6 +106,8 @@ class OtpConfirmationBloc extends Bloc<OtpConfirmationEvent, OtpConfirmationStat
         state.copyWith(
             isBusy: false,
             resendOTPResponse: resendOTPResponse,
+            notification: _NotificationNotifySuccess(
+                message: 'OTP berhasil dikirim ke email'),
             otpSuccess: 'RESENDSUCCESS'
         ),
       );

@@ -10,6 +10,7 @@ abstract class RegisterApiClient {
   /// Constructor
   factory RegisterApiClient(Dio dio, {String baseUrl}) = _RegisterApiClient;
 
+  ///
   @POST('/api/v1/users/register')
   Future<RegisterResponse> register(@Body() Map<String, dynamic> json);
 }

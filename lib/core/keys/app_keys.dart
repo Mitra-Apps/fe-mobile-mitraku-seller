@@ -7,8 +7,8 @@ class AppKeys {
   static const String isFirstUseKey = 'isFirstUse';
 
   /// Auth service
-  static const String accessTokenKey = 'accessToken';
-  static const String refreshTokenKey = 'refreshToken';
+  static const String accessTokenKey = 'access_token';
+  static const String refreshTokenKey = 'refresh_token';
   static const String tenantKey = 'tenant';
   static const String lastLoginKey = 'lastLogin';
   static const String lastUsername = 'username';
@@ -22,4 +22,5 @@ class WidgetKeys {
   static const String tokoAndaScaffoldKey = 'tokoAnda.scaffold';
   static const String introStartedButtonKey = 'intro.startedButton';
   static const String productScaffoldKey = 'product.scaffold';
+  static const String createProductScaffoldKey = 'createProduct.scaffold';
 }

@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:mitraku_seller/core/dimens/app_dimens.dart';
 import 'package:mitraku_seller/core/spacings/app_spacing.dart';
 import 'package:mitraku_seller/core/themes/app_themes.dart';
-import 'package:mitraku_seller/features/stores/bloc/create_store_cubit.dart';
+import 'package:mitraku_seller/features/stores/bloc/create_edit_store_cubit.dart';
 import 'package:mitraku_seller/features/stores/components/store_description_widget.dart';
 import 'package:mitraku_seller/features/stores/components/store_operational_hours_widget.dart';
 import 'package:mitraku_seller/features/stores/components/store_profile_widget.dart';

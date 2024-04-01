@@ -25,7 +25,7 @@ class YourStoreBloc extends Bloc<YourStoreEvent, YourStoreState> {
     _log = logService;
     on<_GetMyStoreRequest>(_onGetMyStoreRequest);
     on<_PostCreateStoreRequest>(_onPostCreateStoreRequest);
-    on<_PutCreateStoreRequest>(_onPutCreateStoreRequest);
+    on<_PutEditStoreRequest>(_onPutEditStoreRequest);
   }
 
   late final StoreRepository _repository;
@@ -82,7 +82,7 @@ class YourStoreBloc extends Bloc<YourStoreEvent, YourStoreState> {
         ),
       );
       final BaseResponseNullable<MyStoreResponse> response =
-          await _repository.postCreateStore(event.buatTokoPostRequest);
+          await _repository.postCreateStore(event.createStorePostRequest);
       emit(
         state.copyWith(
           notification: _NotificationNotifySuccess(
@@ -111,8 +111,8 @@ class YourStoreBloc extends Bloc<YourStoreEvent, YourStoreState> {
     }
   }
 
-  FutureOr<void> _onPutCreateStoreRequest(
-    _PutCreateStoreRequest event,
+  FutureOr<void> _onPutEditStoreRequest(
+    _PutEditStoreRequest event,
     Emitter<YourStoreState> emit,
   ) async {
     try {
@@ -122,7 +122,10 @@ class YourStoreBloc extends Bloc<YourStoreEvent, YourStoreState> {
         ),
       );
       final BaseResponseNullable<MyStoreResponse> response =
-          await _repository.getMyStore();
+          await _repository.putEditStore(
+        event.storeId,
+        event.editStorePutRequest,
+      );
       emit(
         state.copyWith(
           notification: _NotificationNotifySuccess(

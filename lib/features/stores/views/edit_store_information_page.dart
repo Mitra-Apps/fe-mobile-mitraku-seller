@@ -8,23 +8,22 @@ import 'package:mitraku_seller/features/stores/components/create_store_image_upl
 import 'package:mitraku_seller/features/stores/components/create_store_information_widget.dart';
 import 'package:mitraku_seller/features/stores/components/create_store_step_widget.dart';
 
-class CreateStoreInformationPage extends StatefulWidget {
-  const CreateStoreInformationPage(
+class EditStoreInformationPage extends StatefulWidget {
+  const EditStoreInformationPage(
       {required this.changeCreateStoreStep, super.key});
   final Function(int) changeCreateStoreStep;
 
   @override
-  State<CreateStoreInformationPage> createState() =>
-      _CreateStoreInformationPage();
+  State<EditStoreInformationPage> createState() => _EditStoreInformationPage();
 }
 
-class _CreateStoreInformationPage extends State<CreateStoreInformationPage> {
-  late CreateEditStoreCubit buatTokoCubit;
+class _EditStoreInformationPage extends State<EditStoreInformationPage> {
+  late CreateEditStoreCubit editStoreCubit;
   bool isMandatoryFieldCompleted = false;
 
   void _updateInputValueCallback(String type, String value) {
     // Access the initial state
-    final StoreModel currentState = buatTokoCubit.state;
+    final StoreModel currentState = editStoreCubit.state;
     String inputNama = currentState.name;
     String inputNoTelp = currentState.phone;
     String inputAlamatToko = currentState.address;
@@ -54,7 +53,7 @@ class _CreateStoreInformationPage extends State<CreateStoreInformationPage> {
 
   void _checkMandatoryField() {
     setState(() {
-      final StoreModel currentState = buatTokoCubit.state;
+      final StoreModel currentState = editStoreCubit.state;
       if (currentState.name.isNotEmpty &&
           currentState.phone.isNotEmpty &&
           currentState.address.isNotEmpty &&
@@ -70,7 +69,7 @@ class _CreateStoreInformationPage extends State<CreateStoreInformationPage> {
   void initState() {
     super.initState();
     // Access the UserCubit using context.read in initState
-    buatTokoCubit = context.read<CreateEditStoreCubit>();
+    editStoreCubit = context.read<CreateEditStoreCubit>();
     // Access the initial state
     _checkMandatoryField();
   }

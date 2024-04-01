@@ -145,7 +145,7 @@ class _CreateStoreImageUploadWidgetState
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10),
                                     ),
-                                    side: BorderSide(
+                                    side: const BorderSide(
                                         color: AppColors.mainWhiteColor),
                                     minimumSize: const Size(160, 40),
                                   ),

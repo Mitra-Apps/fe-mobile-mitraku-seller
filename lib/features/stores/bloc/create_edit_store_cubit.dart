@@ -2,12 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class StoreScheduleModel {
-  StoreScheduleModel({
+  StoreScheduleModel(
+    this.hourIdWeekly,
+    this.hourStoreIdWeekly,
+    this.dayOfWeekly, {
     required this.isOpen24HoursWeekly,
     required this.isClosedDayWeekly,
     required this.timeOpenWeekly,
     required this.timeClosedWeekly,
   });
+  List<String> hourIdWeekly = [];
+  List<String> hourStoreIdWeekly = [];
+  List<int> dayOfWeekly = [];
   List<bool> isOpen24HoursWeekly;
   List<bool> isClosedDayWeekly;
   List<TimeOfDay?> timeOpenWeekly;
@@ -23,6 +29,23 @@ class StoreModel {
     this.imagePath = '',
     this.scheduleModel,
   });
+  factory StoreModel.defaultStore() {
+    return StoreModel(
+      name: '',
+      phone: '',
+      address: '',
+      description: '',
+      scheduleModel: StoreScheduleModel(
+        List.filled(7, ''),
+        List.filled(7, ''),
+        [0, 1, 2, 3, 4, 5, 6],
+        isOpen24HoursWeekly: List.filled(7, false),
+        isClosedDayWeekly: List.filled(7, false),
+        timeOpenWeekly: List.filled(7, null),
+        timeClosedWeekly: List.filled(7, null),
+      ),
+    );
+  }
   final String name;
   final String phone;
   final String address;
@@ -50,8 +73,8 @@ class StoreModel {
 }
 
 // Define your cubit
-class CreateStoreCubit extends Cubit<StoreModel> {
-  CreateStoreCubit()
+class CreateEditStoreCubit extends Cubit<StoreModel> {
+  CreateEditStoreCubit()
       : super(
           StoreModel(
             name: '',
@@ -60,42 +83,13 @@ class CreateStoreCubit extends Cubit<StoreModel> {
             description: '',
             scheduleModel: StoreScheduleModel(
               // Weekly schedule start from monday to sunday
-              isOpen24HoursWeekly: [
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-              ],
-              isClosedDayWeekly: [
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-              ],
-              timeOpenWeekly: [
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-              ],
-              timeClosedWeekly: [
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-              ],
+              List.filled(7, ''),
+              List.filled(7, ''),
+              [0, 1, 2, 3, 4, 5, 6],
+              isOpen24HoursWeekly: List.filled(7, false),
+              isClosedDayWeekly: List.filled(7, false),
+              timeOpenWeekly: List.filled(7, null),
+              timeClosedWeekly: List.filled(7, null),
             ),
           ),
         );

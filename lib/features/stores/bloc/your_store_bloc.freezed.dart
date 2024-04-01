@@ -19,25 +19,29 @@ mixin _$YourStoreEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getMyStoreRequest,
-    required TResult Function(CreateStorePostRequest buatTokoPostRequest)
+    required TResult Function(CreateStorePostRequest createStorePostRequest)
         postCreateStoreRequest,
-    required TResult Function() putCreateStoreRequest,
+    required TResult Function(
+            String storeId, EditStorePutRequest editStorePutRequest)
+        putEditStoreRequest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getMyStoreRequest,
-    TResult? Function(CreateStorePostRequest buatTokoPostRequest)?
+    TResult? Function(CreateStorePostRequest createStorePostRequest)?
         postCreateStoreRequest,
-    TResult? Function()? putCreateStoreRequest,
+    TResult? Function(String storeId, EditStorePutRequest editStorePutRequest)?
+        putEditStoreRequest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getMyStoreRequest,
-    TResult Function(CreateStorePostRequest buatTokoPostRequest)?
+    TResult Function(CreateStorePostRequest createStorePostRequest)?
         postCreateStoreRequest,
-    TResult Function()? putCreateStoreRequest,
+    TResult Function(String storeId, EditStorePutRequest editStorePutRequest)?
+        putEditStoreRequest,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -46,22 +50,21 @@ mixin _$YourStoreEvent {
     required TResult Function(_GetMyStoreRequest value) getMyStoreRequest,
     required TResult Function(_PostCreateStoreRequest value)
         postCreateStoreRequest,
-    required TResult Function(_PutCreateStoreRequest value)
-        putCreateStoreRequest,
+    required TResult Function(_PutEditStoreRequest value) putEditStoreRequest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetMyStoreRequest value)? getMyStoreRequest,
     TResult? Function(_PostCreateStoreRequest value)? postCreateStoreRequest,
-    TResult? Function(_PutCreateStoreRequest value)? putCreateStoreRequest,
+    TResult? Function(_PutEditStoreRequest value)? putEditStoreRequest,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetMyStoreRequest value)? getMyStoreRequest,
     TResult Function(_PostCreateStoreRequest value)? postCreateStoreRequest,
-    TResult Function(_PutCreateStoreRequest value)? putCreateStoreRequest,
+    TResult Function(_PutEditStoreRequest value)? putEditStoreRequest,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -124,9 +127,11 @@ class _$GetMyStoreRequestImpl implements _GetMyStoreRequest {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getMyStoreRequest,
-    required TResult Function(CreateStorePostRequest buatTokoPostRequest)
+    required TResult Function(CreateStorePostRequest createStorePostRequest)
         postCreateStoreRequest,
-    required TResult Function() putCreateStoreRequest,
+    required TResult Function(
+            String storeId, EditStorePutRequest editStorePutRequest)
+        putEditStoreRequest,
   }) {
     return getMyStoreRequest();
   }
@@ -135,9 +140,10 @@ class _$GetMyStoreRequestImpl implements _GetMyStoreRequest {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getMyStoreRequest,
-    TResult? Function(CreateStorePostRequest buatTokoPostRequest)?
+    TResult? Function(CreateStorePostRequest createStorePostRequest)?
         postCreateStoreRequest,
-    TResult? Function()? putCreateStoreRequest,
+    TResult? Function(String storeId, EditStorePutRequest editStorePutRequest)?
+        putEditStoreRequest,
   }) {
     return getMyStoreRequest?.call();
   }
@@ -146,9 +152,10 @@ class _$GetMyStoreRequestImpl implements _GetMyStoreRequest {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getMyStoreRequest,
-    TResult Function(CreateStorePostRequest buatTokoPostRequest)?
+    TResult Function(CreateStorePostRequest createStorePostRequest)?
         postCreateStoreRequest,
-    TResult Function()? putCreateStoreRequest,
+    TResult Function(String storeId, EditStorePutRequest editStorePutRequest)?
+        putEditStoreRequest,
     required TResult orElse(),
   }) {
     if (getMyStoreRequest != null) {
@@ -163,8 +170,7 @@ class _$GetMyStoreRequestImpl implements _GetMyStoreRequest {
     required TResult Function(_GetMyStoreRequest value) getMyStoreRequest,
     required TResult Function(_PostCreateStoreRequest value)
         postCreateStoreRequest,
-    required TResult Function(_PutCreateStoreRequest value)
-        putCreateStoreRequest,
+    required TResult Function(_PutEditStoreRequest value) putEditStoreRequest,
   }) {
     return getMyStoreRequest(this);
   }
@@ -174,7 +180,7 @@ class _$GetMyStoreRequestImpl implements _GetMyStoreRequest {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetMyStoreRequest value)? getMyStoreRequest,
     TResult? Function(_PostCreateStoreRequest value)? postCreateStoreRequest,
-    TResult? Function(_PutCreateStoreRequest value)? putCreateStoreRequest,
+    TResult? Function(_PutEditStoreRequest value)? putEditStoreRequest,
   }) {
     return getMyStoreRequest?.call(this);
   }
@@ -184,7 +190,7 @@ class _$GetMyStoreRequestImpl implements _GetMyStoreRequest {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetMyStoreRequest value)? getMyStoreRequest,
     TResult Function(_PostCreateStoreRequest value)? postCreateStoreRequest,
-    TResult Function(_PutCreateStoreRequest value)? putCreateStoreRequest,
+    TResult Function(_PutEditStoreRequest value)? putEditStoreRequest,
     required TResult orElse(),
   }) {
     if (getMyStoreRequest != null) {
@@ -205,9 +211,9 @@ abstract class _$$PostCreateStoreRequestImplCopyWith<$Res> {
           $Res Function(_$PostCreateStoreRequestImpl) then) =
       __$$PostCreateStoreRequestImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({CreateStorePostRequest buatTokoPostRequest});
+  $Res call({CreateStorePostRequest createStorePostRequest});
 
-  $CreateStorePostRequestCopyWith<$Res> get buatTokoPostRequest;
+  $CreateStorePostRequestCopyWith<$Res> get createStorePostRequest;
 }
 
 /// @nodoc
@@ -222,22 +228,22 @@ class __$$PostCreateStoreRequestImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? buatTokoPostRequest = null,
+    Object? createStorePostRequest = null,
   }) {
     return _then(_$PostCreateStoreRequestImpl(
-      null == buatTokoPostRequest
-          ? _value.buatTokoPostRequest
-          : buatTokoPostRequest // ignore: cast_nullable_to_non_nullable
+      null == createStorePostRequest
+          ? _value.createStorePostRequest
+          : createStorePostRequest // ignore: cast_nullable_to_non_nullable
               as CreateStorePostRequest,
     ));
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $CreateStorePostRequestCopyWith<$Res> get buatTokoPostRequest {
-    return $CreateStorePostRequestCopyWith<$Res>(_value.buatTokoPostRequest,
+  $CreateStorePostRequestCopyWith<$Res> get createStorePostRequest {
+    return $CreateStorePostRequestCopyWith<$Res>(_value.createStorePostRequest,
         (value) {
-      return _then(_value.copyWith(buatTokoPostRequest: value));
+      return _then(_value.copyWith(createStorePostRequest: value));
     });
   }
 }
@@ -245,14 +251,14 @@ class __$$PostCreateStoreRequestImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$PostCreateStoreRequestImpl implements _PostCreateStoreRequest {
-  const _$PostCreateStoreRequestImpl(this.buatTokoPostRequest);
+  const _$PostCreateStoreRequestImpl(this.createStorePostRequest);
 
   @override
-  final CreateStorePostRequest buatTokoPostRequest;
+  final CreateStorePostRequest createStorePostRequest;
 
   @override
   String toString() {
-    return 'YourStoreEvent.postCreateStoreRequest(buatTokoPostRequest: $buatTokoPostRequest)';
+    return 'YourStoreEvent.postCreateStoreRequest(createStorePostRequest: $createStorePostRequest)';
   }
 
   @override
@@ -260,12 +266,12 @@ class _$PostCreateStoreRequestImpl implements _PostCreateStoreRequest {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PostCreateStoreRequestImpl &&
-            (identical(other.buatTokoPostRequest, buatTokoPostRequest) ||
-                other.buatTokoPostRequest == buatTokoPostRequest));
+            (identical(other.createStorePostRequest, createStorePostRequest) ||
+                other.createStorePostRequest == createStorePostRequest));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, buatTokoPostRequest);
+  int get hashCode => Object.hash(runtimeType, createStorePostRequest);
 
   @JsonKey(ignore: true)
   @override
@@ -278,35 +284,39 @@ class _$PostCreateStoreRequestImpl implements _PostCreateStoreRequest {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getMyStoreRequest,
-    required TResult Function(CreateStorePostRequest buatTokoPostRequest)
+    required TResult Function(CreateStorePostRequest createStorePostRequest)
         postCreateStoreRequest,
-    required TResult Function() putCreateStoreRequest,
+    required TResult Function(
+            String storeId, EditStorePutRequest editStorePutRequest)
+        putEditStoreRequest,
   }) {
-    return postCreateStoreRequest(buatTokoPostRequest);
+    return postCreateStoreRequest(createStorePostRequest);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getMyStoreRequest,
-    TResult? Function(CreateStorePostRequest buatTokoPostRequest)?
+    TResult? Function(CreateStorePostRequest createStorePostRequest)?
         postCreateStoreRequest,
-    TResult? Function()? putCreateStoreRequest,
+    TResult? Function(String storeId, EditStorePutRequest editStorePutRequest)?
+        putEditStoreRequest,
   }) {
-    return postCreateStoreRequest?.call(buatTokoPostRequest);
+    return postCreateStoreRequest?.call(createStorePostRequest);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getMyStoreRequest,
-    TResult Function(CreateStorePostRequest buatTokoPostRequest)?
+    TResult Function(CreateStorePostRequest createStorePostRequest)?
         postCreateStoreRequest,
-    TResult Function()? putCreateStoreRequest,
+    TResult Function(String storeId, EditStorePutRequest editStorePutRequest)?
+        putEditStoreRequest,
     required TResult orElse(),
   }) {
     if (postCreateStoreRequest != null) {
-      return postCreateStoreRequest(buatTokoPostRequest);
+      return postCreateStoreRequest(createStorePostRequest);
     }
     return orElse();
   }
@@ -317,8 +327,7 @@ class _$PostCreateStoreRequestImpl implements _PostCreateStoreRequest {
     required TResult Function(_GetMyStoreRequest value) getMyStoreRequest,
     required TResult Function(_PostCreateStoreRequest value)
         postCreateStoreRequest,
-    required TResult Function(_PutCreateStoreRequest value)
-        putCreateStoreRequest,
+    required TResult Function(_PutEditStoreRequest value) putEditStoreRequest,
   }) {
     return postCreateStoreRequest(this);
   }
@@ -328,7 +337,7 @@ class _$PostCreateStoreRequestImpl implements _PostCreateStoreRequest {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetMyStoreRequest value)? getMyStoreRequest,
     TResult? Function(_PostCreateStoreRequest value)? postCreateStoreRequest,
-    TResult? Function(_PutCreateStoreRequest value)? putCreateStoreRequest,
+    TResult? Function(_PutEditStoreRequest value)? putEditStoreRequest,
   }) {
     return postCreateStoreRequest?.call(this);
   }
@@ -338,7 +347,7 @@ class _$PostCreateStoreRequestImpl implements _PostCreateStoreRequest {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetMyStoreRequest value)? getMyStoreRequest,
     TResult Function(_PostCreateStoreRequest value)? postCreateStoreRequest,
-    TResult Function(_PutCreateStoreRequest value)? putCreateStoreRequest,
+    TResult Function(_PutEditStoreRequest value)? putEditStoreRequest,
     required TResult orElse(),
   }) {
     if (postCreateStoreRequest != null) {
@@ -350,85 +359,135 @@ class _$PostCreateStoreRequestImpl implements _PostCreateStoreRequest {
 
 abstract class _PostCreateStoreRequest implements YourStoreEvent {
   const factory _PostCreateStoreRequest(
-          final CreateStorePostRequest buatTokoPostRequest) =
+          final CreateStorePostRequest createStorePostRequest) =
       _$PostCreateStoreRequestImpl;
 
-  CreateStorePostRequest get buatTokoPostRequest;
+  CreateStorePostRequest get createStorePostRequest;
   @JsonKey(ignore: true)
   _$$PostCreateStoreRequestImplCopyWith<_$PostCreateStoreRequestImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$PutCreateStoreRequestImplCopyWith<$Res> {
-  factory _$$PutCreateStoreRequestImplCopyWith(
-          _$PutCreateStoreRequestImpl value,
-          $Res Function(_$PutCreateStoreRequestImpl) then) =
-      __$$PutCreateStoreRequestImplCopyWithImpl<$Res>;
+abstract class _$$PutEditStoreRequestImplCopyWith<$Res> {
+  factory _$$PutEditStoreRequestImplCopyWith(_$PutEditStoreRequestImpl value,
+          $Res Function(_$PutEditStoreRequestImpl) then) =
+      __$$PutEditStoreRequestImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String storeId, EditStorePutRequest editStorePutRequest});
+
+  $EditStorePutRequestCopyWith<$Res> get editStorePutRequest;
 }
 
 /// @nodoc
-class __$$PutCreateStoreRequestImplCopyWithImpl<$Res>
-    extends _$YourStoreEventCopyWithImpl<$Res, _$PutCreateStoreRequestImpl>
-    implements _$$PutCreateStoreRequestImplCopyWith<$Res> {
-  __$$PutCreateStoreRequestImplCopyWithImpl(_$PutCreateStoreRequestImpl _value,
-      $Res Function(_$PutCreateStoreRequestImpl) _then)
+class __$$PutEditStoreRequestImplCopyWithImpl<$Res>
+    extends _$YourStoreEventCopyWithImpl<$Res, _$PutEditStoreRequestImpl>
+    implements _$$PutEditStoreRequestImplCopyWith<$Res> {
+  __$$PutEditStoreRequestImplCopyWithImpl(_$PutEditStoreRequestImpl _value,
+      $Res Function(_$PutEditStoreRequestImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? storeId = null,
+    Object? editStorePutRequest = null,
+  }) {
+    return _then(_$PutEditStoreRequestImpl(
+      storeId: null == storeId
+          ? _value.storeId
+          : storeId // ignore: cast_nullable_to_non_nullable
+              as String,
+      editStorePutRequest: null == editStorePutRequest
+          ? _value.editStorePutRequest
+          : editStorePutRequest // ignore: cast_nullable_to_non_nullable
+              as EditStorePutRequest,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $EditStorePutRequestCopyWith<$Res> get editStorePutRequest {
+    return $EditStorePutRequestCopyWith<$Res>(_value.editStorePutRequest,
+        (value) {
+      return _then(_value.copyWith(editStorePutRequest: value));
+    });
+  }
 }
 
 /// @nodoc
 
-class _$PutCreateStoreRequestImpl implements _PutCreateStoreRequest {
-  const _$PutCreateStoreRequestImpl();
+class _$PutEditStoreRequestImpl implements _PutEditStoreRequest {
+  const _$PutEditStoreRequestImpl(
+      {required this.storeId, required this.editStorePutRequest});
+
+  @override
+  final String storeId;
+  @override
+  final EditStorePutRequest editStorePutRequest;
 
   @override
   String toString() {
-    return 'YourStoreEvent.putCreateStoreRequest()';
+    return 'YourStoreEvent.putEditStoreRequest(storeId: $storeId, editStorePutRequest: $editStorePutRequest)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PutCreateStoreRequestImpl);
+            other is _$PutEditStoreRequestImpl &&
+            (identical(other.storeId, storeId) || other.storeId == storeId) &&
+            (identical(other.editStorePutRequest, editStorePutRequest) ||
+                other.editStorePutRequest == editStorePutRequest));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, storeId, editStorePutRequest);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$PutEditStoreRequestImplCopyWith<_$PutEditStoreRequestImpl> get copyWith =>
+      __$$PutEditStoreRequestImplCopyWithImpl<_$PutEditStoreRequestImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getMyStoreRequest,
-    required TResult Function(CreateStorePostRequest buatTokoPostRequest)
+    required TResult Function(CreateStorePostRequest createStorePostRequest)
         postCreateStoreRequest,
-    required TResult Function() putCreateStoreRequest,
+    required TResult Function(
+            String storeId, EditStorePutRequest editStorePutRequest)
+        putEditStoreRequest,
   }) {
-    return putCreateStoreRequest();
+    return putEditStoreRequest(storeId, editStorePutRequest);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getMyStoreRequest,
-    TResult? Function(CreateStorePostRequest buatTokoPostRequest)?
+    TResult? Function(CreateStorePostRequest createStorePostRequest)?
         postCreateStoreRequest,
-    TResult? Function()? putCreateStoreRequest,
+    TResult? Function(String storeId, EditStorePutRequest editStorePutRequest)?
+        putEditStoreRequest,
   }) {
-    return putCreateStoreRequest?.call();
+    return putEditStoreRequest?.call(storeId, editStorePutRequest);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getMyStoreRequest,
-    TResult Function(CreateStorePostRequest buatTokoPostRequest)?
+    TResult Function(CreateStorePostRequest createStorePostRequest)?
         postCreateStoreRequest,
-    TResult Function()? putCreateStoreRequest,
+    TResult Function(String storeId, EditStorePutRequest editStorePutRequest)?
+        putEditStoreRequest,
     required TResult orElse(),
   }) {
-    if (putCreateStoreRequest != null) {
-      return putCreateStoreRequest();
+    if (putEditStoreRequest != null) {
+      return putEditStoreRequest(storeId, editStorePutRequest);
     }
     return orElse();
   }
@@ -439,10 +498,9 @@ class _$PutCreateStoreRequestImpl implements _PutCreateStoreRequest {
     required TResult Function(_GetMyStoreRequest value) getMyStoreRequest,
     required TResult Function(_PostCreateStoreRequest value)
         postCreateStoreRequest,
-    required TResult Function(_PutCreateStoreRequest value)
-        putCreateStoreRequest,
+    required TResult Function(_PutEditStoreRequest value) putEditStoreRequest,
   }) {
-    return putCreateStoreRequest(this);
+    return putEditStoreRequest(this);
   }
 
   @override
@@ -450,9 +508,9 @@ class _$PutCreateStoreRequestImpl implements _PutCreateStoreRequest {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetMyStoreRequest value)? getMyStoreRequest,
     TResult? Function(_PostCreateStoreRequest value)? postCreateStoreRequest,
-    TResult? Function(_PutCreateStoreRequest value)? putCreateStoreRequest,
+    TResult? Function(_PutEditStoreRequest value)? putEditStoreRequest,
   }) {
-    return putCreateStoreRequest?.call(this);
+    return putEditStoreRequest?.call(this);
   }
 
   @override
@@ -460,18 +518,27 @@ class _$PutCreateStoreRequestImpl implements _PutCreateStoreRequest {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetMyStoreRequest value)? getMyStoreRequest,
     TResult Function(_PostCreateStoreRequest value)? postCreateStoreRequest,
-    TResult Function(_PutCreateStoreRequest value)? putCreateStoreRequest,
+    TResult Function(_PutEditStoreRequest value)? putEditStoreRequest,
     required TResult orElse(),
   }) {
-    if (putCreateStoreRequest != null) {
-      return putCreateStoreRequest(this);
+    if (putEditStoreRequest != null) {
+      return putEditStoreRequest(this);
     }
     return orElse();
   }
 }
 
-abstract class _PutCreateStoreRequest implements YourStoreEvent {
-  const factory _PutCreateStoreRequest() = _$PutCreateStoreRequestImpl;
+abstract class _PutEditStoreRequest implements YourStoreEvent {
+  const factory _PutEditStoreRequest(
+          {required final String storeId,
+          required final EditStorePutRequest editStorePutRequest}) =
+      _$PutEditStoreRequestImpl;
+
+  String get storeId;
+  EditStorePutRequest get editStorePutRequest;
+  @JsonKey(ignore: true)
+  _$$PutEditStoreRequestImplCopyWith<_$PutEditStoreRequestImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -823,7 +890,9 @@ mixin _$YourStoreState {
   bool get isBusy => throw _privateConstructorUsedError;
   YourStoreNotification? get notification => throw _privateConstructorUsedError;
   MyStoreResponse? get myStoreResponse => throw _privateConstructorUsedError;
-  CreateStorePostRequest? get buatTokoPostRequest =>
+  CreateStorePostRequest? get createStorePostRequest =>
+      throw _privateConstructorUsedError;
+  EditStorePutRequest? get editStorePutRequest =>
       throw _privateConstructorUsedError;
   ErrorResponse? get errorResponse => throw _privateConstructorUsedError;
 
@@ -843,13 +912,15 @@ abstract class $YourStoreStateCopyWith<$Res> {
       bool isBusy,
       YourStoreNotification? notification,
       MyStoreResponse? myStoreResponse,
-      CreateStorePostRequest? buatTokoPostRequest,
+      CreateStorePostRequest? createStorePostRequest,
+      EditStorePutRequest? editStorePutRequest,
       ErrorResponse? errorResponse});
 
   $UIStatusCopyWith<$Res> get status;
   $YourStoreNotificationCopyWith<$Res>? get notification;
   $MyStoreResponseCopyWith<$Res>? get myStoreResponse;
-  $CreateStorePostRequestCopyWith<$Res>? get buatTokoPostRequest;
+  $CreateStorePostRequestCopyWith<$Res>? get createStorePostRequest;
+  $EditStorePutRequestCopyWith<$Res>? get editStorePutRequest;
   $ErrorResponseCopyWith<$Res>? get errorResponse;
 }
 
@@ -870,7 +941,8 @@ class _$YourStoreStateCopyWithImpl<$Res, $Val extends YourStoreState>
     Object? isBusy = null,
     Object? notification = freezed,
     Object? myStoreResponse = freezed,
-    Object? buatTokoPostRequest = freezed,
+    Object? createStorePostRequest = freezed,
+    Object? editStorePutRequest = freezed,
     Object? errorResponse = freezed,
   }) {
     return _then(_value.copyWith(
@@ -890,10 +962,14 @@ class _$YourStoreStateCopyWithImpl<$Res, $Val extends YourStoreState>
           ? _value.myStoreResponse
           : myStoreResponse // ignore: cast_nullable_to_non_nullable
               as MyStoreResponse?,
-      buatTokoPostRequest: freezed == buatTokoPostRequest
-          ? _value.buatTokoPostRequest
-          : buatTokoPostRequest // ignore: cast_nullable_to_non_nullable
+      createStorePostRequest: freezed == createStorePostRequest
+          ? _value.createStorePostRequest
+          : createStorePostRequest // ignore: cast_nullable_to_non_nullable
               as CreateStorePostRequest?,
+      editStorePutRequest: freezed == editStorePutRequest
+          ? _value.editStorePutRequest
+          : editStorePutRequest // ignore: cast_nullable_to_non_nullable
+              as EditStorePutRequest?,
       errorResponse: freezed == errorResponse
           ? _value.errorResponse
           : errorResponse // ignore: cast_nullable_to_non_nullable
@@ -935,14 +1011,27 @@ class _$YourStoreStateCopyWithImpl<$Res, $Val extends YourStoreState>
 
   @override
   @pragma('vm:prefer-inline')
-  $CreateStorePostRequestCopyWith<$Res>? get buatTokoPostRequest {
-    if (_value.buatTokoPostRequest == null) {
+  $CreateStorePostRequestCopyWith<$Res>? get createStorePostRequest {
+    if (_value.createStorePostRequest == null) {
       return null;
     }
 
-    return $CreateStorePostRequestCopyWith<$Res>(_value.buatTokoPostRequest!,
+    return $CreateStorePostRequestCopyWith<$Res>(_value.createStorePostRequest!,
         (value) {
-      return _then(_value.copyWith(buatTokoPostRequest: value) as $Val);
+      return _then(_value.copyWith(createStorePostRequest: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $EditStorePutRequestCopyWith<$Res>? get editStorePutRequest {
+    if (_value.editStorePutRequest == null) {
+      return null;
+    }
+
+    return $EditStorePutRequestCopyWith<$Res>(_value.editStorePutRequest!,
+        (value) {
+      return _then(_value.copyWith(editStorePutRequest: value) as $Val);
     });
   }
 
@@ -972,7 +1061,8 @@ abstract class _$$YourStoreStateImplCopyWith<$Res>
       bool isBusy,
       YourStoreNotification? notification,
       MyStoreResponse? myStoreResponse,
-      CreateStorePostRequest? buatTokoPostRequest,
+      CreateStorePostRequest? createStorePostRequest,
+      EditStorePutRequest? editStorePutRequest,
       ErrorResponse? errorResponse});
 
   @override
@@ -982,7 +1072,9 @@ abstract class _$$YourStoreStateImplCopyWith<$Res>
   @override
   $MyStoreResponseCopyWith<$Res>? get myStoreResponse;
   @override
-  $CreateStorePostRequestCopyWith<$Res>? get buatTokoPostRequest;
+  $CreateStorePostRequestCopyWith<$Res>? get createStorePostRequest;
+  @override
+  $EditStorePutRequestCopyWith<$Res>? get editStorePutRequest;
   @override
   $ErrorResponseCopyWith<$Res>? get errorResponse;
 }
@@ -1002,7 +1094,8 @@ class __$$YourStoreStateImplCopyWithImpl<$Res>
     Object? isBusy = null,
     Object? notification = freezed,
     Object? myStoreResponse = freezed,
-    Object? buatTokoPostRequest = freezed,
+    Object? createStorePostRequest = freezed,
+    Object? editStorePutRequest = freezed,
     Object? errorResponse = freezed,
   }) {
     return _then(_$YourStoreStateImpl(
@@ -1022,10 +1115,14 @@ class __$$YourStoreStateImplCopyWithImpl<$Res>
           ? _value.myStoreResponse
           : myStoreResponse // ignore: cast_nullable_to_non_nullable
               as MyStoreResponse?,
-      buatTokoPostRequest: freezed == buatTokoPostRequest
-          ? _value.buatTokoPostRequest
-          : buatTokoPostRequest // ignore: cast_nullable_to_non_nullable
+      createStorePostRequest: freezed == createStorePostRequest
+          ? _value.createStorePostRequest
+          : createStorePostRequest // ignore: cast_nullable_to_non_nullable
               as CreateStorePostRequest?,
+      editStorePutRequest: freezed == editStorePutRequest
+          ? _value.editStorePutRequest
+          : editStorePutRequest // ignore: cast_nullable_to_non_nullable
+              as EditStorePutRequest?,
       errorResponse: freezed == errorResponse
           ? _value.errorResponse
           : errorResponse // ignore: cast_nullable_to_non_nullable
@@ -1042,7 +1139,8 @@ class _$YourStoreStateImpl implements _YourStoreState {
       this.isBusy = false,
       this.notification,
       this.myStoreResponse,
-      this.buatTokoPostRequest,
+      this.createStorePostRequest,
+      this.editStorePutRequest,
       this.errorResponse});
 
   @override
@@ -1056,13 +1154,15 @@ class _$YourStoreStateImpl implements _YourStoreState {
   @override
   final MyStoreResponse? myStoreResponse;
   @override
-  final CreateStorePostRequest? buatTokoPostRequest;
+  final CreateStorePostRequest? createStorePostRequest;
+  @override
+  final EditStorePutRequest? editStorePutRequest;
   @override
   final ErrorResponse? errorResponse;
 
   @override
   String toString() {
-    return 'YourStoreState(status: $status, isBusy: $isBusy, notification: $notification, myStoreResponse: $myStoreResponse, buatTokoPostRequest: $buatTokoPostRequest, errorResponse: $errorResponse)';
+    return 'YourStoreState(status: $status, isBusy: $isBusy, notification: $notification, myStoreResponse: $myStoreResponse, createStorePostRequest: $createStorePostRequest, editStorePutRequest: $editStorePutRequest, errorResponse: $errorResponse)';
   }
 
   @override
@@ -1076,15 +1176,24 @@ class _$YourStoreStateImpl implements _YourStoreState {
                 other.notification == notification) &&
             (identical(other.myStoreResponse, myStoreResponse) ||
                 other.myStoreResponse == myStoreResponse) &&
-            (identical(other.buatTokoPostRequest, buatTokoPostRequest) ||
-                other.buatTokoPostRequest == buatTokoPostRequest) &&
+            (identical(other.createStorePostRequest, createStorePostRequest) ||
+                other.createStorePostRequest == createStorePostRequest) &&
+            (identical(other.editStorePutRequest, editStorePutRequest) ||
+                other.editStorePutRequest == editStorePutRequest) &&
             (identical(other.errorResponse, errorResponse) ||
                 other.errorResponse == errorResponse));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, status, isBusy, notification,
-      myStoreResponse, buatTokoPostRequest, errorResponse);
+  int get hashCode => Object.hash(
+      runtimeType,
+      status,
+      isBusy,
+      notification,
+      myStoreResponse,
+      createStorePostRequest,
+      editStorePutRequest,
+      errorResponse);
 
   @JsonKey(ignore: true)
   @override
@@ -1100,7 +1209,8 @@ abstract class _YourStoreState implements YourStoreState {
       final bool isBusy,
       final YourStoreNotification? notification,
       final MyStoreResponse? myStoreResponse,
-      final CreateStorePostRequest? buatTokoPostRequest,
+      final CreateStorePostRequest? createStorePostRequest,
+      final EditStorePutRequest? editStorePutRequest,
       final ErrorResponse? errorResponse}) = _$YourStoreStateImpl;
 
   @override
@@ -1112,7 +1222,9 @@ abstract class _YourStoreState implements YourStoreState {
   @override
   MyStoreResponse? get myStoreResponse;
   @override
-  CreateStorePostRequest? get buatTokoPostRequest;
+  CreateStorePostRequest? get createStorePostRequest;
+  @override
+  EditStorePutRequest? get editStorePutRequest;
   @override
   ErrorResponse? get errorResponse;
   @override

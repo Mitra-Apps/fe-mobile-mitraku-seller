@@ -132,7 +132,7 @@ class _CreateStoreHoursWidgetState extends State<CreateStoreHoursWidget> {
       selectedOpenTime = widget.openTime!;
     }
     if (widget.closedTime != null) {
-      selectedOpenTime = widget.closedTime!;
+      selectedClosedTime = widget.closedTime!;
     }
   }
 
@@ -173,7 +173,7 @@ class _CreateStoreHoursWidgetState extends State<CreateStoreHoursWidget> {
                           : AppColors.disabledLightColor,
                     ),
                     child: widget.isOpen24Hours
-                        ? Icon(
+                        ? const Icon(
                             Icons.check,
                             color: AppColors.mainWhiteColor,
                             size: 18,
@@ -322,7 +322,7 @@ class _CreateStoreHoursWidgetState extends State<CreateStoreHoursWidget> {
                     ),
         ),
         AppSpacing.verticalSpacing10,
-        Divider(
+        const Divider(
           color: AppColors.disabledColor,
           thickness: 1,
         ),

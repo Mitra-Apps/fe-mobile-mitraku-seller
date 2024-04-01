@@ -54,7 +54,7 @@ class HoursOpenCloseWidget extends StatelessWidget {
         child: Row(
           children: [
             SizedBox(
-              width: 60,
+              width: 80,
               child: Text(
                 nameOfDay,
                 style: Theme.of(context)
@@ -101,7 +101,7 @@ class HoursOpenCloseWidget extends StatelessWidget {
         child: Row(
           children: [
             SizedBox(
-              width: 60,
+              width: 80,
               child: Text(
                 nameOfDay,
                 style: Theme.of(context)

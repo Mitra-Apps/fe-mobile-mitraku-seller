@@ -12,22 +12,22 @@ import 'package:mitraku_seller/features/stores/components/store_profile_widget.d
 import 'package:rest_client/rest_client.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class CreateStoreSummaryPage extends StatefulWidget {
-  const CreateStoreSummaryPage({
+class EditStoreSummaryPage extends StatefulWidget {
+  const EditStoreSummaryPage({
     required this.changeCreateStoreStep,
     super.key,
   });
   final Function(int) changeCreateStoreStep;
 
   @override
-  State<CreateStoreSummaryPage> createState() => _CreateStoreSummaryPage();
+  State<EditStoreSummaryPage> createState() => _EditStoreSummaryPage();
 }
 
-class _CreateStoreSummaryPage extends State<CreateStoreSummaryPage> {
+class _EditStoreSummaryPage extends State<EditStoreSummaryPage> {
   bool isLoadingApi = false;
   bool isShowSuccessDialog = false;
   late String userEmail = '';
-  late List<CreateNewHour> createNewOperationalHours = [];
+  late List<Hour> currentOperationalHours = [];
 
   // @override
   // Future<void> initState() async {
@@ -51,10 +51,16 @@ class _CreateStoreSummaryPage extends State<CreateStoreSummaryPage> {
         ':${timeOfDay.minute.toString().padLeft(2, '0')}';
   }
 
+  List<ImageStore> _loadStoreImage(List<ImageStore> currentImage) {
+    return [];
+  }
+
   void _setupOperationalHoursScheduleParam(StoreScheduleModel schedule) {
     for (int dayIndex = 0; dayIndex < 7; dayIndex++) {
-      createNewOperationalHours.add(
-        CreateNewHour(
+      currentOperationalHours.add(
+        Hour(
+          id: schedule.hourIdWeekly[dayIndex],
+          storeId: schedule.hourStoreIdWeekly[dayIndex],
           dayOfWeek: dayIndex,
           open: schedule.timeOpenWeekly[dayIndex] != null
               ? _formatTimeOfDay(schedule.timeOpenWeekly[dayIndex]!)
@@ -104,7 +110,7 @@ class _CreateStoreSummaryPage extends State<CreateStoreSummaryPage> {
               },
             );
           },
-          builder: (context, buatTokoState) {
+          builder: (context, yourStoreState) {
             // Build UI based on both BuatTokoCubit and TokoAndaBloc states
             return Stack(
               children: [
@@ -186,32 +192,50 @@ class _CreateStoreSummaryPage extends State<CreateStoreSummaryPage> {
                                       state.scheduleModel!,
                                     );
                                     context.read<YourStoreBloc>().add(
-                                          YourStoreEvent.postCreateStoreRequest(
-                                            CreateStorePostRequest(
+                                          YourStoreEvent.putEditStoreRequest(
+                                            storeId: yourStoreState
+                                                .myStoreResponse!.id,
+                                            editStorePutRequest:
+                                                EditStorePutRequest(
+                                              id: yourStoreState
+                                                  .myStoreResponse!.id,
+                                              userId: yourStoreState
+                                                  .myStoreResponse!.userId,
                                               storeName: state.name,
                                               storeDescription:
                                                   state.description,
                                               address: state.address,
-                                              city: '',
-                                              state: '',
-                                              zipCode: '',
+                                              city: yourStoreState
+                                                  .myStoreResponse!.city,
+                                              state: yourStoreState
+                                                  .myStoreResponse!.state,
+                                              zipCode: yourStoreState
+                                                  .myStoreResponse!.zipCode,
                                               phone: state.phone,
                                               email: userEmail,
-                                              website: '',
-                                              status: '',
+                                              website: yourStoreState
+                                                  .myStoreResponse!.website,
+                                              status: yourStoreState
+                                                  .myStoreResponse!.status,
                                               isActive: true,
-                                              locationLat: 0,
-                                              locationLng: 0,
-                                              tags: [],
-                                              hours: createNewOperationalHours,
-                                              images: [],
+                                              locationLat: yourStoreState
+                                                  .myStoreResponse!.locationLat,
+                                              locationLng: yourStoreState
+                                                  .myStoreResponse!.locationLng,
+                                              tags: yourStoreState
+                                                  .myStoreResponse!.tags,
+                                              hours: currentOperationalHours,
+                                              images: _loadStoreImage(
+                                                yourStoreState
+                                                    .myStoreResponse!.images,
+                                              ),
                                             ),
                                           ),
                                         );
                                   });
                                 },
                                 child: Text(
-                                  'Buat Toko',
+                                  'Ubah Toko',
                                   style: Theme.of(context)
                                       .textTheme
                                       .titleMedium!
@@ -275,7 +299,7 @@ class _CreateStoreSummaryPage extends State<CreateStoreSummaryPage> {
                                   ),
                                 ),
                                 Text(
-                                  'Toko Berhasil Dibuat',
+                                  'Toko Berhasil Diubah',
                                   style: Theme.of(context)
                                       .textTheme
                                       .titleLarge!

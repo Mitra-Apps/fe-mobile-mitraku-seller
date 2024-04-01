@@ -31,8 +31,8 @@ class MyStoreResponse with _$MyStoreResponse {
   }) = _MyStoreResponse;
 
   ///
-  factory MyStoreResponse.fromJson(Map<String, dynamic> json) => 
-  _$MyStoreResponseFromJson(json);
+  factory MyStoreResponse.fromJson(Map<String, dynamic> json) =>
+      _$MyStoreResponseFromJson(json);
 }
 
 ///
@@ -58,16 +58,16 @@ class Hour with _$Hour {
 class ImageStore with _$ImageStore {
   ///
   const factory ImageStore({
-    @JsonKey(name: 'id') required String id,
-    @JsonKey(name: 'storeId') required String storeId,
     @JsonKey(name: 'imageType') required String imageType,
-    @JsonKey(name: 'imageUrl') required String imageUrl,
     @JsonKey(name: 'imageBase64') required String imageBase64,
+    @JsonKey(name: 'id', includeIfNull: false) String? id,
+    @JsonKey(name: 'storeId', includeIfNull: false) String? storeId,
+    @JsonKey(name: 'imageUrl', includeIfNull: false) String? imageUrl,
   }) = _ImageStore;
 
-///
-  factory ImageStore.fromJson(Map<String, dynamic> json) => 
-  _$ImageStoreFromJson(json);
+  ///
+  factory ImageStore.fromJson(Map<String, dynamic> json) =>
+      _$ImageStoreFromJson(json);
 }
 
 ///
@@ -79,6 +79,6 @@ class Tag with _$Tag {
     @JsonKey(name: 'tagName') required String tagName,
   }) = _Tag;
 
-///
+  ///
   factory Tag.fromJson(Map<String, dynamic> json) => _$TagFromJson(json);
 }

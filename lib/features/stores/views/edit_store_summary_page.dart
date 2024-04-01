@@ -51,8 +51,48 @@ class _EditStoreSummaryPage extends State<EditStoreSummaryPage> {
         ':${timeOfDay.minute.toString().padLeft(2, '0')}';
   }
 
-  List<ImageStore> _loadStoreImage(List<ImageStore> currentImage) {
-    return [];
+  List<ImageStore> _loadStoreImage(
+    MyStoreResponse myStoreResponse,
+    String currentImagePath,
+    String currentImageType,
+    String currentImageBase64,
+  ) {
+    final List<ImageStore> previousImage = myStoreResponse.images;
+    if (previousImage.isNotEmpty) {
+      if (previousImage.first.imageUrl == currentImageType) {
+        return previousImage;
+      } else {
+        if (currentImagePath.isNotEmpty &&
+            currentImageType.isNotEmpty &&
+            currentImageBase64.isNotEmpty) {
+          return [
+            ImageStore(
+              id: previousImage.first.id,
+              storeId: myStoreResponse.id,
+              imageType: currentImageType,
+              imageUrl: previousImage.first.imageUrl,
+              imageBase64: currentImageBase64,
+            ),
+          ];
+        } else {
+          return [];
+        }
+      }
+    } else {
+      if (currentImagePath.isNotEmpty &&
+          currentImageType.isNotEmpty &&
+          currentImageBase64.isNotEmpty) {
+        return [
+          ImageStore(
+            imageType: currentImageType,
+            imageUrl: currentImagePath,
+            imageBase64: currentImageBase64,
+          ),
+        ];
+      } else {
+        return [];
+      }
+    }
   }
 
   void _setupOperationalHoursScheduleParam(StoreScheduleModel schedule) {
@@ -91,12 +131,6 @@ class _EditStoreSummaryPage extends State<EditStoreSummaryPage> {
                   Future.delayed(const Duration(seconds: 3), () {
                     widget.changeCreateStoreStep(200);
                   });
-                  // if (state.myStoreResponse != null) {
-                  //   isShowSuccessDialog = true;
-                  //   Future.delayed(const Duration(seconds: 5), () {
-                  //     widget.changeCreateStoreStep(200);
-                  //   });
-                  // } else {}
                 });
                 // _loadTokoAndaResponse(state);
                 // _showToastSuccess(message);
@@ -156,11 +190,13 @@ class _EditStoreSummaryPage extends State<EditStoreSummaryPage> {
                               ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                   padding: const EdgeInsets.all(
-                                      AppDimens.basePaddingHalf),
+                                    AppDimens.basePaddingHalf,
+                                  ),
                                   elevation: 0,
                                   backgroundColor: AppColors.mainWhiteColor,
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10)),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
                                 ),
                                 onPressed: () {
                                   widget.changeCreateStoreStep(2);
@@ -180,10 +216,12 @@ class _EditStoreSummaryPage extends State<EditStoreSummaryPage> {
                               ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                   padding: const EdgeInsets.all(
-                                      AppDimens.basePaddingHalf),
+                                    AppDimens.basePaddingHalf,
+                                  ),
                                   backgroundColor: AppColors.mainColor,
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10)),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
                                 ),
                                 onPressed: () {
                                   setState(() {
@@ -226,8 +264,10 @@ class _EditStoreSummaryPage extends State<EditStoreSummaryPage> {
                                                   .myStoreResponse!.tags,
                                               hours: currentOperationalHours,
                                               images: _loadStoreImage(
-                                                yourStoreState
-                                                    .myStoreResponse!.images,
+                                                yourStoreState.myStoreResponse!,
+                                                state.imagePath,
+                                                state.imageType,
+                                                state.imageBase64,
                                               ),
                                             ),
                                           ),
@@ -275,7 +315,8 @@ class _EditStoreSummaryPage extends State<EditStoreSummaryPage> {
                       child: Align(
                         child: Dialog(
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30.0)),
+                            borderRadius: BorderRadius.circular(30),
+                          ),
                           child: SizedBox(
                             height: 300,
                             child: Column(

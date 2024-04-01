@@ -879,16 +879,16 @@ ImageStore _$ImageStoreFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ImageStore {
-  @JsonKey(name: 'id')
-  String get id => throw _privateConstructorUsedError;
-  @JsonKey(name: 'storeId')
-  String get storeId => throw _privateConstructorUsedError;
   @JsonKey(name: 'imageType')
   String get imageType => throw _privateConstructorUsedError;
-  @JsonKey(name: 'imageUrl')
-  String get imageUrl => throw _privateConstructorUsedError;
   @JsonKey(name: 'imageBase64')
   String get imageBase64 => throw _privateConstructorUsedError;
+  @JsonKey(name: 'id', includeIfNull: false)
+  String? get id => throw _privateConstructorUsedError;
+  @JsonKey(name: 'storeId', includeIfNull: false)
+  String? get storeId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'imageUrl', includeIfNull: false)
+  String? get imageUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -903,11 +903,11 @@ abstract class $ImageStoreCopyWith<$Res> {
       _$ImageStoreCopyWithImpl<$Res, ImageStore>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'id') String id,
-      @JsonKey(name: 'storeId') String storeId,
-      @JsonKey(name: 'imageType') String imageType,
-      @JsonKey(name: 'imageUrl') String imageUrl,
-      @JsonKey(name: 'imageBase64') String imageBase64});
+      {@JsonKey(name: 'imageType') String imageType,
+      @JsonKey(name: 'imageBase64') String imageBase64,
+      @JsonKey(name: 'id', includeIfNull: false) String? id,
+      @JsonKey(name: 'storeId', includeIfNull: false) String? storeId,
+      @JsonKey(name: 'imageUrl', includeIfNull: false) String? imageUrl});
 }
 
 /// @nodoc
@@ -923,33 +923,33 @@ class _$ImageStoreCopyWithImpl<$Res, $Val extends ImageStore>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? storeId = null,
     Object? imageType = null,
-    Object? imageUrl = null,
     Object? imageBase64 = null,
+    Object? id = freezed,
+    Object? storeId = freezed,
+    Object? imageUrl = freezed,
   }) {
     return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      storeId: null == storeId
-          ? _value.storeId
-          : storeId // ignore: cast_nullable_to_non_nullable
-              as String,
       imageType: null == imageType
           ? _value.imageType
           : imageType // ignore: cast_nullable_to_non_nullable
-              as String,
-      imageUrl: null == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
       imageBase64: null == imageBase64
           ? _value.imageBase64
           : imageBase64 // ignore: cast_nullable_to_non_nullable
               as String,
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      storeId: freezed == storeId
+          ? _value.storeId
+          : storeId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -963,11 +963,11 @@ abstract class _$$ImageStoreImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'id') String id,
-      @JsonKey(name: 'storeId') String storeId,
-      @JsonKey(name: 'imageType') String imageType,
-      @JsonKey(name: 'imageUrl') String imageUrl,
-      @JsonKey(name: 'imageBase64') String imageBase64});
+      {@JsonKey(name: 'imageType') String imageType,
+      @JsonKey(name: 'imageBase64') String imageBase64,
+      @JsonKey(name: 'id', includeIfNull: false) String? id,
+      @JsonKey(name: 'storeId', includeIfNull: false) String? storeId,
+      @JsonKey(name: 'imageUrl', includeIfNull: false) String? imageUrl});
 }
 
 /// @nodoc
@@ -981,33 +981,33 @@ class __$$ImageStoreImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? id = null,
-    Object? storeId = null,
     Object? imageType = null,
-    Object? imageUrl = null,
     Object? imageBase64 = null,
+    Object? id = freezed,
+    Object? storeId = freezed,
+    Object? imageUrl = freezed,
   }) {
     return _then(_$ImageStoreImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      storeId: null == storeId
-          ? _value.storeId
-          : storeId // ignore: cast_nullable_to_non_nullable
-              as String,
       imageType: null == imageType
           ? _value.imageType
           : imageType // ignore: cast_nullable_to_non_nullable
-              as String,
-      imageUrl: null == imageUrl
-          ? _value.imageUrl
-          : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
       imageBase64: null == imageBase64
           ? _value.imageBase64
           : imageBase64 // ignore: cast_nullable_to_non_nullable
               as String,
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      storeId: freezed == storeId
+          ? _value.storeId
+          : storeId // ignore: cast_nullable_to_non_nullable
+              as String?,
+      imageUrl: freezed == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -1016,34 +1016,34 @@ class __$$ImageStoreImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$ImageStoreImpl implements _ImageStore {
   const _$ImageStoreImpl(
-      {@JsonKey(name: 'id') required this.id,
-      @JsonKey(name: 'storeId') required this.storeId,
-      @JsonKey(name: 'imageType') required this.imageType,
-      @JsonKey(name: 'imageUrl') required this.imageUrl,
-      @JsonKey(name: 'imageBase64') required this.imageBase64});
+      {@JsonKey(name: 'imageType') required this.imageType,
+      @JsonKey(name: 'imageBase64') required this.imageBase64,
+      @JsonKey(name: 'id', includeIfNull: false) this.id,
+      @JsonKey(name: 'storeId', includeIfNull: false) this.storeId,
+      @JsonKey(name: 'imageUrl', includeIfNull: false) this.imageUrl});
 
   factory _$ImageStoreImpl.fromJson(Map<String, dynamic> json) =>
       _$$ImageStoreImplFromJson(json);
 
   @override
-  @JsonKey(name: 'id')
-  final String id;
-  @override
-  @JsonKey(name: 'storeId')
-  final String storeId;
-  @override
   @JsonKey(name: 'imageType')
   final String imageType;
   @override
-  @JsonKey(name: 'imageUrl')
-  final String imageUrl;
-  @override
   @JsonKey(name: 'imageBase64')
   final String imageBase64;
+  @override
+  @JsonKey(name: 'id', includeIfNull: false)
+  final String? id;
+  @override
+  @JsonKey(name: 'storeId', includeIfNull: false)
+  final String? storeId;
+  @override
+  @JsonKey(name: 'imageUrl', includeIfNull: false)
+  final String? imageUrl;
 
   @override
   String toString() {
-    return 'ImageStore(id: $id, storeId: $storeId, imageType: $imageType, imageUrl: $imageUrl, imageBase64: $imageBase64)';
+    return 'ImageStore(imageType: $imageType, imageBase64: $imageBase64, id: $id, storeId: $storeId, imageUrl: $imageUrl)';
   }
 
   @override
@@ -1051,20 +1051,20 @@ class _$ImageStoreImpl implements _ImageStore {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ImageStoreImpl &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.storeId, storeId) || other.storeId == storeId) &&
             (identical(other.imageType, imageType) ||
                 other.imageType == imageType) &&
-            (identical(other.imageUrl, imageUrl) ||
-                other.imageUrl == imageUrl) &&
             (identical(other.imageBase64, imageBase64) ||
-                other.imageBase64 == imageBase64));
+                other.imageBase64 == imageBase64) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.storeId, storeId) || other.storeId == storeId) &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, id, storeId, imageType, imageUrl, imageBase64);
+      Object.hash(runtimeType, imageType, imageBase64, id, storeId, imageUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -1082,31 +1082,31 @@ class _$ImageStoreImpl implements _ImageStore {
 
 abstract class _ImageStore implements ImageStore {
   const factory _ImageStore(
-          {@JsonKey(name: 'id') required final String id,
-          @JsonKey(name: 'storeId') required final String storeId,
-          @JsonKey(name: 'imageType') required final String imageType,
-          @JsonKey(name: 'imageUrl') required final String imageUrl,
-          @JsonKey(name: 'imageBase64') required final String imageBase64}) =
-      _$ImageStoreImpl;
+      {@JsonKey(name: 'imageType') required final String imageType,
+      @JsonKey(name: 'imageBase64') required final String imageBase64,
+      @JsonKey(name: 'id', includeIfNull: false) final String? id,
+      @JsonKey(name: 'storeId', includeIfNull: false) final String? storeId,
+      @JsonKey(name: 'imageUrl', includeIfNull: false)
+      final String? imageUrl}) = _$ImageStoreImpl;
 
   factory _ImageStore.fromJson(Map<String, dynamic> json) =
       _$ImageStoreImpl.fromJson;
 
   @override
-  @JsonKey(name: 'id')
-  String get id;
-  @override
-  @JsonKey(name: 'storeId')
-  String get storeId;
-  @override
   @JsonKey(name: 'imageType')
   String get imageType;
   @override
-  @JsonKey(name: 'imageUrl')
-  String get imageUrl;
-  @override
   @JsonKey(name: 'imageBase64')
   String get imageBase64;
+  @override
+  @JsonKey(name: 'id', includeIfNull: false)
+  String? get id;
+  @override
+  @JsonKey(name: 'storeId', includeIfNull: false)
+  String? get storeId;
+  @override
+  @JsonKey(name: 'imageUrl', includeIfNull: false)
+  String? get imageUrl;
   @override
   @JsonKey(ignore: true)
   _$$ImageStoreImplCopyWith<_$ImageStoreImpl> get copyWith =>

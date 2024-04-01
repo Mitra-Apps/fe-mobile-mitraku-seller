@@ -81,21 +81,30 @@ Map<String, dynamic> _$$HourImplToJson(_$HourImpl instance) =>
 
 _$ImageStoreImpl _$$ImageStoreImplFromJson(Map<String, dynamic> json) =>
     _$ImageStoreImpl(
-      id: json['id'] as String,
-      storeId: json['storeId'] as String,
       imageType: json['imageType'] as String,
-      imageUrl: json['imageUrl'] as String,
       imageBase64: json['imageBase64'] as String,
+      id: json['id'] as String?,
+      storeId: json['storeId'] as String?,
+      imageUrl: json['imageUrl'] as String?,
     );
 
-Map<String, dynamic> _$$ImageStoreImplToJson(_$ImageStoreImpl instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'storeId': instance.storeId,
-      'imageType': instance.imageType,
-      'imageUrl': instance.imageUrl,
-      'imageBase64': instance.imageBase64,
-    };
+Map<String, dynamic> _$$ImageStoreImplToJson(_$ImageStoreImpl instance) {
+  final val = <String, dynamic>{
+    'imageType': instance.imageType,
+    'imageBase64': instance.imageBase64,
+  };
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('id', instance.id);
+  writeNotNull('storeId', instance.storeId);
+  writeNotNull('imageUrl', instance.imageUrl);
+  return val;
+}
 
 _$TagImpl _$$TagImplFromJson(Map<String, dynamic> json) => _$TagImpl(
       id: json['id'] as String,

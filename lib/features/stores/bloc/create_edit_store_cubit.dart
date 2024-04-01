@@ -27,6 +27,8 @@ class StoreModel {
     required this.address,
     required this.description,
     this.imagePath = '',
+    this.imageType = '',
+    this.imageBase64 = '',
     this.scheduleModel,
   });
   factory StoreModel.defaultStore() {
@@ -51,6 +53,8 @@ class StoreModel {
   final String address;
   final String description;
   final String imagePath;
+  final String imageType;
+  final String imageBase64;
   final StoreScheduleModel? scheduleModel;
 
   StoreModel copyWith({
@@ -59,6 +63,8 @@ class StoreModel {
     String? address,
     String? description,
     String? imagePath,
+    String? imageType,
+    String? imageBase64,
     StoreScheduleModel? scheduleModel,
   }) {
     return StoreModel(
@@ -67,6 +73,8 @@ class StoreModel {
       address: address ?? this.address,
       description: description ?? this.description,
       imagePath: imagePath ?? this.imagePath,
+      imageType: imageType ?? this.imageType,
+      imageBase64: imageBase64 ?? this.imageBase64,
       scheduleModel: scheduleModel ?? this.scheduleModel,
     );
   }
@@ -101,6 +109,8 @@ class CreateEditStoreCubit extends Cubit<StoreModel> {
     required String address,
     required String description,
     String? imagePath,
+    String? imageType,
+    String? imageBase64,
   }) {
     emit(state.copyWith(
       name: name,
@@ -108,6 +118,8 @@ class CreateEditStoreCubit extends Cubit<StoreModel> {
       address: address,
       description: description,
       imagePath: imagePath,
+      imageType: imageType,
+      imageBase64: imageBase64,
     ));
   }
 

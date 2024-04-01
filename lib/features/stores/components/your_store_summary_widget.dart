@@ -48,7 +48,7 @@ class YourStoreSummaryWidget extends StatelessWidget {
         children: [
           StoreProfileWidget(
             imageUrl:
-                state.images.isNotEmpty ? state.images.first.imageUrl : '',
+                state.images.isNotEmpty ? state.images.first.imageUrl! : '',
             name: state.storeName,
             phone: state.phone,
             address: state.address,

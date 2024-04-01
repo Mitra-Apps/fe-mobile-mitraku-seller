@@ -69,6 +69,26 @@ class _CreateStoreSummaryPage extends State<CreateStoreSummaryPage> {
     }
   }
 
+  List<ImageStore> _loadStoreImage(
+    String currentImagePath,
+    String currentImageType,
+    String currentImageBase64,
+  ) {
+    if (currentImagePath.isNotEmpty &&
+        currentImageType.isNotEmpty &&
+        currentImageBase64.isNotEmpty) {
+      return [
+        ImageStore(
+          imageType: currentImageType,
+          imageUrl: currentImagePath,
+          imageBase64: currentImageBase64,
+        ),
+      ];
+    } else {
+      return [];
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     _loadEmailPreferences();
@@ -85,12 +105,6 @@ class _CreateStoreSummaryPage extends State<CreateStoreSummaryPage> {
                   Future.delayed(const Duration(seconds: 3), () {
                     widget.changeCreateStoreStep(200);
                   });
-                  // if (state.myStoreResponse != null) {
-                  //   isShowSuccessDialog = true;
-                  //   Future.delayed(const Duration(seconds: 5), () {
-                  //     widget.changeCreateStoreStep(200);
-                  //   });
-                  // } else {}
                 });
                 // _loadTokoAndaResponse(state);
                 // _showToastSuccess(message);
@@ -150,11 +164,13 @@ class _CreateStoreSummaryPage extends State<CreateStoreSummaryPage> {
                               ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                   padding: const EdgeInsets.all(
-                                      AppDimens.basePaddingHalf),
+                                    AppDimens.basePaddingHalf,
+                                  ),
                                   elevation: 0,
                                   backgroundColor: AppColors.mainWhiteColor,
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10)),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
                                 ),
                                 onPressed: () {
                                   widget.changeCreateStoreStep(2);
@@ -174,10 +190,12 @@ class _CreateStoreSummaryPage extends State<CreateStoreSummaryPage> {
                               ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                   padding: const EdgeInsets.all(
-                                      AppDimens.basePaddingHalf),
+                                    AppDimens.basePaddingHalf,
+                                  ),
                                   backgroundColor: AppColors.mainColor,
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10)),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
                                 ),
                                 onPressed: () {
                                   setState(() {
@@ -204,7 +222,11 @@ class _CreateStoreSummaryPage extends State<CreateStoreSummaryPage> {
                                               locationLng: 0,
                                               tags: [],
                                               hours: createNewOperationalHours,
-                                              images: [],
+                                              images: _loadStoreImage(
+                                                state.imagePath,
+                                                state.imageType,
+                                                state.imageBase64,
+                                              ),
                                             ),
                                           ),
                                         );
@@ -251,7 +273,8 @@ class _CreateStoreSummaryPage extends State<CreateStoreSummaryPage> {
                       child: Align(
                         child: Dialog(
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30.0)),
+                            borderRadius: BorderRadius.circular(30),
+                          ),
                           child: SizedBox(
                             height: 300,
                             child: Column(

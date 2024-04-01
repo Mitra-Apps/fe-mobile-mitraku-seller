@@ -29,6 +29,8 @@ class _EditStoreInformationPage extends State<EditStoreInformationPage> {
     String inputAlamatToko = currentState.address;
     String inputDeskripsi = currentState.description;
     String inputFoto = currentState.imagePath;
+    String inputFotoTipe = currentState.imageType;
+    String inputFotoBase64 = currentState.imageBase64;
     switch (type) {
       case 'NAMA_TOKO':
         inputNama = value;
@@ -40,6 +42,10 @@ class _EditStoreInformationPage extends State<EditStoreInformationPage> {
         inputDeskripsi = value;
       case 'FOTO':
         inputFoto = value;
+      case 'FOTO_TYPE':
+        inputFotoTipe = value;
+      case 'FOTO_BASE64':
+        inputFotoBase64 = value;
     }
     context.read<CreateEditStoreCubit>().updateStoreModel(
           name: inputNama,
@@ -47,6 +53,8 @@ class _EditStoreInformationPage extends State<EditStoreInformationPage> {
           address: inputAlamatToko,
           description: inputDeskripsi,
           imagePath: inputFoto,
+          imageType: inputFotoTipe,
+          imageBase64: inputFotoBase64,
         );
     _checkMandatoryField();
   }

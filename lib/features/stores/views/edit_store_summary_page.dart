@@ -108,7 +108,9 @@ class _EditStoreSummaryPage extends State<EditStoreSummaryPage> {
           close: schedule.timeClosedWeekly[dayIndex] != null
               ? _formatTimeOfDay(schedule.timeClosedWeekly[dayIndex]!)
               : '23:59',
-          is24Hours: schedule.isOpen24HoursWeekly[dayIndex],
+          is24Hours: schedule.isClosedDayWeekly[dayIndex] == true
+              ? !schedule.isClosedDayWeekly[dayIndex]
+              : schedule.isOpen24HoursWeekly[dayIndex],
           isOpen: !schedule.isClosedDayWeekly[dayIndex],
         ),
       );

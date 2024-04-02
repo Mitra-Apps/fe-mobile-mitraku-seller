@@ -59,6 +59,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
             isMyStoreExist: true,
           ),
         );
+        await getProductList(emit);
       } else {
         emit(
           state.copyWith(
@@ -69,7 +70,6 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
           ),
         );
       }
-      await getProductList(emit);
     } on DioException catch (e, s) {
       if (e.response != null) {
         _log.e(e.message.toString(), e, s);

@@ -21,6 +21,14 @@ class StoreProfileWidget extends StatelessWidget {
   final String phone;
   final String address;
 
+  bool _isValidUrl(String url) {
+    // Regular expression to check if the string is a valid URL
+    final RegExp urlRegExp = RegExp(
+      r'^(https?|ftp):\/\/[^\s\/$.?#].[^\s]*$',
+    );
+    return urlRegExp.hasMatch(url);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -48,11 +56,17 @@ class StoreProfileWidget extends StatelessWidget {
                   clipBehavior: Clip.hardEdge,
                   color: AppColors.disabledLightColor,
                   child: imagePath.isNotEmpty
-                      ? Image.file(
-                          File(imagePath),
-                          width: double.infinity,
-                          height: 120,
-                        )
+                      ? _isValidUrl(imagePath)
+                          ? Image.network(
+                              imagePath,
+                              width: double.infinity,
+                              height: 120,
+                            )
+                          : Image.file(
+                              File(imagePath),
+                              width: double.infinity,
+                              height: 120,
+                            )
                       : imageUrl.isNotEmpty
                           ? Image.network(
                               imageUrl,

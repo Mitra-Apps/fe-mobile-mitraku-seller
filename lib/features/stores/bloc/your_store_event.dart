@@ -4,7 +4,10 @@ part of 'your_store_bloc.dart';
 class YourStoreEvent with _$YourStoreEvent {
   const factory YourStoreEvent.getMyStoreRequest() = _GetMyStoreRequest;
   const factory YourStoreEvent.postCreateStoreRequest(
-    CreateStorePostRequest buatTokoPostRequest,
+    CreateStorePostRequest createStorePostRequest,
   ) = _PostCreateStoreRequest;
-  const factory YourStoreEvent.putCreateStoreRequest() = _PutCreateStoreRequest;
+  const factory YourStoreEvent.putEditStoreRequest({
+    required String storeId,
+    required EditStorePutRequest editStorePutRequest,
+  }) = _PutEditStoreRequest;
 }

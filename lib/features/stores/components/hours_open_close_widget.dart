@@ -54,7 +54,7 @@ class HoursOpenCloseWidget extends StatelessWidget {
         child: Row(
           children: [
             SizedBox(
-              width: 60,
+              width: 80,
               child: Text(
                 nameOfDay,
                 style: Theme.of(context)
@@ -73,17 +73,17 @@ class HoursOpenCloseWidget extends StatelessWidget {
                     height: 18,
                     child: SvgPicture.asset(
                       'assets/icons/icon_toko_anda.svg',
-                      color: is24HoursOpen
+                      color: !isClosedDay
                           ? AppColors.successColor
                           : AppColors.dangerColor,
                     ),
                   ),
                   AppSpacing.horizontalSpacing10,
                   Text(
-                    is24HoursOpen ? 'Buka 24 Jam' : 'Toko Tutup',
+                    !isClosedDay ? 'Buka 24 Jam' : 'Toko Tutup',
                     style: Theme.of(context).textTheme.titleMedium!.copyWith(
                         fontWeight: FontWeight.bold,
-                        color: is24HoursOpen
+                        color: !isClosedDay
                             ? AppColors.successColor
                             : AppColors.dangerColor),
                   ),
@@ -101,7 +101,7 @@ class HoursOpenCloseWidget extends StatelessWidget {
         child: Row(
           children: [
             SizedBox(
-              width: 60,
+              width: 80,
               child: Text(
                 nameOfDay,
                 style: Theme.of(context)

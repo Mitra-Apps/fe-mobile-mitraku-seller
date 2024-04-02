@@ -1,14 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'my_store_response.dart';
+part of 'edit_store_put_request.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$MyStoreResponseImpl _$$MyStoreResponseImplFromJson(
+_$EditStorePutRequestImpl _$$EditStorePutRequestImplFromJson(
         Map<String, dynamic> json) =>
-    _$MyStoreResponseImpl(
+    _$EditStorePutRequestImpl(
       id: json['id'] as String,
       userId: json['userId'] as String,
       storeName: json['storeName'] as String,
@@ -35,8 +35,8 @@ _$MyStoreResponseImpl _$$MyStoreResponseImplFromJson(
           .toList(),
     );
 
-Map<String, dynamic> _$$MyStoreResponseImplToJson(
-        _$MyStoreResponseImpl instance) =>
+Map<String, dynamic> _$$EditStorePutRequestImplToJson(
+        _$EditStorePutRequestImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'userId': instance.userId,
@@ -56,62 +56,4 @@ Map<String, dynamic> _$$MyStoreResponseImplToJson(
       'tags': instance.tags,
       'hours': instance.hours,
       'images': instance.images,
-    };
-
-_$HourImpl _$$HourImplFromJson(Map<String, dynamic> json) => _$HourImpl(
-      id: json['id'] as String,
-      storeId: json['storeId'] as String,
-      dayOfWeek: json['dayOfWeek'] as int,
-      open: json['open'] as String,
-      close: json['close'] as String,
-      is24Hours: json['is24hours'] as bool,
-      isOpen: json['isOpen'] as bool,
-    );
-
-Map<String, dynamic> _$$HourImplToJson(_$HourImpl instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'storeId': instance.storeId,
-      'dayOfWeek': instance.dayOfWeek,
-      'open': instance.open,
-      'close': instance.close,
-      'is24hours': instance.is24Hours,
-      'isOpen': instance.isOpen,
-    };
-
-_$ImageStoreImpl _$$ImageStoreImplFromJson(Map<String, dynamic> json) =>
-    _$ImageStoreImpl(
-      imageType: json['imageType'] as String,
-      imageBase64: json['imageBase64'] as String,
-      id: json['id'] as String?,
-      storeId: json['storeId'] as String?,
-      imageUrl: json['imageUrl'] as String?,
-    );
-
-Map<String, dynamic> _$$ImageStoreImplToJson(_$ImageStoreImpl instance) {
-  final val = <String, dynamic>{
-    'imageType': instance.imageType,
-    'imageBase64': instance.imageBase64,
-  };
-
-  void writeNotNull(String key, dynamic value) {
-    if (value != null) {
-      val[key] = value;
-    }
-  }
-
-  writeNotNull('id', instance.id);
-  writeNotNull('storeId', instance.storeId);
-  writeNotNull('imageUrl', instance.imageUrl);
-  return val;
-}
-
-_$TagImpl _$$TagImplFromJson(Map<String, dynamic> json) => _$TagImpl(
-      id: json['id'] as String,
-      tagName: json['tagName'] as String,
-    );
-
-Map<String, dynamic> _$$TagImplToJson(_$TagImpl instance) => <String, dynamic>{
-      'id': instance.id,
-      'tagName': instance.tagName,
     };

@@ -11,7 +11,16 @@ class ErrorPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Text(content)),
+      body: SafeArea(
+        child: Center(
+          child: DecoratedBox(
+            decoration: const BoxDecoration(
+              color: Colors.white,
+            ),
+            child: Text(content),
+          ),
+        ),
+      ),
     );
   }
 }

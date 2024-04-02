@@ -12,7 +12,10 @@ abstract class StoreApiClient {
 
   ///
   @GET('/api/v1/stores/my-store')
-  Future<BaseResponseNullable<MyStoreResponse>> getMyStore();
+  Future<BaseResponse<MyStoreResponse>> getMyStore({
+    @Header('Authorization') required String token,
+    @Header('Content-Type') String content = 'application/json',
+  });
 
   ///
   @POST('/api/v1/stores')

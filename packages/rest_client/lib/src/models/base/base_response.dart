@@ -9,8 +9,8 @@ class BaseResponse<T> with _$BaseResponse<T> {
   ///
   const factory BaseResponse({
     required dynamic code,
-    required T data,
-    required String message,
+    required T? data,
+    required String? message,
   }) = _BaseResponse<T>;
 
   ///

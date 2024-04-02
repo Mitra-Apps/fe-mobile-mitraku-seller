@@ -13,6 +13,7 @@ export 'otpconfirmation/resend_otp_post.dart';
 export 'otpconfirmation/resend_otp_response.dart';
 export 'products/product_category/data_product_category_response.dart';
 export 'products/product_category/product_category_response.dart';
+export 'products/product_list/product_response.dart';
 export 'products/product_post/product_list.dart';
 export 'products/product_post/product_post_request.dart';
 export 'products/product_type/product_type_response.dart';

@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:rest_client/rest_client.dart';
 import 'package:rest_client/src/models/products/product_category/data_product_category_response.dart';
+import 'package:rest_client/src/models/products/product_list/product_response.dart';
 import 'package:retrofit/retrofit.dart';
 
 part 'product_api.g.dart';
@@ -41,6 +42,15 @@ abstract class ProductApiClient {
   Future<BaseResponse> createProduct({
     @Header('Authorization') required String token,
     @Body() required Map<String, dynamic> json,
+    @Header('Content-Type') String content = 'application/json',
+  });
+
+  ///GET PRODUCT LIST
+  @GET('/api/v1/product-list/{storeId}/{isDeactivated}')
+  Future<BaseResponse<List<ProductResponse>>> getProductList({
+    @Path('storeId') required String storeId,
+    @Path('isDeactivated') required bool isDeactivated,
+    @Header('Authorization') required String token,
     @Header('Content-Type') String content = 'application/json',
   });
 }

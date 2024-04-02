@@ -171,6 +171,47 @@ class _ProductApiClient implements ProductApiClient {
     return value;
   }
 
+  @override
+  Future<BaseResponse<List<ProductResponse>>> getProductList({
+    required String storeId,
+    required bool isDeactivated,
+    required String token,
+    String content = 'application/json',
+  }) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{
+      r'Authorization': token,
+      r'Content-Type': content,
+    };
+    _headers.removeWhere((k, v) => v == null);
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<BaseResponse<List<ProductResponse>>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+      contentType: content,
+    )
+            .compose(
+              _dio.options,
+              '/api/v1/product-list/${storeId}/${isDeactivated}',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = BaseResponse<List<ProductResponse>>.fromJson(
+      _result.data!,
+      (json) => json is List<dynamic>
+          ? json
+              .map<ProductResponse>(
+                  (i) => ProductResponse.fromJson(i as Map<String, dynamic>))
+              .toList()
+          : List.empty(),
+    );
+    return value;
+  }
+
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&
         !(requestOptions.responseType == ResponseType.bytes ||

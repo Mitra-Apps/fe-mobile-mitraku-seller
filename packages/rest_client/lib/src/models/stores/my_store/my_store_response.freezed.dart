@@ -12,7 +12,7 @@ part of 'my_store_response.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 MyStoreResponse _$MyStoreResponseFromJson(Map<String, dynamic> json) {
   return _MyStoreResponse.fromJson(json);
@@ -442,7 +442,7 @@ class _$MyStoreResponseImpl implements _MyStoreResponse {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MyStoreResponseImpl &&
@@ -800,7 +800,7 @@ class _$HourImpl implements _Hour {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$HourImpl &&
@@ -1047,7 +1047,7 @@ class _$ImageStoreImpl implements _ImageStore {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ImageStoreImpl &&
@@ -1226,7 +1226,7 @@ class _$TagImpl implements _Tag {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TagImpl &&

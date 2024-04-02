@@ -4,6 +4,6 @@ part of 'other_bloc.dart';
 class OtherEvent with _$OtherEvent {
   const factory OtherEvent.started() = _Started;
 
-  const factory OtherEvent.logoutRequested(LogoutPost logoutPost) =
+  const factory OtherEvent.logoutRequested() =
       _LogoutRequested;
 }

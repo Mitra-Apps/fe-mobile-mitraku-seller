@@ -19,19 +19,19 @@ mixin _$OtherEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(LogoutPost logoutPost) logoutRequested,
+    required TResult Function() logoutRequested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(LogoutPost logoutPost)? logoutRequested,
+    TResult? Function()? logoutRequested,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(LogoutPost logoutPost)? logoutRequested,
+    TResult Function()? logoutRequested,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,7 +113,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(LogoutPost logoutPost) logoutRequested,
+    required TResult Function() logoutRequested,
   }) {
     return started();
   }
@@ -122,7 +122,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(LogoutPost logoutPost)? logoutRequested,
+    TResult? Function()? logoutRequested,
   }) {
     return started?.call();
   }
@@ -131,7 +131,7 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(LogoutPost logoutPost)? logoutRequested,
+    TResult Function()? logoutRequested,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -181,10 +181,6 @@ abstract class _$$LogoutRequestedImplCopyWith<$Res> {
   factory _$$LogoutRequestedImplCopyWith(_$LogoutRequestedImpl value,
           $Res Function(_$LogoutRequestedImpl) then) =
       __$$LogoutRequestedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({LogoutPost logoutPost});
-
-  $LogoutPostCopyWith<$Res> get logoutPost;
 }
 
 /// @nodoc
@@ -194,88 +190,54 @@ class __$$LogoutRequestedImplCopyWithImpl<$Res>
   __$$LogoutRequestedImplCopyWithImpl(
       _$LogoutRequestedImpl _value, $Res Function(_$LogoutRequestedImpl) _then)
       : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? logoutPost = null,
-  }) {
-    return _then(_$LogoutRequestedImpl(
-      null == logoutPost
-          ? _value.logoutPost
-          : logoutPost // ignore: cast_nullable_to_non_nullable
-              as LogoutPost,
-    ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $LogoutPostCopyWith<$Res> get logoutPost {
-    return $LogoutPostCopyWith<$Res>(_value.logoutPost, (value) {
-      return _then(_value.copyWith(logoutPost: value));
-    });
-  }
 }
 
 /// @nodoc
 
 class _$LogoutRequestedImpl implements _LogoutRequested {
-  const _$LogoutRequestedImpl(this.logoutPost);
-
-  @override
-  final LogoutPost logoutPost;
+  const _$LogoutRequestedImpl();
 
   @override
   String toString() {
-    return 'OtherEvent.logoutRequested(logoutPost: $logoutPost)';
+    return 'OtherEvent.logoutRequested()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$LogoutRequestedImpl &&
-            (identical(other.logoutPost, logoutPost) ||
-                other.logoutPost == logoutPost));
+        (other.runtimeType == runtimeType && other is _$LogoutRequestedImpl);
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, logoutPost);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$LogoutRequestedImplCopyWith<_$LogoutRequestedImpl> get copyWith =>
-      __$$LogoutRequestedImplCopyWithImpl<_$LogoutRequestedImpl>(
-          this, _$identity);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(LogoutPost logoutPost) logoutRequested,
+    required TResult Function() logoutRequested,
   }) {
-    return logoutRequested(logoutPost);
+    return logoutRequested();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(LogoutPost logoutPost)? logoutRequested,
+    TResult? Function()? logoutRequested,
   }) {
-    return logoutRequested?.call(logoutPost);
+    return logoutRequested?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(LogoutPost logoutPost)? logoutRequested,
+    TResult Function()? logoutRequested,
     required TResult orElse(),
   }) {
     if (logoutRequested != null) {
-      return logoutRequested(logoutPost);
+      return logoutRequested();
     }
     return orElse();
   }
@@ -313,19 +275,13 @@ class _$LogoutRequestedImpl implements _LogoutRequested {
 }
 
 abstract class _LogoutRequested implements OtherEvent {
-  const factory _LogoutRequested(final LogoutPost logoutPost) =
-      _$LogoutRequestedImpl;
-
-  LogoutPost get logoutPost;
-  @JsonKey(ignore: true)
-  _$$LogoutRequestedImplCopyWith<_$LogoutRequestedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  const factory _LogoutRequested() = _$LogoutRequestedImpl;
 }
 
 /// @nodoc
 mixin _$OtherState {
   UIStatus get status => throw _privateConstructorUsedError;
-  LogoutResponse get logoutResponse => throw _privateConstructorUsedError;
+  LogoutResponse? get logoutResponse => throw _privateConstructorUsedError;
   String get loginBadRequest => throw _privateConstructorUsedError;
   String get logoutStatus => throw _privateConstructorUsedError;
 
@@ -342,12 +298,12 @@ abstract class $OtherStateCopyWith<$Res> {
   @useResult
   $Res call(
       {UIStatus status,
-      LogoutResponse logoutResponse,
+      LogoutResponse? logoutResponse,
       String loginBadRequest,
       String logoutStatus});
 
   $UIStatusCopyWith<$Res> get status;
-  $LogoutResponseCopyWith<$Res> get logoutResponse;
+  $LogoutResponseCopyWith<$Res>? get logoutResponse;
 }
 
 /// @nodoc
@@ -364,7 +320,7 @@ class _$OtherStateCopyWithImpl<$Res, $Val extends OtherState>
   @override
   $Res call({
     Object? status = null,
-    Object? logoutResponse = null,
+    Object? logoutResponse = freezed,
     Object? loginBadRequest = null,
     Object? logoutStatus = null,
   }) {
@@ -373,10 +329,10 @@ class _$OtherStateCopyWithImpl<$Res, $Val extends OtherState>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as UIStatus,
-      logoutResponse: null == logoutResponse
+      logoutResponse: freezed == logoutResponse
           ? _value.logoutResponse
           : logoutResponse // ignore: cast_nullable_to_non_nullable
-              as LogoutResponse,
+              as LogoutResponse?,
       loginBadRequest: null == loginBadRequest
           ? _value.loginBadRequest
           : loginBadRequest // ignore: cast_nullable_to_non_nullable
@@ -398,8 +354,12 @@ class _$OtherStateCopyWithImpl<$Res, $Val extends OtherState>
 
   @override
   @pragma('vm:prefer-inline')
-  $LogoutResponseCopyWith<$Res> get logoutResponse {
-    return $LogoutResponseCopyWith<$Res>(_value.logoutResponse, (value) {
+  $LogoutResponseCopyWith<$Res>? get logoutResponse {
+    if (_value.logoutResponse == null) {
+      return null;
+    }
+
+    return $LogoutResponseCopyWith<$Res>(_value.logoutResponse!, (value) {
       return _then(_value.copyWith(logoutResponse: value) as $Val);
     });
   }
@@ -415,14 +375,14 @@ abstract class _$$OtherStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {UIStatus status,
-      LogoutResponse logoutResponse,
+      LogoutResponse? logoutResponse,
       String loginBadRequest,
       String logoutStatus});
 
   @override
   $UIStatusCopyWith<$Res> get status;
   @override
-  $LogoutResponseCopyWith<$Res> get logoutResponse;
+  $LogoutResponseCopyWith<$Res>? get logoutResponse;
 }
 
 /// @nodoc
@@ -437,7 +397,7 @@ class __$$OtherStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? status = null,
-    Object? logoutResponse = null,
+    Object? logoutResponse = freezed,
     Object? loginBadRequest = null,
     Object? logoutStatus = null,
   }) {
@@ -446,10 +406,10 @@ class __$$OtherStateImplCopyWithImpl<$Res>
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as UIStatus,
-      logoutResponse: null == logoutResponse
+      logoutResponse: freezed == logoutResponse
           ? _value.logoutResponse
           : logoutResponse // ignore: cast_nullable_to_non_nullable
-              as LogoutResponse,
+              as LogoutResponse?,
       loginBadRequest: null == loginBadRequest
           ? _value.loginBadRequest
           : loginBadRequest // ignore: cast_nullable_to_non_nullable
@@ -476,7 +436,7 @@ class _$OtherStateImpl implements _OtherState {
   final UIStatus status;
   @override
   @JsonKey()
-  final LogoutResponse logoutResponse;
+  final LogoutResponse? logoutResponse;
   @override
   @JsonKey()
   final String loginBadRequest;
@@ -517,14 +477,14 @@ class _$OtherStateImpl implements _OtherState {
 abstract class _OtherState implements OtherState {
   const factory _OtherState(
       {final UIStatus status,
-      final LogoutResponse logoutResponse,
+      final LogoutResponse? logoutResponse,
       final String loginBadRequest,
       final String logoutStatus}) = _$OtherStateImpl;
 
   @override
   UIStatus get status;
   @override
-  LogoutResponse get logoutResponse;
+  LogoutResponse? get logoutResponse;
   @override
   String get loginBadRequest;
   @override

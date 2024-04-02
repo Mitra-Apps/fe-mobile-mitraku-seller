@@ -9,7 +9,6 @@ import 'package:mitraku_seller/features/app/bloc/app_bloc.dart';
 import 'package:mitraku_seller/features/home/view/other/bloc/other_bloc.dart';
 import 'package:mitraku_seller/injector/injector.dart';
 import 'package:mitraku_seller/router/app_router.dart';
-import 'package:rest_client/rest_client.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LainnyaPage extends StatefulWidget {
@@ -216,12 +215,8 @@ class _LainnyaPageState extends State<LainnyaPage> {
 
   Future<void> _onLogout(BuildContext context) async {
     setState(() => _isLoading = true);
-    final prefs = await SharedPreferences.getInstance();
-    late String email = prefs.getString('email') ?? '';
-    late String password = prefs.getString('password') ?? '';
 
-    context.read<OtherBloc>().add(
-        OtherEvent.logoutRequested(LogoutPost(email: email, password: password)));
+    context.read<OtherBloc>().add(OtherEvent.logoutRequested());
   }
 
   Widget showLoading() {

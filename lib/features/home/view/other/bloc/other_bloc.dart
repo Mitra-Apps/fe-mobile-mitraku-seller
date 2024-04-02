@@ -54,7 +54,7 @@ class OtherBloc extends Bloc<OtherEvent, OtherState> {
     try {
 
       final LogoutResponse logoutResponse =
-      await _authRepository.logout(event.logoutPost);
+      await _authRepository.logout();
 
       emit(
         state.copyWith(

@@ -4,5 +4,5 @@ abstract class AuthRepository {
 
   Future login(LoginPost loginPost);
 
-  Future logout(LogoutPost logoutPost);
+  Future logout();
 }

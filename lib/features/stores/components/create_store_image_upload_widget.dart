@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -24,6 +25,7 @@ class CreateStoreImageUploadWidget extends StatefulWidget {
 class _CreateStoreImageUploadWidgetState
     extends State<CreateStoreImageUploadWidget> {
   bool isPickImageButtonVisible = false;
+  String _imageUrl = '';
   File? _imageFile;
 
   void _togglePickImageVisibility() {
@@ -40,6 +42,20 @@ class _CreateStoreImageUploadWidgetState
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
+  bool _isValidUrl(String url) {
+    // Regular expression to check if the string is a valid URL
+    final RegExp urlRegExp = RegExp(
+      r'^(https?|ftp):\/\/[^\s\/$.?#].[^\s]*$',
+    );
+    return urlRegExp.hasMatch(url);
+  }
+
+  Future<String> _imageToBase64(File imageFile) async {
+    final List<int> imageBytes = await imageFile.readAsBytes();
+    final String base64Image = base64Encode(imageBytes);
+    return base64Image;
+  }
+
   Future<void> _pickImage() async {
     const maxFileSizeInBytes = 2 * 1048576;
     final XFile? pickedFile =
@@ -47,17 +63,35 @@ class _CreateStoreImageUploadWidgetState
     if (pickedFile!.path.endsWith('png') ||
         pickedFile.path.endsWith('jpg') ||
         pickedFile.path.endsWith('jpeg')) {
+      String imageType = '';
+      if (pickedFile.path.endsWith('png')) {
+        imageType = 'image/png';
+      } else if (pickedFile.path.endsWith('jpg')) {
+        imageType = 'image/jpg';
+      } else if (pickedFile.path.endsWith('jpeg')) {
+        imageType = 'image/jpeg';
+      }
       // Do something with the picked image file
       // For example, display it in an Image widget
       final imagePath = await pickedFile.readAsBytes();
+      final base64Image = await _imageToBase64(File(pickedFile.path));
       final fileSize = imagePath.length; // Get the file size in bytes
       if (fileSize <= maxFileSizeInBytes) {
         // File is the right size, upload/use it
         setState(() {
+          _imageUrl = '';
           _imageFile = File(pickedFile.path);
           widget.updateInputValueCallback(
             'FOTO',
             _imageFile!.path,
+          );
+          widget.updateInputValueCallback(
+            'FOTO_TYPE',
+            imageType,
+          );
+          widget.updateInputValueCallback(
+            'FOTO_BASE64',
+            base64Image,
           );
         });
       } else {
@@ -75,7 +109,11 @@ class _CreateStoreImageUploadWidgetState
   void initState() {
     super.initState();
     if (widget.existingImagePath.isNotEmpty) {
-      _imageFile = File(widget.existingImagePath);
+      if (_isValidUrl(widget.existingImagePath)) {
+        _imageUrl = widget.existingImagePath;
+      } else {
+        _imageFile = File(widget.existingImagePath);
+      }
     }
   }
 
@@ -99,19 +137,22 @@ class _CreateStoreImageUploadWidgetState
               Text(
                 ' ( Opsional )',
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.disabledColor),
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.disabledColor,
+                    ),
               ),
             ],
           ),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(
-              horizontal: AppDimens.basePaddingDouble,
-              vertical: AppDimens.basePadding),
+            horizontal: AppDimens.basePaddingDouble,
+            vertical: AppDimens.basePadding,
+          ),
           child: ElevatedButton(
-            onPressed:
-                _imageFile == null ? _pickImage : _togglePickImageVisibility,
+            onPressed: _imageFile == null && _imageUrl.isEmpty
+                ? _pickImage
+                : _togglePickImageVisibility,
             style: ElevatedButton.styleFrom(
               padding: EdgeInsets.zero,
               backgroundColor: AppColors.disabledLightColor,
@@ -122,15 +163,22 @@ class _CreateStoreImageUploadWidgetState
             child: SizedBox(
               width: double.infinity,
               height: 160,
-              child: _imageFile != null
+              child: _imageFile != null || _imageUrl.isNotEmpty
                   ? Stack(
                       alignment: Alignment.center,
                       children: [
-                        Image.file(
-                          File(_imageFile!.path),
-                          width: double.infinity,
-                          height: 160,
-                        ),
+                        if (_imageUrl.isNotEmpty)
+                          Image.network(
+                            _imageUrl,
+                            width: double.infinity,
+                            height: 120,
+                          )
+                        else
+                          Image.file(
+                            File(_imageFile!.path),
+                            width: double.infinity,
+                            height: 160,
+                          ),
                         if (isPickImageButtonVisible)
                           Container(
                             width: double.infinity,
@@ -145,8 +193,9 @@ class _CreateStoreImageUploadWidgetState
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10),
                                     ),
-                                    side: BorderSide(
-                                        color: AppColors.mainWhiteColor),
+                                    side: const BorderSide(
+                                      color: AppColors.mainWhiteColor,
+                                    ),
                                     minimumSize: const Size(160, 40),
                                   ),
                                   onPressed: _pickImage,
@@ -172,8 +221,17 @@ class _CreateStoreImageUploadWidgetState
                                   onPressed: () {
                                     setState(() {
                                       _imageFile = null;
+                                      _imageUrl = '';
                                       widget.updateInputValueCallback(
                                         'FOTO',
+                                        '',
+                                      );
+                                      widget.updateInputValueCallback(
+                                        'FOTO_TYPE',
+                                        '',
+                                      );
+                                      widget.updateInputValueCallback(
+                                        'FOTO_BASE64',
                                         '',
                                       );
                                     });
@@ -192,23 +250,25 @@ class _CreateStoreImageUploadWidgetState
                                 ),
                               ],
                             ),
-                          )
+                          ),
                       ],
                     )
                   : Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        SvgPicture.asset('assets/icons/icon_upload.svg',
-                            height: 60, width: 60),
+                        SvgPicture.asset(
+                          'assets/icons/icon_upload.svg',
+                          height: 60,
+                          width: 60,
+                        ),
                         AppSpacing.verticalSpacing10,
                         Text(
                           'Silakan Masukkan Foto',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyMedium!
-                              .copyWith(
-                                  fontWeight: FontWeight.bold,
-                                  color: AppColors.disabledColor),
+                          style:
+                              Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                    color: AppColors.disabledColor,
+                                  ),
                         ),
                       ],
                     ),

@@ -34,15 +34,15 @@ class StoreOperationalHoursWidget extends StatelessWidget {
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             itemCount: 7,
-            itemBuilder: (context, index) => isOpen24HoursWeekly[index]
+            itemBuilder: (context, index) => isClosedDayWeekly[index]
                 ? HoursOpenCloseWidget(
                     dayIndex: index,
-                    is24HoursOpen: true,
+                    isClosedDay: true,
                   )
-                : isClosedDayWeekly[index]
+                : isOpen24HoursWeekly[index]
                     ? HoursOpenCloseWidget(
                         dayIndex: index,
-                        isClosedDay: true,
+                        is24HoursOpen: true,
                       )
                     : HoursOpenCloseWidget(
                         dayIndex: index,

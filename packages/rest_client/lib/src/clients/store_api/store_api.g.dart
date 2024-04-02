@@ -19,7 +19,7 @@ class _StoreApiClient implements StoreApiClient {
   String? baseUrl;
 
   @override
-  Future<BaseResponse<MyStoreResponse>> getMyStore({
+  Future<BaseResponseNullable<MyStoreResponse>> getMyStore({
     required String token,
     String content = 'application/json',
   }) async {
@@ -32,7 +32,7 @@ class _StoreApiClient implements StoreApiClient {
     _headers.removeWhere((k, v) => v == null);
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
-        _setStreamType<BaseResponse<MyStoreResponse>>(Options(
+        _setStreamType<BaseResponseNullable<MyStoreResponse>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -45,7 +45,7 @@ class _StoreApiClient implements StoreApiClient {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = BaseResponse<MyStoreResponse>.fromJson(
+    final value = BaseResponseNullable<MyStoreResponse>.fromJson(
       _result.data!,
       (json) => MyStoreResponse.fromJson(json as Map<String, dynamic>),
     );
@@ -53,11 +53,18 @@ class _StoreApiClient implements StoreApiClient {
   }
 
   @override
-  Future<BaseResponseNullable<MyStoreResponse>> postCreateStore(
-      {required Map<String, dynamic> json}) async {
+  Future<BaseResponseNullable<MyStoreResponse>> postCreateStore({
+    required String token,
+    required Map<String, dynamic> json,
+    String content = 'application/json',
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
+    final _headers = <String, dynamic>{
+      r'Authorization': token,
+      r'Content-Type': content,
+    };
+    _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
     _data.addAll(json);
     final _result = await _dio.fetch<Map<String, dynamic>>(
@@ -65,6 +72,7 @@ class _StoreApiClient implements StoreApiClient {
       method: 'POST',
       headers: _headers,
       extra: _extra,
+      contentType: content,
     )
             .compose(
               _dio.options,
@@ -83,9 +91,9 @@ class _StoreApiClient implements StoreApiClient {
   @override
   Future<BaseResponseNullable<MyStoreResponse>> putEditStore({
     required String token,
-    String content = 'application/json',
     required String storeId,
     required Map<String, dynamic> json,
+    String content = 'application/json',
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};

@@ -15,7 +15,6 @@ class StoreRepositoryImpl implements StoreRepository {
   Future<BaseResponse<MyStoreResponse>> getMyStore() async {
     final prefs = await SharedPreferences.getInstance();
     final accessToken = prefs.getString('access_token');
-    final refreshToken = prefs.getString('refresh_token');
 
     final response = await _storeApiClient.getMyStore(
       token: 'Bearer $accessToken',
@@ -25,28 +24,27 @@ class StoreRepositoryImpl implements StoreRepository {
 
   @override
   Future<BaseResponseNullable> postCreateStore(
-      CreateStorePostRequest buatTokoPostRequest) async {
+      CreateStorePostRequest createStorePostRequest) async {
     final prefs = await SharedPreferences.getInstance();
     final accessToken = prefs.getString('access_token');
-    final refreshToken = prefs.getString('refresh_token');
 
     final response = await _storeApiClient.postCreateStore(
-      json: buatTokoPostRequest.toJson(),
+      token: 'Bearer $accessToken',
+      json: createStorePostRequest.toJson(),
     );
     return response;
   }
 
   @override
   Future<BaseResponseNullable> putEditStore(
-      String storeId, ProductPostRequest productPostRequest) async {
+      String storeId, EditStorePutRequest editStorePutRequest) async {
     final prefs = await SharedPreferences.getInstance();
     final accessToken = prefs.getString('access_token');
-    final refreshToken = prefs.getString('refresh_token');
 
     final response = await _storeApiClient.putEditStore(
       token: 'Bearer $accessToken',
       storeId: storeId,
-      json: productPostRequest.toJson(),
+      json: editStorePutRequest.toJson(),
     );
     return response;
   }

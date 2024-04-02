@@ -79,9 +79,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       await prefs.setString('email', event.loginPost.email);
       await prefs.setString('password', event.loginPost.password);
 
-      Injector.updateDioHeaders(
-        state.loginResponse.data.accessToken,
-      );
+      // Injector.updateDioHeaders(
+      //   loginResponse.data.accessToken,
+      // );
 
       emit(
         state.copyWith(

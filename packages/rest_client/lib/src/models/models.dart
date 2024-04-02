@@ -21,6 +21,7 @@ export 'register/register_post.dart';
 export 'register/register_response.dart';
 export 'stores/create_store_post_request.dart';
 export 'stores/create_store_response.dart';
+export 'stores/edit_store_put_request.dart';
 export 'stores/my_store/my_store_response.dart';
 export 'stores/your_store_response.dart';
 export 'uom/uom_response.dart';

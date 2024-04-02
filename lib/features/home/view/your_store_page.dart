@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mitraku_seller/core/keys/app_keys.dart';
 import 'package:mitraku_seller/core/themes/app_themes.dart';
-import 'package:mitraku_seller/features/stores/bloc/create_store_cubit.dart';
+import 'package:mitraku_seller/features/stores/bloc/create_edit_store_cubit.dart';
 import 'package:mitraku_seller/features/stores/bloc/your_store_bloc.dart';
 import 'package:mitraku_seller/features/stores/components/your_store_loading_widget.dart';
 import 'package:mitraku_seller/features/stores/components/your_store_please_create_widget.dart';
 import 'package:mitraku_seller/features/stores/components/your_store_summary_widget.dart';
 import 'package:mitraku_seller/features/stores/create_store_page.dart';
+import 'package:mitraku_seller/features/stores/edit_store_page.dart';
 import 'package:mitraku_seller/injector/injector.dart';
 
 class YourStorePage extends StatefulWidget {
@@ -63,77 +64,67 @@ class _TokoAndaPage extends State<YourStorePage> {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<CreateStoreCubit>(
-          create: (context) => CreateStoreCubit(),
+        BlocProvider<CreateEditStoreCubit>(
+          create: (context) => CreateEditStoreCubit(),
         ),
         BlocProvider<YourStoreBloc>(
           create: (context) => Injector.instance<YourStoreBloc>(),
         ),
       ],
-      child: isCreateEditStoreMode
-          ? CreateStorePage(
-              cancelCreateStoreCallback: _cancelCreateStoreCallback,
-              successCreateStoreCallback: _successCreateStoreCallback,
-            )
-          : BlocConsumer<CreateStoreCubit, StoreModel>(
-              // listenWhen: (prev, next) =>
-              //     prev.notification != next.notification,
-              listener: (context, state) async {},
-              builder: (BuildContext context, StoreModel state) {
-                return BlocConsumer<YourStoreBloc, YourStoreState>(
-                  listener: (context, state) async {
-                    state.notification?.when(
-                      notifySuccess: (message) {
-                        _loadTokoAndaResponse(state);
-                        // _showToastSuccess(message);
-                      },
-                      notifyFailed: (message) {
-                        _loadTokoAndaResponse(state);
-                        // _showToastSuccess(message);
-                      },
-                    );
-
-                    // if (state.loginBadRequest == 'AUTH_LOGIN_USER_UNVERIFIED') {
-                    //   await context.push(AppRouter.otpPath);
-                    // }
-                    // if (state.loginSuccess == 'SUCCESSLOGIN') {
-                    //   await context.push(AppRouter.homePath);
-                    // }
-                  },
-                  builder: (context, tokoAndaState) {
-                    // Build UI based on both BuatTokoCubit and TokoAndaBloc states
-                    return Scaffold(
-                      backgroundColor: AppColors.mainWhiteColor,
-                      key: const Key(WidgetKeys.tokoAndaScaffoldKey),
-                      appBar: AppBar(
-                        title: Text(
-                          'Toko Anda',
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleLarge!
-                              .copyWith(fontWeight: FontWeight.bold),
-                        ),
-                        automaticallyImplyLeading: false,
-                      ),
-                      body: isLoadingApi
-                          ? YourStoreLoadingWidget(
-                              onChangeLoadingStatusCallback:
-                                  _changeLoadingStatusCallback)
-                          : !isStoreExist
-                              ? YourStorePleaseCreateWidget(
-                                  onCreateStoreCallback:
-                                      _createEditStoreCallback,
-                                )
-                              : YourStoreSummaryWidget(
-                                  state: tokoAndaState.myStoreResponse!,
-                                  defaultState: state,
-                                  onEditStoreCallback: _createEditStoreCallback,
-                                ),
-                    );
-                  },
+      child: BlocConsumer<YourStoreBloc, YourStoreState>(
+        listener: (context, state) async {
+          state.notification?.when(
+            notifySuccess: (message) {
+              _loadTokoAndaResponse(state);
+              // _showToastSuccess(message);
+            },
+            notifyFailed: (message) {
+              _loadTokoAndaResponse(state);
+              // _showToastSuccess(message);
+            },
+          );
+        },
+        builder: (builderContext, yourStoreState) {
+          return isCreateEditStoreMode
+              ? yourStoreState.myStoreResponse == null
+                  ? CreateStorePage(
+                      cancelCreateStoreCallback: _cancelCreateStoreCallback,
+                      successCreateStoreCallback: _successCreateStoreCallback,
+                    )
+                  : EditStorePage(
+                      cancelCreateStoreCallback: _cancelCreateStoreCallback,
+                      successCreateStoreCallback: _successCreateStoreCallback,
+                    )
+              : Scaffold(
+                  backgroundColor: AppColors.mainWhiteColor,
+                  key: const Key(WidgetKeys.tokoAndaScaffoldKey),
+                  appBar: AppBar(
+                    title: Text(
+                      'Toko Anda',
+                      style: Theme.of(builderContext)
+                          .textTheme
+                          .titleLarge!
+                          .copyWith(fontWeight: FontWeight.bold),
+                    ),
+                    automaticallyImplyLeading: false,
+                  ),
+                  body: isLoadingApi
+                      ? YourStoreLoadingWidget(
+                          onChangeLoadingStatusCallback:
+                              _changeLoadingStatusCallback,
+                        )
+                      : !isStoreExist
+                          ? YourStorePleaseCreateWidget(
+                              onCreateStoreCallback: _createEditStoreCallback,
+                            )
+                          : YourStoreSummaryWidget(
+                              state: yourStoreState.myStoreResponse!,
+                              defaultState: StoreModel.defaultStore(),
+                              onEditStoreCallback: _createEditStoreCallback,
+                            ),
                 );
-              },
-            ),
+        },
+      ),
     );
   }
 }

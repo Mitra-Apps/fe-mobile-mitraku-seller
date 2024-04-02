@@ -17,20 +17,20 @@ class CreateStorePage extends StatefulWidget {
   final VoidCallback successCreateStoreCallback;
 
   @override
-  State<CreateStorePage> createState() => _BuatTokoPage();
+  State<CreateStorePage> createState() => _CreateStorePage();
 }
 
-class _BuatTokoPage extends State<CreateStorePage> {
-  int currentBuatTokoStep = 1;
+class _CreateStorePage extends State<CreateStorePage> {
+  int currentCreateStoreStep = 1;
 
-  void _changeBuatTokoStepCallback(int createStoreStep) {
+  void _changeCreateStoreStepCallback(int createStoreStep) {
     setState(() {
       if (createStoreStep == 0) {
         widget.cancelCreateStoreCallback();
       } else if (createStoreStep == 200) {
         widget.successCreateStoreCallback();
       } else {
-        currentBuatTokoStep = createStoreStep;
+        currentCreateStoreStep = createStoreStep;
       }
     });
   }
@@ -73,15 +73,15 @@ class _BuatTokoPage extends State<CreateStorePage> {
         ),
         automaticallyImplyLeading: false,
       ),
-      body: switch (currentBuatTokoStep) {
+      body: switch (currentCreateStoreStep) {
         1 => CreateStoreInformationPage(
-            changeCreateStoreStep: _changeBuatTokoStepCallback,
+            changeCreateStoreStep: _changeCreateStoreStepCallback,
           ),
         2 => CreateStoreHoursPage(
-            changeCreateStoreStep: _changeBuatTokoStepCallback,
+            changeCreateStoreStep: _changeCreateStoreStepCallback,
           ),
         3 => CreateStoreSummaryPage(
-            changeCreateStoreStep: _changeBuatTokoStepCallback,
+            changeCreateStoreStep: _changeCreateStoreStepCallback,
           ),
         // TODO: Handle this case.
         int() => null,

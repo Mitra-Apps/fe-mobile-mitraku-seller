@@ -7,23 +7,23 @@ import 'package:mitraku_seller/features/stores/bloc/create_edit_store_cubit.dart
 import 'package:mitraku_seller/features/stores/components/create_store_hours_widget.dart';
 import 'package:mitraku_seller/features/stores/components/create_store_step_widget.dart';
 
-class CreateStoreHoursPage extends StatefulWidget {
-  const CreateStoreHoursPage({required this.changeCreateStoreStep, super.key});
+class EditStoreHoursPage extends StatefulWidget {
+  const EditStoreHoursPage({required this.changeCreateStoreStep, super.key});
   final Function(int) changeCreateStoreStep;
 
   @override
-  State<CreateStoreHoursPage> createState() => _CreateStoreHoursPage();
+  State<EditStoreHoursPage> createState() => _EditStoreHoursPage();
 }
 
-class _CreateStoreHoursPage extends State<CreateStoreHoursPage> {
-  late CreateEditStoreCubit buatTokoCubit;
+class _EditStoreHoursPage extends State<EditStoreHoursPage> {
+  late CreateEditStoreCubit editTokoCubit;
   bool isMandatoryFieldCompleted = false;
 
   void _updateOpen24HoursCallback(
     int dayIndex,
     bool isSetToOpen,
   ) {
-    final StoreModel currentState = buatTokoCubit.state;
+    final StoreModel currentState = editTokoCubit.state;
     final List<bool> updatedIsOpen24HoursWeekly =
         currentState.scheduleModel!.isOpen24HoursWeekly;
     updatedIsOpen24HoursWeekly[dayIndex] = isSetToOpen;
@@ -45,7 +45,7 @@ class _CreateStoreHoursPage extends State<CreateStoreHoursPage> {
     int dayIndex,
     bool isSetToClosed,
   ) {
-    final StoreModel currentState = buatTokoCubit.state;
+    final StoreModel currentState = editTokoCubit.state;
     final List<bool> updatedIsClosedDayWeekly =
         currentState.scheduleModel!.isClosedDayWeekly;
     updatedIsClosedDayWeekly[dayIndex] = isSetToClosed;
@@ -68,7 +68,7 @@ class _CreateStoreHoursPage extends State<CreateStoreHoursPage> {
     int dayIndex,
     TimeOfDay value,
   ) {
-    final StoreModel currentState = buatTokoCubit.state;
+    final StoreModel currentState = editTokoCubit.state;
     final List<TimeOfDay?> updatedTimeOpenWeekly =
         currentState.scheduleModel!.timeOpenWeekly;
     updatedTimeOpenWeekly[dayIndex] = value;
@@ -91,7 +91,7 @@ class _CreateStoreHoursPage extends State<CreateStoreHoursPage> {
     int dayIndex,
     TimeOfDay value,
   ) {
-    final StoreModel currentState = buatTokoCubit.state;
+    final StoreModel currentState = editTokoCubit.state;
     final List<TimeOfDay?> updatedTimeClosedWeekly =
         currentState.scheduleModel!.timeClosedWeekly;
     updatedTimeClosedWeekly[dayIndex] = value;
@@ -113,7 +113,7 @@ class _CreateStoreHoursPage extends State<CreateStoreHoursPage> {
   void _checkMandatoryField() {
     // bool hasTrueInEither = isOpen24HoursWeekly.any((value) => value) ||
     //     isClosedDayWeekly.any((value) => value);
-    final StoreModel currentState = buatTokoCubit.state;
+    final StoreModel currentState = editTokoCubit.state;
     bool hasMissingField = false;
     for (int i = 0;
         i < currentState.scheduleModel!.isOpen24HoursWeekly.length;
@@ -136,7 +136,7 @@ class _CreateStoreHoursPage extends State<CreateStoreHoursPage> {
   void initState() {
     super.initState();
     // Access the UserCubit using context.read in initState
-    buatTokoCubit = context.read<CreateEditStoreCubit>();
+    editTokoCubit = context.read<CreateEditStoreCubit>();
     // Access the initial state
     _checkMandatoryField();
   }

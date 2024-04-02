@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mitraku_seller/core/spacings/app_spacing.dart';
 import 'package:mitraku_seller/core/themes/app_themes.dart';
+import 'package:mitraku_seller/generated/fonts.gen.dart';
 import 'package:rest_client/rest_client.dart';
 
 class ItemProductWidget extends StatelessWidget {
@@ -71,13 +72,12 @@ class ItemProductWidget extends StatelessWidget {
                   ),
                 ),
                 AppSpacing.horizontalSpacing8,
-                IconButton(
-                  icon: const Icon(Icons.more_vert),
-                  iconSize: 28,
-                  onPressed: () {
-                    _showSnackBar(context, 'Yuhuu icon button');
-                  },
-                ),
+                // IconButton(
+                //   icon: const Icon(Icons.more_vert),
+                //   iconSize: 28,
+                //   onPressed: showPopupMenuButton,
+                // ),
+                showPopupMenuButton(),
               ],
             ),
           ),
@@ -92,5 +92,58 @@ class ItemProductWidget extends StatelessWidget {
       duration: const Duration(seconds: 5),
     );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
+  Widget showPopupMenuButton() {
+    return PopupMenuButton<String>(
+      onSelected: (value) {},
+      itemBuilder: (context) => [
+        PopupMenuItem(
+          value: 'Edit',
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 4),
+            child: Row(
+              children: [
+                const Icon(
+                  Icons.edit,
+                  color: AppColors.successColor,
+                ),
+                const SizedBox(width: 8),
+                Text(
+                  'Edit',
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        color: AppColors.successColor,
+                        fontFamily: FontFamily.poppins,
+                      ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        const PopupMenuDivider(),
+        PopupMenuItem(
+          value: 'Hapus',
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 4),
+            child: Row(
+              children: [
+                const Icon(
+                  Icons.delete,
+                  color: AppColors.dangerColor,
+                ),
+                const SizedBox(width: 8),
+                Text(
+                  'Hapus',
+                  style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        color: AppColors.dangerColor,
+                        fontFamily: FontFamily.poppins,
+                      ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }

@@ -86,6 +86,7 @@ class _ProductScreenState extends State<ProductScreen> {
             .titleLarge!
             .copyWith(fontWeight: FontWeight.bold),
       ),
+      automaticallyImplyLeading: false,
     );
   }
 }

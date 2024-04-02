@@ -14,29 +14,22 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  @override
-  initState() {
-    super.initState();
-    // BlocProvider.of<MealsBloc>(context).add(LookupRandomMeal());
-  }
-
   int selectedNavigationIndex = 0;
   bool isStoreCreated = false;
+
+  final List<Widget> _children = [
+    const DashboardPage(),
+    const YourStorePage(),
+    const ProductPage(),
+    Container(),
+    const OtherPage(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.mainWhiteColor,
-      body: IndexedStack(
-        index: selectedNavigationIndex,
-        children: [
-          const DashboardPage(),
-          const YourStorePage(),
-          const ProductPage(),
-          Container(),
-          const OtherPage(),
-        ],
-      ),
+      body: _children[selectedNavigationIndex],
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: AppColors.mainColor,
         unselectedItemColor: AppColors.disabledColor,

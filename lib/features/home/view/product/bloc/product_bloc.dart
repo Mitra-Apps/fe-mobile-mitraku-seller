@@ -48,7 +48,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     Emitter<ProductState> emit,
   ) async {
     try {
-      final BaseResponse<MyStoreResponse> response =
+      final BaseResponseNullable<MyStoreResponse> response =
           await _repositoryStore.getMyStore();
       if (response.data != null) {
         emit(

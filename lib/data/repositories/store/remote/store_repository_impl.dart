@@ -12,7 +12,7 @@ class StoreRepositoryImpl implements StoreRepository {
   late final StoreApiClient _storeApiClient;
 
   @override
-  Future<BaseResponse<MyStoreResponse>> getMyStore() async {
+  Future<BaseResponseNullable<MyStoreResponse>> getMyStore() async {
     final prefs = await SharedPreferences.getInstance();
     final accessToken = prefs.getString('access_token');
 

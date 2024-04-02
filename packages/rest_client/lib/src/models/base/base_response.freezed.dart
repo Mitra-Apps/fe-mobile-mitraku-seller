@@ -22,8 +22,8 @@ BaseResponse<T> _$BaseResponseFromJson<T>(
 /// @nodoc
 mixin _$BaseResponse<T> {
   dynamic get code => throw _privateConstructorUsedError;
-  T get data => throw _privateConstructorUsedError;
-  String get message => throw _privateConstructorUsedError;
+  T? get data => throw _privateConstructorUsedError;
+  String? get message => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson(Object? Function(T) toJsonT) =>
       throw _privateConstructorUsedError;
@@ -38,7 +38,7 @@ abstract class $BaseResponseCopyWith<T, $Res> {
           BaseResponse<T> value, $Res Function(BaseResponse<T>) then) =
       _$BaseResponseCopyWithImpl<T, $Res, BaseResponse<T>>;
   @useResult
-  $Res call({dynamic code, T data, String message});
+  $Res call({dynamic code, T? data, String? message});
 }
 
 /// @nodoc
@@ -56,7 +56,7 @@ class _$BaseResponseCopyWithImpl<T, $Res, $Val extends BaseResponse<T>>
   $Res call({
     Object? code = freezed,
     Object? data = freezed,
-    Object? message = null,
+    Object? message = freezed,
   }) {
     return _then(_value.copyWith(
       code: freezed == code
@@ -66,11 +66,11 @@ class _$BaseResponseCopyWithImpl<T, $Res, $Val extends BaseResponse<T>>
       data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as T,
-      message: null == message
+              as T?,
+      message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -83,7 +83,7 @@ abstract class _$$BaseResponseImplCopyWith<T, $Res>
       __$$BaseResponseImplCopyWithImpl<T, $Res>;
   @override
   @useResult
-  $Res call({dynamic code, T data, String message});
+  $Res call({dynamic code, T? data, String? message});
 }
 
 /// @nodoc
@@ -99,7 +99,7 @@ class __$$BaseResponseImplCopyWithImpl<T, $Res>
   $Res call({
     Object? code = freezed,
     Object? data = freezed,
-    Object? message = null,
+    Object? message = freezed,
   }) {
     return _then(_$BaseResponseImpl<T>(
       code: freezed == code
@@ -109,11 +109,11 @@ class __$$BaseResponseImplCopyWithImpl<T, $Res>
       data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as T,
-      message: null == message
+              as T?,
+      message: freezed == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -131,9 +131,9 @@ class _$BaseResponseImpl<T> implements _BaseResponse<T> {
   @override
   final dynamic code;
   @override
-  final T data;
+  final T? data;
   @override
-  final String message;
+  final String? message;
 
   @override
   String toString() {
@@ -174,8 +174,8 @@ class _$BaseResponseImpl<T> implements _BaseResponse<T> {
 abstract class _BaseResponse<T> implements BaseResponse<T> {
   const factory _BaseResponse(
       {required final dynamic code,
-      required final T data,
-      required final String message}) = _$BaseResponseImpl<T>;
+      required final T? data,
+      required final String? message}) = _$BaseResponseImpl<T>;
 
   factory _BaseResponse.fromJson(
           Map<String, dynamic> json, T Function(Object?) fromJsonT) =
@@ -184,9 +184,9 @@ abstract class _BaseResponse<T> implements BaseResponse<T> {
   @override
   dynamic get code;
   @override
-  T get data;
+  T? get data;
   @override
-  String get message;
+  String? get message;
   @override
   @JsonKey(ignore: true)
   _$$BaseResponseImplCopyWith<T, _$BaseResponseImpl<T>> get copyWith =>

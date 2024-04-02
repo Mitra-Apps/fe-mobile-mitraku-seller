@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mitraku_seller/core/themes/app_themes.dart';
 import 'package:mitraku_seller/features/home/view/dashboard_page.dart';
-import 'package:mitraku_seller/features/home/view/other/lainnya_page.dart';
-import 'package:mitraku_seller/features/home/view/product/product_page.dart';
+import 'package:mitraku_seller/features/home/view/other_page.dart';
+import 'package:mitraku_seller/features/home/view/product/views/product_page.dart';
 import 'package:mitraku_seller/features/home/view/your_store_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,29 +14,22 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  @override
-  initState() {
-    super.initState();
-    // BlocProvider.of<MealsBloc>(context).add(LookupRandomMeal());
-  }
-
   int selectedNavigationIndex = 0;
   bool isStoreCreated = false;
+
+  final List<Widget> _children = [
+    const DashboardPage(),
+    const YourStorePage(),
+    const ProductPage(),
+    Container(),
+    const OtherPage(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.mainWhiteColor,
-      body: IndexedStack(
-        index: selectedNavigationIndex,
-        children: [
-          const DashboardPage(),
-          const YourStorePage(),
-          const ProductPage(),
-          Container(),
-          const LainnyaPage(),
-        ],
-      ),
+      body: _children[selectedNavigationIndex],
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: AppColors.mainColor,
         unselectedItemColor: AppColors.disabledColor,
@@ -77,7 +70,7 @@ class _HomePageState extends State<HomePage> {
             ),
             activeIcon: SvgPicture.asset(
               'assets/icons/icon_list.svg',
-              colorFilter: ColorFilter.mode(
+              colorFilter: const ColorFilter.mode(
                 AppColors.mainColor,
                 BlendMode.srcIn,
               ),

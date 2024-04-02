@@ -66,4 +66,18 @@ class ProductRepositoryImpl implements ProductRepository {
     );
     return response;
   }
+
+  @override
+  Future getProductList(String storeId) async {
+    final prefs = await SharedPreferences.getInstance();
+    final accessToken = prefs.getString('access_token');
+    final refreshToken = prefs.getString('refresh_token');
+
+    final response = await _productApiClient.getProductList(
+      token: 'Bearer $accessToken',
+      isDeactivated: true,
+      storeId: storeId,
+    );
+    return response;
+  }
 }

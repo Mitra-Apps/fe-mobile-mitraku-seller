@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mitraku_seller/core/themes/app_themes.dart';
 import 'package:mitraku_seller/features/home/view/dashboard_page.dart';
-import 'package:mitraku_seller/features/home/view/other_page.dart';
+import 'package:mitraku_seller/features/home/view/other/lainnya_page.dart';
 import 'package:mitraku_seller/features/home/view/product/product_page.dart';
 import 'package:mitraku_seller/features/home/view/your_store_page.dart';
 
@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
           const YourStorePage(),
           const ProductPage(),
           Container(),
-          const OtherPage(),
+          const LainnyaPage(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

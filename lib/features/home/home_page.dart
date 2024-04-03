@@ -17,13 +17,26 @@ class _HomePageState extends State<HomePage> {
   int selectedNavigationIndex = 0;
   bool isStoreCreated = false;
 
-  final List<Widget> _children = [
-    const DashboardPage(),
-    const YourStorePage(),
-    const ProductPage(),
-    Container(),
-    const OtherPage(),
-  ];
+  void _changeNavigationBarCallback(int index) {
+    setState(() {
+      selectedNavigationIndex = index;
+    });
+  }
+
+  late final List<Widget> _children; // Declare _children
+
+  @override
+  void initState() {
+    super.initState();
+    // Initialize _children after the instance is fully created
+    _children = [
+      DashboardPage(changeNavigationBarCallback: _changeNavigationBarCallback),
+      const YourStorePage(),
+      const ProductPage(),
+      Container(),
+      const OtherPage(),
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {

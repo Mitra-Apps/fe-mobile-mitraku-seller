@@ -262,7 +262,8 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
     if (productList != null) {
       final splitValue = event.value?.trim().split('Rp.');
       final value = splitValue?[1].replaceAll(',', '');
-      data?[event.index] = productList.copyWith(price: int.parse(value!.trim()));
+      data?[event.index] =
+          productList.copyWith(price: int.parse(value!.trim()));
       emit(
         state.copyWith(
           isBusy: false,

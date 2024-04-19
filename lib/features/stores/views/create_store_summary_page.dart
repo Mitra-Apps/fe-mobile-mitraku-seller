@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:mitraku_seller/core/dimens/app_dimens.dart';
 import 'package:mitraku_seller/core/spacings/app_spacing.dart';
 import 'package:mitraku_seller/core/themes/app_themes.dart';
@@ -24,20 +26,19 @@ class CreateStoreSummaryPage extends StatefulWidget {
 }
 
 class _CreateStoreSummaryPage extends State<CreateStoreSummaryPage> {
+  late FToast fToast;
   bool isLoadingApi = false;
   bool isShowSuccessDialog = false;
   late String userEmail = '';
   late List<CreateNewHour> createNewOperationalHours = [];
 
-  // @override
-  // Future<void> initState() async {
-  //   super.initState();
-  //   final prefs = await SharedPreferences.getInstance();
-  //   userEmail = prefs.getString('email') ?? '';
-  //   // fToast = FToast();
-  //   // // if you want to use context from globally instead of content we need to pass navigatorKey.currentContext!
-  //   // fToast.init(context);
-  // }
+  @override
+  void initState() {
+    super.initState();
+    fToast = FToast();
+    // if you want to use context from globally instead of content we need to pass navigatorKey.currentContext!
+    fToast.init(context);
+  }
 
   Future<void> _loadEmailPreferences() async {
     final prefs = await SharedPreferences.getInstance();
@@ -91,6 +92,39 @@ class _CreateStoreSummaryPage extends State<CreateStoreSummaryPage> {
     }
   }
 
+  void _showToastFailed(String message) {
+    final Widget toast = Container(
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        color: AppColors.dangerColor,
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          SvgPicture.asset('assets/icons/icon_white_close.svg'),
+          const SizedBox(
+            width: 12,
+          ),
+          Text(
+            message,
+            style: const TextStyle(
+              fontSize: 8,
+              fontWeight: FontWeight.normal,
+              color: AppColors.mainWhiteColor,
+            ),
+          ),
+        ],
+      ),
+    );
+
+    fToast.showToast(
+      child: toast,
+      gravity: ToastGravity.TOP,
+      toastDuration: const Duration(seconds: 3),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     _loadEmailPreferences();
@@ -99,26 +133,27 @@ class _CreateStoreSummaryPage extends State<CreateStoreSummaryPage> {
       builder: (BuildContext context, StoreModel state) {
         return BlocConsumer<YourStoreBloc, YourStoreState>(
           listener: (context, state) async {
-            state.notification?.when(
-              notifySuccess: (message) {
-                setState(() {
-                  isLoadingApi = false;
-                  isShowSuccessDialog = true;
-                  Future.delayed(const Duration(seconds: 3), () {
-                    widget.changeCreateStoreStep(200);
+            if (mounted) {
+              state.notification?.when(
+                notifySuccess: (message) {
+                  setState(() {
+                    isLoadingApi = false;
+                    isShowSuccessDialog = true;
+                    Future.delayed(const Duration(seconds: 3), () {
+                      if (mounted) {
+                        widget.changeCreateStoreStep(200);
+                      }
+                    });
                   });
-                });
-                // _loadTokoAndaResponse(state);
-                // _showToastSuccess(message);
-              },
-              notifyFailed: (message) {
-                setState(() {
-                  isLoadingApi = false;
-                });
-                // _loadTokoAndaResponse(state);
-                // _showToastSuccess(message);
-              },
-            );
+                },
+                notifyFailed: (message) {
+                  setState(() {
+                    isLoadingApi = false;
+                  });
+                  _showToastFailed('Gagal membuat toko, mohon coba kembali.');
+                },
+              );
+            }
           },
           builder: (context, buatTokoState) {
             // Build UI based on both BuatTokoCubit and TokoAndaBloc states

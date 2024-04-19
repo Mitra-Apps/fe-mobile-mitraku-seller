@@ -36,11 +36,6 @@ class YourStoreBloc extends Bloc<YourStoreEvent, YourStoreState> {
     Emitter<YourStoreState> emit,
   ) async {
     try {
-      emit(
-        state.copyWith(
-          isBusy: true,
-        ),
-      );
       final BaseResponseNullable<MyStoreResponse> response =
           await _repository.getMyStore();
       emit(
@@ -76,11 +71,6 @@ class YourStoreBloc extends Bloc<YourStoreEvent, YourStoreState> {
     Emitter<YourStoreState> emit,
   ) async {
     try {
-      emit(
-        state.copyWith(
-          isBusy: true,
-        ),
-      );
       final BaseResponseNullable<MyStoreResponse> response =
           await _repository.postCreateStore(event.createStorePostRequest);
       emit(
@@ -116,11 +106,6 @@ class YourStoreBloc extends Bloc<YourStoreEvent, YourStoreState> {
     Emitter<YourStoreState> emit,
   ) async {
     try {
-      emit(
-        state.copyWith(
-          isBusy: true,
-        ),
-      );
       final BaseResponseNullable<MyStoreResponse> response =
           await _repository.putEditStore(
         event.storeId,

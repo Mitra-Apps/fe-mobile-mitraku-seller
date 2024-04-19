@@ -10,8 +10,8 @@ import 'package:mitraku_seller/features/stores/components/create_store_step_widg
 
 class EditStoreInformationPage extends StatefulWidget {
   const EditStoreInformationPage(
-      {required this.changeCreateStoreStep, super.key});
-  final Function(int) changeCreateStoreStep;
+      {required this.changeEditeStoreStep, super.key});
+  final Function(int) changeEditeStoreStep;
 
   @override
   State<EditStoreInformationPage> createState() => _EditStoreInformationPage();
@@ -129,7 +129,7 @@ class _EditStoreInformationPage extends State<EditStoreInformationPage> {
                           borderRadius: BorderRadius.circular(10)),
                     ),
                     onPressed: () {
-                      widget.changeCreateStoreStep(0);
+                      widget.changeEditeStoreStep(0);
                     },
                     child: Text(
                       'Kembali',
@@ -151,7 +151,7 @@ class _EditStoreInformationPage extends State<EditStoreInformationPage> {
                     ),
                     onPressed: () {
                       if (isMandatoryFieldCompleted) {
-                        widget.changeCreateStoreStep(2);
+                        widget.changeEditeStoreStep(2);
                       }
                     },
                     child: Text(

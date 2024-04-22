@@ -10,6 +10,7 @@ import 'package:mitraku_seller/features/stores/components/your_store_summary_wid
 import 'package:mitraku_seller/features/stores/create_store_page.dart';
 import 'package:mitraku_seller/features/stores/edit_store_page.dart';
 import 'package:mitraku_seller/injector/injector.dart';
+import 'package:rest_client/rest_client.dart';
 
 class YourStorePage extends StatefulWidget {
   const YourStorePage({super.key});
@@ -19,26 +20,27 @@ class YourStorePage extends StatefulWidget {
 }
 
 class _TokoAndaPage extends State<YourStorePage> {
+  MyStoreResponse? myStoreResponse;
   bool isCreateEditStoreMode = false;
   bool isStoreExist = false;
   bool isLoadingApi = true;
 
-  void _createEditStoreCallback() {
+  void _startCreateEditStoreCallback() {
     setState(() {
       isCreateEditStoreMode = true;
     });
   }
 
-  void _cancelCreateStoreCallback() {
+  void _cancelCreateEditStoreCallback() {
     setState(() {
       isCreateEditStoreMode = false;
     });
   }
 
-  void _successCreateStoreCallback() {
+  void _successCreateEditStoreCallback() {
     setState(() {
       isCreateEditStoreMode = false;
-      isStoreExist = false;
+      isStoreExist = true;
       isLoadingApi = true;
     });
   }
@@ -52,10 +54,12 @@ class _TokoAndaPage extends State<YourStorePage> {
   void _loadTokoAndaResponse(YourStoreState state) {
     setState(() {
       isLoadingApi = false;
+      isCreateEditStoreMode = false;
       if (state.myStoreResponse == null) {
         isStoreExist = false;
       } else {
         isStoreExist = true;
+        myStoreResponse = state.myStoreResponse;
       }
     });
   }
@@ -75,25 +79,28 @@ class _TokoAndaPage extends State<YourStorePage> {
         listener: (context, state) async {
           state.notification?.when(
             notifySuccess: (message) {
-              _loadTokoAndaResponse(state);
-              // _showToastSuccess(message);
+              if (isLoadingApi) {
+                _loadTokoAndaResponse(state);
+              }
             },
             notifyFailed: (message) {
-              _loadTokoAndaResponse(state);
-              // _showToastSuccess(message);
+              if (isLoadingApi) {
+                _loadTokoAndaResponse(state);
+              }
             },
           );
         },
         builder: (builderContext, yourStoreState) {
           return isCreateEditStoreMode
-              ? yourStoreState.myStoreResponse == null
+              ? myStoreResponse == null
                   ? CreateStorePage(
-                      cancelCreateStoreCallback: _cancelCreateStoreCallback,
-                      successCreateStoreCallback: _successCreateStoreCallback,
+                      cancelCreateStoreCallback: _cancelCreateEditStoreCallback,
+                      successCreateStoreCallback:
+                          _successCreateEditStoreCallback,
                     )
                   : EditStorePage(
-                      cancelCreateStoreCallback: _cancelCreateStoreCallback,
-                      successCreateStoreCallback: _successCreateStoreCallback,
+                      cancelEditStoreCallback: _cancelCreateEditStoreCallback,
+                      successEditStoreCallback: _successCreateEditStoreCallback,
                     )
               : Scaffold(
                   backgroundColor: AppColors.mainWhiteColor,
@@ -115,12 +122,14 @@ class _TokoAndaPage extends State<YourStorePage> {
                         )
                       : !isStoreExist
                           ? YourStorePleaseCreateWidget(
-                              onCreateStoreCallback: _createEditStoreCallback,
+                              onCreateStoreCallback:
+                                  _startCreateEditStoreCallback,
                             )
                           : YourStoreSummaryWidget(
                               state: yourStoreState.myStoreResponse!,
                               defaultState: StoreModel.defaultStore(),
-                              onEditStoreCallback: _createEditStoreCallback,
+                              onEditStoreCallback:
+                                  _startCreateEditStoreCallback,
                             ),
                 );
         },

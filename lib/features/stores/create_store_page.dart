@@ -27,10 +27,12 @@ class _CreateStorePage extends State<CreateStorePage> {
     setState(() {
       if (createStoreStep == 0) {
         widget.cancelCreateStoreCallback();
+      } else if (createStoreStep >= 1 && createStoreStep <= 3) {
+        currentCreateStoreStep = createStoreStep;
       } else if (createStoreStep == 200) {
         widget.successCreateStoreCallback();
       } else {
-        currentCreateStoreStep = createStoreStep;
+        widget.successCreateStoreCallback();
       }
     });
   }
@@ -83,8 +85,9 @@ class _CreateStorePage extends State<CreateStorePage> {
         3 => CreateStoreSummaryPage(
             changeCreateStoreStep: _changeCreateStoreStepCallback,
           ),
-        // TODO: Handle this case.
-        int() => null,
+        _ => CreateStoreSummaryPage(
+            changeCreateStoreStep: _changeCreateStoreStepCallback,
+          ),
       },
     );
   }

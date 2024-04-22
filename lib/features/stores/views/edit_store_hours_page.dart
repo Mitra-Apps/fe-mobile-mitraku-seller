@@ -8,8 +8,8 @@ import 'package:mitraku_seller/features/stores/components/create_store_hours_wid
 import 'package:mitraku_seller/features/stores/components/create_store_step_widget.dart';
 
 class EditStoreHoursPage extends StatefulWidget {
-  const EditStoreHoursPage({required this.changeCreateStoreStep, super.key});
-  final Function(int) changeCreateStoreStep;
+  const EditStoreHoursPage({required this.changeEditStoreStep, super.key});
+  final Function(int) changeEditStoreStep;
 
   @override
   State<EditStoreHoursPage> createState() => _EditStoreHoursPage();
@@ -183,7 +183,7 @@ class _EditStoreHoursPage extends State<EditStoreHoursPage> {
                           borderRadius: BorderRadius.circular(10)),
                     ),
                     onPressed: () {
-                      widget.changeCreateStoreStep(1);
+                      widget.changeEditStoreStep(1);
                     },
                     child: Text(
                       'Kembali',
@@ -205,7 +205,7 @@ class _EditStoreHoursPage extends State<EditStoreHoursPage> {
                     ),
                     onPressed: () {
                       if (isMandatoryFieldCompleted) {
-                        widget.changeCreateStoreStep(3);
+                        widget.changeEditStoreStep(3);
                       }
                     },
                     child: Text(

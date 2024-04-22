@@ -14,12 +14,12 @@ import 'package:rest_client/rest_client.dart';
 
 class EditStorePage extends StatefulWidget {
   const EditStorePage({
-    required this.cancelCreateStoreCallback,
-    required this.successCreateStoreCallback,
+    required this.cancelEditStoreCallback,
+    required this.successEditStoreCallback,
     super.key,
   });
-  final VoidCallback cancelCreateStoreCallback;
-  final VoidCallback successCreateStoreCallback;
+  final VoidCallback cancelEditStoreCallback;
+  final VoidCallback successEditStoreCallback;
 
   @override
   State<EditStorePage> createState() => _EditStorePage();
@@ -34,11 +34,13 @@ class _EditStorePage extends State<EditStorePage> {
   void _changeEditStoreStepCallback(int editStoreStep) {
     setState(() {
       if (editStoreStep == 0) {
-        widget.cancelCreateStoreCallback();
-      } else if (editStoreStep == 200) {
-        widget.successCreateStoreCallback();
-      } else {
+        widget.cancelEditStoreCallback();
+      } else if (editStoreStep >= 1 && editStoreStep <= 3) {
         currentEditStoreStep = editStoreStep;
+      } else if (editStoreStep == 200) {
+        widget.successEditStoreCallback();
+      } else {
+        widget.successEditStoreCallback();
       }
     });
   }
@@ -114,7 +116,7 @@ class _EditStorePage extends State<EditStorePage> {
                   backgroundColor: AppColors.mainWhiteColor,
                 ),
                 onPressed: () {
-                  widget.cancelCreateStoreCallback();
+                  widget.cancelEditStoreCallback();
                 },
                 child: SvgPicture.asset(
                   'assets/icons/icon_arrow_left.svg',
@@ -136,16 +138,17 @@ class _EditStorePage extends State<EditStorePage> {
       ),
       body: switch (currentEditStoreStep) {
         1 => EditStoreInformationPage(
-            changeCreateStoreStep: _changeEditStoreStepCallback,
+            changeEditeStoreStep: _changeEditStoreStepCallback,
           ),
         2 => EditStoreHoursPage(
-            changeCreateStoreStep: _changeEditStoreStepCallback,
+            changeEditStoreStep: _changeEditStoreStepCallback,
           ),
         3 => EditStoreSummaryPage(
-            changeCreateStoreStep: _changeEditStoreStepCallback,
+            changeEditStoreStep: _changeEditStoreStepCallback,
           ),
-        // TODO: Handle this case.
-        int() => null,
+        _ => EditStoreSummaryPage(
+            changeEditStoreStep: _changeEditStoreStepCallback,
+          ),
       },
     );
   }

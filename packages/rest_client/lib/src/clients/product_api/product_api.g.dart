@@ -177,9 +177,14 @@ class _ProductApiClient implements ProductApiClient {
     required bool isDeactivated,
     required String token,
     String content = 'application/json',
+    String page = '1',
+    String limit = '100',
   }) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'page': page,
+      r'limit': limit,
+    };
     final _headers = <String, dynamic>{
       r'Authorization': token,
       r'Content-Type': content,

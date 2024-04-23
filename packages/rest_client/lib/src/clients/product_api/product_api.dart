@@ -52,5 +52,7 @@ abstract class ProductApiClient {
     @Path('isDeactivated') required bool isDeactivated,
     @Header('Authorization') required String token,
     @Header('Content-Type') String content = 'application/json',
+    @Query('page') String page = '1',
+    @Query('limit') String limit = '100',
   });
 }

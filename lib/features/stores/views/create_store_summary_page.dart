@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mitraku_seller/core/dimens/app_dimens.dart';
 import 'package:mitraku_seller/core/spacings/app_spacing.dart';
 import 'package:mitraku_seller/core/themes/app_themes.dart';
-import 'package:mitraku_seller/features/stores/bloc/create_store_cubit.dart';
+import 'package:mitraku_seller/features/stores/bloc/create_edit_store_cubit.dart';
 import 'package:mitraku_seller/features/stores/bloc/your_store_bloc.dart';
 import 'package:mitraku_seller/features/stores/components/create_store_step_widget.dart';
 import 'package:mitraku_seller/features/stores/components/store_description_widget.dart';
@@ -62,19 +62,39 @@ class _CreateStoreSummaryPage extends State<CreateStoreSummaryPage> {
           close: schedule.timeClosedWeekly[dayIndex] != null
               ? _formatTimeOfDay(schedule.timeClosedWeekly[dayIndex]!)
               : '23:59',
-          is24Hours: schedule.isOpen24HoursWeekly[dayIndex],
-          isOpen: schedule.isOpen24HoursWeekly[dayIndex] == true
-              ? schedule.isOpen24HoursWeekly[dayIndex]
-              : schedule.isClosedDayWeekly[dayIndex],
+          is24Hours: schedule.isClosedDayWeekly[dayIndex] == true
+              ? !schedule.isClosedDayWeekly[dayIndex]
+              : schedule.isOpen24HoursWeekly[dayIndex],
+          isOpen: !schedule.isClosedDayWeekly[dayIndex],
         ),
       );
+    }
+  }
+
+  List<ImageStore> _loadStoreImage(
+    String currentImagePath,
+    String currentImageType,
+    String currentImageBase64,
+  ) {
+    if (currentImagePath.isNotEmpty &&
+        currentImageType.isNotEmpty &&
+        currentImageBase64.isNotEmpty) {
+      return [
+        ImageStore(
+          imageType: currentImageType,
+          imageUrl: currentImagePath,
+          imageBase64: currentImageBase64,
+        ),
+      ];
+    } else {
+      return [];
     }
   }
 
   @override
   Widget build(BuildContext context) {
     _loadEmailPreferences();
-    return BlocConsumer<CreateStoreCubit, StoreModel>(
+    return BlocConsumer<CreateEditStoreCubit, StoreModel>(
       listener: (context, state) async {},
       builder: (BuildContext context, StoreModel state) {
         return BlocConsumer<YourStoreBloc, YourStoreState>(
@@ -84,15 +104,9 @@ class _CreateStoreSummaryPage extends State<CreateStoreSummaryPage> {
                 setState(() {
                   isLoadingApi = false;
                   isShowSuccessDialog = true;
-                  Future.delayed(const Duration(seconds: 5), () {
+                  Future.delayed(const Duration(seconds: 3), () {
                     widget.changeCreateStoreStep(200);
                   });
-                  // if (state.myStoreResponse != null) {
-                  //   isShowSuccessDialog = true;
-                  //   Future.delayed(const Duration(seconds: 5), () {
-                  //     widget.changeCreateStoreStep(200);
-                  //   });
-                  // } else {}
                 });
                 // _loadTokoAndaResponse(state);
                 // _showToastSuccess(message);
@@ -152,11 +166,13 @@ class _CreateStoreSummaryPage extends State<CreateStoreSummaryPage> {
                               ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                   padding: const EdgeInsets.all(
-                                      AppDimens.basePaddingHalf),
+                                    AppDimens.basePaddingHalf,
+                                  ),
                                   elevation: 0,
                                   backgroundColor: AppColors.mainWhiteColor,
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10)),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
                                 ),
                                 onPressed: () {
                                   widget.changeCreateStoreStep(2);
@@ -176,10 +192,12 @@ class _CreateStoreSummaryPage extends State<CreateStoreSummaryPage> {
                               ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                   padding: const EdgeInsets.all(
-                                      AppDimens.basePaddingHalf),
+                                    AppDimens.basePaddingHalf,
+                                  ),
                                   backgroundColor: AppColors.mainColor,
                                   shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10)),
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
                                 ),
                                 onPressed: () {
                                   setState(() {
@@ -206,7 +224,11 @@ class _CreateStoreSummaryPage extends State<CreateStoreSummaryPage> {
                                               locationLng: 0,
                                               tags: [],
                                               hours: createNewOperationalHours,
-                                              images: [],
+                                              images: _loadStoreImage(
+                                                state.imagePath,
+                                                state.imageType,
+                                                state.imageBase64,
+                                              ),
                                             ),
                                           ),
                                         );
@@ -253,7 +275,8 @@ class _CreateStoreSummaryPage extends State<CreateStoreSummaryPage> {
                       child: Align(
                         child: Dialog(
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30.0)),
+                            borderRadius: BorderRadius.circular(30),
+                          ),
                           child: SizedBox(
                             height: 300,
                             child: Column(

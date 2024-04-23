@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mitraku_seller/core/bloc_core/ui_status.dart';
 import 'package:mitraku_seller/data/repositories/auth/remote/auth_repository.dart';
-import 'package:mitraku_seller/injector/injector.dart';
 import 'package:mitraku_seller/services/log_service/log_service.dart';
 import 'package:rest_client/rest_client.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -78,10 +77,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       );
       await prefs.setString('email', event.loginPost.email);
       await prefs.setString('password', event.loginPost.password);
-
-      Injector.updateDioHeaders(
-        state.loginResponse.data.accessToken,
-      );
 
       emit(
         state.copyWith(

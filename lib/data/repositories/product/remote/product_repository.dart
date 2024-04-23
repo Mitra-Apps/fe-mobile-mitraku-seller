@@ -5,4 +5,5 @@ abstract class ProductRepository {
   Future getProductType(String idProductCategory);
   Future getUom();
   Future createProduct(ProductPostRequest productPostRequest);
+  Future getProductList(String storeId);
 }

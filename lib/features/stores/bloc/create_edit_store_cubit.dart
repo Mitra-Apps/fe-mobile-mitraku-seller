@@ -2,12 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class StoreScheduleModel {
-  StoreScheduleModel({
+  StoreScheduleModel(
+    this.hourIdWeekly,
+    this.hourStoreIdWeekly,
+    this.dayOfWeekly, {
     required this.isOpen24HoursWeekly,
     required this.isClosedDayWeekly,
     required this.timeOpenWeekly,
     required this.timeClosedWeekly,
   });
+  List<String> hourIdWeekly = [];
+  List<String> hourStoreIdWeekly = [];
+  List<int> dayOfWeekly = [];
   List<bool> isOpen24HoursWeekly;
   List<bool> isClosedDayWeekly;
   List<TimeOfDay?> timeOpenWeekly;
@@ -21,13 +27,34 @@ class StoreModel {
     required this.address,
     required this.description,
     this.imagePath = '',
+    this.imageType = '',
+    this.imageBase64 = '',
     this.scheduleModel,
   });
+  factory StoreModel.defaultStore() {
+    return StoreModel(
+      name: '',
+      phone: '',
+      address: '',
+      description: '',
+      scheduleModel: StoreScheduleModel(
+        List.filled(7, ''),
+        List.filled(7, ''),
+        [0, 1, 2, 3, 4, 5, 6],
+        isOpen24HoursWeekly: List.filled(7, false),
+        isClosedDayWeekly: List.filled(7, false),
+        timeOpenWeekly: List.filled(7, null),
+        timeClosedWeekly: List.filled(7, null),
+      ),
+    );
+  }
   final String name;
   final String phone;
   final String address;
   final String description;
   final String imagePath;
+  final String imageType;
+  final String imageBase64;
   final StoreScheduleModel? scheduleModel;
 
   StoreModel copyWith({
@@ -36,6 +63,8 @@ class StoreModel {
     String? address,
     String? description,
     String? imagePath,
+    String? imageType,
+    String? imageBase64,
     StoreScheduleModel? scheduleModel,
   }) {
     return StoreModel(
@@ -44,14 +73,16 @@ class StoreModel {
       address: address ?? this.address,
       description: description ?? this.description,
       imagePath: imagePath ?? this.imagePath,
+      imageType: imageType ?? this.imageType,
+      imageBase64: imageBase64 ?? this.imageBase64,
       scheduleModel: scheduleModel ?? this.scheduleModel,
     );
   }
 }
 
 // Define your cubit
-class CreateStoreCubit extends Cubit<StoreModel> {
-  CreateStoreCubit()
+class CreateEditStoreCubit extends Cubit<StoreModel> {
+  CreateEditStoreCubit()
       : super(
           StoreModel(
             name: '',
@@ -60,42 +91,13 @@ class CreateStoreCubit extends Cubit<StoreModel> {
             description: '',
             scheduleModel: StoreScheduleModel(
               // Weekly schedule start from monday to sunday
-              isOpen24HoursWeekly: [
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-              ],
-              isClosedDayWeekly: [
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-                false,
-              ],
-              timeOpenWeekly: [
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-              ],
-              timeClosedWeekly: [
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null,
-              ],
+              List.filled(7, ''),
+              List.filled(7, ''),
+              [0, 1, 2, 3, 4, 5, 6],
+              isOpen24HoursWeekly: List.filled(7, false),
+              isClosedDayWeekly: List.filled(7, false),
+              timeOpenWeekly: List.filled(7, null),
+              timeClosedWeekly: List.filled(7, null),
             ),
           ),
         );
@@ -107,6 +109,8 @@ class CreateStoreCubit extends Cubit<StoreModel> {
     required String address,
     required String description,
     String? imagePath,
+    String? imageType,
+    String? imageBase64,
   }) {
     emit(state.copyWith(
       name: name,
@@ -114,6 +118,8 @@ class CreateStoreCubit extends Cubit<StoreModel> {
       address: address,
       description: description,
       imagePath: imagePath,
+      imageType: imageType,
+      imageBase64: imageBase64,
     ));
   }
 

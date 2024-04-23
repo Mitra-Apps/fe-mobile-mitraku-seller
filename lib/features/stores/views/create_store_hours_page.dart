@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mitraku_seller/core/dimens/app_dimens.dart';
 import 'package:mitraku_seller/core/spacings/app_spacing.dart';
 import 'package:mitraku_seller/core/themes/app_themes.dart';
-import 'package:mitraku_seller/features/stores/bloc/create_store_cubit.dart';
+import 'package:mitraku_seller/features/stores/bloc/create_edit_store_cubit.dart';
 import 'package:mitraku_seller/features/stores/components/create_store_hours_widget.dart';
 import 'package:mitraku_seller/features/stores/components/create_store_step_widget.dart';
 
@@ -12,11 +12,11 @@ class CreateStoreHoursPage extends StatefulWidget {
   final Function(int) changeCreateStoreStep;
 
   @override
-  State<CreateStoreHoursPage> createState() => _BuatTokoPage();
+  State<CreateStoreHoursPage> createState() => _CreateStoreHoursPage();
 }
 
-class _BuatTokoPage extends State<CreateStoreHoursPage> {
-  late CreateStoreCubit buatTokoCubit;
+class _CreateStoreHoursPage extends State<CreateStoreHoursPage> {
+  late CreateEditStoreCubit buatTokoCubit;
   bool isMandatoryFieldCompleted = false;
 
   void _updateOpen24HoursCallback(
@@ -27,12 +27,16 @@ class _BuatTokoPage extends State<CreateStoreHoursPage> {
     final List<bool> updatedIsOpen24HoursWeekly =
         currentState.scheduleModel!.isOpen24HoursWeekly;
     updatedIsOpen24HoursWeekly[dayIndex] = isSetToOpen;
-    context.read<CreateStoreCubit>().updateStoreScheduleModel(
+    context.read<CreateEditStoreCubit>().updateStoreScheduleModel(
           scheduleModel: StoreScheduleModel(
-              isOpen24HoursWeekly: updatedIsOpen24HoursWeekly,
-              isClosedDayWeekly: currentState.scheduleModel!.isClosedDayWeekly,
-              timeOpenWeekly: currentState.scheduleModel!.timeOpenWeekly,
-              timeClosedWeekly: currentState.scheduleModel!.timeClosedWeekly),
+            currentState.scheduleModel!.hourIdWeekly,
+            currentState.scheduleModel!.hourStoreIdWeekly,
+            currentState.scheduleModel!.dayOfWeekly,
+            isOpen24HoursWeekly: updatedIsOpen24HoursWeekly,
+            isClosedDayWeekly: currentState.scheduleModel!.isClosedDayWeekly,
+            timeOpenWeekly: currentState.scheduleModel!.timeOpenWeekly,
+            timeClosedWeekly: currentState.scheduleModel!.timeClosedWeekly,
+          ),
         );
     _checkMandatoryField();
   }
@@ -45,13 +49,17 @@ class _BuatTokoPage extends State<CreateStoreHoursPage> {
     final List<bool> updatedIsClosedDayWeekly =
         currentState.scheduleModel!.isClosedDayWeekly;
     updatedIsClosedDayWeekly[dayIndex] = isSetToClosed;
-    context.read<CreateStoreCubit>().updateStoreScheduleModel(
+    context.read<CreateEditStoreCubit>().updateStoreScheduleModel(
           scheduleModel: StoreScheduleModel(
-              isOpen24HoursWeekly:
-                  currentState.scheduleModel!.isOpen24HoursWeekly,
-              isClosedDayWeekly: updatedIsClosedDayWeekly,
-              timeOpenWeekly: currentState.scheduleModel!.timeOpenWeekly,
-              timeClosedWeekly: currentState.scheduleModel!.timeClosedWeekly),
+            currentState.scheduleModel!.hourIdWeekly,
+            currentState.scheduleModel!.hourStoreIdWeekly,
+            currentState.scheduleModel!.dayOfWeekly,
+            isOpen24HoursWeekly:
+                currentState.scheduleModel!.isOpen24HoursWeekly,
+            isClosedDayWeekly: updatedIsClosedDayWeekly,
+            timeOpenWeekly: currentState.scheduleModel!.timeOpenWeekly,
+            timeClosedWeekly: currentState.scheduleModel!.timeClosedWeekly,
+          ),
         );
     _checkMandatoryField();
   }
@@ -64,13 +72,17 @@ class _BuatTokoPage extends State<CreateStoreHoursPage> {
     final List<TimeOfDay?> updatedTimeOpenWeekly =
         currentState.scheduleModel!.timeOpenWeekly;
     updatedTimeOpenWeekly[dayIndex] = value;
-    context.read<CreateStoreCubit>().updateStoreScheduleModel(
+    context.read<CreateEditStoreCubit>().updateStoreScheduleModel(
           scheduleModel: StoreScheduleModel(
-              isOpen24HoursWeekly:
-                  currentState.scheduleModel!.isOpen24HoursWeekly,
-              isClosedDayWeekly: currentState.scheduleModel!.isClosedDayWeekly,
-              timeOpenWeekly: updatedTimeOpenWeekly,
-              timeClosedWeekly: currentState.scheduleModel!.timeClosedWeekly),
+            currentState.scheduleModel!.hourIdWeekly,
+            currentState.scheduleModel!.hourStoreIdWeekly,
+            currentState.scheduleModel!.dayOfWeekly,
+            isOpen24HoursWeekly:
+                currentState.scheduleModel!.isOpen24HoursWeekly,
+            isClosedDayWeekly: currentState.scheduleModel!.isClosedDayWeekly,
+            timeOpenWeekly: updatedTimeOpenWeekly,
+            timeClosedWeekly: currentState.scheduleModel!.timeClosedWeekly,
+          ),
         );
     _checkMandatoryField();
   }
@@ -83,13 +95,17 @@ class _BuatTokoPage extends State<CreateStoreHoursPage> {
     final List<TimeOfDay?> updatedTimeClosedWeekly =
         currentState.scheduleModel!.timeClosedWeekly;
     updatedTimeClosedWeekly[dayIndex] = value;
-    context.read<CreateStoreCubit>().updateStoreScheduleModel(
+    context.read<CreateEditStoreCubit>().updateStoreScheduleModel(
           scheduleModel: StoreScheduleModel(
-              isOpen24HoursWeekly:
-                  currentState.scheduleModel!.isOpen24HoursWeekly,
-              isClosedDayWeekly: currentState.scheduleModel!.isClosedDayWeekly,
-              timeOpenWeekly: currentState.scheduleModel!.timeOpenWeekly,
-              timeClosedWeekly: updatedTimeClosedWeekly),
+            currentState.scheduleModel!.hourIdWeekly,
+            currentState.scheduleModel!.hourStoreIdWeekly,
+            currentState.scheduleModel!.dayOfWeekly,
+            isOpen24HoursWeekly:
+                currentState.scheduleModel!.isOpen24HoursWeekly,
+            isClosedDayWeekly: currentState.scheduleModel!.isClosedDayWeekly,
+            timeOpenWeekly: currentState.scheduleModel!.timeOpenWeekly,
+            timeClosedWeekly: updatedTimeClosedWeekly,
+          ),
         );
     _checkMandatoryField();
   }
@@ -120,14 +136,14 @@ class _BuatTokoPage extends State<CreateStoreHoursPage> {
   void initState() {
     super.initState();
     // Access the UserCubit using context.read in initState
-    buatTokoCubit = context.read<CreateStoreCubit>();
+    buatTokoCubit = context.read<CreateEditStoreCubit>();
     // Access the initial state
     _checkMandatoryField();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CreateStoreCubit, StoreModel>(
+    return BlocBuilder<CreateEditStoreCubit, StoreModel>(
       builder: (BuildContext context, StoreModel state) {
         return SingleChildScrollView(
           child: Column(

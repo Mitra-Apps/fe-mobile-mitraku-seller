@@ -112,7 +112,7 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
         state.copyWith(
           isBusy: false,
           status: const UILoadSuccess(),
-          dataProductType: response.data,
+          dataProductType: response.data!,
         ),
       );
     } on DioException catch (e, s) {
@@ -382,8 +382,8 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
           await _repository.getProductCategory();
       emit(
         state.copyWith(
-          dataProductCategory: response.data.productCategory,
-          dataUom: response.data.uom!,
+          dataProductCategory: response.data?.productCategory,
+          dataUom: response.data!.uom!,
         ),
       );
       await getMyStore(emit);
@@ -488,7 +488,7 @@ class CreateProductBloc extends Bloc<CreateProductEvent, CreateProductState> {
             state.copyWith(
               isBusy: false,
               notification: _NotificationNotifyFailed(
-                message: response.message,
+                message: response.message!,
               ),
             ),
           );

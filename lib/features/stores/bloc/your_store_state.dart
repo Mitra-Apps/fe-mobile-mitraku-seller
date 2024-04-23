@@ -7,7 +7,8 @@ class YourStoreState with _$YourStoreState {
     @Default(false) bool isBusy,
     YourStoreNotification? notification,
     MyStoreResponse? myStoreResponse,
-    CreateStorePostRequest? buatTokoPostRequest,
+    CreateStorePostRequest? createStorePostRequest,
+    EditStorePutRequest? editStorePutRequest,
     ErrorResponse? errorResponse,
   }) = _YourStoreState;
 }

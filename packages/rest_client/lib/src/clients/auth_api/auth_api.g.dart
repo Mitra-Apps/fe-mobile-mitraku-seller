@@ -43,17 +43,24 @@ class _AuthApiClient implements AuthApiClient {
   }
 
   @override
-  Future<LogoutResponse> logout(Map<String, dynamic> json) async {
+  Future<LogoutResponse> logout({
+    required String token,
+    String content = 'application/json',
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(json);
+    final _headers = <String, dynamic>{
+      r'Authorization': token,
+      r'Content-Type': content,
+    };
+    _headers.removeWhere((k, v) => v == null);
+    final Map<String, dynamic>? _data = null;
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<LogoutResponse>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
+      contentType: content,
     )
             .compose(
               _dio.options,

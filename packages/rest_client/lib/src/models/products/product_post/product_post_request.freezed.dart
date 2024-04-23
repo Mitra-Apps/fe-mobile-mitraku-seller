@@ -133,7 +133,7 @@ class _$ProductPostRequestImpl implements _ProductPostRequest {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProductPostRequestImpl &&

@@ -1,43 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:mitraku_seller/core/keys/app_keys.dart';
 import 'package:mitraku_seller/core/spacings/app_spacing.dart';
 import 'package:mitraku_seller/core/themes/app_themes.dart';
 import 'package:mitraku_seller/router/app_router.dart';
 
-class ProductPage extends StatefulWidget {
-  const ProductPage({super.key}); 
-
-  @override
-  State<ProductPage> createState() => _ProductPageState();
-}
-
-class _ProductPageState extends State<ProductPage> {
-  bool isProductCreated = false;
+class EmptyProductScreen extends StatelessWidget {
+  const EmptyProductScreen({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.mainWhiteColor,
-      key: const Key(WidgetKeys.productScaffoldKey),
-      appBar: appBar(context),
-      body: !isProductCreated ? emptyState(context) : showDataProduct(context),
-    );
-  }
-
-  AppBar appBar(BuildContext context) {
-    return AppBar(
-      title: Text(
-        'Daftar Produk',
-        style: Theme.of(context)
-            .textTheme
-            .titleLarge!
-            .copyWith(fontWeight: FontWeight.bold),
-      ),
-    );
-  }
-
-  Center emptyState(BuildContext context) {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -45,9 +18,9 @@ class _ProductPageState extends State<ProductPage> {
           Text(
             'Daftar Produk',
             style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.mainBlackColor,
-                ),
+              fontWeight: FontWeight.bold,
+              color: AppColors.mainBlackColor,
+            ),
           ),
           AppSpacing.verticalSpacing8,
           Image.asset(
@@ -59,9 +32,9 @@ class _ProductPageState extends State<ProductPage> {
           Text(
             'Anda belum memiliki produk',
             style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.disabledColor,
-                ),
+              fontWeight: FontWeight.bold,
+              color: AppColors.disabledColor,
+            ),
           ),
           AppSpacing.verticalSpacing8,
           ElevatedButton(
@@ -77,17 +50,13 @@ class _ProductPageState extends State<ProductPage> {
             child: Text(
               'Tambah Produk',
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: AppColors.mainWhiteColor,
-                  ),
+                fontWeight: FontWeight.bold,
+                color: AppColors.mainWhiteColor,
+              ),
             ),
           ),
         ],
       ),
     );
-  }
-
-  SingleChildScrollView showDataProduct(BuildContext context) {
-    return const SingleChildScrollView();
   }
 }

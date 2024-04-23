@@ -411,7 +411,7 @@ class _$CreateStorePostRequestImpl implements _CreateStorePostRequest {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CreateStorePostRequestImpl &&
@@ -725,7 +725,7 @@ class _$CreateNewHourImpl implements _CreateNewHour {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CreateNewHourImpl &&

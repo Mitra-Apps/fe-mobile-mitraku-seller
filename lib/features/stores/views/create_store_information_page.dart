@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mitraku_seller/core/dimens/app_dimens.dart';
 import 'package:mitraku_seller/core/spacings/app_spacing.dart';
 import 'package:mitraku_seller/core/themes/app_themes.dart';
-import 'package:mitraku_seller/features/stores/bloc/create_store_cubit.dart';
+import 'package:mitraku_seller/features/stores/bloc/create_edit_store_cubit.dart';
 import 'package:mitraku_seller/features/stores/components/create_store_image_upload_widget.dart';
 import 'package:mitraku_seller/features/stores/components/create_store_information_widget.dart';
 import 'package:mitraku_seller/features/stores/components/create_store_step_widget.dart';
@@ -14,11 +14,12 @@ class CreateStoreInformationPage extends StatefulWidget {
   final Function(int) changeCreateStoreStep;
 
   @override
-  State<CreateStoreInformationPage> createState() => _BuatTokoPage();
+  State<CreateStoreInformationPage> createState() =>
+      _CreateStoreInformationPage();
 }
 
-class _BuatTokoPage extends State<CreateStoreInformationPage> {
-  late CreateStoreCubit buatTokoCubit;
+class _CreateStoreInformationPage extends State<CreateStoreInformationPage> {
+  late CreateEditStoreCubit buatTokoCubit;
   bool isMandatoryFieldCompleted = false;
 
   void _updateInputValueCallback(String type, String value) {
@@ -29,6 +30,8 @@ class _BuatTokoPage extends State<CreateStoreInformationPage> {
     String inputAlamatToko = currentState.address;
     String inputDeskripsi = currentState.description;
     String inputFoto = currentState.imagePath;
+    String inputFotoTipe = currentState.imageType;
+    String inputFotoBase64 = currentState.imageBase64;
     switch (type) {
       case 'NAMA_TOKO':
         inputNama = value;
@@ -40,13 +43,19 @@ class _BuatTokoPage extends State<CreateStoreInformationPage> {
         inputDeskripsi = value;
       case 'FOTO':
         inputFoto = value;
+      case 'FOTO_TYPE':
+        inputFotoTipe = value;
+      case 'FOTO_BASE64':
+        inputFotoBase64 = value;
     }
-    context.read<CreateStoreCubit>().updateStoreModel(
+    context.read<CreateEditStoreCubit>().updateStoreModel(
           name: inputNama,
           phone: inputNoTelp,
           address: inputAlamatToko,
           description: inputDeskripsi,
           imagePath: inputFoto,
+          imageType: inputFotoTipe,
+          imageBase64: inputFotoBase64,
         );
     _checkMandatoryField();
   }
@@ -69,14 +78,14 @@ class _BuatTokoPage extends State<CreateStoreInformationPage> {
   void initState() {
     super.initState();
     // Access the UserCubit using context.read in initState
-    buatTokoCubit = context.read<CreateStoreCubit>();
+    buatTokoCubit = context.read<CreateEditStoreCubit>();
     // Access the initial state
     _checkMandatoryField();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CreateStoreCubit, StoreModel>(
+    return BlocBuilder<CreateEditStoreCubit, StoreModel>(
       builder: (BuildContext context, StoreModel state) {
         return SingleChildScrollView(
           child: Column(

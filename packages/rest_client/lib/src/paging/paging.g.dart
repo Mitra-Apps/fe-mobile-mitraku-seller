@@ -12,8 +12,8 @@ _$PagingImpl<T> _$$PagingImplFromJson<T>(
 ) =>
     _$PagingImpl<T>(
       items: (json['items'] as List<dynamic>).map(fromJsonT).toList(),
-      totalCount: json['totalCount'] as int?,
-      currentCount: json['currentCount'] as int?,
+      totalCount: (json['totalCount'] as num?)?.toInt(),
+      currentCount: (json['currentCount'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$$PagingImplToJson<T>(

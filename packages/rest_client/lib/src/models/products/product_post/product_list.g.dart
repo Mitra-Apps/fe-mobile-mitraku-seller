@@ -10,7 +10,7 @@ _$ProductListImpl _$$ProductListImplFromJson(Map<String, dynamic> json) =>
     _$ProductListImpl(
       name: json['name'] as String?,
       saleStatus: json['saleStatus'] as bool? ?? false,
-      price: json['price'] as int?,
+      price: (json['price'] as num?)?.toInt(),
       stock: json['stock'] as String?,
       uom: json['uom'] as String?,
       productTypeId: json['productTypeId'] as String?,

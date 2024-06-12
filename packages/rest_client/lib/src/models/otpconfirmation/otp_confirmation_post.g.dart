@@ -10,7 +10,7 @@ _$OtpConfirmationPostImpl _$$OtpConfirmationPostImplFromJson(
         Map<String, dynamic> json) =>
     _$OtpConfirmationPostImpl(
       email: json['email'] as String,
-      otp_code: json['otp_code'] as int,
+      otp_code: (json['otp_code'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$OtpConfirmationPostImplToJson(

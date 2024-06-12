@@ -22,8 +22,8 @@ _$EditStorePutRequestImpl _$$EditStorePutRequestImplFromJson(
       website: json['website'] as String,
       status: json['status'] as String,
       isActive: json['isActive'] as bool,
-      locationLat: json['locationLat'] as int,
-      locationLng: json['locationLng'] as int,
+      locationLat: (json['locationLat'] as num).toInt(),
+      locationLng: (json['locationLng'] as num).toInt(),
       tags: (json['tags'] as List<dynamic>)
           .map((e) => Tag.fromJson(e as Map<String, dynamic>))
           .toList(),

@@ -9,7 +9,7 @@ part of 'resend_otp_response.dart';
 _$ResendOTPResponseImpl _$$ResendOTPResponseImplFromJson(
         Map<String, dynamic> json) =>
     _$ResendOTPResponseImpl(
-      code: json['code'] as int,
+      code: (json['code'] as num).toInt(),
       message: json['message'] as String,
     );
 

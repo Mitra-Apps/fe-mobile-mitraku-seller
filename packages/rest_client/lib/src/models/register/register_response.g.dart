@@ -9,7 +9,7 @@ part of 'register_response.dart';
 _$RegisterResponseImpl _$$RegisterResponseImplFromJson(
         Map<String, dynamic> json) =>
     _$RegisterResponseImpl(
-      code: json['code'] as int,
+      code: (json['code'] as num).toInt(),
       message: json['message'] as String,
     );
 

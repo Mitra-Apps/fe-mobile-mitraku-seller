@@ -9,7 +9,7 @@ part of 'create_store_response.dart';
 _$CreateStoreResponseImpl _$$CreateStoreResponseImplFromJson(
         Map<String, dynamic> json) =>
     _$CreateStoreResponseImpl(
-      code: json['code'] as int,
+      code: (json['code'] as num).toInt(),
       message: json['message'] as String,
       data: json['data'] == null
           ? null

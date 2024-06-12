@@ -344,7 +344,7 @@ class _CreateProductFormState extends State<CreateProductForm> {
                     hint: 'Cth: Rp.20.000',
                     keyboardType: TextInputType.number,
                     inputFormatters: [
-                      CurrencyTextInputFormatter(
+                      CurrencyTextInputFormatter.currency(
                         decimalDigits: 0,
                         symbol: 'Rp.',
                         enableNegative: false,

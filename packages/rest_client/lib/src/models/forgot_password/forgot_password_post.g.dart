@@ -11,7 +11,7 @@ _$ForgotPasswordPostImpl _$$ForgotPasswordPostImplFromJson(
     _$ForgotPasswordPostImpl(
       email: json['email'] as String,
       password: json['password'] as String,
-      otp_code: json['otp_code'] as int,
+      otp_code: (json['otp_code'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$ForgotPasswordPostImplToJson(

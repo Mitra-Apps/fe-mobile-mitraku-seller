@@ -20,8 +20,8 @@ _$CreateStorePostRequestImpl _$$CreateStorePostRequestImplFromJson(
       website: json['website'] as String,
       status: json['status'] as String,
       isActive: json['isActive'] as bool,
-      locationLat: json['locationLat'] as int,
-      locationLng: json['locationLng'] as int,
+      locationLat: (json['locationLat'] as num).toInt(),
+      locationLng: (json['locationLng'] as num).toInt(),
       tags: (json['tags'] as List<dynamic>)
           .map((e) => Tag.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -56,7 +56,7 @@ Map<String, dynamic> _$$CreateStorePostRequestImplToJson(
 
 _$CreateNewHourImpl _$$CreateNewHourImplFromJson(Map<String, dynamic> json) =>
     _$CreateNewHourImpl(
-      dayOfWeek: json['dayOfWeek'] as int,
+      dayOfWeek: (json['dayOfWeek'] as num).toInt(),
       open: json['open'] as String,
       close: json['close'] as String,
       is24Hours: json['is24hours'] as bool,

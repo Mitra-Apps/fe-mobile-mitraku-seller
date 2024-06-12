@@ -22,8 +22,8 @@ _$MyStoreResponseImpl _$$MyStoreResponseImplFromJson(
       website: json['website'] as String,
       status: json['status'] as String,
       isActive: json['isActive'] as bool,
-      locationLat: json['locationLat'] as int,
-      locationLng: json['locationLng'] as int,
+      locationLat: (json['locationLat'] as num).toInt(),
+      locationLng: (json['locationLng'] as num).toInt(),
       tags: (json['tags'] as List<dynamic>)
           .map((e) => Tag.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -61,7 +61,7 @@ Map<String, dynamic> _$$MyStoreResponseImplToJson(
 _$HourImpl _$$HourImplFromJson(Map<String, dynamic> json) => _$HourImpl(
       id: json['id'] as String,
       storeId: json['storeId'] as String,
-      dayOfWeek: json['dayOfWeek'] as int,
+      dayOfWeek: (json['dayOfWeek'] as num).toInt(),
       open: json['open'] as String,
       close: json['close'] as String,
       is24Hours: json['is24hours'] as bool,
